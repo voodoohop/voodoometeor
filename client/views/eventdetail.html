@@ -1,0 +1,7 @@
+<template name="eventdetail">
+    id: {{_id}}<br>
+    {{#each voodooevent}}
+    name: {{name}}  <br>
+    <b>description:</b><br>  {{#markdown}}{{description}}{{/markdown}}
+    {{/each}}
+</template>
