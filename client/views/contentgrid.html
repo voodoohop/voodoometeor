@@ -1,0 +1,19 @@
+<template name="contentgrid">
+    <h1>Content</h1>
+    <div id="contentgridcontainer">
+    {{#if voodoocontent}}
+    {{#each voodoocontent}}
+        <div id="{{_id}}" class="contentitemcontainer masonryitem {{#if isFeatured}} largecontentitem {{else}} normalcontentitem {{/if}}">
+          <div id="mediathumb_{{_id}}">
+          </div>
+          <div id="mediacontent_{{_id}}">
+           {{prepareembed}}
+           {{embedcontent}}
+          </div>
+        </div>
+    {{/each}}
+    {{else}}
+        loading content...
+    {{/if}}
+    </div>
+</template>

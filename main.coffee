@@ -14,6 +14,7 @@ require "VoodooeventModel" , (eventGridModel) ->
 
 if (Meteor.isClient)
   require "EventgridController" , (eventGridController) ->
+  require "ContentgridController" , (eventGridController) ->
 
 if (Meteor.isClient)
   Meteor.startup ->
@@ -21,6 +22,7 @@ if (Meteor.isClient)
 
   Meteor.Router.add
     '/eventgrid': 'eventgrid'
+    '/contentgrid': 'contentgrid'
     '/eventdetail/:id': 'eventdetail'
     '*': 'not_found'
 
