@@ -6,7 +6,9 @@
       "font-awesome": {},
       "router": {},
       "HTML5-History-API": {},
-      "define": {}
+      "define": {},
+      "presence": {},
+      "npm": {}
     },
     "packages": {
       "bootstrap-updated": {
@@ -33,6 +35,16 @@
         "git": "https://github.com/apendua/require.git",
         "tag": "v0.9.0.1",
         "commit": "7594e5f0c0678ff47367f1bcd6b20d0ca4b7965c"
+      },
+      "presence": {
+        "git": "https://github.com/tmeasday/meteor-presence.git",
+        "tag": "v0.2.1",
+        "commit": "265948d9aab7334c009cfa2daf84869a26c5318c"
+      },
+      "npm": {
+        "git": "https://github.com/arunoda/meteor-npm.git",
+        "tag": "v0.1.4",
+        "commit": "68ab2b952ab21a5bbba879b37be9385ec8ff6d63"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

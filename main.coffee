@@ -18,11 +18,10 @@ if (Meteor.isClient)
 if (Meteor.isClient)
   Meteor.startup ->
      console.log("startup")
-#     Meteor.Router.to("/eventgrid")
 
-
-if (Meteor.isClient)
   Meteor.Router.add
     '/eventgrid': 'eventgrid'
     '/eventdetail/:id': 'eventdetail'
     '*': 'not_found'
+
+

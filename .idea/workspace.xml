@@ -1,17 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" name="Default" comment="" />
+    <list default="true" id="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/config.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/facebook.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/init.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/voodoocontent-model.coffee" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/fb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/crypto/History.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/crypto/Readme.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/crypto/md5.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/crypto/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/crypto/sha1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/crypto/test/test-crypto.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/aws.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/aws2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/forever.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/mimetypes.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/oauth.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/googledoodle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/run.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/server.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/squid.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/ssl/ca/ca.cnf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/ssl/ca/ca.crt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/ssl/ca/ca.csr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/ssl/ca/ca.key" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/ssl/ca/ca.srl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/ssl/ca/server.cnf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/ssl/ca/server.crt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/ssl/ca/server.csr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/ssl/ca/server.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/ssl/ca/server.key" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/ssl/npm-ca.crt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/ssl/test.crt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/ssl/test.key" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-body.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-cookie.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-cookiejar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-defaults.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-errors.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-headers.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-httpModule.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-https-strict.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-https.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-oauth.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-params.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-pipes.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-pool.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-proxy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-qs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-redirect.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-s3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-timeout.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-toJSON.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tests/test-tunnel.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/tunnel.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/uuid.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/vendor/cookie/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/node_modules/request/vendor/cookie/jar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/app.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/config.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/css/base.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/css/images/ajax-loader.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/css/images/icons-18-black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/css/images/icons-18-white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/css/images/icons-36-black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/css/images/icons-36-white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/css/jquery.mobile-1.2.0.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/action-eating.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/action-location.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/action-people.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/fblogin.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meal.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/cheeseburger-full.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/cheeseburger.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/cheeseburger@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/chinese-full.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/chinese.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/chinese@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/french-full.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/french.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/french@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/hotdog-full.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/hotdog.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/hotdog@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/indian-full.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/indian.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/indian@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/italian-full.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/italian.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/italian@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/pizza-full.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/pizza.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/pizza@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/thai-full.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/thai.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/meals/thai@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/scrumptious_logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/images/scrumptious_logo_large.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/js/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/js/jquery.mobile-1.2.0.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/js/mustache.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/public/stylesheets/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/routes/api.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/routes/home.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/routes/meals.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/views/index.ejs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/views/meal.ejs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/samples/scrumptious/views/menu.ejs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/node_modules/fb/test/api/get.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/ca/ca.crl" afterPath="$PROJECT_DIR$/packages.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/meteor-isotope/isotope" afterPath="$PROJECT_DIR$/packages/meteor-isotope/isotope" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/meteor-isotope" afterPath="$PROJECT_DIR$/packages/meteor-isotope" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/.gitignore" afterPath="$PROJECT_DIR$/packages/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.coffee" afterPath="$PROJECT_DIR$/main.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smart.json" afterPath="$PROJECT_DIR$/smart.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smart.lock" afterPath="$PROJECT_DIR$/smart.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/styles.less" afterPath="$PROJECT_DIR$/client/css/styles.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="voodoometeor.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/a.dummy" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374874459782" ignored="false" />
     <file path="/Applications/MAMP/htdocs/angularvoodoo/app/app.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374752662391" ignored="false" />
     <file path="/Applications/MAMP/htdocs/angularvoodoo/_public/js/app.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374752687636" ignored="false" />
     <file path="/Applications/MAMP/htdocs/angularvoodoo/_public/js/partials.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374752687636" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/jquery/jquery.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375007172656" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/client/lib/jquery.stellar.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374753702509" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/ng/lib/angular.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374756202820" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/livedata/livedata_server.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374921609096" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/client/lib/bootstrap/bootstrap-popover.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374753324567" ignored="false" />
     <file path="/app.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374760080353" ignored="false" />
     <file path="/example.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374753613876" ignored="false" />
@@ -20,7 +149,6 @@
     <file path="/welcome.blade" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374755285359" ignored="false" />
     <file path="/eventgrid.jade" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374755430451" ignored="false" />
     <file path="/eventgrid.blade" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374756209949" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/templating/deftemplate.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375007172656" ignored="false" />
     <file path="/app.less" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374757138643" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static/less/type.less" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374760197474" ignored="false" />
     <file path="/voodoometeor.jade" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374762677166" ignored="false" />
@@ -30,29 +158,22 @@
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/meteor/errors.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374764796282" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/spark/convenience.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374864935702" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/deps/deps.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374764796282" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/spark/patch.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374764796282" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/json/json2.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374764796282" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/spark/spark.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374764796282" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/spark/utils.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374764796282" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/check/match.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374878809235" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/past/past.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374770560060" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/meteor/timers.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374764796282" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/ejson/base64.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374764796282" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/ejson/ejson.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374764796282" ignored="false" />
     <file path="/voodoometeor.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374764713717" ignored="false" />
     <file path="/eventgrid.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935482466" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/meteor/server_environment.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374882680319" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/meteor/client_environment.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374882680319" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/underscore/underscore.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374921609096" ignored="false" />
     <file path="/insertjsonfile.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374775598851" ignored="false" />
     <file path="/voodoometeor.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374860216595" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/past/past.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374770560060" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/meteor/fiber_helpers.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374774145122" ignored="false" />
     <file path="/future.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374773462162" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/mongo-livedata/mongo_driver.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374848748435" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/app/server/node_modules/fibers/future.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374773540526" ignored="false" />
     <file path="/fibers.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374773597261" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/underscore/underscore.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374880743500" ignored="false" />
     <file path="/eventgrid-model.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374873320682" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/client/lib/jquery.masonry.ordered.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374780861928" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/font-awesome/path-override.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935133510" ignored="false" />
@@ -63,17 +184,14 @@
     <file path="/styles" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374785321569" ignored="false" />
     <file path="/styles.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374785427234" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/client/css/styles.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374832475400" ignored="false" />
-    <file path="/styles.less" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935695673" ignored="false" />
+    <file path="/styles.less" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375092539985" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/client/css/styles.less.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935255661" ignored="false" />
     <file path="/package.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374833684092" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/minimongo/selector.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374834402500" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/minimongo/selector.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374834402500" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/client/lib/1masonry.pkgd.min.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374840825184" ignored="false" />
     <file path="/jsincludes.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374837969567" ignored="false" />
     <file path="/eventgrid-controller.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374840286300" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/liverange/liverange.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374839782348" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/define/require.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374840825185" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/define/require.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374840825184" ignored="false" />
     <file path="/maincontent.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374842147252" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/voodoometeor.coffee.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374850031534" ignored="false" />
     <file path="/voodoometeor.coffee.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374841534851" ignored="false" />
@@ -82,12 +200,8 @@
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/accounts-ui/login_buttons.less.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935133510" ignored="false" />
     <file path="/event.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374864901768" ignored="false" />
     <file path="/event.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374873734255" ignored="false" />
-    <file path="/main.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374929256176" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/livedata/sockjs-0.3.4.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374873862567" ignored="false" />
+    <file path="/main.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375052922599" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/client/views/eventgrid.coffee.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374933967210" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/router/lib/router_common.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375007172656" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/router/lib/router_client.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375007172656" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/router/lib/router_helpers.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375007172656" ignored="false" />
     <file path="/main.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374875969644" ignored="false" />
     <file path="/eventdetail.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375007088501" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/session/session.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374877032216" ignored="false" />
@@ -97,7 +211,6 @@
     <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/srp/srp.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374877133753" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/srp/srp.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374877133753" ignored="false" />
     <file path="/router_client.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374878140563" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/check/match.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374878809235" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/random/random.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374878809235" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/random/random.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374878809235" ignored="false" />
     <file path="/voodooevent-model.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374931670980" ignored="false" />
@@ -108,7 +221,14 @@
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/css/jquery.mobile-1.2.0.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935255661" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/voodoometeor.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935255661" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/meteor-isotope/isotope/css/style.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935255661" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/js/jquery.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375007053371" ignored="false" />
+    <file path="/Dummy.txt" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375107681310" ignored="false" />
+    <file path="/jsincludes.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375051148981" ignored="false" />
+    <file path="/fb.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375051376305" ignored="false" />
+    <file path="/facebook.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375106721793" ignored="false" />
+    <file path="/packages.json" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375103015960" ignored="false" />
+    <file path="/config.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375054949403" ignored="false" />
+    <file path="/init.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375054919200" ignored="false" />
+    <file path="/voodoocontent-model.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375107179317" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +251,7 @@
       <file leaf-file-name="main.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="79" selection-start="377" selection-end="377" vertical-scroll-proportion="-6.0">
+            <state line="26" column="25" selection-start="650" selection-end="650" vertical-scroll-proportion="-10.32">
               <folding />
             </state>
           </provider>
@@ -140,25 +260,34 @@
       <file leaf-file-name="voodooevent-model.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/voodooevent-model.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="41" selection-start="374" selection-end="374" vertical-scroll-proportion="-7.2">
+            <state line="21" column="16" selection-start="672" selection-end="672" vertical-scroll-proportion="-8.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="router_client.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/packages/router/lib/router_client.js">
+      <file leaf-file-name="voodoocontent-model.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/voodoocontent-model.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="40" selection-start="0" selection-end="5711" vertical-scroll-proportion="0.0">
+            <state line="13" column="38" selection-start="406" selection-end="406" vertical-scroll-proportion="8.28">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eventgrid.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/eventgrid.html">
+      <file leaf-file-name="packages.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/packages.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="23" selection-start="376" selection-end="450" vertical-scroll-proportion="-3.75">
+            <state line="2" column="20" selection-start="41" selection-end="41" vertical-scroll-proportion="-1.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="facebook.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/facebook.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="37" selection-start="492" selection-end="493" vertical-scroll-proportion="-6.12">
               <folding />
             </state>
           </provider>
@@ -167,52 +296,34 @@
       <file leaf-file-name="styles.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/css/styles.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="15" selection-start="314" selection-end="314" vertical-scroll-proportion="-11.36">
+            <state line="12" column="8" selection-start="197" selection-end="197" vertical-scroll-proportion="-3.72">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="insertjsonfile.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/lib/insertjsonfile.coffee">
+      <file leaf-file-name="init.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/init.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="24" selection-start="220" selection-end="220" vertical-scroll-proportion="-6.6">
+            <state line="1" column="0" selection-start="30" selection-end="30" vertical-scroll-proportion="-0.6">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eventdetail.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/views/eventdetail.html">
+      <file leaf-file-name="config.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/config.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="70" selection-start="171" selection-end="171" vertical-scroll-proportion="0.16438356">
+            <state line="9" column="21" selection-start="345" selection-end="345" vertical-scroll-proportion="-5.4">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="18" selection-start="191" selection-end="191" vertical-scroll-proportion="-6.25">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="eventdetail.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/eventdetail.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="22" selection-start="268" selection-end="268" vertical-scroll-proportion="-6.6">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="eventgrid.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="eventgrid.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/views/eventgrid.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="1" selection-start="399" selection-end="399" vertical-scroll-proportion="-7.2">
+            <state line="8" column="57" selection-start="269" selection-end="269" vertical-scroll-proportion="0.3305785">
               <folding />
             </state>
           </provider>
@@ -225,25 +336,33 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/voodoometeor.coffee" />
-        <option value="$PROJECT_DIR$/client/views/event.html" />
-        <option value="$PROJECT_DIR$/client/views/event.coffee" />
-        <option value="$PROJECT_DIR$/models/eventgrid-model.coffee" />
-        <option value="$PROJECT_DIR$/client/views/voodooevent_model.coffee" />
-        <option value="$PROJECT_DIR$/main.html" />
-        <option value="$PROJECT_DIR$/client/views/jsincludes.html" />
-        <option value="$PROJECT_DIR$/packages/router/lib/router_client.js" />
-        <option value="$PROJECT_DIR$/client/views/eventdetail.coffee" />
         <option value="$PROJECT_DIR$/server/eventlist.json" />
-        <option value="$PROJECT_DIR$/main.coffee" />
         <option value="$PROJECT_DIR$/models/voodooevent-model.coffee" />
         <option value="$PROJECT_DIR$/client/views/eventgrid.html" />
-        <option value="$PROJECT_DIR$/client/css/styles.less" />
         <option value="$PROJECT_DIR$/client/views/eventgrid.coffee" />
         <option value="$PROJECT_DIR$/client/views/eventdetail.html" />
+        <option value="$PROJECT_DIR$/server/jsincludes.coffee" />
+        <option value="$PROJECT_DIR$/packages/fb/fb.js" />
+        <option value="$PROJECT_DIR$/server/initconfig.coffee" />
+        <option value="$PROJECT_DIR$/lib/config.coffee" />
+        <option value="$PROJECT_DIR$/main.coffee" />
+        <option value="$PROJECT_DIR$/server/init.coffee" />
+        <option value="$PROJECT_DIR$/models/config.coffee" />
+        <option value="$PROJECT_DIR$/client/css/styles.less" />
+        <option value="$PROJECT_DIR$/packages.json" />
+        <option value="$PROJECT_DIR$/models/voodoocontent-model.coffee" />
+        <option value="$PROJECT_DIR$/server/facebook.coffee" />
       </list>
     </option>
   </component>
@@ -253,7 +372,7 @@
     <option name="width" value="1260" />
     <option name="height" value="774" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -309,24 +428,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="voodoometeor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="voodoometeor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -404,7 +505,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -418,11 +519,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
+              <option name="myItemId" value=".meteor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value=".meteor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".meteor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -431,12 +568,28 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="99" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="100" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.general" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="100" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="110" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="900" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="898" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="105" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="102" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PublishConfig" serverName="localhost meteor" serverId="90bc777b-315c-45c2-a9f6-408dd2b22698">
     <servers>
@@ -457,18 +610,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/models" />
       <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/client/css" />
-      <recent name="$PROJECT_DIR$/views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/models" />
+      <recent name="$PROJECT_DIR$/server/node_modules" />
+      <recent name="$PROJECT_DIR$/server" />
+      <recent name="$PROJECT_DIR$/packages" />
       <recent name="$PROJECT_DIR$/client/views" />
-      <recent name="$PROJECT_DIR$/public/js" />
-      <recent name="$PROJECT_DIR$/client/css" />
-      <recent name="$PROJECT_DIR$/client/scripts" />
-      <recent name="$PROJECT_DIR$/client" />
     </key>
   </component>
   <component name="RunManager">
@@ -520,18 +673,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-24" y="24" width="1260" height="774" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32874617" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33027524" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40501213" sideWeight="0.6707317" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40501213" sideWeight="0.6712538" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40501213" sideWeight="0.42682928" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -582,7 +736,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="generalising from eventgrid to voodoocontent" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -596,6 +750,7 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="generalising from eventgrid to voodoocontent" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -603,79 +758,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.meteor/local/build/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.meteor/local/build/app.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/jsincludes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="18" selection-start="25" selection-end="25" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/router/lib/router_common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="14" selection-start="4196" selection-end="4196" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/router/lib/router_helpers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="11" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages/router/lib/router_client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="40" selection-start="0" selection-end="5711" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/lib/insertjsonfile.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="24" selection-start="220" selection-end="220" vertical-scroll-proportion="-6.6">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/eventlist.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="79" selection-start="377" selection-end="377" vertical-scroll-proportion="-6.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/voodooevent-model.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="41" selection-start="374" selection-end="374" vertical-scroll-proportion="-7.2">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="18" selection-start="191" selection-end="191" vertical-scroll-proportion="-6.25">
           <folding />
         </state>
       </provider>
@@ -687,13 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/css/styles.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="15" selection-start="314" selection-end="314" vertical-scroll-proportion="-11.36">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/eventgrid.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="23" selection-start="376" selection-end="450" vertical-scroll-proportion="-3.75">
@@ -701,16 +779,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/eventgrid.coffee">
+    <entry file="file://$PROJECT_DIR$/client/views/eventdetail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="1" selection-start="399" selection-end="399" vertical-scroll-proportion="-7.2">
+        <state line="6" column="11" selection-start="197" selection-end="197" vertical-scroll-proportion="-3.75">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/eventdetail.html">
+    <entry file="file://$PROJECT_DIR$/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="70" selection-start="171" selection-end="171" vertical-scroll-proportion="0.16438356">
+        <state line="2" column="7" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/jsincludes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="7" selection-start="85" selection-end="85" vertical-scroll-proportion="-1.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/init.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="30" selection-end="30" vertical-scroll-proportion="-0.6">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/config.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="21" selection-start="345" selection-end="345" vertical-scroll-proportion="-5.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/css/styles.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="8" selection-start="197" selection-end="197" vertical-scroll-proportion="-3.72">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/eventlist.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/voodooevent-model.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="16" selection-start="672" selection-end="672" vertical-scroll-proportion="-8.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="25" selection-start="650" selection-end="650" vertical-scroll-proportion="-10.32">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="20" selection-start="41" selection-end="41" vertical-scroll-proportion="-1.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/voodoocontent-model.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="38" selection-start="406" selection-end="406" vertical-scroll-proportion="8.28">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/facebook.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="37" selection-start="492" selection-end="493" vertical-scroll-proportion="-6.12">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/eventgrid.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="57" selection-start="269" selection-end="269" vertical-scroll-proportion="0.3305785">
           <folding />
         </state>
       </provider>
