@@ -9,13 +9,13 @@ require ["Config", "VoodoocontentModel"], (config,contentModel) ->
 
   #return #hack to not load posts
 
-  contentModel.contentCollection.remove({})
+  #contentModel.contentCollection.remove({})
 
   pages= ["voodoohop","ideafixa","calefacaotropicaos"]
 
   for page in pages
 
-    res = Meteor.sync ((done) -> fb.api "/"+page+"/posts", {limit:50}, (fbres) -> done(null, fbres) )
+    res = Meteor.sync ((done) -> fb.api "/"+page+"/posts", {limit:20}, (fbres) -> done(null, fbres) )
 
     _.each( res.result.data, (post) ->
       #

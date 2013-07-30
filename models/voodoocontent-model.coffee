@@ -2,7 +2,7 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
 
   self= this;
 
-  self.contentBlockSize = 30;
+  self.contentBlockSize = 60;
 
   # content for rendering grid
   self.contentCollection =  new Meteor.Collection("voodoocontent")
@@ -38,9 +38,13 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
 
         _.each self.contentCollection.find({embedlyData: { $not: { $elemMatch: embedParams }} }).fetch(), (content) ->
           if (content.link)
+            # push empty result so we avoid doing the operation twice
+            self.contentCollection.update(content._id, $push:{ embedParams} )
             console.log("running embedly for link:"+content.link)
             params = _.clone(embedParams)
             _.extend(params,embedly.runembedly(_.extend(_.clone(params), {url: content.link}))[0])
+            # remove dummy entry and push final
+            self.contentCollection.update(content._id, $pull: {embedlyData: embedParams } )
             self.contentCollection.update(content._id, $push: {embedlyData: params})
 
 
