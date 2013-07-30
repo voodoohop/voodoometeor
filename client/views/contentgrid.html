@@ -4,12 +4,26 @@
     {{#if voodoocontent}}
     {{#each voodoocontent}}
         <div id="{{_id}}" class="contentitemcontainer masonryitem {{#if isFeatured}} largecontentitem {{else}} normalcontentitem {{/if}}">
+          {{#isolate}}
+           {{#if title}}
+           <div id="mediatitle">
+              {{title}}
+          </div>
+          {{/if}}
+          {{#if showThumb}}
           <div id="mediathumb_{{_id}}">
+              <img src="{{thumbnailurl}}">
           </div>
-          <div id="mediacontent_{{_id}}">
-           {{prepareembed}}
-           {{embedcontent}}
+          {{/if}}
+          {{#if showMedia}}
+            <div id="mediacontent_{{_id}}">
+                {{{embedcontent}}}
+            </div>
+          {{/if}}
+          <div class="contentsocialmedia">
+            <i class="icon-heart"></i> {{numlikes}}
           </div>
+          {{/isolate}}
         </div>
     {{/each}}
     {{else}}

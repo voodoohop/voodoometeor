@@ -2,133 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/views/contentgrid.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/views/contentgrid.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/embedly.coffee" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/fb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/crypto/History.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/crypto/Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/crypto/md5.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/crypto/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/crypto/sha1.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/crypto/test/test-crypto.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/aws.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/aws2.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/forever.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/mimetypes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/oauth.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/googledoodle.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/run.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/squid.conf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/ca/ca.cnf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/ca/ca.crt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/ca/ca.csr" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/ca/ca.key" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/ca/ca.srl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/ca/server.cnf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/ca/server.crt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/ca/server.csr" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/ca/server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/ca/server.key" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/npm-ca.crt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/test.crt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/ssl/test.key" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-body.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-cookie.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-cookiejar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-defaults.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-errors.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-headers.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-httpModule.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-https-strict.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-https.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-oauth.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-params.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-pipes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-pool.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-proxy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-qs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-redirect.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-s3.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-timeout.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-toJSON.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tests/test-tunnel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/tunnel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/uuid.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/vendor/cookie/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/node_modules/request/vendor/cookie/jar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/css/base.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/css/images/ajax-loader.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/css/images/icons-18-black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/css/images/icons-18-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/css/images/icons-36-black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/css/images/icons-36-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/css/jquery.mobile-1.2.0.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/action-eating.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/action-location.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/action-people.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/fblogin.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meal.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/cheeseburger-full.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/cheeseburger.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/cheeseburger@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/chinese-full.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/chinese.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/chinese@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/french-full.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/french.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/french@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/hotdog-full.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/hotdog.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/hotdog@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/indian-full.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/indian.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/indian@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/italian-full.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/italian.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/italian@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/pizza-full.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/pizza.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/pizza@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/thai-full.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/thai.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/meals/thai@2x.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/scrumptious_logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/images/scrumptious_logo_large.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/js/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/js/jquery.mobile-1.2.0.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/js/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/js/mustache.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/public/stylesheets/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/routes/api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/routes/home.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/routes/meals.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/views/index.ejs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/views/meal.ejs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/samples/scrumptious/views/menu.ejs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/node_modules/fb/test/api/get.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/server/init.coffee" afterPath="$PROJECT_DIR$/server/lib/init.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/config.coffee" afterPath="$PROJECT_DIR$/models/config.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentgrid.coffee" afterPath="$PROJECT_DIR$/client/views/contentgrid.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentgrid.html" afterPath="$PROJECT_DIR$/client/views/contentgrid.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/embedly.coffee" afterPath="$PROJECT_DIR$/lib/embedly.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/facebook.coffee" afterPath="$PROJECT_DIR$/server/facebook.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.coffee" afterPath="$PROJECT_DIR$/main.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/lib/init.coffee" afterPath="$PROJECT_DIR$/server/lib/init.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/styles.less" afterPath="$PROJECT_DIR$/client/css/styles.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/voodoocontent-model.coffee" afterPath="$PROJECT_DIR$/models/voodoocontent-model.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="voodoometeor.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/a.dummy" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375115723263" ignored="false" />
+    <file path="/a.dummy" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375189202291" ignored="false" />
     <file path="/Applications/MAMP/htdocs/angularvoodoo/app/app.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374752662391" ignored="false" />
     <file path="/Applications/MAMP/htdocs/angularvoodoo/_public/js/app.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374752687636" ignored="false" />
     <file path="/Applications/MAMP/htdocs/angularvoodoo/_public/js/partials.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374752687636" ignored="false" />
@@ -168,15 +54,13 @@
     <file path="/fibers.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374773597261" ignored="false" />
     <file path="/eventgrid-model.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374873320682" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/client/lib/jquery.masonry.ordered.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374780861928" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/font-awesome/path-override.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935133510" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/bootstrap-updated/css/bootstrap-override.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374830499352" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/font-awesome/lib/font-awesome/css/font-awesome.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935133510" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/bootstrap-updated/css/bootstrap.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374833647016" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/bootstrap-updated/css/bootstrap-responsive.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374830499352" ignored="false" />
     <file path="/styles" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374785321569" ignored="false" />
     <file path="/styles.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374785427234" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/client/css/styles.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374832475400" ignored="false" />
-    <file path="/styles.less" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375108320694" ignored="false" />
+    <file path="/styles.less" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375199473347" ignored="false" />
     <file path="/package.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374833684092" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/minimongo/selector.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374834402500" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/minimongo/selector.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374834402500" ignored="false" />
@@ -187,8 +71,6 @@
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/voodoometeor.coffee.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374850031534" ignored="false" />
     <file path="/voodoometeor.coffee.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374841534851" ignored="false" />
     <file path="/eventmedia.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374849086615" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/accounts-facebook/facebook_login_button.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935133510" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/accounts-ui/login_buttons.less.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935133510" ignored="false" />
     <file path="/event.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374864901768" ignored="false" />
     <file path="/event.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374873734255" ignored="false" />
     <file path="/main.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375107800417" ignored="false" />
@@ -210,18 +92,18 @@
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/css/base.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935133510" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/stylesheets/style.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374929645427" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/css/jquery.mobile-1.2.0.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935255661" ignored="false" />
-    <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/voodoometeor.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935255661" ignored="false" />
-    <file path="/Dummy.txt" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375107707351" ignored="false" />
+    <file path="/Dummy.txt" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375131512595" ignored="false" />
     <file path="/jsincludes.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375051148981" ignored="false" />
     <file path="/fb.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375051376305" ignored="false" />
-    <file path="/facebook.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375129524295" ignored="false" />
+    <file path="/facebook.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375216509170" ignored="false" />
     <file path="/packages.json" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375103015960" ignored="false" />
-    <file path="/config.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375054949403" ignored="false" />
-    <file path="/init.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375108509811" ignored="false" />
-    <file path="/voodoocontent-model.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375107179317" ignored="false" />
-    <file path="/contentgrid.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375129394905" ignored="false" />
-    <file path="/contentgrid.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375129726387" ignored="false" />
-    <file path="/embedly.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375120654233" ignored="false" />
+    <file path="/config.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375189153429" ignored="false" />
+    <file path="/init.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375189270090" ignored="false" />
+    <file path="/voodoocontent-model.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375181314345" ignored="false" />
+    <file path="/contentgrid.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375191461028" ignored="false" />
+    <file path="/contentgrid.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375201319953" ignored="false" />
+    <file path="/embedly.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375190429425" ignored="false" />
+    <file path="/init.coffee.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375189249982" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +126,7 @@
       <file leaf-file-name="main.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="30" selection-start="499" selection-end="499" vertical-scroll-proportion="-9.6">
+            <state line="15" column="2" selection-start="412" selection-end="412" vertical-scroll-proportion="-9.0">
               <folding />
             </state>
           </provider>
@@ -253,7 +135,7 @@
       <file leaf-file-name="contentgrid.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/contentgrid.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="16" selection-start="336" selection-end="336" vertical-scroll-proportion="-4.375">
+            <state line="25" column="10" selection-start="832" selection-end="832" vertical-scroll-proportion="-15.625">
               <folding />
             </state>
           </provider>
@@ -262,7 +144,7 @@
       <file leaf-file-name="init.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/lib/init.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="13" selection-start="43" selection-end="43" vertical-scroll-proportion="-0.6">
+            <state line="8" column="0" selection-start="348" selection-end="348" vertical-scroll-proportion="-4.8">
               <folding />
             </state>
           </provider>
@@ -271,7 +153,7 @@
       <file leaf-file-name="embedly.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/embedly.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="48" selection-start="73" selection-end="101" vertical-scroll-proportion="-1.8">
+            <state line="27" column="45" selection-start="855" selection-end="855" vertical-scroll-proportion="-5.12">
               <folding />
             </state>
           </provider>
@@ -280,7 +162,7 @@
       <file leaf-file-name="config.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/config.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="21" selection-start="147" selection-end="147" vertical-scroll-proportion="-2.4">
+            <state line="9" column="17" selection-start="336" selection-end="336" vertical-scroll-proportion="-5.4">
               <folding />
             </state>
           </provider>
@@ -289,34 +171,34 @@
       <file leaf-file-name="styles.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/css/styles.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="13" selection-start="417" selection-end="417" vertical-scroll-proportion="-9.12">
+            <state line="29" column="18" selection-start="420" selection-end="420" vertical-scroll-proportion="-17.4">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contentgrid.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="contentgrid.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/contentgrid.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="35" selection-start="1009" selection-end="1009" vertical-scroll-proportion="-0.08571429">
+            <state line="20" column="35" selection-start="596" selection-end="596" vertical-scroll-proportion="-8.4">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.html">
+      <file leaf-file-name="voodoocontent-model.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/voodoocontent-model.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="7" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.25">
+            <state line="3" column="40" selection-start="69" selection-end="69" vertical-scroll-proportion="-1.8">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="facebook.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="facebook.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/facebook.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="281" selection-end="281" vertical-scroll-proportion="-4.8">
+            <state line="18" column="34" selection-start="541" selection-end="541" vertical-scroll-proportion="0.77363896">
               <folding />
             </state>
           </provider>
@@ -340,22 +222,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/client/views/eventdetail.html" />
-        <option value="$PROJECT_DIR$/server/jsincludes.coffee" />
         <option value="$PROJECT_DIR$/packages/fb/fb.js" />
         <option value="$PROJECT_DIR$/server/initconfig.coffee" />
         <option value="$PROJECT_DIR$/lib/config.coffee" />
-        <option value="$PROJECT_DIR$/models/config.coffee" />
         <option value="$PROJECT_DIR$/packages.json" />
-        <option value="$PROJECT_DIR$/models/voodoocontent-model.coffee" />
         <option value="$PROJECT_DIR$/main.coffee" />
-        <option value="$PROJECT_DIR$/client/css/styles.less" />
         <option value="$PROJECT_DIR$/server/init.coffee" />
         <option value="$PROJECT_DIR$/server/embedly.coffee" />
+        <option value="$PROJECT_DIR$/models/config.coffee" />
+        <option value="$PROJECT_DIR$/.meteor/local/build/app/server/lib/init.coffee.js" />
+        <option value="$PROJECT_DIR$/server/lib/init.coffee" />
         <option value="$PROJECT_DIR$/lib/embedly.coffee" />
+        <option value="$PROJECT_DIR$/models/voodoocontent-model.coffee" />
+        <option value="$PROJECT_DIR$/client/css/styles.less" />
         <option value="$PROJECT_DIR$/client/views/contentgrid.html" />
-        <option value="$PROJECT_DIR$/server/facebook.coffee" />
         <option value="$PROJECT_DIR$/client/views/contentgrid.coffee" />
+        <option value="$PROJECT_DIR$/server/facebook.coffee" />
       </list>
     </option>
   </component>
@@ -452,7 +334,53 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -469,7 +397,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="100" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.lastSelected" value="preferences.general" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="110" />
@@ -566,19 +494,23 @@
       <created>1375107730546</created>
       <updated>1375107730546</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="voodoocontent now with embedly for embeddable media (some hacks)">
+      <created>1375131517064</created>
+      <updated>1375131517064</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-24" y="24" width="1260" height="774" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32874617" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33027524" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33027524" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31689572" sideWeight="0.6712538" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31689572" sideWeight="0.66972476" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40501213" sideWeight="0.42682928" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -634,7 +566,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="generalising from eventgrid to voodoocontent" />
+    <option name="LAST_COMMIT_MESSAGE" value="voodoocontent now with embedly for embeddable media (some hacks)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -649,6 +581,7 @@
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="generalising from eventgrid to voodoocontent" />
+    <MESSAGE value="voodoocontent now with embedly for embeddable media (some hacks)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -677,13 +610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/voodoocontent-model.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="38" selection-start="406" selection-end="406" vertical-scroll-proportion="8.28">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/eventgrid.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="57" selection-start="269" selection-end="269" vertical-scroll-proportion="-4.8">
@@ -705,58 +631,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/config.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="17" selection-start="336" selection-end="336" vertical-scroll-proportion="-5.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/local/build/app/server/lib/init.coffee.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="26" selection-start="427" selection-end="427" vertical-scroll-proportion="0.48128343">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="30" selection-start="499" selection-end="499" vertical-scroll-proportion="-9.6">
+        <state line="15" column="2" selection-start="412" selection-end="412" vertical-scroll-proportion="-9.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/lib/init.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="13" selection-start="43" selection-end="43" vertical-scroll-proportion="-0.6">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/css/styles.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="13" selection-start="417" selection-end="417" vertical-scroll-proportion="-9.12">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/contentgrid.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="16" selection-start="336" selection-end="336" vertical-scroll-proportion="-4.375">
+        <state line="8" column="0" selection-start="348" selection-end="348" vertical-scroll-proportion="-4.8">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/embedly.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="48" selection-start="73" selection-end="101" vertical-scroll-proportion="-1.8">
+        <state line="27" column="45" selection-start="855" selection-end="855" vertical-scroll-proportion="-5.12">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/facebook.coffee">
+    <entry file="file://$PROJECT_DIR$/client/css/styles.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="281" selection-end="281" vertical-scroll-proportion="-4.8">
+        <state line="29" column="18" selection-start="420" selection-end="420" vertical-scroll-proportion="-17.4">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/config.coffee">
+    <entry file="file://$PROJECT_DIR$/client/views/contentgrid.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="21" selection-start="147" selection-end="147" vertical-scroll-proportion="-2.4">
+        <state line="25" column="10" selection-start="832" selection-end="832" vertical-scroll-proportion="-15.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/voodoocontent-model.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="40" selection-start="69" selection-end="69" vertical-scroll-proportion="-1.8">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/contentgrid.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="35" selection-start="1009" selection-end="1009" vertical-scroll-proportion="-0.08571429">
+        <state line="20" column="35" selection-start="596" selection-end="596" vertical-scroll-proportion="-8.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/facebook.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="34" selection-start="541" selection-end="541" vertical-scroll-proportion="0.77363896">
           <folding />
         </state>
       </provider>

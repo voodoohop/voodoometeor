@@ -1,4 +1,4 @@
-define "VoodoocontentModel",[], ->
+define "VoodoocontentModel",["Embedly"], (embedly) ->
 
   self= this;
 
@@ -7,14 +7,13 @@ define "VoodoocontentModel",[], ->
   # content for rendering grid
   self.contentCollection =  new Meteor.Collection("voodoocontent")
 
-  # content for detail page etc
-  #self.contentDataCollection =  new Meteor.Collection("voodoocontentdata")
+  self.getContent = (query={}, blockno=0,fields={}) ->
 
-  self.getContent = (blockno=0,fields={}) -> self.contentCollection.find( {},
-    skip: blockno * self.contentBlockSize
-    limit: self.contentBlockSize
-    fields: fields
-  )
+    self.contentCollection.find( query,
+      skip: blockno * self.contentBlockSize
+      limit: self.contentBlockSize
+      fields: fields
+    )
   self.getContentBySourceId = (sourceId) -> self.contentCollection.find({sourceId: sourceId})
 
 
@@ -23,18 +22,26 @@ define "VoodoocontentModel",[], ->
 
   if (Meteor.isServer)
 
-    Meteor.publish "content", (blockno=0) ->
+    Meteor.publish "content", (query={}, blockno=0, fields={}) ->
       console.log("client subscribed to content at blockno:"+blockno)
-      self.getContent(blockno)
+      console.log(query)
 
-    Meteor.publish "contentbysourceid", (sourceid) ->
-      console.log("client subscribed to content by sourceid:"+sourceid)
-      self.getContentBySourceId(sourceid)
 
-#    Meteor.publish "contentdata", (id) ->
-#      console.log("client subscribed to contentdata, id:"+id)
-#      self.getContentData(id)
-#
+      self.getContent(query,blockno,fields)
+
+    Meteor.methods
+      prepareMediaEmbeds: (embedParams) ->
+
+        console.log("preparing embeds")
+        # find and update all documents for which we have not generated the media embed for the specified params
+        #self.contentCollection.update({},$unset:{embedlyData: ""})
+
+        _.each self.contentCollection.find({embedlyData: { $not: { $elemMatch: embedParams }} }).fetch(), (content) ->
+          if (content.link)
+            console.log("running embedly for link:"+content.link)
+            params = _.clone(embedParams)
+            _.extend(params,embedly.runembedly(_.extend(_.clone(params), {url: content.link}))[0])
+            self.contentCollection.update(content._id, $push: {embedlyData: params})
 
 
 

@@ -1,12 +1,12 @@
-require "Config",  (config) ->
-
+define "Embedly", "Config",  (config) ->
+  this.embedly_key = -> config.current().embedly.key
   if (Meteor.isServer)
-    embedly_key = config.current().embedly.key
+    key = this.embedly_key()
     embedly = Meteor.require('embedly')
     util = Meteor.require('util')
     #console.log(embedly)
-    embedlyapi = Meteor.sync( (done) ->
-      new embedly {key: embedly_key}, (err, api) ->
+    this.embedlyapi = Meteor.sync( (done) ->
+      new embedly {key: key}, (err, api) ->
         if (!!err)
           console.error('Error creating Embedly api')
           console.error(err.stack, api)
@@ -14,16 +14,20 @@ require "Config",  (config) ->
         else
           done(null,api)
       ).result
-    Meteor.methods
-      embedly: (params) ->
-        return Meteor.sync( (done) ->
-          embedlyapi.oembed params, (err, result) ->
-            console.log(result)
-            done(null, result)
-          ).result
 
+    this.runembedly =  (params) ->
+      return Meteor.sync( (done) ->
+        embedlyapi.oembed _.clone(params), (err, result) ->
+          console.log(result)
+          done(null, result)
+      ).result
 
-
+  #  Meteor.methods
+  #    embedly: (params) ->
+  #       runembedly(params)
+  this.getCroppedImageUrl = (srcimg, width, height) ->
+    "http://i.embed.ly/1/display/crop?height="+height+"&width="+width+"&url="+encodeURI(srcimg)+"&key="+this.embedly_key()
+  return this
   #if (Meteor.isClient)
   #  Meteor.methods
   #    embedly: (params) ->
