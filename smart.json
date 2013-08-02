@@ -1,11 +1,11 @@
 {
   "packages": {
-    "bootstrap-updated": {},
     "font-awesome": {},
     "router": {},
     "HTML5-History-API": {},
     "define": {},
     "presence": {},
-    "npm": {}
+    "npm": {},
+    "bootstrap-3": {}
   }
 }

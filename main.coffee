@@ -23,7 +23,7 @@ if (Meteor.isClient)
   Meteor.Router.add
     '/eventgrid': 'eventgrid'
     '/contentgrid': 'contentgrid'
+    '/quiz': 'quiz'
     '/eventdetail/:id': 'eventdetail'
     '*': 'not_found'
-
 

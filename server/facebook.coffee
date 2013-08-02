@@ -7,7 +7,7 @@ require ["Config", "VoodoocontentModel"], (config,contentModel) ->
 #  fb.api "218099148337486",{fields: ["picture","cover"]}, (res) ->
 #    console.log(res)
 
-  #return #hack to not load posts
+  return #hack to not load posts
 
   #contentModel.contentCollection.remove({})
 

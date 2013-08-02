@@ -25,10 +25,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","Embedly"], (mode
     showThumb: -> !Session.get(this._id+"_showMedia")
 
     embedcontent: ->
-      ebdta = self.getEmbedlyData(this)
-      if ebdta?
-        if ebdta.html?
-           return ebdta.html
+      self.getEmbedlyData(this)?.html
 
     thumbnailurl: ->
       ebdta = self.getEmbedlyData(this)

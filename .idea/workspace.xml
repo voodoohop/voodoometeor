@@ -2,14 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quiz.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/views/quiz.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/css/bootstrap-override.lessimport" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/css/bootstrap-responsive.lessimport" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/css/bootstrap.lessimport" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/1masonry.pkgd.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/jquery.masonry.ordered.jsold" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/jquery.nested.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/imagesloaded.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/.gitignore" afterPath="$PROJECT_DIR$/packages/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentgrid.coffee" afterPath="$PROJECT_DIR$/client/views/contentgrid.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/facebook.coffee" afterPath="$PROJECT_DIR$/server/facebook.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/voodoocontent-model.coffee" afterPath="$PROJECT_DIR$/models/voodoocontent-model.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/jsincludes.html" afterPath="$PROJECT_DIR$/client/views/jsincludes.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.coffee" afterPath="$PROJECT_DIR$/main.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.html" afterPath="$PROJECT_DIR$/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smart.json" afterPath="$PROJECT_DIR$/smart.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smart.lock" afterPath="$PROJECT_DIR$/smart.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/styles.less" afterPath="$PROJECT_DIR$/client/css/styles.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="voodoometeor.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/a.dummy" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375189202291" ignored="false" />
+    <file path="/a.dummy" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375392162853" ignored="false" />
     <file path="/Applications/MAMP/htdocs/angularvoodoo/app/app.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374752662391" ignored="false" />
     <file path="/Applications/MAMP/htdocs/angularvoodoo/_public/js/app.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374752687636" ignored="false" />
     <file path="/Applications/MAMP/htdocs/angularvoodoo/_public/js/partials.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374752687636" ignored="false" />
@@ -55,7 +70,7 @@
     <file path="/styles" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374785321569" ignored="false" />
     <file path="/styles.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374785427234" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/client/css/styles.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374832475400" ignored="false" />
-    <file path="/styles.less" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375199473347" ignored="false" />
+    <file path="/styles.less" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375391902563" ignored="false" />
     <file path="/package.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374833684092" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/minimongo/selector.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374834402500" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/minimongo/selector.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374834402500" ignored="false" />
@@ -68,7 +83,7 @@
     <file path="/eventmedia.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374849086615" ignored="false" />
     <file path="/event.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374864901768" ignored="false" />
     <file path="/event.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374873734255" ignored="false" />
-    <file path="/main.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375107800417" ignored="false" />
+    <file path="/main.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375236573903" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/client/views/eventgrid.coffee.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374933967210" ignored="false" />
     <file path="/main.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374875969644" ignored="false" />
     <file path="/eventdetail.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375007088501" ignored="false" />
@@ -87,7 +102,7 @@
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/css/base.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935133510" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/stylesheets/style.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374929645427" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/css/jquery.mobile-1.2.0.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935255661" ignored="false" />
-    <file path="/Dummy.txt" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375216929769" ignored="false" />
+    <file path="/Dummy.txt" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375398196489" ignored="false" />
     <file path="/jsincludes.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375051148981" ignored="false" />
     <file path="/fb.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375051376305" ignored="false" />
     <file path="/facebook.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375216509170" ignored="false" />
@@ -96,9 +111,11 @@
     <file path="/init.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375189270090" ignored="false" />
     <file path="/voodoocontent-model.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375217512021" ignored="false" />
     <file path="/contentgrid.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375191461028" ignored="false" />
-    <file path="/contentgrid.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375201319953" ignored="false" />
+    <file path="/contentgrid.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375219137606" ignored="false" />
     <file path="/embedly.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375190429425" ignored="false" />
     <file path="/init.coffee.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375189249982" ignored="false" />
+    <file path="/quiz.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375398848754" ignored="false" />
+    <file path="/quiz.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375399453862" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,47 +135,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.coffee">
+      <file leaf-file-name="jsincludes.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/jsincludes.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="2" selection-start="412" selection-end="412" vertical-scroll-proportion="-9.0">
+            <state line="1" column="0" selection-start="7" selection-end="7" vertical-scroll-proportion="-0.625">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contentgrid.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/contentgrid.html">
+      <file leaf-file-name="quiz.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quiz.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="10" selection-start="832" selection-end="832" vertical-scroll-proportion="-15.625">
+            <state line="24" column="36" selection-start="728" selection-end="728" vertical-scroll-proportion="-8.48">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="init.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/lib/init.coffee">
+      <file leaf-file-name="facebook.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/facebook.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="348" selection-end="348" vertical-scroll-proportion="-4.8">
+            <state line="48" column="32" selection-start="1603" selection-end="1603" vertical-scroll-proportion="-7.96">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="embedly.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/embedly.coffee">
+      <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="28" selection-start="555" selection-end="555" vertical-scroll-proportion="-5.44">
+            <state line="5" column="0" selection-start="53" selection-end="53" vertical-scroll-proportion="-3.125">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/config.coffee">
+      <file leaf-file-name="quiz.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/views/quiz.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="17" selection-start="336" selection-end="336" vertical-scroll-proportion="-5.4">
-              <folding />
+            <state line="8" column="28" selection-start="261" selection-end="261" vertical-scroll-proportion="0.3305785">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#template#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -166,34 +185,34 @@
       <file leaf-file-name="styles.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/css/styles.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="18" selection-start="420" selection-end="420" vertical-scroll-proportion="-17.4">
+            <state line="21" column="43" selection-start="217" selection-end="217" vertical-scroll-proportion="-6.08">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contentgrid.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/contentgrid.coffee">
+      <file leaf-file-name="media.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/media.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="0" selection-start="1567" selection-end="1567" vertical-scroll-proportion="-7.32">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="voodoocontent-model.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/voodoocontent-model.coffee">
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/packages/meteor-isotope/isotope/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="27" selection-start="97" selection-end="97" vertical-scroll-proportion="-2.4">
+            <state line="152" column="49" selection-start="3597" selection-end="3597" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="facebook.coffee" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/facebook.coffee">
+      <file leaf-file-name="smart.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/smart.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="43" selection-start="362" selection-end="362" vertical-scroll-proportion="0.5157593">
+            <state line="2" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="-1.25">
               <folding />
             </state>
           </provider>
@@ -217,22 +236,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/packages/fb/fb.js" />
-        <option value="$PROJECT_DIR$/server/initconfig.coffee" />
-        <option value="$PROJECT_DIR$/lib/config.coffee" />
-        <option value="$PROJECT_DIR$/packages.json" />
-        <option value="$PROJECT_DIR$/main.coffee" />
-        <option value="$PROJECT_DIR$/server/init.coffee" />
-        <option value="$PROJECT_DIR$/server/embedly.coffee" />
-        <option value="$PROJECT_DIR$/models/config.coffee" />
         <option value="$PROJECT_DIR$/.meteor/local/build/app/server/lib/init.coffee.js" />
         <option value="$PROJECT_DIR$/server/lib/init.coffee" />
         <option value="$PROJECT_DIR$/lib/embedly.coffee" />
-        <option value="$PROJECT_DIR$/client/css/styles.less" />
         <option value="$PROJECT_DIR$/client/views/contentgrid.html" />
         <option value="$PROJECT_DIR$/models/voodoocontent-model.coffee" />
-        <option value="$PROJECT_DIR$/server/facebook.coffee" />
         <option value="$PROJECT_DIR$/client/views/contentgrid.coffee" />
+        <option value="$PROJECT_DIR$/main.html" />
+        <option value="$PROJECT_DIR$/client/views/quiz.coffee" />
+        <option value="$PROJECT_DIR$/main.coffee" />
+        <option value="$PROJECT_DIR$/smart.json" />
+        <option value="$PROJECT_DIR$/client/css/styles.less" />
+        <option value="$PROJECT_DIR$/packages/meteor-isotope/isotope/css/style.css" />
+        <option value="$PROJECT_DIR$/server/facebook.coffee" />
+        <option value="$PROJECT_DIR$/client/views/quiz.html" />
+        <option value="$PROJECT_DIR$/client/views/jsincludes.html" />
+        <option value="$PROJECT_DIR$/quiz.coffee" />
       </list>
     </option>
   </component>
@@ -316,6 +335,34 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -426,18 +473,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/packages/bootstrap-3/bootstrap-3" />
       <recent name="$PROJECT_DIR$/client/views" />
       <recent name="$PROJECT_DIR$/models" />
       <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/server/lib" />
       <recent name="$PROJECT_DIR$/models" />
       <recent name="$PROJECT_DIR$/server/node_modules" />
-      <recent name="$PROJECT_DIR$/server" />
     </key>
   </component>
   <component name="RunManager">
@@ -497,8 +544,32 @@
       <created>1375216933797</created>
       <updated>1375216933797</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added dummy insert so embedly is not run twice on same data + activated isotope masonry layout">
+      <created>1375218126798</created>
+      <updated>1375218126798</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-24" y="24" width="1260" height="774" extended-state="0" />
@@ -506,7 +577,7 @@
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33027524" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31689572" sideWeight="0.66972476" order="0" side_tool="false" content_ui="combo" />
@@ -565,7 +636,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates and bugfixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="added dummy insert so embedly is not run twice on same data + activated isotope masonry layout" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -582,34 +653,14 @@
     <MESSAGE value="generalising from eventgrid to voodoocontent" />
     <MESSAGE value="voodoocontent now with embedly for embeddable media (some hacks)" />
     <MESSAGE value="updates and bugfixes" />
+    <MESSAGE value="added dummy insert so embedly is not run twice on same data + activated isotope masonry layout" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/eventlist.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/voodooevent-model.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="16" selection-start="672" selection-end="672" vertical-scroll-proportion="-8.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="20" selection-start="41" selection-end="41" vertical-scroll-proportion="-1.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/eventgrid.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="57" selection-start="269" selection-end="269" vertical-scroll-proportion="-4.8">
@@ -617,87 +668,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/eventgrid.html">
+    <entry file="file://$PROJECT_DIR$/client/views/contentgrid.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="11" selection-start="447" selection-end="447" vertical-scroll-proportion="-4.375">
+        <state line="41" column="22" selection-start="1281" selection-end="1281" vertical-scroll-proportion="-13.88">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.html">
+    <entry file="file://$PROJECT_DIR$/packages/bootstrap-3/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="7" selection-start="44" selection-end="44" vertical-scroll-proportion="-1.25">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/config.coffee">
+    <entry file="file://$PROJECT_DIR$/packages/bootstrap-3/bootstrap-override.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="17" selection-start="336" selection-end="336" vertical-scroll-proportion="-5.4">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.meteor/local/build/app/server/lib/init.coffee.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="26" selection-start="427" selection-end="427" vertical-scroll-proportion="0.48128343">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="2" selection-start="412" selection-end="412" vertical-scroll-proportion="-9.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/lib/init.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="348" selection-end="348" vertical-scroll-proportion="-4.8">
+        <state line="6" column="45" selection-start="581" selection-end="581" vertical-scroll-proportion="0.24064171">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/css/styles.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="18" selection-start="420" selection-end="420" vertical-scroll-proportion="-17.4">
+        <state line="21" column="43" selection-start="217" selection-end="217" vertical-scroll-proportion="-6.08">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/contentgrid.html">
+    <entry file="file://$PROJECT_DIR$/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="10" selection-start="832" selection-end="832" vertical-scroll-proportion="-15.625">
+        <state line="5" column="0" selection-start="53" selection-end="53" vertical-scroll-proportion="-3.125">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/embedly.coffee">
+    <entry file="file://$PROJECT_DIR$/client/views/media.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="28" selection-start="555" selection-end="555" vertical-scroll-proportion="-5.44">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/voodoocontent-model.coffee">
+    <entry file="file://$PROJECT_DIR$/smart.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="27" selection-start="97" selection-end="97" vertical-scroll-proportion="-2.4">
+        <state line="2" column="0" selection-start="18" selection-end="18" vertical-scroll-proportion="-1.25">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/contentgrid.coffee">
+    <entry file="file://$PROJECT_DIR$/client/views/media.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1567" selection-end="1567" vertical-scroll-proportion="-7.32">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/bootstrap-3/bootstrap-3/css/bootstrap-glyphicons.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="35" selection-start="7587" selection-end="7587" vertical-scroll-proportion="0.080213904">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/bootstrap-3/bootstrap-3/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="41" selection-start="323" selection-end="323" vertical-scroll-proportion="-3.9705882">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/packages/meteor-isotope/isotope/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="152" column="49" selection-start="3597" selection-end="3597" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/facebook.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="43" selection-start="362" selection-end="362" vertical-scroll-proportion="0.5157593">
+        <state line="48" column="32" selection-start="1603" selection-end="1603" vertical-scroll-proportion="-7.96">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/jsincludes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="7" selection-end="7" vertical-scroll-proportion="-0.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="36" selection-start="728" selection-end="728" vertical-scroll-proportion="-8.48">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/quiz.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="28" selection-start="261" selection-end="261" vertical-scroll-proportion="0.3305785">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,0 +1,23 @@
+<template name="quiz">
+   <div class="container"></div>
+    {{#if currentUser}}
+    <div class="questionno">
+        <div class="progress">
+            <div class="progress-bar" style="width: {{quizProgress}}%;"></div>
+        </div>
+    </div>
+    <br><br><br>
+
+    {{#with currentQuestion}}
+      <div class="questioncontainer">
+        <b>{{question}} <span class="glyphicon glyphicon-ok btn-block"></span> </b>  <br>
+        {{#each answers}}
+            <button type="button" class="btn btn-primary btn-large btn-block">{{this}}</button>
+        {{/each}}
+      </div>
+    {{/with}}
+    {{else}}
+    <center>{{loginButtons}}</center>
+    {{/if}}
+    </div>
+</template>
