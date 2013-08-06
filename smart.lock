@@ -8,7 +8,8 @@
       "define": {},
       "presence": {},
       "npm": {},
-      "bootstrap-3": {}
+      "bootstrap-3": {},
+      "handlebar-helpers": {}
     },
     "packages": {
       "font-awesome": {
@@ -45,6 +46,11 @@
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
         "tag": "v0.2.8",
         "commit": "8026f0beaa0274849adfcf8c53d919216b5e06ba"
+      },
+      "handlebar-helpers": {
+        "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
+        "tag": "v0.0.6",
+        "commit": "8ca9ab1edcbb7d1ef935d4ad8c7e32479ea70b24"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",

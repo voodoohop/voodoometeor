@@ -1,23 +1,50 @@
 <template name="quiz">
-   <div class="container"></div>
-    {{#if currentUser}}
-    <div class="questionno">
-        <div class="progress">
-            <div class="progress-bar" style="width: {{quizProgress}}%;"></div>
-        </div>
-    </div>
-    <br><br><br>
 
-    {{#with currentQuestion}}
-      <div class="questioncontainer">
-        <b>{{question}} <span class="glyphicon glyphicon-ok btn-block"></span> </b>  <br>
-        {{#each answers}}
-            <button type="button" class="btn btn-primary btn-large btn-block">{{this}}</button>
-        {{/each}}
-      </div>
-    {{/with}}
+
+    <div class="container churchcontainer">
+
+    {{#if currentUser}}
+        <div class="churchcontent">
+            {{#if answeredAllQuestions}}
+            {{else}}
+            <div class="questionno">
+                <div class="progress progress-striped active">
+                    <div class="progress-bar text-center" style="width: {{quizProgress}}%;"></div>
+                    <span>{{currentQuestionNo}} / {{numQuestions}} </span>
+                </div>
+            </div>
+            <br><br>
+
+            <div class="panel">
+
+
+            {{#with currentQuestion}}
+            <div class="panel-heading">
+                <h1 class="panel-title">{{question}}</h1>
+            </div>
+
+                        <div class="list-group">
+                        {{#each answers}}
+                        <a href="#" class="list-group-item clickbutton animated fadeIn">
+                            <h2 class="list-group-item-heading" style="width:100%">
+                                {{#if this.img}}<img src="{{answerImg}}" class="img-rounded">{{/if}} {{this.answer}}
+                            </h2>
+                        </a>
+                        {{/each}}
+                        </div>
+
+            {{/with}}
+            </div>
+            {{/if}}
+        </div>
+
+
     {{else}}
-    <center>{{loginButtons}}</center>
+    <span class="text-center">{{loginButtons}}</span>
     {{/if}}
     </div>
+
+
+
+
 </template>
