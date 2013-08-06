@@ -1,6 +1,6 @@
 <template name="quiz">
 
-
+<div class="{{$.Meteor.Router.page}}">
     <div class="container churchcontainer">
 
     {{#if currentUser}}
@@ -49,7 +49,11 @@
 
 
     {{else}}
-    <div style="width: 100%;" class="text-center"><h1 style="background-color:white">{{loginButtons}}</h1></div>
+    
+      <div class="hero-unit text-center">
+        <h1 style="background-color:white">{{loginButtons}}</h1>
+      </div>
+
     {{/if}}
     </div>
 
