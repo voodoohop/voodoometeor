@@ -2,6 +2,9 @@ define "VoodooeventModel",[], ->
 
   self= this;
 
+  #hack
+  return this;
+
   this.meteorCollection =  new Meteor.Collection("events")
 
   this.getAllEvents = (params) -> meteorCollection.find({isvoodoo:"1"})#, {fields: desiredfields})

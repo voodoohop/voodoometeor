@@ -10,7 +10,9 @@
       userRepliesColl.allow
         insert: (userId, doc) ->
           userId  && doc.owner == userId
-
+      Meteor.users.allow
+        update: (userId, upd) ->
+          return true
 
       if (questionsColl.find().count() == 0)
         questionData = [
@@ -57,10 +59,11 @@
           questionsColl.insert(question)
       Meteor.publish("questions", -> questionsColl.find())
       Meteor.publish("userReplies", -> userRepliesColl.find())
-
+      Meteor.publish("users", -> Meteor.users.find({},{fields: {'profile': 1, services : 1, pecado: 1}}))
     if (Meteor.isClient)
       Session.set("currentQuestion", 0)
       Meteor.subscribe("questions")
+      Meteor.subscribe("users")
       Meteor.subscribe("userReplies", ->
 
         # find first question not answered by user
@@ -72,8 +75,9 @@
 
 
 
-
-      Template.quiz.answerImg= -> embedly.getCroppedImageUrl(this.img, 300, 200)
+      Template.quiz.users = ->
+        Meteor.users.find()
+      Template.quiz.answerImg= -> embedly.getCroppedImageUrl(this.img, 200, 150)
       Template.quiz.lastAnsweredQuestion = ->
         res = userRepliesColl.findOne({owner: Meteor.userId()}, {sort: [["questionNo","desc"]]})?.questionNo
         unless res >=0
@@ -82,6 +86,19 @@
       Template.quiz.answeredAllQuestions = -> (Session.get("currentQuestion") >= Template.quiz.numQuestions())
 
       Template.quiz.numQuestions = -> questionsColl.find().count()
+
+      Template.quiz.getPecadoPrincipal = ->
+         #console.log(userRepliesColl.find({owner: Meteor.userId()}).fetch())
+        pecados = {}
+        _.each(_.pluck(userRepliesColl.find({owner: Meteor.userId()}).fetch(),"result"), (pecado) ->
+          pecados[pecado] = (pecados[pecado] ? 0) + 1
+        )
+        pecs = _.map(pecados, (p,k) ->
+          {pecado: k, count: p}
+        )
+        _.max(pecs, (pec) ->
+            pec.count
+        ).pecado
 
       Template.quiz.helpers(
         currentQuestion: -> questionsColl.find().fetch()[Session.get("currentQuestion")]
@@ -113,4 +130,6 @@
           $(evt.target).parent().addClass("animated "+animEffects[_.random(animEffects.length-1)])
           Meteor.setTimeout( ->
             Session.set( "currentQuestion", Session.get("currentQuestion")+1 )
+            if Template.quiz.answeredAllQuestions()
+              Meteor.users.update(Meteor.userId(), {$set: {pecado: Template.quiz.getPecadoPrincipal()}})
           , 1500)

@@ -48,7 +48,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","Embedly"], (mode
   Template.contentgrid.rendered = ->
     console.log("rendered")
     Meteor.defer ->
-      self.isotopeRelayout()
+      #self.isotopeRelayout()
 
 
   self.activateIsotopeOnce = _.once ->

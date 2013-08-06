@@ -15,7 +15,7 @@ require ["Config", "VoodoocontentModel"], (config,contentModel) ->
 
   for page in pages
 
-    res = Meteor.sync ((done) -> fb.api "/"+page+"/posts", {limit:20}, (fbres) -> done(null, fbres) )
+    res = Meteor.sync ((done) -> fb.api "/"+page+"/posts", {limit:30}, (fbres) -> done(null, fbres) )
 
     _.each( res.result.data, (post) ->
       #

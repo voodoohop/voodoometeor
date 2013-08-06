@@ -6,6 +6,15 @@
     {{#if currentUser}}
         <div class="churchcontent">
             {{#if answeredAllQuestions}}
+            <h1>{{getPecadoPrincipal}}</h1>
+            {{#each users}}
+               <p>
+                user: {{this.profile.name}}<br>
+                <img src="http://graph.facebook.com/{{this.services.facebook.id}}/picture?type=large"><br>
+                pecado: {{this.pecado}}
+               </p>
+
+            {{/each}}
             {{else}}
             <div class="questionno">
                 <div class="progress progress-striped active">
@@ -20,15 +29,15 @@
 
             {{#with currentQuestion}}
             <div class="panel-heading">
-                <h1 class="panel-title">{{question}}</h1>
+                <h2 class="panel-title">{{question}}</h2>
             </div>
 
                         <div class="list-group">
                         {{#each answers}}
                         <a href="#" class="list-group-item clickbutton animated fadeIn">
-                            <h2 class="list-group-item-heading" style="width:100%">
+                            <h3 class="list-group-item-heading" style="width:100%">
                                 {{#if this.img}}<img src="{{answerImg}}" class="img-rounded">{{/if}} {{this.answer}}
-                            </h2>
+                            </h3>
                         </a>
                         {{/each}}
                         </div>
@@ -40,7 +49,7 @@
 
 
     {{else}}
-    <span class="text-center">{{loginButtons}}</span>
+    <div style="width: 100%;" class="text-center"><h1 style="background-color:white">{{loginButtons}}</h1></div>
     {{/if}}
     </div>
 
