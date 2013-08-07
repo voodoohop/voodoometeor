@@ -1,0 +1,18 @@
+<template name="maintemplate">
+    <div class="hero-unit text-center">
+        <h2 style="background-color:white">{{loginButtons}}</h2>
+    </div>
+
+    {{#if user}}
+
+    {{>MouseCursorer}}
+
+    {{renderPage}}
+
+    {{else}}
+
+
+
+
+    {{/if}}
+</template>

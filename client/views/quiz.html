@@ -1,9 +1,8 @@
 <template name="quiz">
 
-<div class="{{$.Meteor.Router.page}}">
     <div class="container churchcontainer">
 
-    {{#if currentUser}}
+    {{#if Meteor.user}}
         <div class="churchcontent">
             {{#if answeredAllQuestions}}
             <h1>{{getPecadoPrincipal}}</h1>

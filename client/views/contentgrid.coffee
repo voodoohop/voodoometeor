@@ -1,10 +1,8 @@
-Template.eventgrid.events = null
-
 define "ContentgridController", ["VoodoocontentModel","Config","Embedly"], (model,config,embedly) ->
+
+  console.log("loading content grid")
   self = this
 
-  console.log("current config")
-  console.log(config.current())
   this.embedParams = {maxwidth: 350, maxheight:300, autoplay: true}
 
   Meteor.call("prepareMediaEmbeds", this.embedParams)

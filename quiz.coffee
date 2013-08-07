@@ -1,4 +1,4 @@
-  require "Embedly", (embedly) ->
+  require ["Embedly"], (embedly) ->
 
     @questionsColl = new Meteor.Collection("questions")
     @userRepliesColl = new Meteor.Collection("userreplies")
@@ -6,7 +6,7 @@
     if (Meteor.isServer)
 
       questionsColl.remove({})
-      userRepliesColl.remove({})
+    #  userRepliesColl.remove({})
       userRepliesColl.allow
         insert: (userId, doc) ->
           userId  && doc.owner == userId
@@ -59,16 +59,17 @@
           questionsColl.insert(question)
       Meteor.publish("questions", -> questionsColl.find())
       Meteor.publish("userReplies", -> userRepliesColl.find())
-      Meteor.publish("users", -> Meteor.users.find({},{fields: {'profile': 1, services : 1, pecado: 1}}))
+
+
     if (Meteor.isClient)
+
       Session.set("currentQuestion", 0)
       Meteor.subscribe("questions")
-      Meteor.subscribe("users")
       Meteor.subscribe("userReplies", ->
 
         # find first question not answered by user
         lastAnsweredQuestion = Template.quiz.lastAnsweredQuestion()
-        console.log("last answered question:"+lastAnsweredQuestion)
+        #console.log("last answered question:"+lastAnsweredQuestion)
         Session.set("currentQuestion", lastAnsweredQuestion + 1) if lastAnsweredQuestion>=0
       )
 
@@ -133,3 +134,5 @@
             if Template.quiz.answeredAllQuestions()
               Meteor.users.update(Meteor.userId(), {$set: {pecado: Template.quiz.getPecadoPrincipal()}})
           , 1500)
+
+

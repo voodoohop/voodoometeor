@@ -1,0 +1,5 @@
+<template name="MouseCursorer">
+    {{#each mice}}
+        <div style="pointer-events: none; z-index: 10; position: absolute; left: {{getMouseLeft}}px; top: {{getMouseTop}}px;"><img class="img-circle" src="{{profileImgSmall}}"></div>
+    {{/each}}
+</template>
