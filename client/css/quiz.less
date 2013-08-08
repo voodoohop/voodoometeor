@@ -1,23 +1,84 @@
+// Lesshat
+@import "../../public/lib/lesshat/lesshat.less";
+
 // Import fonts
 @import url('//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700,900,900italic&subset=latin,latin-ext');
 @import url('//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700');
 @import url('//fonts.googleapis.com/css?family=Oswald');
 
-//  Import bootstrap plz
-//@import "../../public/lib/bootswatch/cosmo/variables.less";
-//@import "../../public/lib/bootstrap/less/mixins .less";
+// Cosmo as Base
+@import "../../public/lib/bootswatch/cosmo/variables.less";
 
-// CSS Reset
-// @import "../../public/lib/bootstrap/less/reset.less";
+// Our rules
+@bodyBackground: @black;
+@textColor:      @grayLighter;
 
-// Overwrite Others with cosmo 
-// @import "../../public/lib/bootswatch/cosmo/bootswatch.less";
+@headingsFontFamily: "Source Sans Pro", Helvetica, sans-serif;
+@headingsColor:  @grayDarker;
+
+@linkColor:      @orange;
+@linkColorHover: lighten(@linkColor, 10%);
+
+@sansFontFamily:        "Open Sans", Calibri, Candara, Arial, sans-serif;
+@serifFontFamily:       Helvetica, Georgia, "Times New Roman", Times, serif;
+@monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
+
+
+// Include back bootstrap
+@import "../../public/lib/bootstrap/less/mixins.less";
+
+// Grid and page struct
+@import "../../public/lib/bootstrap/less/scaffolding.less";
+@import "../../public/lib/bootstrap/less/grid.less";
+@import "../../public/lib/bootstrap/less/layouts.less";
+
+// Base Css
+@import "../../public/lib/bootstrap/less/type.less";
+@import "../../public/lib/bootstrap/less/code.less";
+@import "../../public/lib/bootstrap/less/forms.less";
+@import "../../public/lib/bootstrap/less/tables.less";
+
+// Component common
+@import "../../public/lib/bootstrap/less/sprites.less";
+@import "../../public/lib/bootstrap/less/dropdowns.less";
+@import "../../public/lib/bootstrap/less/wells.less";
+@import "../../public/lib/bootstrap/less/component-animations.less";
+@import "../../public/lib/bootstrap/less/close.less";
+
+// Component allerts
+@import "../../public/lib/bootstrap/less/buttons.less";
+@import "../../public/lib/bootstrap/less/button-groups.less";
+@import "../../public/lib/bootstrap/less/alerts.less";
+
+// Component Nav
+@import "../../public/lib/bootstrap/less/navs.less";
+@import "../../public/lib/bootstrap/less/navbar.less";
+@import "../../public/lib/bootstrap/less/breadcrumbs.less";
+@import "../../public/lib/bootstrap/less/pagination.less";
+@import "../../public/lib/bootstrap/less/pager.less";
+
+// Component Popovers
+@import "../../public/lib/bootstrap/less/modals.less";
+@import "../../public/lib/bootstrap/less/tooltip.less";
+@import "../../public/lib/bootstrap/less/popovers.less";
+
+// Component Misc
+@import "../../public/lib/bootstrap/less/thumbnails.less";
+@import "../../public/lib/bootstrap/less/media.less";
+@import "../../public/lib/bootstrap/less/alerts.less";
+@import "../../public/lib/bootstrap/less/thumbnails.less";
+@import "../../public/lib/bootstrap/less/labels-badges.less";
+@import "../../public/lib/bootstrap/less/progress-bars.less";
+@import "../../public/lib/bootstrap/less/accordion.less";
+@import "../../public/lib/bootstrap/less/carousel.less";
+@import "../../public/lib/bootstrap/less/hero-unit.less";
 
 // Utility classes
-// @import "utilities.less"; // Has to be last to override when necessary
+@import "../../public/lib/bootstrap/less/utilities.less"; // Has to be last to override when necessary
 
+@import "../../public/lib/bootswatch/cosmo/bootswatch.less";
 
-
-body {
-  font-family: 'Oswald', 'Source Sans Pro';
+// Sane css box model
+* {
+    .box-sizing(border-box);
 }
