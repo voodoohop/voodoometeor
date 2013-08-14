@@ -30,8 +30,8 @@
 }
 
 body {
-   background-image: url("/bgtiles/tile666.gif");
-   background-repeat: repeat;
+//   background-image: url("/bgtiles/tile666.gif");
+//   background-repeat: repeat;
 }
 
 .churchcontainer {
@@ -44,19 +44,22 @@ body {
 
 .churchcontent {
   background-color: rgba(255,255,255,0.6);
-  padding:20px;
+  padding:0px;
 }
 
 .panel {
   background-color: transparent;
+  padding: 0px;
 }
 
 .panel-heading {
   background-color: rgba(255,255,255,0.6);
+  margin: 0px;
+  padding: 10px;
 }
 
 .panel-title {
-  font-size: 30px;
+//  font-size: 30px;
 }
 
 .questionno {
@@ -82,4 +85,52 @@ body {
   color: black;
   text-align: center;
   width: 100%;
+}
+
+.mousecursorer {
+  z-index: 10;
+  position: absolute;
+  opacity: 0.7;
+  -webkit-filter: drop-shadow(24px 24px 20px black);
+}
+
+.mouseisme {
+  pointer-events: none;
+}
+
+
+.rotateimg {
+  -webkit-animation: rotation 360s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+  from {-webkit-transform: rotate(0deg);}
+  to   {-webkit-transform: rotate(359deg);}
+}
+
+
+.or {
+  display: none
+}
+
+.login-form {
+  display: none;
+}
+
+#countdown {
+
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.4);
+  padding:20px;
+
+}
+
+#login-buttons {
+  font-size: 140%;
+  line-height: 2;
+}
+
+
+#login-sign-in-link {
+  font-size: 140%;
 }

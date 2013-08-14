@@ -8,7 +8,6 @@ preserve-inputs
 coffeescript
 less
 accounts-password
-accounts-ui
 accounts-facebook
 showdown
-spiderable
+accounts-ui

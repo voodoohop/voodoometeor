@@ -1,4 +1,18 @@
 require ["Config", "VoodoocontentModel"], (config,contentModel) ->
+
+
+  Meteor.startup ->
+    Accounts.loginServiceConfiguration.remove
+      service: "facebook"
+
+
+    Accounts.loginServiceConfiguration.insert
+      service: "facebook",
+      appId: config.current().facebook.appid,
+      secret: config.current().facebook.appsecret
+
+
+
   fb = Meteor.require "fb"
   console.log(config.current())
 

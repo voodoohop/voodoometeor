@@ -1,20 +1,58 @@
 require ["ClientShared"] , (mouseShare) ->
 
+  if (Meteor.isServer)
+
+    Meteor.setInterval( ->
+      since = new Date(new Date().getTime() - 20000)
+      mouseShare.sharedData.remove({lastActivity: {$lt: since}})
+    , 1000)
+
   if (Meteor.isClient)
-    $(document).mousemove(_.throttle((e) ->
-      m = mouseShare.sharedData.findOne({owner: Meteor.userId()})
+
+    self = this
+    moveHandler = _.throttle((e) ->
+      m = mouseShare.sharedData.findOne({owner: self.getUserId()})
       if (m)
-        mouseShare.sharedData.update(m._id, {$set: {x: e.pageX, y: e.pageY, width: $(window).width(), height: $(window).height()}})
+        mouseShare.sharedData.update(m._id, {$set: {x: e.pageX, y: e.pageY, lastActivity: new Date()}})
       else
-        mouseShare.sharedData.insert({owner: Meteor.userId(), x: e.pageX, y: e.pageY, width: $(window).width(), height: $(window).height()})
-    ,50)
-    )
+        mouseShare.sharedData.insert({owner: self.getUserId(), x: e.pageX, y: e.pageY, lastActivity: new Date()})
+    ,20)
+
+    $(document).on("mousemove",moveHandler)
+    $(document).on("mousedown",moveHandler)
+
 
     Template.MouseCursorer.mice = ->
       mouseShare.sharedData.find()
+    Template.MouseCursorer.isme = ->
+      this.owner == self.getUserId()
     Template.MouseCursorer.getMouseLeft = ->
-      this.x-25 #  (($(window).width() - mouse['w']) / 2 + mouse['x']) + 'px'
+      this.x-25
     Template.MouseCursorer.getMouseTop = ->
-      this.y-25 #  (($(window).width() - mouse['w']) / 2 + mouse['x']) + 'px'
+      this.y-25
+    Template.MouseCursorer.profileLink = ->
+      fbid = Meteor.users.findOne(this.owner)?.services?.facebook?.id
+      if fbid
+        "http://www.facebook.com/profile.php?id=" + fbid
+      else
+        "#"
+
     Template.MouseCursorer.profileImgSmall = ->
-      "http://graph.facebook.com/"+Meteor.users.findOne(this.owner)?.services?.facebook?.id+"/picture?type=square"
+      fbimg = Meteor.users.findOne(this.owner)?.services?.facebook?.id
+      if fbimg?
+        "http://graph.facebook.com/" + fbimg + "/picture?type=square"
+      else
+        "/images/soul_transparent_small.png"
+
+
+    # anonymous spirits
+    unless (Meteor.userId()?)
+      console.log("inserting anonymous user")
+      Session.set("anonymousUser", Math.random().toString(36).substring(7))
+
+
+    this.getUserId = ->
+      Meteor.userId() ? Session.get("anonymousUser")
+
+
+
