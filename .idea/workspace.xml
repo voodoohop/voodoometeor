@@ -7,65 +7,27 @@
     <bookmark url="file://$PROJECT_DIR$/client/views/sinvirtueicons.coffee" line="0" mnemonic="5" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" name="Default" comment="mouse cursorer">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper00.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper01.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper02.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper10.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper11.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper12.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper20.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper21.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper22.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper30.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper31.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper32.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper40.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper41.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper42.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper50.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper51.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper52.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper60.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper61.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper62.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper70.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper71.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper72.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper80.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper81.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper82.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper90.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper91.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/countdownimages/flipper92.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/jquery.countdown-pt-BR.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/css/jquery.countdown.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/jquery.countdown.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/views/sinvirtueicons.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/views/waitpage.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/views/waitpage.html" />
+    <list default="true" id="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/css/quiz.less" afterPath="" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/client/views/MouseCursorer.html" afterPath="$PROJECT_DIR$/client/views/mousecursorer.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/meteor-isotope/isotope" afterPath="$PROJECT_DIR$/packages/meteor-isotope/isotope" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/meteor-isotope" afterPath="$PROJECT_DIR$/packages/meteor-isotope" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smart.lock" afterPath="$PROJECT_DIR$/smart.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/.gitignore" afterPath="$PROJECT_DIR$/packages/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/facebook.coffee" afterPath="$PROJECT_DIR$/server/facebook.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/lib/init.coffee" afterPath="$PROJECT_DIR$/server/lib/init.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/jsincludes.html" afterPath="$PROJECT_DIR$/client/views/jsincludes.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentgrid.coffee" afterPath="$PROJECT_DIR$/client/views/contentgrid.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentgrid.html" afterPath="$PROJECT_DIR$/client/views/contentgrid.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/jquery.countdown-pt-BR.js" afterPath="$PROJECT_DIR$/public/js/jquery.countdown-pt-BR.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.coffee" afterPath="$PROJECT_DIR$/main.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.html" afterPath="$PROJECT_DIR$/main.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/maintemplate.html" afterPath="$PROJECT_DIR$/client/views/maintemplate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/mousecursorer.coffee" afterPath="$PROJECT_DIR$/lib/mousecursorer.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz.coffee" afterPath="$PROJECT_DIR$/quiz.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/quiz.html" afterPath="$PROJECT_DIR$/client/views/quiz.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smart.json" afterPath="$PROJECT_DIR$/smart.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smart.lock" afterPath="$PROJECT_DIR$/smart.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/styles.less" afterPath="$PROJECT_DIR$/client/css/styles.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/voodoocontent-model.coffee" afterPath="$PROJECT_DIR$/models/voodoocontent-model.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="voodoometeor.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/a.dummy" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376140969827" ignored="false" />
+    <file path="/a.dummy" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376487763210" ignored="false" />
     <file path="/Applications/MAMP/htdocs/angularvoodoo/app/app.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374752662391" ignored="false" />
     <file path="/Applications/MAMP/htdocs/angularvoodoo/_public/js/app.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374752687636" ignored="false" />
     <file path="/Applications/MAMP/htdocs/angularvoodoo/_public/js/partials.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374752687636" ignored="false" />
@@ -111,7 +73,7 @@
     <file path="/styles" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374785321569" ignored="false" />
     <file path="/styles.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374785427234" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/client/css/styles.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374832475400" ignored="false" />
-    <file path="/styles.less" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376456128815" ignored="false" />
+    <file path="/styles.less" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376824447745" ignored="false" />
     <file path="/package.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374833684092" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/minimongo/selector.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374834402500" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/app/packages/minimongo/selector.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374834402500" ignored="false" />
@@ -124,9 +86,9 @@
     <file path="/eventmedia.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374849086615" ignored="false" />
     <file path="/event.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374864901768" ignored="false" />
     <file path="/event.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374873734255" ignored="false" />
-    <file path="/main.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376076724915" ignored="false" />
+    <file path="/main.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376467039690" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/client/views/eventgrid.coffee.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374933967210" ignored="false" />
-    <file path="/main.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375838856002" ignored="false" />
+    <file path="/main.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376490775576" ignored="false" />
     <file path="/eventdetail.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375007088501" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/session/session.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374877032216" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static_cacheable/packages/HTML5-History-API/HTML5-History-API/history.iegte8.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374876443664" ignored="false" />
@@ -142,7 +104,7 @@
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/css/base.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935133510" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/stylesheets/style.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374929645427" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/css/jquery.mobile-1.2.0.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935255661" ignored="false" />
-    <file path="/Dummy.txt" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376437418467" ignored="false" />
+    <file path="/Dummy.txt" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376808969213" ignored="false" />
     <file path="/jsincludes.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375051148981" ignored="false" />
     <file path="/fb.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375051376305" ignored="false" />
     <file path="/facebook.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375872037865" ignored="false" />
@@ -150,24 +112,32 @@
     <file path="/config.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375872099832" ignored="false" />
     <file path="/init.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375872403901" ignored="false" />
     <file path="/voodoocontent-model.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375217512021" ignored="false" />
-    <file path="/contentgrid.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375835332201" ignored="false" />
-    <file path="/contentgrid.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375837120489" ignored="false" />
+    <file path="/contentgrid.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376824380400" ignored="false" />
+    <file path="/contentgrid.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376823329791" ignored="false" />
     <file path="/embedly.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375190429425" ignored="false" />
     <file path="/init.coffee.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375189249982" ignored="false" />
     <file path="/quiz.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376151436259" ignored="false" />
-    <file path="/quiz.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376166974440" ignored="false" />
+    <file path="/quiz.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376809134247" ignored="false" />
     <file path="/broadcasts.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375826787482" ignored="false" />
     <file path="/broadcaster.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375819756725" ignored="false" />
     <file path="/clientshared.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375830945410" ignored="false" />
     <file path="/MouseCursorer.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375833727410" ignored="false" />
     <file path="/mousecursorer.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376068755270" ignored="false" />
-    <file path="/mousecursorer.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376167809006" ignored="false" />
-    <file path="/maintemplate.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376162367361" ignored="false" />
+    <file path="/mousecursorer.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376488322087" ignored="false" />
+    <file path="/maintemplate.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376465373114" ignored="false" />
     <file path="/sinvirtueicons.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376161852237" ignored="false" />
     <file path="/waitpage.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376056125982" ignored="false" />
     <file path="/waitpage.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375981299123" ignored="false" />
     <file path="/jquery.countdown.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375981579305" ignored="false" />
     <file path="/smart.json" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376091278795" ignored="false" />
+    <file path="/soundpaint.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376509874215" ignored="false" />
+    <file path="/soundpaint.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376510198211" ignored="false" />
+    <file path="$PROJECT_DIR$/../conception soundpainting/.meteor/local/build/static/rainbow-dash_tom.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376808972531" ignored="false" />
+    <file path="$PROJECT_DIR$/../conception soundpainting/.meteor/local/build/static_cacheable/packages/accounts-ui-unstyled/login_buttons_session.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376808972531" ignored="false" />
+    <file path="$PROJECT_DIR$/../conception soundpainting/.meteor/local/build/static/pitch.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376808972531" ignored="false" />
+    <file path="$PROJECT_DIR$/../conception soundpainting/.meteor/local/build/app/packages/random/random.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376808972531" ignored="false" />
+    <file path="$PROJECT_DIR$/../conception soundpainting/.meteor/local/build/app/packages/srp/biginteger.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376808972531" ignored="false" />
+    <file path="/quiz.less" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1376819103709" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,8 +160,47 @@
       <file leaf-file-name="quiz.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quiz.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="153" column="17" selection-start="6085" selection-end="6085" vertical-scroll-proportion="0.0">
+            <state line="226" column="0" selection-start="8867" selection-end="8867" vertical-scroll-proportion="-135.6">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contentgrid.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/contentgrid.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="51" selection-start="678" selection-end="678" vertical-scroll-proportion="3.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="voodoocontent-model.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/voodoocontent-model.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="27" selection-start="97" selection-end="97" vertical-scroll-proportion="-2.4">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="facebook.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/facebook.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="2" selection-start="552" selection-end="552" vertical-scroll-proportion="-13.8">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contentgrid.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/contentgrid.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="133" selection-start="326" selection-end="326" vertical-scroll-proportion="-3.125">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -199,37 +208,7 @@
       <file leaf-file-name="main.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="20" selection-start="547" selection-end="547" vertical-scroll-proportion="-11.4">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="maintemplate.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/views/maintemplate.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="0" selection-start="425" selection-end="1033" vertical-scroll-proportion="0.818662">
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sinvirtueicons.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/sinvirtueicons.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="quiz.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/quiz.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="53" selection-start="1094" selection-end="1094" vertical-scroll-proportion="0.0">
+            <state line="13" column="62" selection-start="431" selection-end="431" vertical-scroll-proportion="-4.08">
               <folding />
             </state>
           </provider>
@@ -238,38 +217,25 @@
       <file leaf-file-name="main.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="22" selection-start="34" selection-end="34" vertical-scroll-proportion="-2.5">
+            <state line="1" column="3" selection-start="10" selection-end="22" vertical-scroll-proportion="-0.625">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mousecursorer.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/mousecursorer.html">
+      <file leaf-file-name="maintemplate.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/maintemplate.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="107" selection-start="487" selection-end="487" vertical-scroll-proportion="-5.625">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#a#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#a#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#a#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="11" column="16" selection-start="390" selection-end="390" vertical-scroll-proportion="-6.875">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.less" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="styles.less" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/css/styles.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="1" selection-start="1058" selection-end="1058" vertical-scroll-proportion="-7.2">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mousecursorer.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/mousecursorer.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="35" selection-start="337" selection-end="337" vertical-scroll-proportion="-7.8">
+            <state line="195" column="1" selection-start="2793" selection-end="2793" vertical-scroll-proportion="0.94614005">
               <folding />
             </state>
           </provider>
@@ -293,30 +259,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/countdown.js" />
-        <option value="$PROJECT_DIR$/client/css/jquery.countdown.css" />
-        <option value="$PROJECT_DIR$/client/views/waitpage.html" />
-        <option value="$PROJECT_DIR$/client/views/waitpage.coffee" />
-        <option value="$PROJECT_DIR$/client/views/jsincludes.html" />
-        <option value="$PROJECT_DIR$/.meteor/packages" />
-        <option value="$PROJECT_DIR$/main.coffee" />
-        <option value="$PROJECT_DIR$/smart.json" />
-        <option value="$PROJECT_DIR$/main.html" />
-        <option value="$PROJECT_DIR$/client/views/quiz.html" />
-        <option value="$PROJECT_DIR$/quiz.coffee" />
         <option value="$PROJECT_DIR$/client/views/sinvirtueicons.coffee" />
-        <option value="$PROJECT_DIR$/client/views/mousecursorer.html" />
-        <option value="$PROJECT_DIR$/client/css/styles.less" />
         <option value="$PROJECT_DIR$/lib/mousecursorer.coffee" />
         <option value="$PROJECT_DIR$/client/views/maintemplate.html" />
+        <option value="$PROJECT_DIR$/smart.json" />
+        <option value="$PROJECT_DIR$/client/views/mousecursorer.html" />
+        <option value="$PROJECT_DIR$/main.html" />
+        <option value="$PROJECT_DIR$/client/views/soundpaint.html" />
+        <option value="$PROJECT_DIR$/client/views/soundpaint.coffee" />
+        <option value="$PROJECT_DIR$/main.coffee" />
+        <option value="$PROJECT_DIR$/quiz.coffee" />
+        <option value="$PROJECT_DIR$/server/facebook.coffee" />
+        <option value="$PROJECT_DIR$/client/css/quiz.less" />
+        <option value="$PROJECT_DIR$/client/views/contentgrid.coffee" />
+        <option value="$PROJECT_DIR$/models/voodoocontent-model.coffee" />
+        <option value="$PROJECT_DIR$/client/views/contentgrid.html" />
+        <option value="$PROJECT_DIR$/client/css/styles.less" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="y" value="22" />
+    <option name="x" value="14" />
+    <option name="y" value="47" />
     <option name="width" value="1260" />
-    <option name="height" value="774" />
+    <option name="height" value="751" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -372,7 +338,53 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -425,18 +437,19 @@
     <property name="options.lastSelected" value="preferences.general" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../conception soundpainting" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="109" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="890" />
-    <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="888" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="890" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="104" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="101" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" serverName="localhost meteor" serverId="90bc777b-315c-45c2-a9f6-408dd2b22698">
     <servers>
@@ -560,13 +573,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="22" width="1260" height="774" extended-state="0" />
+    <frame x="14" y="47" width="1260" height="751" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18902439" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23282135" sideWeight="0.5960366" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23282135" sideWeight="0.597561" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40501213" sideWeight="0.42682928" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -575,7 +588,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40396342" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40243903" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -624,7 +637,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="mouse cursorer" />
+    <option name="LAST_COMMIT_MESSAGE" value="quiz prototype in use" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -646,6 +659,7 @@
     <MESSAGE value="quiz improvements (remembering number of answered questions etc)" />
     <MESSAGE value="quiz improvements - evaluating final sin and end screen with other people's sins" />
     <MESSAGE value="mouse cursorer" />
+    <MESSAGE value="quiz prototype in use" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -653,52 +667,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.meteor/packages">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="6" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/waitpage.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="81" selection-start="123" selection-end="123" vertical-scroll-proportion="-2.4" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/waitpage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="502" selection-end="1070" vertical-scroll-proportion="-10.291667" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/css/quiz.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="30" selection-start="359" selection-end="359" vertical-scroll-proportion="-5.4" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/packages.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/smart.lock">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/smart.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="2" selection-start="175" selection-end="175" vertical-scroll-proportion="-5.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/quiz.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="53" selection-start="1094" selection-end="1094" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/sinvirtueicons.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="0" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0">
@@ -706,59 +674,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/mousecursorer.html">
+    <entry file="file://$PROJECT_DIR$/lib/mousecursorer.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="107" selection-start="487" selection-end="487" vertical-scroll-proportion="-5.625">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#a#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#a#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#a#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
+        <state line="13" column="35" selection-start="337" selection-end="337" vertical-scroll-proportion="-7.8" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quiz.coffee">
+    <entry file="file://$PROJECT_DIR$/packages/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="153" column="17" selection-start="6085" selection-end="6085" vertical-scroll-proportion="0.0">
+        <state line="15" column="12" selection-start="186" selection-end="186" vertical-scroll-proportion="0.6637168" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/waitpage.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.coffee">
+    <entry file="file://$PROJECT_DIR$/client/views/mousecursorer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="20" selection-start="547" selection-end="547" vertical-scroll-proportion="-11.4">
+        <state line="5" column="73" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smart.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="28" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="22" selection-start="34" selection-end="34" vertical-scroll-proportion="-2.5">
+        <state line="1" column="3" selection-start="10" selection-end="22" vertical-scroll-proportion="-0.625">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/css/styles.less">
+    <entry file="file://$PROJECT_DIR$/main.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="1" selection-start="1058" selection-end="1058" vertical-scroll-proportion="-7.2">
+        <state line="13" column="62" selection-start="431" selection-end="431" vertical-scroll-proportion="-4.08">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/mousecursorer.coffee">
+    <entry file="file://$PROJECT_DIR$/quiz.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="35" selection-start="337" selection-end="337" vertical-scroll-proportion="-7.8">
+        <state line="226" column="0" selection-start="8867" selection-end="8867" vertical-scroll-proportion="-135.6">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/facebook.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="2" selection-start="552" selection-end="552" vertical-scroll-proportion="-13.8">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/maintemplate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="425" selection-end="1033" vertical-scroll-proportion="0.818662">
+        <state line="11" column="16" selection-start="390" selection-end="390" vertical-scroll-proportion="-6.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/contentgrid.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="51" selection-start="678" selection-end="678" vertical-scroll-proportion="3.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/voodoocontent-model.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="27" selection-start="97" selection-end="97" vertical-scroll-proportion="-2.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/contentgrid.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="133" selection-start="326" selection-end="326" vertical-scroll-proportion="-3.125">
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/css/styles.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="195" column="1" selection-start="2793" selection-end="2793" vertical-scroll-proportion="0.94614005">
+          <folding />
         </state>
       </provider>
     </entry>

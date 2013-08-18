@@ -7,7 +7,6 @@
     "npm": {},
     "bootstrap-3": {},
     "handlebar-helpers": {},
-    "spin": {},
-    "z-mongo-admin": {}
+    "spin": {}
   }
 }

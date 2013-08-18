@@ -22,16 +22,17 @@
 }
 
 .contentitemcontainer {
-  background-color: lightgray;
-  width: 350px;
-  height: 350px;
-  margin: 10px;
+  width: 260px;
+  height: 280px;
+  margin: 0px;
+  padding: 5px;
   float: left;
-}
-
-body {
-//   background-image: url("/bgtiles/tile666.gif");
-//   background-repeat: repeat;
+  line-height: 1.428571429;
+  background-color: #ffffff;
+  //border: 1px solid #dddddd;
+  //border-radius: 4px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .churchcontainer {
@@ -45,21 +46,6 @@ body {
 .churchcontent {
   background-color: rgba(255,255,255,0.6);
   padding:0px;
-}
-
-.panel {
-  background-color: transparent;
-  padding: 0px;
-}
-
-.panel-heading {
-  background-color: rgba(255,255,255,0.6);
-  margin: 0px;
-  padding: 10px;
-}
-
-.panel-title {
-//  font-size: 30px;
 }
 
 .questionno {
@@ -87,11 +73,26 @@ body {
   width: 100%;
 }
 
+
+@keyframes changeDropShadow {
+  from {
+    -webkit-filter: drop-shadow(24px 24px 20px black);
+  }
+
+  to {
+    -webkit-filter: drop-shadow(50px 50px 20px black);
+  }
+}
+
 .mousecursorer {
   z-index: 10;
   position: absolute;
   opacity: 0.7;
-  -webkit-filter: drop-shadow(24px 24px 20px black);
+  animation-duration: 1s;
+  animation-name: changeDropShadow;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  //-webkit-filter: drop-shadow(24px 24px 20px black);
 }
 
 .mouseisme {
@@ -133,4 +134,63 @@ body {
 
 #login-sign-in-link {
   font-size: 140%;
+}
+
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contenticon {
+  position: absolute;
+  left:50%;
+  top:50%;
+  width: 50px;
+  height:50px;
+  margin-left: -25px;
+  margin-top: -25px;
+}
+
+.mediathumb {
+  width: 100%;
+}
+
+.mediatitle {
+  font-weight: bold;
+  text-overflow:ellipsis;
+  height:40px;
+  color: white;
+//  background-color: #f5f5f5;
+}
+
+
+body {
+  background-color: black;
+}
+
+img { /* Universal settings */
+  -webkit-transition:all .4s;
+  -moz-transition:all .4s;
+  -ms-transition:all .4s;
+  -o-transition:all .4s;
+  transition:all .4s;
+}
+img:not(:hover) {
+  -webkit-filter:grayscale(100%);
+  -moz-filter:grayscale(100%);
+  -ms-filter:grayscale(100%);
+  -o-filter:grayscale(100%);
+  filter:grayscale(100%);
+}
+img:hover {
+  -webkit-filter:grayscale(0%);
+  -moz-filter:grayscale(0%);
+  -ms-filter:grayscale(0%);
+  -o-filter:grayscale(0%);
+  filter:grayscale(0%);
 }

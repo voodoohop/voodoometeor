@@ -1,4 +1,4 @@
-  require ["Embedly"], (embedly) ->
+define "Quiz", ["Embedly"], (embedly) ->
 
     @questionsColl = new Meteor.Collection("questions")
     @userRepliesColl = new Meteor.Collection("userreplies")

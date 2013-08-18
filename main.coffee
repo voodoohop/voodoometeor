@@ -17,6 +17,7 @@
 
       Meteor.Router.add
         '/eventgrid': 'eventgrid'
+        '/soundpaint': 'soundpaint'
         '/contentgrid': 'contentgrid'
         '/quiz': 'quiz'
         '/waitpage': 'waitpage'

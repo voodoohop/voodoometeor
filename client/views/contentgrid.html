@@ -1,17 +1,29 @@
 <template name="contentgrid">
-    <h1>Content</h1>
+
+    {{#isolate}}
+    <nav class="navbar navbar-fixed-top " role="navigation">
+        <ul class="nav nav-pills nav-justified">
+            {{#each contentTypes}}
+            <li {{#if activeContentFilter}}class="active"{{/if}}><a href="#" class="content_filter dropdown-toggle" style="font-size:130%" data-toggle="dropdown" id="content_filter_{{name}}"><span class="{{icon}}"></span> {{title}} <span class="caret"></span></a></li>
+            {{/each}}
+
+        </ul>
+    </nav>
+    {{/isolate}}
+    <br><br><br>
     <div id="contentgridcontainer">
     {{#if voodoocontent}}
     {{#each voodoocontent}}
-        <div id="{{_id}}" class="contentitemcontainer masonryitem {{#if isFeatured}} largecontentitem {{else}} normalcontentitem {{/if}}">
+        <div id="{{_id}}" style="background-color: {{randcol}}" class="contentitemcontainer masonryitem {{#if isFeatured}} largecontentitem {{else}} normalcontentitem {{/if}} content_type_{{type}}">
           {{#isolate}}
            {{#if title}}
-           <div id="mediatitle">
+           <div class=" mediatitle">
+              <span style="float:right" class="{{contentTypeMetaData.icon}} {{contentTypeMetaData.class}}"> {{type}}</span>
               {{title}}
           </div>
           {{/if}}
           {{#if showThumb}}
-          <div id="mediathumb_{{_id}}">
+          <div id="mediathumb_{{_id}}" class="mediathumb">
               <img src="{{thumbnailurl}}">
           </div>
           {{/if}}
@@ -21,7 +33,7 @@
             </div>
           {{/if}}
           <div class="contentsocialmedia">
-            <i class="icon-heart"></i> {{numlikes}}
+            <i class="icon-heart"></i> <span class="badge">{{numlikes}} </badge>
           </div>
           {{/isolate}}
         </div>

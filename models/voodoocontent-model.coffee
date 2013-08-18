@@ -2,7 +2,7 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
 
   self= this;
 
-  self.contentBlockSize = 20
+  self.contentBlockSize = 50
 
   # content for rendering grid
   self.contentCollection =  new Meteor.Collection("voodoocontent")
@@ -15,10 +15,6 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
       fields: fields
     )
   self.getContentBySourceId = (sourceId) -> self.contentCollection.find({sourceId: sourceId})
-
-
-#  self.getContentData = (id) -> contentDataCollection.find(id)
-
 
   if (Meteor.isServer)
 
@@ -33,6 +29,7 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
       prepareMediaEmbeds: (embedParams) ->
 
         console.log("preparing embeds")
+
         # find and update all documents for which we have not generated the media embed for the specified params
         #self.contentCollection.update({},$unset:{embedlyData: ""})
 
