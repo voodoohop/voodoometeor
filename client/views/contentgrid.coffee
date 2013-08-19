@@ -10,6 +10,11 @@ define "ContentgridController", ["VoodoocontentModel","Config","Embedly"], (mode
     {name: "link", title:"Links", icon:"glyphicon glyphicon-link", class:"label label-info"}
   ]
 
+  this.sortTypes = [
+    {name: "post_date", title:"Post Date", icon:"glyphicon glyphicon-calendar", accessor: (e) -> e.post_date}
+    {name: "numlikes", title:"Likes", icon:"glyphicon glyphicon-heart", accessor: (e) -> e.facebookData?.like_count}
+  ]
+
   this.colors= [
     "#428bca"
     "#5cb85c"
@@ -30,6 +35,8 @@ define "ContentgridController", ["VoodoocontentModel","Config","Embedly"], (mode
 
   Template.contentgrid.helpers
 
+
+    postedDate: -> moment(new Date(this.post_date)).fromNow()
     randcol: -> self.colors[_.random(0,self.colors.length-1)]
 
     contentTypes: -> self.contentTypes
@@ -47,6 +54,8 @@ define "ContentgridController", ["VoodoocontentModel","Config","Embedly"], (mode
 
     showMedia: -> Session.get(this._id+"_showMedia")
 
+    isSelected: -> Session.get("contentitemSelected") == this._id
+
     showThumb: -> !Session.get(this._id+"_showMedia")
 
     embedcontent: ->
@@ -59,14 +68,38 @@ define "ContentgridController", ["VoodoocontentModel","Config","Embedly"], (mode
     thumbnailurl: ->
       ebdta = self.getEmbedlyData(this)
       thumbnail_url = this.picture ? ebdta?.thumbnail_url
-      console.log(thumbnail_url)
+      console.log("thumb:"+thumbnail_url)
       if (thumbnail_url?)
         embedly.getCroppedImageUrl(thumbnail_url, self.embedParams.maxwidth, self.embedParams.maxheight)
 
   Template.contentgrid.events =
-    'click .contentitemcontainer': () ->
-      Session.set(this._id+"_showMedia",true)
+    'click .mediatitle': () ->
       console.log(this)
+      $(".contentitemcontainer").not("#"+this._id).removeClass("wide").removeClass("front").removeClass("tall")
+      if (Session.get("contentitemSelected",this._id))
+        Session.set("contentitemSelected",null)
+      else
+        Session.set("contentitemSelected",+this._id)
+      $("#"+this._id).toggleClass("wide")
+      $("#"+this._id).toggleClass("front")
+      $("#"+this._id).toggleClass("tall")
+      self.isotopeRelayout();
+    'click .mediathumb': () ->
+      Session.set(this._id+"_showMedia",true)
+
+
+    'click .sort_filter': () ->
+      if (Session.get("active_search_filter") == this.name)
+        console.log("reversing sort order")
+        Session.set("active_search_filter_reverse",! Session.get("active_search_filter_reverse"))
+      else
+        Session.set("active_search_filter_reverse",false)
+
+      Session.set("active_search_filter",this.name)
+
+      $("#contentgridcontainer").isotope({sortBy: Session.get("active_search_filter"), sortAscending: Session.get("active_search_filter_reverse") });
+      #Meteor.Router.to("/eventdetail/"+this._id)
+
     'click .content_filter': () ->
       filters = Session.get("active_content_filters") ? []
       if (_.contains(filters,this.name))
@@ -82,18 +115,35 @@ define "ContentgridController", ["VoodoocontentModel","Config","Embedly"], (mode
   Template.contentgrid.rendered = ->
     console.log("rendered")
     Meteor.defer ->
-      self.isotopeRelayout()
+      # check if we can figure out at least one width (incase no elements yet on grid)
+      if ($("div.contentitemcontainer").width())
+        self.activateIsotopeOnce()
+        self.isotopeRelayout()
 
+  self.activateIsotope = _.once( ->
+    colWidth = $("div.contentitemcontainer").width()
+    console.log("initing isotope with colwidth:"+colWidth)
 
-  self.activateIsotopeOnce = _.once ->
-    console.log("activating isotope masonry")
+    sortDataFunctions = {}
+    _.each(sortTypes, (e) ->
+      sortDataFunctions[e.name] = (j) -> e.accessor(Spark.getDataContext(j.context))
+    )
+
+    console.log(sortDataFunctions)
     $("#contentgridcontainer").isotope
       itemSelector: ".masonryitem"
       layoutMode : 'masonry'
       animatonEngine: 'best-available'
+      masonry:
+        columnWidth: colWidth
+      getSortData:
+        sortDataFunctions
+  )
+
+  self.activateIsotopeOnce = _.debounce(self.activateIsotope, 500)
 
   self.isotopeRelayout = _.debounce( ->
-    self.activateIsotopeOnce()
+    $("#contentgridcontainer").isotope('reloadItems').isotope({ sortBy: Session.get("active_search_filter") ? 'original-order' })
     #$("#contentgridcontainer").isotope("reLayout")
   , 500)
 

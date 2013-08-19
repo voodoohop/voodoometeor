@@ -7,6 +7,10 @@
             <li {{#if activeContentFilter}}class="active"{{/if}}><a href="#" class="content_filter dropdown-toggle" style="font-size:130%" data-toggle="dropdown" id="content_filter_{{name}}"><span class="{{icon}}"></span> {{title}} <span class="caret"></span></a></li>
             {{/each}}
 
+            {{#each sortTypes}}
+            <li {{#if activeSortFilter}}class="active"{{/if}}><a href="#" class="sort_filter dropdown-toggle" style="font-size:130%" data-toggle="dropdown" id="sort_filter_{{name}}"><span class="{{icon}}"></span> {{title}}</a></li>
+            {{/each}}
+
         </ul>
     </nav>
     {{/isolate}}
@@ -14,13 +18,16 @@
     <div id="contentgridcontainer">
     {{#if voodoocontent}}
     {{#each voodoocontent}}
-        <div id="{{_id}}" style="background-color: {{randcol}}" class="contentitemcontainer masonryitem {{#if isFeatured}} largecontentitem {{else}} normalcontentitem {{/if}} content_type_{{type}}">
-          {{#isolate}}
-           {{#if title}}
-           <div class=" mediatitle">
+
+        <div id="{{_id}}" class="contentitemcontainer masonryitem content_type_{{type}}">
+            {{#isolate}}
+          <div  style="background-color: {{randcol}}" id="border{{_id}}" class="contentitemborder">
+
+            {{#if title}}
               <span style="float:right" class="{{contentTypeMetaData.icon}} {{contentTypeMetaData.class}}"> {{type}}</span>
+           <div class="mediatitle">
               {{title}}
-          </div>
+           </div>
           {{/if}}
           {{#if showThumb}}
           <div id="mediathumb_{{_id}}" class="mediathumb">
@@ -32,11 +39,15 @@
                 {{{embedcontent}}}
             </div>
           {{/if}}
-          <div class="contentsocialmedia">
-            <i class="icon-heart"></i> <span class="badge">{{numlikes}} </badge>
+          <div class="contentmetadata">
+            <i class="icon-heart"></i> <span class="badge">{{numlikes}} </span>
+            <span class="postdate" data-date="{{postedDate}}"><span class="glyphicon glyphicon-calendar"></span> {{postedDate}}</span>
           </div>
-          {{/isolate}}
+
+          </div>
+            {{/isolate}}
         </div>
+
     {{/each}}
     {{else}}
         loading content...

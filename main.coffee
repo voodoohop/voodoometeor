@@ -24,6 +24,7 @@
         '/eventdetail/:id': 'eventdetail'
         '*': 'not_found'
 
+      console.log("configured router")
       Template.maintemplate.user = Meteor.user
 
       Meteor.startup ->
