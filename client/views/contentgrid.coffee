@@ -23,8 +23,6 @@ define "ContentgridController", ["VoodoocontentModel","Config","Embedly"], (mode
     "#5bc0de"
   ]
 
-  Template.contentgrid
-
   Session.set("active_content_filters",[])
 
   this.embedParams = {maxwidth: 250, maxheight:200, autoplay: true}
@@ -33,21 +31,13 @@ define "ContentgridController", ["VoodoocontentModel","Config","Embedly"], (mode
 
   this.getEmbedlyData = (data) -> _.findWhere(data.embedlyData, self.embedParams)
 
-  Template.contentgrid.helpers
-
-
+  Template.contentitem.helpers
     postedDate: -> moment(new Date(this.post_date)).fromNow()
     randcol: -> self.colors[_.random(0,self.colors.length-1)]
 
     contentTypes: -> self.contentTypes
 
-    activeContentFilters: -> Session.get("active_content_filters")
-
-    activeContentFilter: ->_.contains(Session.get("active_content_filters"),this.name)
-
     isFeatured: () -> (this.isFeatured == true)
-
-    voodoocontent: -> model.getContent()
 
     numlikes: ->
       this.facebookData?.like_count
@@ -64,15 +54,23 @@ define "ContentgridController", ["VoodoocontentModel","Config","Embedly"], (mode
     contentTypeMetaData: ->
       _.where(self.contentTypes, {name: this.type })?[0]
 
-
     thumbnailurl: ->
       ebdta = self.getEmbedlyData(this)
       thumbnail_url = this.picture ? ebdta?.thumbnail_url
-      console.log("thumb:"+thumbnail_url)
+      # console.log("thumb:"+thumbnail_url)
       if (thumbnail_url?)
         embedly.getCroppedImageUrl(thumbnail_url, self.embedParams.maxwidth, self.embedParams.maxheight)
 
-  Template.contentgrid.events =
+  Template.contentgrid.helpers
+
+
+    activeContentFilters: -> Session.get("active_content_filters")
+
+    activeContentFilter: ->_.contains(Session.get("active_content_filters"),this.name)
+
+    voodoocontent: -> model.getContent()
+
+  Template.contentitem.events =
     'click .mediatitle': () ->
       console.log(this)
       $(".contentitemcontainer").not("#"+this._id).removeClass("wide").removeClass("front").removeClass("tall")
@@ -87,6 +85,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","Embedly"], (mode
     'click .mediathumb': () ->
       Session.set(this._id+"_showMedia",true)
 
+  Template.contentgrid.events =
 
     'click .sort_filter': () ->
       if (Session.get("active_search_filter") == this.name)

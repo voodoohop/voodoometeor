@@ -21,23 +21,50 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     console.log(config.current())
 
     fb.setAccessToken(config.current().facebook.pageaccesstoken)
+    # res = Meteor.sync((done) -> fb.api "/498352853588926/invited",{summary:true}, (fbres) -> done(null,fbres))
 
   #  fb.api "218099148337486",{fields: ["picture","cover"]}, (res) ->
   #    console.log(res)
     self.importUpdateEvent = (fbid) ->
       console.log("importing fb event with graph id:"+fbid)
-      res = Meteor.sync((done) -> fb.api fbid, (fbres) -> done(null,fbres))
-      console.log(res)
+      res = Meteor.sync((done) -> fb.api fbid, {fields: fbschemas.event_fields}, (fbres) -> done(null,fbres))
+      event = res.result
+      if event.end_time
+        event.end_time = new Date(event.end_time).toJSON()
+      voodoocontent =
+        title: event.name
+        location: event.location
+        address: event.venue
+        sourceId: event.id
+        source: "facebook"
+        facebookData: event
+        picture: event.cover?.source
+        start_time: new Date(event.start_time).toJSON()
+        post_date: new Date(event.start_time).toJSON()
+        end_time: event.end_time
+        description: event.description
+        type: "event"
 
-      return res.result
+      if (contentModel.getContentBySourceId(event.id).count() == 0)
+        console.log("event: #{voodoocontent.title} not found yet... inserting")
+        contentModel.contentCollection.insert voodoocontent
+      else
+        console.log("event: #{voodoocontent.title} found... updating")
+        contentModel.contentCollection.update {sourceId: event.id}, {$set: voodoocontent}
+
+      return voodoocontent
 
     self.importUpdatePost = (fbid) ->
           res = Meteor.sync ((done) -> fb.api fbid, {fields: fbschemas.post_fields}, (fbres) -> done(null, fbres) )
           post = res.result
-          #console.log(post)
 
-
-
+          if (! post?.link?)
+            console.log("without link... skipping")
+            return;
+          if (post.link.indexOf("facebook.com/events/") != -1)
+            eventid = post.link.split("facebook.com/events/")[1].split("/")[0]
+            console.log("found event... importing and ignoring post")
+            return self.importUpdateEvent(eventid)
 
           if (post.likes?)
             post.like_count = Meteor.sync((done) -> fb.api ""+post.id+"/likes",{summary:true}, (fbres) -> done(null, fbres) ).result.summary.total_count

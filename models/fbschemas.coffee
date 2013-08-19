@@ -55,31 +55,6 @@ define "FBSchemas", [], ->
         "uri": "http://graph.facebook.com/schema/event#feed",
         "type": "uri"
       },
-      "invited": {
-        "description": "All of the users who have been invited to this event.",
-        "uri": "http://graph.facebook.com/schema/event#invited",
-        "type": "uri"
-      },
-      "attending": {
-        "description": "All of the users who are attending this event.",
-        "uri": "http://graph.facebook.com/schema/event#attending",
-        "type": "uri"
-      },
-      "maybe": {
-        "description": "All of the users who have been responded \"Maybe\" to their invitation to this event.",
-        "uri": "http://graph.facebook.com/schema/event#maybe",
-        "type": "uri"
-      },
-      "noreply": {
-        "description": "All of the users who have been not yet responded to their invitation to this event.",
-        "uri": "http://graph.facebook.com/schema/event#noreply",
-        "type": "uri"
-      },
-      "declined": {
-        "description": "All of the users who declined their invitation to this event.",
-        "uri": "http://graph.facebook.com/schema/event#declined",
-        "type": "uri"
-      },
       "picture": {
         "description": "The event's profile picture.",
         "uri": "http://graph.facebook.com/schema/event#picture",
@@ -98,9 +73,6 @@ define "FBSchemas", [], ->
       },
       "parent_group": {
         "uri": "http://graph.facebook.com/schema/event#parent_group"
-      },
-      "feed_targeting": {
-        "uri": "http://graph.facebook.com/schema/event#feed_targeting"
       }
 
   post_properties =

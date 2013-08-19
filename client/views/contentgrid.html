@@ -1,3 +1,34 @@
+<template name="contentitem">
+    <div id="{{_id}}" class="contentitemcontainer masonryitem content_type_{{type}}">
+        {{#isolate}}
+        <div  style="background-color: {{randcol}}" id="border{{_id}}" class="contentitemborder">
+
+            {{#if title}}
+            <span style="float:right" class="{{contentTypeMetaData.icon}} {{contentTypeMetaData.class}}"> {{type}}</span>
+            <div class="mediatitle">
+                {{title}}
+            </div>
+            {{/if}}
+            {{#if showThumb}}
+            <div id="mediathumb_{{_id}}" class="mediathumb">
+                <img src="{{thumbnailurl}}">
+            </div>
+            {{/if}}
+            {{#if showMedia}}
+            <div id="mediacontent_{{_id}}">
+                {{{embedcontent}}}
+            </div>
+            {{/if}}
+            <div class="contentmetadata">
+                <i class="icon-heart"></i> <span class="badge">{{numlikes}} </span>
+                <span class="postdate" data-date="{{postedDate}}"><span class="glyphicon glyphicon-calendar"></span> {{postedDate}}</span>
+            </div>
+
+        </div>
+        {{/isolate}}
+    </div>
+</template>
+
 <template name="contentgrid">
 
     {{#isolate}}
@@ -16,39 +47,16 @@
     {{/isolate}}
     <br><br><br>
     <div id="contentgridcontainer">
-    {{#if voodoocontent}}
-    {{#each voodoocontent}}
+    <!--    <div id="fblikebox" class="masonryitem" style="width:260px; height:160px;">
+            <div class="fb-like-box" data-href="https://www.facebook.com/voodoohop" data-width="260" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="true">
 
-        <div id="{{_id}}" class="contentitemcontainer masonryitem content_type_{{type}}">
-            {{#isolate}}
-          <div  style="background-color: {{randcol}}" id="border{{_id}}" class="contentitemborder">
-
-            {{#if title}}
-              <span style="float:right" class="{{contentTypeMetaData.icon}} {{contentTypeMetaData.class}}"> {{type}}</span>
-           <div class="mediatitle">
-              {{title}}
-           </div>
-          {{/if}}
-          {{#if showThumb}}
-          <div id="mediathumb_{{_id}}" class="mediathumb">
-              <img src="{{thumbnailurl}}">
-          </div>
-          {{/if}}
-          {{#if showMedia}}
-            <div id="mediacontent_{{_id}}">
-                {{{embedcontent}}}
             </div>
-          {{/if}}
-          <div class="contentmetadata">
-            <i class="icon-heart"></i> <span class="badge">{{numlikes}} </span>
-            <span class="postdate" data-date="{{postedDate}}"><span class="glyphicon glyphicon-calendar"></span> {{postedDate}}</span>
-          </div>
-
-          </div>
-            {{/isolate}}
-        </div>
-
+         </div>    -->
+        {{#if voodoocontent}}
+    {{#each voodoocontent}}
+        {{>contentitem}}
     {{/each}}
+
     {{else}}
         loading content...
     {{/if}}

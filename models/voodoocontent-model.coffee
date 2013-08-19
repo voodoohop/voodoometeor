@@ -2,7 +2,7 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
 
   self= this;
 
-  self.contentBlockSize = 50
+  self.contentBlockSize = 10
 
   # content for rendering grid
   self.contentCollection =  new Meteor.Collection("voodoocontent")
