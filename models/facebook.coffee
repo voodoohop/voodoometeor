@@ -104,7 +104,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       importFacebookEvent: self.importUpdateEvent
       importFacebookPost: self.importUpdatePost
 
-    #return this #hack to not load posts
+    return this #hack to not load posts
 
     #contentModel.contentCollection.remove({})
 
