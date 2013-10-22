@@ -5,24 +5,14 @@
     Meteor.publish "users", ->
       Meteor.users.find({},{fields: {'profile': 1, services : 1, pecado: 1, virtude: 1}})
 
-    Meteor.headly.config(
-      console.log("headly configured")
-      tagsForRequest: (req) ->
-        return '<meta property="og:title" content="VOODOOHOP" />'
-    )
   if (Meteor.isClient)
     require ["ContentgridController"] , (contentGridController) ->
 
       Meteor.subscribe "users"
 
-      Meteor.Router.add
-        '/eventgrid': 'eventgrid'
-        '/soundpaint': 'soundpaint'
-        '/contentgrid': 'contentgrid'
-        '/quiz': 'quiz'
-        '/waitpage': 'waitpage'
-        '/eventdetail/:id': 'eventdetail'
-        '*': 'not_found'
+      Router.map ->
+        this.route 'contentgrid'
+
 
       console.log("configured router")
       Template.maintemplate.user = Meteor.user

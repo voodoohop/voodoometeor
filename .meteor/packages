@@ -11,3 +11,14 @@ accounts-password
 accounts-facebook
 showdown
 accounts-ui
+standard-app-packages
+bootstrap-3
+define
+font-awesome
+handlebar-helpers
+HTML5-History-API
+moment
+npm
+page-js-ie-support
+spin
+iron-router

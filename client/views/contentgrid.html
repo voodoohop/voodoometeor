@@ -1,7 +1,7 @@
 <template name="contentitem">
-    <div id="{{_id}}" class="contentitemcontainer masonryitem content_type_{{type}}">
-        {{#isolate}}
-        <div  style="background-color: {{randcol}}" id="border{{_id}}" class="contentitemborder">
+
+    <div id="{{_id}}" class="contentitemcontainer content_type_{{type}}">
+        <div  style="background-color: {{bgcol}}" id="border{{_id}}" class="contentitemborder">
 
             {{#if title}}
             <span style="float:right" class="{{contentTypeMetaData.icon}} {{contentTypeMetaData.class}}"> {{type}}</span>
@@ -15,50 +15,46 @@
             </div>
             {{/if}}
             {{#if showMedia}}
-            <div id="mediacontent_{{_id}}">
-                {{{embedcontent}}}
+            <div id="mediacontent_{{_id}}" >
+               {{>embeddedmedia}}
             </div>
             {{/if}}
             <div class="contentmetadata">
                 <i class="icon-heart"></i> <span class="badge">{{numlikes}} </span>
                 <span class="postdate" data-date="{{postedDate}}"><span class="glyphicon glyphicon-calendar"></span> {{postedDate}}</span>
             </div>
-
         </div>
-        {{/isolate}}
+    </div>
+
+</template>
+
+<template name="embeddedmedia">
+    <div class="preserve">
+    {{{content}}}
     </div>
 </template>
 
-<template name="contentgrid">
-
-    {{#isolate}}
+<template name="navbar">
     <nav class="navbar navbar-fixed-top " role="navigation">
         <ul class="nav nav-pills nav-justified">
             {{#each contentTypes}}
-            <li {{#if activeContentFilter}}class="active"{{/if}}><a href="#" class="content_filter dropdown-toggle" style="font-size:130%" data-toggle="dropdown" id="content_filter_{{name}}"><span class="{{icon}}"></span> {{title}} <span class="caret"></span></a></li>
+            <li class="{{activeContentFilter}}"><a href="#" class="content_filter dropdown-toggle" style="font-size:130%" data-toggle="dropdown" id="content_filter_{{name}}"><span class="{{icon}}"></span> {{title}} <span class="caret"></span></a></li>
             {{/each}}
 
             {{#each sortTypes}}
-            <li {{#if activeSortFilter}}class="active"{{/if}}><a href="#" class="sort_filter dropdown-toggle" style="font-size:130%" data-toggle="dropdown" id="sort_filter_{{name}}"><span class="{{icon}}"></span> {{title}}</a></li>
+            <li class="{{activeSortFilter}}"><a href="#" class="sort_filter dropdown-toggle" style="font-size:130%" data-toggle="dropdown" id="sort_filter_{{name}}"><span class="{{icon}}"></span> {{title}}</a></li>
             {{/each}}
 
         </ul>
     </nav>
-    {{/isolate}}
+</template>
+
+<template name="contentgrid">
+    {{>navbar}}
     <br><br><br>
     <div id="contentgridcontainer">
-    <!--    <div id="fblikebox" class="masonryitem" style="width:260px; height:160px;">
-            <div class="fb-like-box" data-href="https://www.facebook.com/voodoohop" data-width="260" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="true">
-
-            </div>
-         </div>    -->
-        {{#if voodoocontent}}
-    {{#each voodoocontent}}
-        {{>contentitem}}
-    {{/each}}
-
-    {{else}}
-        loading content...
-    {{/if}}
+        {{#each voodoocontent}}
+          {{>contentitem}}
+        {{/each}}
     </div>
 </template>

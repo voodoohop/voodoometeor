@@ -1,13 +1,13 @@
 {
   "packages": {
     "font-awesome": {},
-    "router": {},
     "HTML5-History-API": {},
     "define": {},
     "npm": {},
     "bootstrap-3": {},
     "handlebar-helpers": {},
     "spin": {},
-    "moment": {}
+    "moment": {},
+    "iron-router": {}
   }
 }

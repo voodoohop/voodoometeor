@@ -25,7 +25,7 @@ require ["ClientShared"] , (mouseShare) ->
     Template.MouseCursorer.mice = ->
       mouseShare.sharedData.find()
     Template.MouseCursorer.isme = ->
-      this.owner == self.getUserId()
+      if this.owner == self.getUserId() then "mouseisme" else ""
     Template.MouseCursorer.getMouseLeft = ->
       this.x-25
     Template.MouseCursorer.getMouseTop = ->

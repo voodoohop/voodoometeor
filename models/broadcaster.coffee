@@ -1,6 +1,6 @@
 define "Broadcaster",[], ->
 
-  self = this
+  self = {}
   self.broadcasts = new Meteor.Collection("broadcasts")
   self.broadcasts.allow ->
     insert: (u,d) ->
@@ -31,5 +31,5 @@ define "Broadcaster",[], ->
 
     Meteor.startup ->
       self.broadcast({heyhey: "hello"})
-  return this
+  return self
 

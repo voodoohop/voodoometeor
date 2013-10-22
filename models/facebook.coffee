@@ -1,5 +1,5 @@
 require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbschemas) ->
-  self = this
+  self = {}
 
   if Meteor.isServer
 
@@ -20,7 +20,13 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     fb = Meteor.require "fb"
     console.log(config.current())
 
+    fb.setAccessToken(""+config.current().facebook.appid+"|"+config.current().facebook.appsecret)
+
+    fb.api("/"+config.current().facebook.appid+"/subscriptions", (res) -> console.log(res))
+
     fb.setAccessToken(config.current().facebook.pageaccesstoken)
+
+
     # res = Meteor.sync((done) -> fb.api "/498352853588926/invited",{summary:true}, (fbres) -> done(null,fbres))
 
   #  fb.api "218099148337486",{fields: ["picture","cover"]}, (res) ->
@@ -104,7 +110,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       importFacebookEvent: self.importUpdateEvent
       importFacebookPost: self.importUpdatePost
 
-    return this #hack to not load posts
+    return self #hack to not load posts
 
     #contentModel.contentCollection.remove({})
 
@@ -127,4 +133,4 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
 
 
 
-  return this
+  return self

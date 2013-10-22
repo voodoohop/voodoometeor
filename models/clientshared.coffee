@@ -1,7 +1,7 @@
 define "ClientShared",[], ->
 
-  self = this
-  this.sharedData = new Meteor.Collection("sharedData")
+  self ={}
+  self.sharedData = new Meteor.Collection("sharedData")
   self.sharedData.allow
     insert: (u,d) ->
       true
@@ -13,10 +13,10 @@ define "ClientShared",[], ->
     Meteor.subscribe("sharedData")
 
   if (Meteor.isServer)
-    this.sharedData.remove({})
+    self.sharedData.remove({})
 
     Meteor.publish "sharedData", ->
       self.sharedData.find()
 
-  return this
+  return self
 

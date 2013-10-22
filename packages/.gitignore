@@ -9,8 +9,8 @@ presence
 npm
 bootstrap-3
 handlebar-helpers
-accounts-anonymous
 headly
 spin
 z-mongo-admin
 moment
+iron-router

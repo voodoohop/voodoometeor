@@ -3,25 +3,20 @@
   "dependencies": {
     "basePackages": {
       "font-awesome": {},
-      "router": {},
       "HTML5-History-API": {},
       "define": {},
       "npm": {},
       "bootstrap-3": {},
       "handlebar-helpers": {},
       "spin": {},
-      "moment": {}
+      "moment": {},
+      "iron-router": {}
     },
     "packages": {
       "font-awesome": {
         "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
-        "tag": "v3.2.0",
-        "commit": "2cba6f907a2579cae2d399b522f9544c13d5e091"
-      },
-      "router": {
-        "git": "https://github.com/tmeasday/meteor-router.git",
-        "tag": "v0.5.4",
-        "commit": "e40ee450a756b54a32ed67be4595772403256fb5"
+        "tag": "v3.2.1",
+        "commit": "38bdfff72dfb8857b272f9a9b056045d6a015489"
       },
       "HTML5-History-API": {
         "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
@@ -30,23 +25,23 @@
       },
       "define": {
         "git": "https://github.com/apendua/require.git",
-        "tag": "v0.9.0.1",
-        "commit": "7594e5f0c0678ff47367f1bcd6b20d0ca4b7965c"
+        "tag": "v0.9.0.2",
+        "commit": "5c3bdfdf7c747dc7297e7697d5f1a28ef86772f2"
       },
       "npm": {
         "git": "https://github.com/arunoda/meteor-npm.git",
-        "tag": "v0.2.0",
-        "commit": "c8e5e4c1e36071454ba302721ba48b8c0979895a"
+        "tag": "v0.2.2",
+        "commit": "ad83acff83385d5ea05997c8bbc2d7493ba4c04e"
       },
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
-        "tag": "v0.3.2",
-        "commit": "a09f87b01f625ca86d97f93206e7ff475cf3db3b"
+        "tag": "v0.3.5",
+        "commit": "47996f67f3987c9f82117394effcbe1586a4fe29"
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
-        "tag": "v0.0.6",
-        "commit": "8ca9ab1edcbb7d1ef935d4ad8c7e32479ea70b24"
+        "tag": "v0.0.9",
+        "commit": "71e94c99462b8801a34c5363510758b6ff5f5ac7"
       },
       "spin": {
         "git": "https://github.com/SachaG/meteor-spin.git",
@@ -54,14 +49,14 @@
         "commit": "fd3a2871a69442848b4b4e74f5e1ae28fa4a95a4"
       },
       "moment": {
-        "git": "https://github.com/possibilities/meteor-moment.git",
-        "tag": "v1.7.0",
-        "commit": "c64b6ec0e714b9556f4b6643d430b868ba69d3d7"
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.2.1",
+        "commit": "9ee12e714afe56b189f53076447b7b54f3012065"
       },
-      "page-js-ie-support": {
-        "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
-        "tag": "v1.3.5",
-        "commit": "b99ed8380aefd10b2afc8f18d9eed4dd0d8ea9cb"
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.5.4",
+        "commit": "3e0e22ff85630b7503d0daa1538c6d90abb84020"
       }
     }
   }

@@ -1,19 +1,29 @@
 define "VoodoocontentModel",["Embedly"], (embedly) ->
 
-  self= this;
+  self= {};
 
   self.contentBlockSize = 10
+
+  self.helpers =
+    postedDate: -> moment(new Date(this.post_date)).fromNow()
+    isFeatured: -> (this.isFeatured == true)
+    numlikes: -> this.facebookData?.like_count ? 0
 
   # content for rendering grid
   self.contentCollection =  new Meteor.Collection("voodoocontent")
 
-  self.getContent = (query={}, blockno=0,fields={}) ->
+  self.subscribeContent = (options, callback) ->
+    Meteor.subscribe "content", options, callback
 
-    self.contentCollection.find( query,
-      skip: blockno * self.contentBlockSize
-      limit: self.contentBlockSize
-      fields: fields
-    )
+  self.getContent = (options) ->
+      console.log options
+      self.contentCollection.find( options?.query ? {},
+      #  skip: self.contentBlockSize *  (options.blockno ? 0)
+      #  limit: self.contentBlockSize
+        fields: options?.fields? null
+        sort: options?.sort
+      )
+
   self.getContentBySourceId = (sourceId) -> self.contentCollection.find({sourceId: sourceId})
 
   if (Meteor.isServer)
@@ -46,9 +56,8 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
 
 
 
+  #if (Meteor.isClient)
+  #  self.contentsubscription = Meteor.subscribe "content"
 
-  if (Meteor.isClient)
-    self.contentsubscription = Meteor.subscribe "content"
 
-
-  return this
+  return self

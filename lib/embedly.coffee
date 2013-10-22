@@ -1,7 +1,9 @@
 define "Embedly", "Config",  (config) ->
-  this.embedly_key = -> config.current().embedly.key
+  self = {}
+
+  self.embedly_key = -> config.current().embedly.key
   if (Meteor.isServer)
-    key = this.embedly_key()
+    key = self.embedly_key()
     embedly = Meteor.require('embedly')
     util = Meteor.require('util')
     #console.log(embedly)
@@ -15,7 +17,7 @@ define "Embedly", "Config",  (config) ->
           done(null,api)
       ).result
 
-    this.runembedly =  (params) ->
+    self.runembedly =  (params) ->
       return Meteor.sync( (done) ->
         embedlyapi.oembed _.clone(params), (err, result) ->
           console.log(result)
@@ -25,9 +27,9 @@ define "Embedly", "Config",  (config) ->
   #  Meteor.methods
   #    embedly: (params) ->
   #       runembedly(params)
-  this.getCroppedImageUrl = (srcimg, width, height) ->
-    "http://i.embed.ly/1/display/crop?height="+height+"&width="+width+"&url="+encodeURI(srcimg)+"&key="+this.embedly_key()
-  return this
+  self.getCroppedImageUrl = (srcimg, width, height) ->
+    "http://i.embed.ly/1/display/crop?height="+height+"&width="+width+"&url="+encodeURI(srcimg)+"&key="+self.embedly_key()
+  return self
   #if (Meteor.isClient)
   #  Meteor.methods
   #    embedly: (params) ->

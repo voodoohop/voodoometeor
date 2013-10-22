@@ -1,10 +1,11 @@
 define "Config",[], ->
-  this.globalconfig = new Meteor.Collection("config")
+  self = {}
+  self.globalconfig = new Meteor.Collection("config")
   if (Meteor.isClient)
     Meteor.subscribe("config")
   if (Meteor.isServer)
     Meteor.publish "config", ->
-      globalconfig.find()
-  this.current = -> this.globalconfig.findOne()
-  this.isInitialized = -> this.globalconfig.find().count() > 0
-  return this
+      self.globalconfig.find()
+  self.current = -> self.globalconfig.findOne()
+  self.isInitialized = -> self.globalconfig.find().count() > 0
+  return self
