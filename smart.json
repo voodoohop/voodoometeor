@@ -3,11 +3,12 @@
     "font-awesome": {},
     "HTML5-History-API": {},
     "define": {},
-    "npm": {},
     "bootstrap-3": {},
     "handlebar-helpers": {},
     "spin": {},
     "moment": {},
-    "iron-router": {}
+    "iron-router": {},
+    "nprogress": {},
+    "event-hooks": {}
   }
 }

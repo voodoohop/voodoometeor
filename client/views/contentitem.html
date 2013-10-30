@@ -1,0 +1,83 @@
+<template name="contentthumb">
+    {{#if showThumb}}
+    <div id="mediathumb_{{_id}}" class="mediathumb">
+        <img src="{{thumbnailurl}}">
+    </div>
+    {{/if}}
+</template>
+
+
+
+
+<template name="contentitem">
+    <div id="{{_id}}" class="contentitemcontainer content_type_{{type}} {{#if isExpanded}} contentitemexpanded {{/if}}" style="border-color: {{bgcol}}">
+        {{>contentthumb}}
+        <span class="contenttypelabel {{contentTypeMetaData.icon}} {{contentTypeMetaData.class}}" style="background-color: {{bgcol}}; position: absolute; right: -2px; top: -2px;"> </span>
+        {{#if title}}
+        {{#if contentTypeMetaData.showtitle}}
+        <div class="mediatitle">
+            <span class="mediatitletext">{{title}}</span>
+        </div>
+        {{/if}}
+        {{/if}}
+        {{#if showMedia}}
+        <div id="mediacontent_{{_id}}" >
+            {{>embeddedmedia}}
+        </div>
+        {{/if}}
+
+        {{typespecificcontent}}
+
+        <div class="contentmetadata">
+            <i class="icon-heart"></i> <span class="badge">{{numlikes}} </span>
+           <!-- <span class="postdate" data-date="{{postedDate}}"><span class="glyphicon glyphicon-calendar"></span> {{postedDate}}</span>
+            -->
+        </div>
+    </div>
+</template>
+
+<template name="contentitem_video">
+    <div class="mediaplaybutton">
+        <button type="button" class="btn btn-default btn-lg"><span style="color: {{bgcol}}" class="glyphicon glyphicon-expand" > </span></button>
+    </div>
+
+</template>
+
+<template name="contentitem_event">
+    <div class="eventdate" style="border-color: {{bgcol}}; background-color: {{bgcol}}">
+        {{day}}
+    </div>
+    {{#if isExpanded}}
+        <h4>{{title}}</h4>
+
+            <p class="text-muted">
+           <span class="glyphicon glyphicon-user text-info"></span>
+           {{numlikes}} &nbsp;&nbsp;
+          <span class="glyphicon glyphicon-calendar text-info"></span>
+          {{day}}  <br>
+            <span class="glyphicon glyphicon-map-marker text-info"></span>
+            {{location}} <br>
+           </p>
+    <div class="btn-group btn-group-xs">
+        <button type="button" class="rsvpbutton btn btn-primary" {{#if rsvp_confirmed}}diabled="disabled"{{/if}}><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-calendar{{/if}}"></span> Rsvp</button>
+        <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-bullhorn"></span> Invite</button>
+        <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-share"></span> Share</button>
+
+    </div>
+    <p>
+        <small>
+            {{#markdown}}
+         {{description}}
+            {{/markdown}}
+        </small>
+    </p>
+    {{/if}}
+</template>
+
+<template name="contentitem_photo">
+    foto
+</template>
+
+<template name="contentitem_link">
+    link
+</template>

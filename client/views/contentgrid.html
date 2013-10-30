@@ -1,37 +1,7 @@
-<template name="contentitem">
 
-    <div id="{{_id}}" class="contentitemcontainer content_type_{{type}}">
-        <div  style="background-color: {{bgcol}}" id="border{{_id}}" class="contentitemborder">
-
-            {{#if title}}
-            <span style="float:right" class="{{contentTypeMetaData.icon}} {{contentTypeMetaData.class}}"> {{type}}</span>
-            <div class="mediatitle">
-                {{title}}
-            </div>
-            {{/if}}
-            {{#if showThumb}}
-            <div id="mediathumb_{{_id}}" class="mediathumb">
-                <img src="{{thumbnailurl}}">
-            </div>
-            {{/if}}
-            {{#if showMedia}}
-            <div id="mediacontent_{{_id}}" >
-               {{>embeddedmedia}}
-            </div>
-            {{/if}}
-            <div class="contentmetadata">
-                <i class="icon-heart"></i> <span class="badge">{{numlikes}} </span>
-                <span class="postdate" data-date="{{postedDate}}"><span class="glyphicon glyphicon-calendar"></span> {{postedDate}}</span>
-            </div>
-        </div>
-    </div>
-
-</template>
 
 <template name="embeddedmedia">
-    <div class="preserve">
     {{{content}}}
-    </div>
 </template>
 
 <template name="navbar">
@@ -49,12 +19,22 @@
     </nav>
 </template>
 
-<template name="contentgrid">
+
+<template name="maincontentgrid">
     {{>navbar}}
     <br><br><br>
-    <div id="contentgridcontainer">
+      {{>contentgrid}}
+</template>
+
+<template name="contentgrid">
+    <div id="contentgridcontainer" class="container">
         {{#each voodoocontent}}
           {{>contentitem}}
         {{/each}}
     </div>
+    {{#if moreResults}}
+    <div id="showMoreResults" style="margin-left: 25px;">
+        <span class="loading"> </span>
+    </div>
+    {{/if}}
 </template>

@@ -4,7 +4,7 @@ require "Config", (config) ->
   if ! config.isInitialized()
     config.globalconfig.insert
       facebook:
-        pageaccesstoken: "AAAAAEinyRRYBAATsjalchsrxm1uVZCLYS1vpVjtkI7fHgiO2L1LbaSJpC8dZB2GHlBhWOqUoZAW2aQT7H15HsXjGTkIeEWVZBz0LjTmms0O7IM8vZCUxS"
+        pageaccesstoken: "CAAAAEinyRRYBAGYV8VTy8YJohLuaqFFqmZCVpsGEsY5bxwQf39xyTAyYpjoeC2gfZCrvk1MZBSacdiDAxHA5kGlLMbu0oLCzHkmqQVUc8Vdi98fOEcVd9OKrGpUwrROczZBUMQz5MjHUjGAJRSzIdf1JuGeNnMMinTZBQ1N8NPRYpeGNPpZALf"
         appid: "78013154582"
         appsecret: "e702a69b75c23dc41266d719cec3c408"
       embedly:

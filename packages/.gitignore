@@ -6,7 +6,7 @@ jade-handlebars
 HTML5-History-API
 define
 presence
-npm
+
 bootstrap-3
 handlebar-helpers
 headly
@@ -14,3 +14,6 @@ spin
 z-mongo-admin
 moment
 iron-router
+nprogress
+event-hooks
+nodetime

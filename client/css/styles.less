@@ -1,23 +1,42 @@
 @import "elements.lessimport";
 
+@background: white;
+@foreground: black;
+@grayscale_amount: 0.6;
+
+
 .eventgridimage {
 //  width:100%;
 //  height:100%;
 }
 
 div.contentitemcontainer {
+  transition: border-color 1.5s ease;
   width: 260px;
   height: 280px;
-  margin: 0px;
   float: left;
+  color: @foreground;
   //line-height: 1.428571429;
-  background-color: #ffffff;
+  //background-color: #000000;
   //border: 1px solid #dddddd;
   //border-radius: 4px;
   //-webkit-transition: all 0.2s ease-in-out;
   //transition: all 0.2s ease-in-out;
-  .transition(0.5s, ease);
+  border: 3px solid black;
+  margin: 3px;
+  position: relative;
+  box-sizing: content-box;
+
+  border-radius: 3px;
+  text-overflow:ellipsis;
+  overflow: hidden;
 }
+
+div.contentitemcontainer:hover {
+ margin: 1px;
+ border: 5px solid @foreground !important;
+}
+
 
 #contentgridcontainer {
 //  min-height: 200px;
@@ -34,7 +53,7 @@ div.contentitemcontainer {
 
 
 .contentitemcontainer.wide {
-   width: 100%;
+   width: 520px;
  }
 
 .contentitemcontainer.tall {
@@ -181,28 +200,106 @@ div.contentitemcontainer {
   margin-top: -25px;
 }
 
+.mediaplaybutton {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  font-size:36px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 36px;
+}
 
+.contentopenbutton {
+  position: absolute;
+  bottom:0px;
+  right:0px;
+  background-color: rgba(255,255,255,0.75);
+}
 
 .mediathumb {
-  width: 100%;
+  width: 260px;
+  height: 280px;
+  z-index:0;
+  float:left;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.contenttypelabel {
+  font-size: 18px;
+}
+
+.eventdate {
+  position: absolute;
+  top: 0px;
+  left:0px;
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
+  border-bottom-right-radius: 5px;
+  border-color: blue;
+  background-color:blue;
+  padding: 0px;
+  padding-right: 4px;
+  //font-weight: bold;
+  font-size: 16px;
+  z-index: 5;
+  color: white;
+}
+
+.mediatitle span {
+  background-color: rgba(0,0,0,0.7);
 }
 
 .mediatitle {
-  font-weight: bold;
+  //font-weight: bold;
   text-overflow:ellipsis;
-  height:40px;
-  color: white;
   overflow: hidden;
-  word-break: break-all;
+  font-size: 16px;
+  max-height:50px;
+
+  //word-break: break-all;
+  position: absolute;
+  bottom:0px;
+  left:0px;
+  bottom:0px;
+  z-index: 5;
+  display: inline-block;
+  width: 100%;
+
+
+  //-webkit-text-stroke: 1px black;
+
+/*  text-shadow:
+    2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000;
+*/
 //  background-color: #f5f5f5;
+}
+
+.mediatitle span {
+  //background-color: white;
+  color: white;
+  //border: 2px solid white;
+  //border-radius: 2px;
+  opacity: 0.9;
+  padding: 4px;
 }
 
 
 body {
-//  background-color: black;
-  font-family: monospace;
+  background-color: @background;
+  font-family: verdana;
   text-rendering: optimizeLegibility;
-//  color: white;
+  color: @foreground;
 }
 
 div.contentitemcontainer img { /* Universal settings */
@@ -214,21 +311,31 @@ div.contentitemcontainer img { /* Universal settings */
 
   background-position: center center;
 }
+
+
+
 div.contentitemcontainer img:not(:hover) {
-  -webkit-filter:grayscale(100%);
-  -moz-filter:grayscale(100%);
-  -ms-filter:grayscale(100%);
-  -o-filter:grayscale(100%);
-  filter:grayscale(100%);
+  -webkit-filter:sepia(@grayscale_amount);
+  -moz-filter:sepia(@grayscale_amount);
+  -ms-filter:sepia(@grayscale_amount);
+  -o-filter:sepia(@grayscale_amount);
+  filter:sepia(@grayscale_amount);
 }
 
 div.contentitemcontainer img:hover {
-  -webkit-filter:grayscale(0%);
-  -moz-filter:grayscale(0%);
-  -ms-filter:grayscale(0%);
-  -o-filter:grayscale(0%);
-  filter:grayscale(0%);
+  -webkit-filter:sepia(0);
+  -moz-filter:sepia(0);
+  -ms-filter:sepia(0);
+  -o-filter:sepia(0);
+  filter:sepia(0);
 }
+
+
+div.contentitemexpanded {
+    width: 530px;
+    height: 280px;
+}
+
 
 
 span.postdate {
@@ -257,4 +364,8 @@ img.parallax {
 
 .cast-item {
   position: absolute;
+}
+
+.contentitemexpanded .mediatitle {
+  display: none;
 }

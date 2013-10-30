@@ -2,38 +2,54 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
 
   self= {};
 
+  self.contentCollection =  new Meteor.Collection("voodoocontent")
+
   self.contentBlockSize = 10
 
   self.helpers =
     postedDate: -> moment(new Date(this.post_date)).fromNow()
+    day: ->
+      format = "dddd"
+      p = moment(new Date(this.post_date))
+      if ! (p.diff(moment(),"days") in [0..6])
+        format += " D/M/YY"
+      p.format(format)
     isFeatured: -> (this.isFeatured == true)
-    numlikes: -> this.facebookData?.like_count ? 0
+    numlikes: -> this.like_count ? 0
 
-  # content for rendering grid
-  self.contentCollection =  new Meteor.Collection("voodoocontent")
 
   self.subscribeContent = (options, callback) ->
     Meteor.subscribe "content", options, callback
 
+  self.lastItemCount = -> self.cursor?.count() ? 0
+  self.getDetails = (id) ->
+    self.subscribeContent({query: id, fields: {facebookData: 1, description: 1}})
+
+
+  self.lastLimit = 0
+
   self.getContent = (options) ->
       console.log options
-      self.contentCollection.find( options?.query ? {},
-      #  skip: self.contentBlockSize *  (options.blockno ? 0)
-      #  limit: self.contentBlockSize
-        fields: options?.fields? null
+      opts =
+        #skip: self.contentBlockSize *  (options?.blockno ? 0)
+        limit: self.lastLimit = (self.contentBlockSize * (options?.blockno ? 0) )
+        fields: options?.fields
         sort: options?.sort
-      )
+      q = options?.query ? {}
+      console.log("running find on db",q,opts)
 
-  self.getContentBySourceId = (sourceId) -> self.contentCollection.find({sourceId: sourceId})
+      return self.cursor = self.contentCollection.find(q, opts)
+
+  self.getContentBySourceId = (sourceId) -> self.contentCollection.findOne({sourceId: sourceId})
+  self.getContentById = (id) -> self.contentCollection.findOne(id)
 
   if (Meteor.isServer)
 
-    Meteor.publish "content", (query={}, blockno=0, fields={}) ->
-      console.log("client subscribed to content at blockno:"+blockno)
-      console.log(query)
-
-
-      self.getContent(query,blockno,fields)
+    Meteor.publish "content", (options = {}) ->
+      console.log("client subscribed to content", options)
+      if (! options.fields?)
+        options.fields = { facebookData: 0, description: 0 }
+      self.getContent(options)
 
     Meteor.methods
       prepareMediaEmbeds: (embedParams) ->

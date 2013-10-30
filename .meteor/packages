@@ -18,7 +18,12 @@ font-awesome
 handlebar-helpers
 HTML5-History-API
 moment
-npm
 page-js-ie-support
 spin
 iron-router
+router
+nprogress
+d3
+accounts-base
+event-hooks
+npm
