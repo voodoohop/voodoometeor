@@ -75,14 +75,17 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
     content: -> self.getEmbedlyData(this)?.html
 
 
+
   Template.contentitem.events =
-    'click .rsvpbutton': () ->
+    'click .rsvp_decline': () ->
+      eventManager.rsvp(this._id, false)
+    'click .rsvp_attend': () ->
       eventManager.rsvp(this._id, true)
 
     'click .mediathumb': () ->
       console.log(this)
       #$(".contentitemcontainer").not("#"+this._id).removeClass("wide").removeClass("front").removeClass("tall")
-      if (Session.get("contentitemSelected",this._id))
+      if (Session.get("contentitemSelected") == this._id)
         Session.set("contentitemSelected",null)
       else
         Session.set("contentitemSelected",this._id)

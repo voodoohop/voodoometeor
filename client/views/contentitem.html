@@ -59,10 +59,19 @@
             {{location}} <br>
            </p>
     <div class="btn-group btn-group-xs">
-        <button type="button" class="rsvpbutton btn btn-primary" {{#if rsvp_confirmed}}diabled="disabled"{{/if}}><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-calendar{{/if}}"></span> Rsvp</button>
+        <button type="button" data-toggle="dropdown" class="rsvpbutton btn btn-primary dropdown-toggle"><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-question-sign{{/if}}"></span> {{#if rsvp_confirmed}}Attending{{else}}RSVP{{/if}} <span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a class="rsvp_attend" href="#"><span class="glyphicon glyphicon-ok"></span> Attending</a></li>
+            <li><a class="rsvp_decline" href="#"><span class="glyphicon glyphicon-question-sign"></span> Undecided</a></li>
+        </ul>
+    </div>
+    <div class="btn-group btn-group-xs">
         <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-bullhorn"></span> Invite</button>
-        <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-share"></span> Share</button>
+    </div>
 
+    <div class="btn-group btn-group-xs">
+        <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-share"></span> Share</button>
+    </div>
     </div>
     <p>
         <small>
@@ -71,6 +80,9 @@
             {{/markdown}}
         </small>
     </p>
+    {{/if}}
+    {{#if rsvp_confirmed}}
+        <div class="event_confirmed_indicator" style="border-color: {{bgcol}}; background-color: {{bgcol}}"><span class="glyphicon glyphicon-ok"></span></div>
     {{/if}}
 </template>
 

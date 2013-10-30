@@ -28,7 +28,7 @@ define "EventManager",["VoodoocontentModel"], (model) ->
   if (Meteor.isClient)
     self.fbLoggedin = (fbapi) ->
       self.fb = fbapi;
-      fbapi.api("/me/events", (res) -> _.each(res.data, (e) ->
+      fbapi.api("/me/events/attending", (res) -> _.each(res.data, (e) ->
         Meteor.call("importFacebookEvent",e.id, (err,id) ->
           console.log("inserted event with id:",id);
           Meteor.users.update(Meteor.userId(), $addToSet: { attending: id})
@@ -41,7 +41,8 @@ define "EventManager",["VoodoocontentModel"], (model) ->
       else
         Meteor.users.update(Meteor.userId(), $pull: { attending: eventid})
       if (self.fb?)
-        doRsvp = -> self.fb.api(model.getContentById(eventid).sourceId+"/attending","POST", (res) -> console.log(res))
+        fbConnection = if confirm then "attending" else "maybe"
+        doRsvp = -> self.fb.api(model.getContentById(eventid).sourceId+"/"+fbConnection,"POST", (res) -> console.log(res))
         if (Meteor.user().services.facebook.permissions.rsvp_event)
           doRsvp()
         else

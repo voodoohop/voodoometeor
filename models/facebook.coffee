@@ -65,6 +65,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     self.importUpdateEvent = (fbid) ->
       console.log("importing fb event with graph id:"+fbid)
       res = Meteor.sync((done) -> fb.api fbid, {fields: fbschemas.event_fields}, (fbres) -> done(null,fbres))
+      #console.log(res)
       event = res.result
       res = Meteor.sync((done) -> fb.api ""+fbid+"/attending",{summary:true}, (fbres) -> done(null,fbres))
       numattending = res.result.summary.count
@@ -77,7 +78,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
         sourceId: event.id
         source: "facebook"
         facebookData: event
-        picture: event.cover?.source
+        picture: event.cover?.source ? event.picture?.data?.url
         start_time: new Date(event.start_time).toJSON()
         post_date: new Date(event.start_time).toJSON()
         end_time: event.end_time
@@ -141,10 +142,16 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
             contentModel.contentCollection.update {sourceId: post.id}, {$set: voodoocontent}
           return contentModel.getContentBySourceId(post.id)._id
 
+    self.numEventsImporting=0;
     Meteor.methods(
       importFacebookEvent: (params) ->
-        this.unblock()
-        self.importUpdateEvent(params)
+        self.numEventsImporting++;
+
+        this.unblock() if self.numEventsImporting < 10
+        evtid = self.importUpdateEvent(params)
+        self.numEventsImporting--;
+        return evtid
+
       importFacebookPost: ->
         this.unblock()
         self.importUpdatePost
@@ -190,3 +197,5 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     Meteor.call "importFacebookEvent", evt, (e, s) ->
       console.log e, s
 
+  ## import all fb
+  ## FB.api("/me/friends",{limit:3000}, function(res) { _.each(res.data, function (u) {FB.api(u.id+"/events/attending", function(e) {_.each(e.data,function(event) {Meteor.call("importFacebookEvent",event.id)})})}) })

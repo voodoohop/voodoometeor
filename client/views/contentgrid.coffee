@@ -11,6 +11,9 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
     filters =  {}
     _.each Session.get("active_content_filters"), (f) ->
       filters["type"] = f
+    filters.post_date = { "$gte": (new Date()).toISOString() }
+    #filters["address.city"] = "São Paulo"
+    filters["like_count"] = {"$gte": 5}
     options =
       query: filters
       sort: sort
@@ -27,7 +30,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
 
 
   Session.set("active_content_filters",[])
-  Session.set("content_sort", {name: "post_date", order: -1})
+  Session.set("content_sort", {name: "post_date", order: 1})
 
 
   Session.set("blockvisible",1)
@@ -80,7 +83,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
 
 
   Template.contentgrid.rendered = ->
-  Template.contentitem.rendered = ->
+
 
 
   #infinite scroll
