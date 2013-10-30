@@ -8,31 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/views/contentitem.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/views/contentitem.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/views/utils/d3_vendor_extension.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/eventmanager.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/fbclient.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/views/psychedelia.coffee" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/fbinit.coffee" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/meteor-isotope/isotope" afterPath="$PROJECT_DIR$/packages/meteor-isotope/isotope" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/meteor-isotope" afterPath="$PROJECT_DIR$/packages/meteor-isotope" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/.gitignore" afterPath="$PROJECT_DIR$/packages/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentcommon.coffee" afterPath="$PROJECT_DIR$/client/views/contentcommon.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentgrid.coffee" afterPath="$PROJECT_DIR$/client/views/contentgrid.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentgrid.html" afterPath="$PROJECT_DIR$/client/views/contentgrid.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/facebook.coffee" afterPath="$PROJECT_DIR$/models/facebook.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/lib/init.coffee" afterPath="$PROJECT_DIR$/server/lib/init.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.coffee" afterPath="$PROJECT_DIR$/main.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.html" afterPath="$PROJECT_DIR$/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/maintemplate.html" afterPath="$PROJECT_DIR$/client/views/maintemplate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages.json" afterPath="$PROJECT_DIR$/packages.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/release" afterPath="$PROJECT_DIR$/.meteor/release" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smart.json" afterPath="$PROJECT_DIR$/smart.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smart.lock" afterPath="$PROJECT_DIR$/smart.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/styles.less" afterPath="$PROJECT_DIR$/client/css/styles.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/voodoocontent-model.coffee" afterPath="$PROJECT_DIR$/models/voodoocontent-model.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="voodoometeor.iws" />
@@ -114,7 +90,7 @@
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/css/base.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935133510" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/stylesheets/style.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374929645427" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/css/jquery.mobile-1.2.0.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935255661" ignored="false" />
-    <file path="/Dummy.txt" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1383073499377" ignored="false" />
+    <file path="/Dummy.txt" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1383114257945" ignored="false" />
     <file path="/jsincludes.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375051148981" ignored="false" />
     <file path="/fb.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375051376305" ignored="false" />
     <file path="/facebook.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1383112374602" ignored="false" />
@@ -233,7 +209,7 @@
       <file leaf-file-name="facebook.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/facebook.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="159" column="23" selection-start="6429" selection-end="6429" vertical-scroll-proportion="0.654321">
+            <state line="159" column="23" selection-start="6429" selection-end="6429" vertical-scroll-proportion="1.05698">
               <folding />
             </state>
           </provider>
@@ -862,11 +838,12 @@
     <frame x="4" y="22" width="1260" height="774" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32721713" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18858954" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39939025" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32659662" sideWeight="0.6006098" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32659662" sideWeight="0.6727829" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40501213" sideWeight="0.42682928" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -875,7 +852,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32721713" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39908257" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -923,7 +899,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned scope, temporarily removed any masonry" />
+    <option name="LAST_COMMIT_MESSAGE" value="now with working facebook rsvp, login, permission check and auto import events" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -949,6 +925,7 @@
     <MESSAGE value="voodoo site - working isotope on black baground. type filtering" />
     <MESSAGE value="moved contentitem to separate template to start move to cast.js" />
     <MESSAGE value="cleaned scope, temporarily removed any masonry" />
+    <MESSAGE value="now with working facebook rsvp, login, permission check and auto import events" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1068,7 +1045,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/facebook.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="23" selection-start="6429" selection-end="6429" vertical-scroll-proportion="0.654321">
+        <state line="159" column="23" selection-start="6429" selection-end="6429" vertical-scroll-proportion="1.05698">
           <folding />
         </state>
       </provider>
