@@ -8,12 +8,14 @@ require ["EventManager"], (eventmanager) ->
       status     : true                                 # Check Facebook Login status
       xfbml      : true                                  # Look for social plugins on the page
     )
+    Session.set("fbloggedin",false)
     FB.Event.subscribe 'auth.authResponseChange', (response) ->
       if (response.status == 'connected')
         console.log("fb client connect")
         console.log(response)
         accessToken = response.authResponse.accessToken
         FB.api '/me', (fbUser) ->
+          Session.set("fbloggedin",true);
           FB.api "/me/permissions", (response) ->
             if response and response.data and response.data.length
               permissions = response.data.shift()

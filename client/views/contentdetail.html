@@ -1,9 +1,18 @@
+<template name="contentdetailhead">
+    <meta property="og:title" content="{{title}}"/>
+    <meta property="og:image" content="{{picture}}"/>
+    <meta property="og:description" content="{{description}}" />
+    <title>VOODOOHOP - {{title}}</title>
+</template>
+
 <template name="contentdetail">
+
     <div class="jumbotron">
-        <div class="container">
             <h1>{{title}}</h1>
-            <p>...</p>
             <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+        <img src="{{picture}}">
         </div>
-    </div>
+    <div>{{#markdown}}{{description}}{{/markdown}}</div>
+        <div id="images">{{friendsAttending}}{{{profileimages}}}</div>
+
 </template>

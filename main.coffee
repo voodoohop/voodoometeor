@@ -36,11 +36,13 @@ require ["EventManager"], (eventmanager) ->
 
 
       Router.map ->
-        this.route 'maincontentgrid'
-
+        this.route 'content',
+          path:'/'
+          template: 'contentgrid'
+          layoutTemplate: 'mainlayout'
 
       console.log("configured router")
-      Template.maintemplate.user = Meteor.user
+
 
       Meteor.startup ->
         Handlebars.registerHelper("user", ->

@@ -20,14 +20,8 @@
 </template>
 
 
-<template name="maincontentgrid">
-    {{>navbar}}
-    <br><br><br>
-      {{>contentgrid}}
-</template>
-
 <template name="contentgrid">
-    <div id="contentgridcontainer" class="container">
+    <div id="contentgridcontainer">
         {{#each voodoocontent}}
           {{>contentitem}}
         {{/each}}

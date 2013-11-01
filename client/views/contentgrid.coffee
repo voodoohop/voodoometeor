@@ -13,7 +13,8 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       filters["type"] = f
     filters.post_date = { "$gte": (new Date()).toISOString() }
     #filters["address.city"] = "São Paulo"
-    filters["like_count"] = {"$gte": 5}
+    filters["like_count"] = {"$gte": 400}
+
     options =
       query: filters
       sort: sort
@@ -34,17 +35,6 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
 
 
   Session.set("blockvisible",1)
-
-  Meteor.startup ->
-   Deps.autorun ->
-    console.log("subscribing to content")
-    self.subscribeFilteredSortedContent((content) ->
-      self.voodoocontent=model.getContent(Session.get("contentoptions"))
-      console.log("received content")
-      NProgress.done();
-    )
-    NProgress.start();
-
 
 
 
@@ -80,9 +70,18 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       Session.set("blockvisible",1)
       console.log(filters)
 
-
+  self.setupReactiveContentSubscription = _.once( ->
+    Deps.autorun ->
+      console.log("subscribing to content")
+      self.subscribeFilteredSortedContent( ->
+        NProgress.done();
+      )
+      NProgress.start();
+  )
 
   Template.contentgrid.rendered = ->
+    self.setupReactiveContentSubscription();
+
 
 
 

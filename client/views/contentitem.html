@@ -11,28 +11,37 @@
 
 <template name="contentitem">
     <div id="{{_id}}" class="contentitemcontainer content_type_{{type}} {{#if isExpanded}} contentitemexpanded {{/if}}" style="border-color: {{bgcol}}">
-        {{>contentthumb}}
         <span class="contenttypelabel {{contentTypeMetaData.icon}} {{contentTypeMetaData.class}}" style="background-color: {{bgcol}}; position: absolute; right: -2px; top: -2px;"> </span>
+     {{#unless isExpanded}}
+      <div class="front">
+        {{>contentthumb}}
         {{#if title}}
         {{#if contentTypeMetaData.showtitle}}
-        <div class="mediatitle">
-            <span class="mediatitletext">{{title}}</span>
+        <div class="title">
+            <span class="titletext">{{title}}</span>
         </div>
         {{/if}}
         {{/if}}
-        {{#if showMedia}}
-        <div id="mediacontent_{{_id}}" >
-            {{>embeddedmedia}}
-        </div>
-        {{/if}}
-
-        {{typespecificcontent}}
-
-        <div class="contentmetadata">
+        <div class="metadata">
             <i class="icon-heart"></i> <span class="badge">{{numlikes}} </span>
            <!-- <span class="postdate" data-date="{{postedDate}}"><span class="glyphicon glyphicon-calendar"></span> {{postedDate}}</span>
             -->
         </div>
+         {{typespecificcontent}}
+      </div>
+     {{else}}
+      <div class="back">
+
+          {{#unless showMedia}}
+          {{>contentthumb}}
+          {{else}}
+          <div id="mediacontent_{{_id}}" >
+              {{>embeddedmedia}}
+          </div>
+          {{/unless}}
+          {{typespecificcontent}}
+      </div>
+     {{/unless}}
     </div>
 </template>
 
@@ -44,10 +53,12 @@
 </template>
 
 <template name="contentitem_event">
-    <div class="eventdate" style="border-color: {{bgcol}}; background-color: {{bgcol}}">
+    {{#unless isExpanded}}
+    <div class="date" style="border-color: {{bgcol}}; background-color: {{bgcol}}">
         {{day}}
     </div>
-    {{#if isExpanded}}
+    {{else}}
+      <div class="info">
         <h4>{{title}}</h4>
 
             <p class="text-muted">
@@ -72,6 +83,8 @@
     <div class="btn-group btn-group-xs">
         <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-share"></span> Share</button>
     </div>
+    <div class="btn-group btn-group-xs">
+        <a href="{{pathFor 'contentdetail'}}" class="btn btn-info"><span class="glyphicon glyphicon-share"></span> Details</a>
     </div>
     <p>
         <small>
@@ -80,7 +93,8 @@
             {{/markdown}}
         </small>
     </p>
-    {{/if}}
+    </div>
+    {{/unless}}
     {{#if rsvp_confirmed}}
         <div class="event_confirmed_indicator" style="border-color: {{bgcol}}; background-color: {{bgcol}}"><span class="glyphicon glyphicon-ok"></span></div>
     {{/if}}

@@ -1,7 +1,13 @@
-<template name="maintemplate">
-    <div id="fb-root"></div>
-
-
+<template name="mainlayout">
+    <head>
+        {{yield 'head'}}
+    </head>
+    <div id="head2">
+    {{yield 'head2'}}
+    </div>
+   <!-- >navbar -->
+    <br><br><br>
+    <div class="container">
     {{yield}}
-
+    </div>
 </template>

@@ -26,13 +26,6 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
     isExpanded: -> Session.get("contentitemSelected") == this._id
 
-    description: ->
-      model.getDetails(this._id)
-      this.description
-
-    description_reduced: ->
-      console.log("reducing", this)
-      this.description.substring(0,300)+ "..."
     rsvp_confirmed: ->
       _.contains(Meteor.user()?.attending, this._id)
 

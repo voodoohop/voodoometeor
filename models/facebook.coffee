@@ -147,7 +147,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       importFacebookEvent: (params) ->
         self.numEventsImporting++;
 
-        this.unblock() if self.numEventsImporting < 10
+        this.unblock() #if self.numEventsImporting < 10
         evtid = self.importUpdateEvent(params)
         self.numEventsImporting--;
         return evtid

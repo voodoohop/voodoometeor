@@ -2,7 +2,7 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
 
   self= {};
 
-  self.contentCollection =  new Meteor.Collection("voodoocontent")
+  self.contentCollection = new Meteor.Collection("voodoocontent")
 
   self.contentBlockSize = 10
 
@@ -16,14 +16,28 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
       p.format(format)
     isFeatured: -> (this.isFeatured == true)
     numlikes: -> this.like_count ? 0
+    description: ->
+      self.subscribeDetails(this._id)
+      this.description
 
+  description_reduced: ->
+    console.log("reducing", this)
+    this.description.substring(0,300)+ "..."
 
   self.subscribeContent = (options, callback) ->
     Meteor.subscribe "content", options, callback
 
   self.lastItemCount = -> self.cursor?.count() ? 0
-  self.getDetails = (id) ->
-    self.subscribeContent({query: id, fields: {facebookData: 1, description: 1}})
+  self.subscribeDetails = (id, callback) ->
+    if (Meteor.isClient)
+      self.subscribeContent({query: id, details: true}, callback)
+
+  #self.subscribeDetailsIronRouter = (id, callback) ->
+  #  if (Meteor.isClient)
+  #    self.subscribeContentIronRouter({query: id, details: true}, callback)
+  #self.subscribeContentIronRouter = (options, callback) ->
+  #  this.subscribe "content", {query: id, details: true}, callback
+
 
 
   self.lastLimit = 0
@@ -41,13 +55,15 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
       return self.cursor = self.contentCollection.find(q, opts)
 
   self.getContentBySourceId = (sourceId) -> self.contentCollection.findOne({sourceId: sourceId})
-  self.getContentById = (id) -> self.contentCollection.findOne(id)
+  self.getContentById = (id) ->
+    self.subscribeDetails(id);
+    self.contentCollection.findOne(id)
 
   if (Meteor.isServer)
 
     Meteor.publish "content", (options = {}) ->
       console.log("client subscribed to content", options)
-      if (! options.fields?)
+      if (! options.fields? && ! options.details )
         options.fields = { facebookData: 0, description: 0 }
       self.getContent(options)
 
