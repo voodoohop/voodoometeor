@@ -13,7 +13,7 @@ require ["EventManager"], (eventmanager) ->
     #Meteor.publish "user", ->
     #  Meteor.users.find({},{fields: {'profile': 1, services : 1, pecado: 1, virtude: 1}})
     Meteor.publish("userData", ->
-      Meteor.users.find({_id: this.userId}, {fields: {attending: 1, services: 1}});
+      Meteor.users.find({_id: this.userId}, {fields: {attending: 1, services: 1, profile: 1}});
     )
     ## hack until we manage to set userId on server
     #Meteor.publish("users", ->
@@ -40,6 +40,8 @@ require ["EventManager"], (eventmanager) ->
           path:'/'
           template: 'contentgrid'
           layoutTemplate: 'mainlayout'
+          yieldTemplates:
+            'navbar': {to: 'navbar'}
 
       console.log("configured router")
 

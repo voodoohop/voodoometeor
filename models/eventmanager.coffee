@@ -16,6 +16,7 @@ define "EventManager",["VoodoocontentModel"], (model) ->
 
     Meteor.methods
       attendEvent: (eventid) ->
+        this.unblock();
         console.log(""+this.userId+" attending" +eventid)
         Meteor.users.update(this.userId, $addToSet: { attending: eventid})
 
@@ -28,10 +29,12 @@ define "EventManager",["VoodoocontentModel"], (model) ->
   if (Meteor.isClient)
     self.fbLoggedin = (fbapi) ->
       self.fb = fbapi;
+      #return #hack to not attend events
       fbapi.api("/me/events/attending", (res) -> _.each(res.data, (e) ->
         Meteor.call("importFacebookEvent",e.id, (err,id) ->
           console.log("inserted event with id:",id);
-          Meteor.users.update(Meteor.userId(), $addToSet: { attending: id})
+          if id
+            Meteor.users.update(Meteor.userId(), $addToSet: { attending: id})
           #Meteor.call("attendEvent", id, (err, res) -> console.log(err,res));
         )
       ))

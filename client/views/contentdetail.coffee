@@ -4,10 +4,11 @@ require ["VoodoocontentModel","ContentItem"], (model, contentItem) ->
    Router.map ->
     this.route 'contentdetail',
       path: '/contentdetail/:_id'
-      template: 'contentdetail'
+      #template: 'contentdetail'
       layoutTemplate: 'mainlayout'
       yieldTemplates:
         'contentdetailhead': {to: 'head'}
+        'contentdetail': {to: 'contentdetail'}
       #waitOn: ->
       #  console.log("router subscribing to ",this.params._id)
       #  model.getDetails(this.params._id)

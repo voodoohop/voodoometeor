@@ -15,6 +15,10 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
   self.getEmbedlyData = (data) -> _.findWhere(data.embedlyData, self.embedParams)
 
+  self.rsvp_confirmed = (item) ->
+    return false unless Meteor.user()
+    _.contains(Meteor.user()?.attending, item._id)
+
   self.helpers =
     typespecificcontent: ->
       #console.log "specific",new Handlebars.SafeString(Template["contentitem_"+this.type]())
@@ -24,10 +28,9 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
     showMedia: -> Session.get(this._id+"_showMedia")
 
-    isExpanded: -> Session.get("contentitemSelected") == this._id
+    isExpanded: -> (Session.get("contentitemSelected") == this._id) or this.expanded
 
-    rsvp_confirmed: ->
-      _.contains(Meteor.user()?.attending, this._id)
+    rsvp_confirmed: -> self.rsvp_confirmed(this)
 
 
   Template.contentitem.helpers self.helpers

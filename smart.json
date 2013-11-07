@@ -9,6 +9,7 @@
     "moment": {},
     "iron-router": {},
     "nprogress": {},
-    "event-hooks": {}
+    "event-hooks": {},
+    "external-file-loader": {}
   }
 }

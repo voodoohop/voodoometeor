@@ -5,9 +5,13 @@
     <div id="head2">
     {{yield 'head2'}}
     </div>
-   <!-- >navbar -->
-    <br><br><br>
+   <div id="navbar">
+   {{yield 'navbar'}}
+   </div>
     <div class="container">
     {{yield}}
+    <div class="eventdetailmodal">
+        {{yield 'contentdetail'}}
+    </div>
     </div>
 </template>

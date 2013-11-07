@@ -27,3 +27,4 @@ d3
 accounts-base
 event-hooks
 npm
+external-file-loader

@@ -20,11 +20,13 @@ require ["EventManager"], (eventmanager) ->
             if response and response.data and response.data.length
               permissions = response.data.shift()
             Meteor.call("facebook_login", fbUser, accessToken, permissions, (err,uid) ->
+              console.log("facebook_login",err,uid)
               unless err
                 Meteor.connection.setUserId uid
-
+                console.log("calling event manager")
+                eventmanager.fbLoggedin(FB);
             )
-        eventmanager.fbLoggedin(FB);
+
       else
         if (response.status == 'not_authorized')
           FB.login();

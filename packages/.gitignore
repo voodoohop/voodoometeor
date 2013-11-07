@@ -6,7 +6,6 @@ jade-handlebars
 HTML5-History-API
 define
 presence
-
 bootstrap-3
 handlebar-helpers
 headly
@@ -17,3 +16,4 @@ iron-router
 nprogress
 event-hooks
 nodetime
+external-file-loader

@@ -11,9 +11,10 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
     filters =  {}
     _.each Session.get("active_content_filters"), (f) ->
       filters["type"] = f
-    filters.post_date = { "$gte": (new Date()).toISOString() }
+    #filters.post_date = { "$gte": (new Date()).toISOString() }
     #filters["address.city"] = "São Paulo"
-    filters["like_count"] = {"$gte": 400}
+
+    #filters["num_app_users_attending"] = {"$gte": 1}
 
     options =
       query: filters
@@ -27,48 +28,11 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
     {name: "post_date", title:"Post Date", icon:"glyphicon glyphicon-calendar", accessor: (e) -> e?.post_date}
     {name: "like_count", title:"Likes", icon:"glyphicon glyphicon-heart", accessor: (e) -> e?.like_count}
   ]
-
-
-
-  Session.set("active_content_filters",[])
-  Session.set("content_sort", {name: "post_date", order: 1})
-
-
   Session.set("blockvisible",1)
 
 
 
-  Template.navbar.helpers
-    contentTypes: -> self.contentTypes
-    sortTypes: -> self.sortTypes
-    activeContentFilters: -> Session.get("active_content_filters")
-
-    activeContentFilter: -> if _.contains(Session.get("active_content_filters"),this.name) then "active" else ""
-
-
   Template.contentgrid.voodoocontent = -> model.getContent(Session.get("contentoptions"))
-
-  Template.navbar.events =
-    'click .sort_filter': () ->
-      content_sort = Session.get("content_sort")
-      Session.set("content_sort",
-        name: this.name
-        order: (if content_sort.name == this.name then content_sort.order * -1 else 1)
-      )
-      Session.set("blockvisible",1)
-      console.log(Session.get("content_sort"))
-
-      #Meteor.Router.to("/eventdetail/"+this._id)
-
-    'click .content_filter': () ->
-      filters = Session.get("active_content_filters") ? []
-      if (_.contains(filters,this.name))
-        filters = _.without filters, this.name
-      else
-        filters.push(this.name)
-      Session.set("active_content_filters",filters)
-      Session.set("blockvisible",1)
-      console.log(filters)
 
   self.setupReactiveContentSubscription = _.once( ->
     Deps.autorun ->

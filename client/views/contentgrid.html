@@ -4,21 +4,6 @@
     {{{content}}}
 </template>
 
-<template name="navbar">
-    <nav class="navbar navbar-fixed-top " role="navigation">
-        <ul class="nav nav-pills nav-justified">
-            {{#each contentTypes}}
-            <li class="{{activeContentFilter}}"><a href="#" class="content_filter dropdown-toggle" style="font-size:130%" data-toggle="dropdown" id="content_filter_{{name}}"><span class="{{icon}}"></span> {{title}} <span class="caret"></span></a></li>
-            {{/each}}
-
-            {{#each sortTypes}}
-            <li class="{{activeSortFilter}}"><a href="#" class="sort_filter dropdown-toggle" style="font-size:130%" data-toggle="dropdown" id="sort_filter_{{name}}"><span class="{{icon}}"></span> {{title}}</a></li>
-            {{/each}}
-
-        </ul>
-    </nav>
-</template>
-
 
 <template name="contentgrid">
     <div id="contentgridcontainer">

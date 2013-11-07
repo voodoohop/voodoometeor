@@ -17,7 +17,7 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
     isFeatured: -> (this.isFeatured == true)
     numlikes: -> this.like_count ? 0
     description: ->
-      self.subscribeDetails(this._id)
+      #self.subscribeDetails(this._id)
       this.description
 
   description_reduced: ->
@@ -69,7 +69,7 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
 
     Meteor.methods
       prepareMediaEmbeds: (embedParams) ->
-
+        this.unblock();
         console.log("preparing embeds")
 
         # find and update all documents for which we have not generated the media embed for the specified params

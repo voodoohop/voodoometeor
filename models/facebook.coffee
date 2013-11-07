@@ -1,5 +1,6 @@
 require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbschemas) ->
   self = {}
+  # Meteor.users.remove({})
   if Meteor.isServer
 
     Hooks.onLoggedIn = (p) ->
@@ -62,11 +63,22 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
 
   #  fb.api "218099148337486",{fields: ["picture","cover"]}, (res) ->
   #    console.log(res)
-    self.importUpdateEvent = (fbid) ->
+    self.importUpdateEvent = (fbid, update=false) ->
+      return unless fbid
       console.log("importing fb event with graph id:"+fbid)
+      if (!update and contentModel.getContentBySourceId(fbid))
+        console.log("event already exists")
+        return contentModel.getContentBySourceId(fbid)._id
+      res = Meteor.sync((done) ->
+        query= "select uid from user where is_app_user=1 and uid in (select uid from event_member where eid = "+fbid+" and rsvp_status='attending')";
+        fb.api("/fql",{q:query},  (fbres) -> done(null,fbres))
+      )
+      num_app_users_attending = res.result.data.length
       res = Meteor.sync((done) -> fb.api fbid, {fields: fbschemas.event_fields}, (fbres) -> done(null,fbres))
       #console.log(res)
       event = res.result
+      return unless event.id
+
       res = Meteor.sync((done) -> fb.api ""+fbid+"/attending",{summary:true}, (fbres) -> done(null,fbres))
       numattending = res.result.summary.count
       if event.end_time
@@ -81,10 +93,13 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
         picture: event.cover?.source ? event.picture?.data?.url
         start_time: new Date(event.start_time).toJSON()
         post_date: new Date(event.start_time).toJSON()
-        end_time: event.end_time
+        end_time: new Date(event.end_time).toJSON()
         description: event.description
         type: "event"
         like_count: numattending
+        num_attending: numattending
+        num_app_users_attending: num_app_users_attending
+
       if (!contentModel.getContentBySourceId(event.id))
         console.log("event: #{voodoocontent.title} not found yet... inserting")
         contentModel.contentCollection.insert voodoocontent
@@ -93,11 +108,12 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
         contentModel.contentCollection.update {sourceId: event.id}, {$set: voodoocontent}
       modified = contentModel.getContentBySourceId(event.id)
       #console.log("inserted/modified event:", modified)
-      return contentModel.getContentBySourceId(event.id)._id
+      return contentModel.getContentBySourceId(fbid)?._id
 
     self.importUpdatePost = (fbid) ->
           res = Meteor.sync ((done) -> fb.api fbid, {fields: fbschemas.post_fields}, (fbres) -> done(null, fbres) )
           post = res.result
+          #console.log("post,",post.object_id)
 
           if (! post?.link?)
             console.log("without link... skipping")
@@ -110,7 +126,17 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
           if (post.likes?)
             post.like_count = Meteor.sync((done) -> fb.api ""+post.id+"/likes",{summary:true}, (fbres) -> done(null, fbres) ).result.summary.total_count
 
-           # has object_id if pointing to another image or video (can get high res thumb)
+            res = Meteor.sync((done) ->
+              #console.log(post)
+              whereclause =  if post.object_id? " object_id='" + post.object_id + "' " else " post_id='"+post.id+"'"
+              query= "select uid from user where is_app_user=1 and uid in (select user_id from like where "+whereclause+")";
+              console.log(query)
+              fb.api("/fql",{q:query},  (fbres) -> done(null,fbres))
+            )
+            console.log(res)
+            post.num_app_user_likes = res.result.data.length
+
+      # has object_id if pointing to another image or video (can get high res thumb)
           if (post.object_id?)
             post.full_picture = Meteor.sync((done) -> fb.api post.object_id, (fbres) -> done(null, fbres) ).result.source
           else
@@ -133,6 +159,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
             type: post.type
             like_count: post.like_count
             post_date: new Date(post.created_time).toJSON()
+            num_app_users_attending: post.num_app_user_likes
 
           if (!contentModel.getContentBySourceId(post.id))
             console.log("post: #{voodoocontent.title} not found yet... inserting")
@@ -161,17 +188,22 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
           accessToken: accessToken
           email: fbUser.email
           permissions: permissions
-        options = profile:
-          name: fbUser.name
+        options =
+          profile:
+            name: fbUser.name
+        console.log("adding/updating user from facebook user",serviceData,options)
         userId = Accounts.updateOrCreateUserFromExternalService("facebook", serviceData, options).id
         this.setUserId(userId)
+        Meteor.users.update(userId,{$set: options})
         return userId
     )
-    return self #hack to not load posts
+
+
 
     #contentModel.contentCollection.remove({})
+    return self #hack to not load posts
 
-    pages= ["voodoohop", "ideafixa", "calefacaotropicaos"]
+    pages= ["voodoohop", "ideafixa", "calefacaotropicaos", "209127459210998"]
     Meteor.setTimeout( ->
      for page in pages
 
@@ -186,6 +218,16 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     # facebook realtime notifications
 
 
+    #update existing events
+    Meteor.setTimeout( ->
+      events = contentModel.getContent({query: {type: "event", post_date: { "$gte": (new Date()).toISOString() }}}).fetch()
+      lists = _.groupBy(events, (a,b) -> Math.floor(b/10))
+      _.each(lists, (l) ->
+        Meteor.setTimeout( ->
+          _.each(l, (e) -> self.importUpdateEvent(e.sourceId, true))
+        , 500)
+      )
+    , 500)
 
 
   return self

@@ -1,5 +1,16 @@
+<template name="eventmapmarker">
+    <div  style='position: relative; width: 40px; height: 60px;'  title="" >
+    {{#if rsvp_confirmed }}
+    <img style='position: absolute; top: 0px; left:0px' src='/images/mapmarker_green.png'>
+    {{else}}
+    <img style='position: absolute; top: 0px; left:0px' src='/images/mapmarker.png'>
+    {{/if}}
+    <img style='position: absolute; top: 2px; left:2px; width: 36px; height:36px' data-toggle="tooltip" data-placement="right" data-original-title="{{title}}" class='eventmapmarkertooltip eventmapicon img-circle' src='http://graph.facebok.com/{{sourceId}}/picture?type=small'>
+</div>
+</template>
 
 <template name="eventmap">
+<input type="text" id="maptextfilter">
 <div id="eventmapcontainer">
 
 </div>
