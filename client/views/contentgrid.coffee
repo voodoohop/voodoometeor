@@ -24,10 +24,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
 
   self.contentTypes = contentCommon.contentTypes;
 
-  self.sortTypes = [
-    {name: "post_date", title:"Post Date", icon:"glyphicon glyphicon-calendar", accessor: (e) -> e?.post_date}
-    {name: "like_count", title:"Likes", icon:"glyphicon glyphicon-heart", accessor: (e) -> e?.like_count}
-  ]
+
   Session.set("blockvisible",1)
 
 

@@ -201,7 +201,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
 
 
     #contentModel.contentCollection.remove({})
-    return self #hack to not load posts
+    #return self #hack to not load posts
 
     pages= ["voodoohop", "ideafixa", "calefacaotropicaos", "209127459210998"]
     Meteor.setTimeout( ->

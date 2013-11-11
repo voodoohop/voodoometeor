@@ -5,208 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/views/utils/LeafletTomDivIcon.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/css/MarkerCluster.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/css/leaflet.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/css/leaflet.ie.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/leaflet.markercluster.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/views/navbar.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/views/navbar.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/js/jquerytoolbar/jquery.toolbar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/js/jquerytoolbar/jquery.toolbars.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/bgtiles/HappyEasterStainedGlassInChurchAnimatedByAngellovernumberone.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/bgtiles/Stain Glass animation.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/bgtiles/Stained-glass-windows-styles-stained-glass-windows-homecustomize.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/bgtiles/image_tile.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/bgtiles/images (2).jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/bgtiles/images (3).jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/bgtiles/images (4).jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/bgtiles/images (5).jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/bgtiles/images.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/bgtiles/stained.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/bgtiles/tile666.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper00.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper01.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper02.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper10.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper11.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper12.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper20.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper21.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper22.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper30.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper31.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper32.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper40.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper41.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper42.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper50.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper51.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper52.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper60.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper61.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper62.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper70.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper71.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper72.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper80.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper81.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper82.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper90.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper91.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/countdownimages/flipper92.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/CNAME" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/Gruntfile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/amelia/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/amelia/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/amelia/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/amelia/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/amelia/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/amelia/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/api/themes.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cerulean/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cerulean/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cerulean/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cerulean/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cerulean/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cerulean/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/component.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/composer.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cosmo/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cosmo/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cosmo/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cosmo/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cosmo/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cosmo/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/css/bootswatch.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/css/font-awesome.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cyborg/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cyborg/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cyborg/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cyborg/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cyborg/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/cyborg/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/default/bootstrap-responsive.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/default/bootstrap-responsive.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/default/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/default/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/default/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/default/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/flatly/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/flatly/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/flatly/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/flatly/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/flatly/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/flatly/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/font/FontAwesome.otf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/font/fontawesome-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/font/fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/font/fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/font/fontawesome-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/global/build-responsive.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/global/build.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/global/global.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/img/carboncostume.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/img/glyphicons-halflings-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/img/glyphicons-halflings.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/img/maxcdn.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/img/refs/beautifulwebdesign.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/img/refs/htmlandcss.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/img/refs/javascriptandjquery.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/journal/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/journal/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/journal/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/journal/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/journal/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/journal/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/js/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/js/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/js/bootswatch.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/js/bsa.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/js/jquery.smooth-scroll.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/readable/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/readable/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/readable/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/readable/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/readable/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/readable/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/simplex/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/simplex/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/simplex/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/simplex/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/simplex/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/simplex/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/slate/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/slate/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/slate/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/slate/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/slate/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/slate/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/spacelab/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/spacelab/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/spacelab/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/spacelab/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/spacelab/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/spacelab/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/spruce/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/spruce/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/spruce/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/spruce/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/spruce/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/spruce/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/superhero/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/superhero/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/superhero/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/superhero/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/superhero/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/superhero/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/img/glyphicons-halflings-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/img/glyphicons-halflings.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/swatch/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/swatch/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/swatchmaker-responsive.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/swatchmaker.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/test/bootswatch.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/test/bootswatch.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/test/jquery.smooth-scroll.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/test/test-full.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/test/test.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/swatchmaker/watcher.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/united/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/united/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/united/bootswatch.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/united/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/united/thumbnail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lib/bootswatch/united/variables.less" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/.gitignore" afterPath="$PROJECT_DIR$/packages/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentdetail.coffee" afterPath="$PROJECT_DIR$/client/views/contentdetail.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentcommon.coffee" afterPath="$PROJECT_DIR$/client/views/contentcommon.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentgrid.coffee" afterPath="$PROJECT_DIR$/client/views/contentgrid.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentgrid.html" afterPath="$PROJECT_DIR$/client/views/contentgrid.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentitem.coffee" afterPath="$PROJECT_DIR$/client/views/contentitem.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/contentitem.html" afterPath="$PROJECT_DIR$/client/views/contentitem.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/eventmanager.coffee" afterPath="$PROJECT_DIR$/models/eventmanager.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/eventmap.coffee" afterPath="$PROJECT_DIR$/client/views/eventmap.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/eventmap.html" afterPath="$PROJECT_DIR$/client/views/eventmap.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/facebook.coffee" afterPath="$PROJECT_DIR$/models/facebook.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/fbclient.coffee" afterPath="$PROJECT_DIR$/client/fbclient.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.coffee" afterPath="$PROJECT_DIR$/main.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/maintemplate.html" afterPath="$PROJECT_DIR$/client/views/maintemplate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smart.json" afterPath="$PROJECT_DIR$/smart.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/smart.lock" afterPath="$PROJECT_DIR$/smart.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/css/styles.less" afterPath="$PROJECT_DIR$/client/css/styles.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/voodoocontent-model.coffee" afterPath="$PROJECT_DIR$/models/voodoocontent-model.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/release" afterPath="$PROJECT_DIR$/.meteor/release" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="voodoometeor.iws" />
@@ -288,7 +91,7 @@
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/css/base.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935133510" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/stylesheets/style.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374929645427" ignored="false" />
     <file path="$PROJECT_DIR$/.meteor/local/build/static/node_modules/fb/samples/scrumptious/public/css/jquery.mobile-1.2.0.css" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1374935255661" ignored="false" />
-    <file path="/Dummy.txt" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1383582373666" ignored="false" />
+    <file path="/Dummy.txt" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1384143498550" ignored="false" />
     <file path="/jsincludes.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375051148981" ignored="false" />
     <file path="/fb.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1375051376305" ignored="false" />
     <file path="/facebook.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1383780656477" ignored="false" />
@@ -340,7 +143,7 @@
     <file path="/psychedelia.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1383013755497" ignored="false" />
     <file path="/eventmanager.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1383786328123" ignored="false" />
     <file path="/fbclient.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1383681443857" ignored="false" />
-    <file path="/eventmap.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1383846014180" ignored="false" />
+    <file path="/eventmap.coffee" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1383935817815" ignored="false" />
     <file path="/eventmap.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1383843855706" ignored="false" />
     <file path="/modestmaps.min.js" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1383274342475" ignored="false" />
     <file path="/navbar.html" changelist="19ee99c5-df6e-4e20-ae6c-0c5295f013ba" time="1383692470084" ignored="false" />
@@ -369,7 +172,7 @@
       <file leaf-file-name="eventmanager.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/eventmanager.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="17" selection-start="192" selection-end="192" vertical-scroll-proportion="-6.6">
+            <state line="11" column="17" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -378,7 +181,25 @@
       <file leaf-file-name="contentgrid.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/contentgrid.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="6" selection-start="1548" selection-end="1566" vertical-scroll-proportion="-9.76">
+            <state line="26" column="0" selection-start="977" selection-end="977" vertical-scroll-proportion="-10.68">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contentcommon.coffee" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/views/contentcommon.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="4" selection-start="413" selection-end="413" vertical-scroll-proportion="0.5026455">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="facebook.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/facebook.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="203" column="5" selection-start="8191" selection-end="8191" vertical-scroll-proportion="-16.08">
               <folding />
             </state>
           </provider>
@@ -387,16 +208,7 @@
       <file leaf-file-name="styles.less" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/css/styles.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="321" column="27" selection-start="5680" selection-end="5680" vertical-scroll-proportion="-8.803922">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contentdetail.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/contentdetail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="20" selection-start="608" selection-end="608" vertical-scroll-proportion="-10.625">
+            <state line="321" column="27" selection-start="5680" selection-end="5680" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -405,7 +217,7 @@
       <file leaf-file-name="voodoocontent-model.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/voodoocontent-model.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="12" selection-start="177" selection-end="177" vertical-scroll-proportion="-4.8">
+            <state line="8" column="12" selection-start="177" selection-end="177" vertical-scroll-proportion="21.0">
               <folding />
             </state>
           </provider>
@@ -414,21 +226,16 @@
       <file leaf-file-name="eventmap.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/eventmap.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="38" selection-start="701" selection-end="701" vertical-scroll-proportion="-10.0">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#2;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="12" column="19" selection-start="682" selection-end="682" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eventmap.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="eventmap.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/eventmap.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="21" selection-start="467" selection-end="467" vertical-scroll-proportion="0.3968254">
+            <state line="52" column="25" selection-start="1911" selection-end="1911" vertical-scroll-proportion="-31.2">
               <folding />
             </state>
           </provider>
@@ -438,9 +245,7 @@
         <entry file="file://$PROJECT_DIR$/packages/bootstrap-3/bootstrap-3/js/bootstrap.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="1074" column="14" selection-start="31147" selection-end="31147" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -448,16 +253,7 @@
       <file leaf-file-name="LeafletTomDivIcon.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/utils/LeafletTomDivIcon.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="13" selection-start="266" selection-end="266" vertical-scroll-proportion="-4.8">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contentitem.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/contentitem.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="5" selection-start="525" selection-end="525" vertical-scroll-proportion="-11.4">
+            <state line="15" column="26" selection-start="491" selection-end="491" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -481,15 +277,12 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/client/views/contentgrid.html" />
         <option value="$PROJECT_DIR$/main.coffee" />
         <option value="$PROJECT_DIR$/.meteor/local/build/programs/server/packages/accounts-base.js" />
         <option value="$PROJECT_DIR$/client/views/navbar.coffee" />
-        <option value="$PROJECT_DIR$/client/views/contentgrid.coffee" />
         <option value="$PROJECT_DIR$/client/views/navbar.html" />
         <option value="$PROJECT_DIR$/client/views/maintemplate.html" />
         <option value="$PROJECT_DIR$/client/views/contentdetail.coffee" />
-        <option value="$PROJECT_DIR$/models/facebook.coffee" />
         <option value="$PROJECT_DIR$/models/eventmanager.coffee" />
         <option value="$PROJECT_DIR$/models/voodoocontent-model.coffee" />
         <option value="$PROJECT_DIR$/client/views/contentitem.coffee" />
@@ -497,13 +290,16 @@
         <option value="$PROJECT_DIR$/client/css/styles.less" />
         <option value="$PROJECT_DIR$/client/views/eventmap.html" />
         <option value="$PROJECT_DIR$/client/views/eventmap.coffee" />
+        <option value="$PROJECT_DIR$/models/facebook.coffee" />
+        <option value="$PROJECT_DIR$/client/views/contentgrid.coffee" />
+        <option value="$PROJECT_DIR$/client/views/contentcommon.coffee" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="4" />
     <option name="y" value="22" />
-    <option name="width" value="1260" />
+    <option name="width" value="1276" />
     <option name="height" value="774" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -611,55 +407,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="packages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap-3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap-3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="voodoometeor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="voodoometeor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="packages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap-3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap-3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="voodoometeor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="voodoometeor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voodoometeor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -807,7 +569,11 @@
       <created>1383281473103</created>
       <updated>1383281473103</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="events map with working tooltips hovers and reactivity">
+      <created>1383846829663</created>
+      <updated>1383846829663</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -831,14 +597,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="22" width="1260" height="774" extended-state="0" />
+    <frame x="4" y="22" width="1276" height="774" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18858954" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39786586" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21503638" sideWeight="0.60213417" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2122905" sideWeight="0.60213417" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40501213" sideWeight="0.42682928" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -847,6 +612,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39786586" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32721713" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -895,7 +661,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="first events map" />
+    <option name="LAST_COMMIT_MESSAGE" value="events map with working tooltips hovers and reactivity" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -923,6 +689,7 @@
     <MESSAGE value="cleaned scope, temporarily removed any masonry" />
     <MESSAGE value="now with working facebook rsvp, login, permission check and auto import events" />
     <MESSAGE value="first events map" />
+    <MESSAGE value="events map with working tooltips hovers and reactivity" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -930,121 +697,106 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/images/voodoo-48.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/contentitem.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="16" selection-start="3635" selection-end="3635" vertical-scroll-proportion="-11.166667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/images/mapmarker.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/voodoocontent-model.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="12" selection-start="177" selection-end="177" vertical-scroll-proportion="-4.8">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/views/contentitem.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="5" selection-start="525" selection-end="525" vertical-scroll-proportion="-11.4">
+        <state line="19" column="5" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/contentdetail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="20" selection-start="608" selection-end="608" vertical-scroll-proportion="-10.625">
+        <state line="17" column="20" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/js/head.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/js/jquery.transit.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/leaflet.markercluster.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="12" selection-start="238" selection-end="238" vertical-scroll-proportion="0.1266892">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/utils/LeafletTomDivIcon.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="266" selection-end="266" vertical-scroll-proportion="-4.8">
-          <folding />
-        </state>
+        <state line="5" column="12" selection-start="238" selection-end="238" vertical-scroll-proportion="0.1266892" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/packages/bootstrap-3/bootstrap-3/js/bootstrap.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1074" column="14" selection-start="31147" selection-end="31147" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/contentgrid.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="6" selection-start="1548" selection-end="1566" vertical-scroll-proportion="-9.76">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/css/styles.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="321" column="27" selection-start="5680" selection-end="5680" vertical-scroll-proportion="-8.803922">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/eventmanager.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="17" selection-start="192" selection-end="192" vertical-scroll-proportion="-6.6">
+        <state line="321" column="27" selection-start="5680" selection-end="5680" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/eventmap.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="38" selection-start="701" selection-end="701" vertical-scroll-proportion="-10.0">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#2;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="12" column="19" selection-start="682" selection-end="682" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/eventmanager.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="17" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/utils/LeafletTomDivIcon.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="26" selection-start="491" selection-end="491" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/eventmap.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="21" selection-start="467" selection-end="467" vertical-scroll-proportion="0.3968254">
+        <state line="52" column="25" selection-start="1911" selection-end="1911" vertical-scroll-proportion="-31.2">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/voodoocontent-model.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="12" selection-start="177" selection-end="177" vertical-scroll-proportion="21.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/facebook.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="203" column="5" selection-start="8191" selection-end="8191" vertical-scroll-proportion="-16.08">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/contentgrid.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="977" selection-end="977" vertical-scroll-proportion="-10.68">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/contentcommon.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="4" selection-start="413" selection-end="413" vertical-scroll-proportion="0.5026455">
           <folding />
         </state>
       </provider>

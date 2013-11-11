@@ -15,6 +15,11 @@ define "ContentCommon", [], ->
     _.where(c.contentTypes, {name: this.type })?[0]
   , self)
 
+  self.sortTypes = [
+    {name: "post_date", title:"Post Date", icon:"glyphicon glyphicon-calendar", accessor: (e) -> e?.post_date}
+    {name: "like_count", title:"Likes", icon:"glyphicon glyphicon-heart", accessor: (e) -> e?.like_count}
+  ]
+
   self.contentTypes = [
     {name: "event", color:"#428bca", title:"Events", icon:"glyphicon glyphicon-calendar", class:"label label-primary", showtitle: true, colorfromweekday: true}
     {name: "video", color:"#f0ad4e", title:"Videos", icon:"glyphicon glyphicon-facetime-video", class:"label-success label",showtitle: true, inlineplay: true}
