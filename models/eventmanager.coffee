@@ -29,8 +29,8 @@ define "EventManager",["VoodoocontentModel"], (model) ->
   if (Meteor.isClient)
     self.fbLoggedin = (fbapi) ->
       self.fb = fbapi;
-      return #hack to not attend events
-      fbapi.api("/me/events/attending", (res) -> _.each(res.data, (e) ->
+      #return #hack to not attend events
+      fbapi.api("/me/events", (res) -> _.each(res.data, (e) ->
         Meteor.call("importFacebookEvent",e.id, (err,id) ->
           console.log("inserted event with id:",id);
           if id
@@ -38,7 +38,7 @@ define "EventManager",["VoodoocontentModel"], (model) ->
           #Meteor.call("attendEvent", id, (err, res) -> console.log(err,res));
         )
       ))
-      #return ## hack to not load friends events
+      return ## hack to not load friends events
       FB.api "/me/friends",
         limit: 3000
       , (res) ->

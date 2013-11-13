@@ -61,6 +61,7 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
 
   if (Meteor.isServer)
 
+    #self.contentCollection._ensureIndex({type:1, post_date: 1})
     Meteor.publish "content", (options = {}) ->
       console.log("client subscribed to content", options)
       if (! options.fields? && ! options.details )

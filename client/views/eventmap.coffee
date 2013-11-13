@@ -33,7 +33,7 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
   self.cursorobserver =
       added: (e) ->
         id = e._id
-        console.log("added to map",e)
+        #console.log("added to map",e)
         #icon = new L.icon({iconUrl: "/images/voodoo-48.png", iconSize: [24,24], iconAnchor:[22,16]})
         lat = e.address?.latitude
         long = e.address?.longitude
@@ -89,7 +89,7 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
         long = e.address?.longitude
         unless (lat? and long?)
           return
-        console.log("removed",e._id)
+        #console.log("removed",e._id)
         if self.markers[e._id]
           self.clusterer.removeLayer(self.markers[e._id])
         else
@@ -163,34 +163,45 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
 
   Template.eventmap.rendered = _.once ->
     self.initializeMap()
-    $("#eventmapdaterange").pickadate()
-    self.datepicker = $("#eventmapdaterange").pickadate("picker")
-    self.datepicker.on
-      set: (data) ->
-        console.log("setting event query based on date", data.select)
+
+    self.updateRangeSliderLabelsAndEventsQuery = ->
+        values = $("#eventmapdaterangeslider").val();
+        console.log(values)
+        #self.popoverleft.setContent(values[0])
+        #self.popoverright.setContent(values[1])
+        startdate = moment().add("days",values[0])
+        enddate = moment().add("days",values[1])
+        $("#eventmapstartdate").html(startdate.calendar().split(" ")[0])
+        $("#eventmapenddate").html(enddate.calendar().split(" ")[0])
         self.changeEventQuery
           post_date:
-            "$gte": moment(data.select).subtract("hours",4).toISOString()
-            "$lte": moment(data.select).add("hours",12).toISOString()
-    self.datepicker.set("select",moment().valueOf())
-    $("#slider").dateRangeSlider(
-      bounds:
-        min: moment().toDate()
-        max: moment().add("days", 128).toDate()
-        step:
-          days: 1
-        formatter: (val) ->
-          console.log(val)
+            "$gte": startdate.subtract("hours",4).toISOString()
+            "$lt": enddate.toISOString()
+
+    $("#eventmapdaterangeslider").noUiSlider(
+      range: [0,100]
+      start: [0,1]
+      margin: 1
+      step: 1
+      connect: true
+      slide: self.updateRangeSliderLabelsAndEventsQuery
     )
-    $("#slider").on "valuesChanging", (e, data) ->
-      self.changeEventQuery
-        post_date:
-          "$gte": moment(data.values.min).subtract("hours",4).toISOString()
-          "$lte": moment(data.values.max).add("hours",12).toISOString()
 
+    $(".noUi-handle-lower").popover(
+      html: true
+      content: "<div id='eventmapstartdate' style='width: 80px'>hey</div>"
+      trigger: "manual"
+      placement: "top"
+    ).popover('show')
 
+    $(".noUi-handle-upper").popover(
+      html: true
+      content: "<div id='eventmapenddate' style='width: 80px'>hey</div>"
+      trigger: "manual"
+      placement: "right"
+    ).popover('show')
 
-    return
+    self.updateRangeSliderLabelsAndEventsQuery()
 
   return self
 
