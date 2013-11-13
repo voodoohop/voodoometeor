@@ -46,7 +46,10 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
       thumbnail_url = this.picture ? ebdta?.thumbnail_url
       # console.log("thumb:"+thumbnail_url)
       if (thumbnail_url?)
-        embedly.getCroppedImageUrl(thumbnail_url, self.embedParams.maxwidth, self.embedParams.maxheight)
+        console.log "metadata",contentCommon.getContenttypeMetadata(this)
+        height = contentCommon.getContenttypeMetadata(this).height
+        width = contentCommon.getContenttypeMetadata(this).width
+        embedly.getCroppedImageUrl(thumbnail_url, width, height)
 
 
   Template.contentitem.helpers contentCommon.helpers

@@ -29,7 +29,7 @@ define "EventManager",["VoodoocontentModel"], (model) ->
   if (Meteor.isClient)
     self.fbLoggedin = (fbapi) ->
       self.fb = fbapi;
-      #return #hack to not attend events
+      return #hack to not attend events
       fbapi.api("/me/events/attending", (res) -> _.each(res.data, (e) ->
         Meteor.call("importFacebookEvent",e.id, (err,id) ->
           console.log("inserted event with id:",id);
@@ -38,6 +38,49 @@ define "EventManager",["VoodoocontentModel"], (model) ->
           #Meteor.call("attendEvent", id, (err, res) -> console.log(err,res));
         )
       ))
+      #return ## hack to not load friends events
+      FB.api "/me/friends",
+        limit: 3000
+      , (res) ->
+        numProcessing = 0
+        friendprocess = (friendlist) ->
+          #console.log("friendlist", friendlist)
+          friend = friendlist.shift()
+          if (! friend.id?)
+            console.log("skipping friend", friend)
+            friendprocess(friendlist)
+            return
+          console.log("getting events for", friend)
+          FB.api friend.id + "/events/attending", (e) ->
+            console.log(e)
+            events = e.data
+            if (events.length <= 0)
+              friendprocess(friendlist)
+              return
+            process = (evts) ->
+              numProcessing++
+              if (evts.length <= 0)
+                friendprocess(friendlist)
+                return
+              #console.log("length before",evts)
+              event = evts.shift()
+              #console.log("length after",evts)
+              if (event?.id?)
+                Meteor.call "importFacebookEvent", event.id, (err,re) ->
+                  console.log "imported", err ,re
+                  numProcessing--
+                  process(evts)
+              else
+                console.log("skipping event", event)
+                numProcessing--
+                process(evts)
+              if (numProcessing < 20)
+                process(evts)
+            process(events)
+        # console.log("importing friend events",res.data)
+        friendprocess(_.shuffle(res.data))
+
+
     self.rsvp = (eventid,confirm) ->
       if (confirm)
         Meteor.users.update(Meteor.userId(), $addToSet: { attending: eventid})

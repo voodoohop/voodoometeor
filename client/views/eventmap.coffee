@@ -1,23 +1,39 @@
 define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) ->
   self = {}
   self.markers = {}
+
+  self.eventQuery =
+    type: "event"
+
+
+  self.debouncedUpdateEvents = _.debounce( ->
+    Session.set("eventsmapquery", self.eventQuery)
+  ,500)
+
+  self.changeEventQuery = (options) ->
+    _.each options, (val, key) ->
+      self.eventQuery[key] = val
+    self.debouncedUpdateEvents()
+
+
+
+
   Template.contentitem_event.helpers model.helpers
   Template.eventmapmarker.helpers contentItem.helpers
   Template.eventmap.events =
-    'change, keyup input': (evt) ->
+    'change, keyup #maptextfilter': (evt) ->
       val = $(evt.target).val();
-      Session.set("eventsmapquery",
-        type: "event"
-        title: { $regex: val, $options:"i" }
-        post_date:
-          "$gte": moment().subtract("hours",8).toISOString()
-      )
+      self.changeEventQuery
+        $or: [
+          title: { $regex: val, $options:"i" },
+          description: { $regex: val, $options:"i" }
+        ]
 
 
   self.cursorobserver =
       added: (e) ->
         id = e._id
-        #console.log("added to map",e)
+        console.log("added to map",e)
         #icon = new L.icon({iconUrl: "/images/voodoo-48.png", iconSize: [24,24], iconAnchor:[22,16]})
         lat = e.address?.latitude
         long = e.address?.longitude
@@ -90,20 +106,17 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
   self.addEventsToMap = (map) ->
 
     #    title: { $regex: "oodoo", $options:"i" }
-    #      post_date:
+    #    post_date:
     #    "$gte": moment().subtract("hours",8).toISOString()
     #    "$lte": moment().add("days",1).t
 
     Deps.autorun ->
-      console.log("events map query changed... resubscribing")
+      console.log("events map query changed... resubscribing", Session.get("eventsmapquery"))
       model.subscribeContent({query: Session.get("eventsmapquery")})
-    Session.set("eventsmapquery",
-      type: "event"
-      post_date:
-        "$gte": moment().subtract("hours",8).toISOString()
-    )
-    eventscursor = model.getContent({query: Session.get("eventsmapquery")})
+
+    eventscursor = model.getContent()
     eventscursor.observe self.cursorobserver
+
 
   self.initializeMap = _.once ->
     console.log("loading mapbox external js + css")
@@ -111,7 +124,7 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
      Meteor.Loader.loadJs("/js/leaflet.markercluster.js", ->
       console.log("loaded mapbox js")
       Meteor.Loader.loadCss("//api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.css")
-      self.map = L.mapbox.map('eventmapcontainer', 'examples.a4c252ab').setView([-23.55, -46.6333], 13)
+      self.map = L.mapbox.map('eventmapcontainer', 'examples.map-9ijuk24y').setView([-23.55, -46.6333], 13)  #examples.a4c252ab
       require "TomDivIcon", (tomDivIcon) ->
         self.tomDivIcon = tomDivIcon
         self.clusterer = new L.MarkerClusterGroup(
@@ -148,8 +161,35 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
      )
     )
 
-  Template.eventmap.rendered = ->
+  Template.eventmap.rendered = _.once ->
     self.initializeMap()
+    $("#eventmapdaterange").pickadate()
+    self.datepicker = $("#eventmapdaterange").pickadate("picker")
+    self.datepicker.on
+      set: (data) ->
+        console.log("setting event query based on date", data.select)
+        self.changeEventQuery
+          post_date:
+            "$gte": moment(data.select).subtract("hours",4).toISOString()
+            "$lte": moment(data.select).add("hours",12).toISOString()
+    self.datepicker.set("select",moment().valueOf())
+    $("#slider").dateRangeSlider(
+      bounds:
+        min: moment().toDate()
+        max: moment().add("days", 128).toDate()
+        step:
+          days: 1
+        formatter: (val) ->
+          console.log(val)
+    )
+    $("#slider").on "valuesChanging", (e, data) ->
+      self.changeEventQuery
+        post_date:
+          "$gte": moment(data.values.min).subtract("hours",4).toISOString()
+          "$lte": moment(data.values.max).add("hours",12).toISOString()
+
+
+
     return
 
   return self

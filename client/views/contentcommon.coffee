@@ -11,8 +11,8 @@ define "ContentCommon", [], ->
     "#d9534f"
   ]
 
-  self.getContenttypeMetadata = _.partial( (c) ->
-    _.where(c.contentTypes, {name: this.type })?[0]
+  self.getContenttypeMetadata = _.partial( (c,ob = this) ->
+    _.where(c.contentTypes, {name: ob.type })?[0]
   , self)
 
   self.sortTypes = [
@@ -21,10 +21,10 @@ define "ContentCommon", [], ->
   ]
 
   self.contentTypes = [
-    {name: "event", color:"#428bca", title:"Events", icon:"glyphicon glyphicon-calendar", class:"label label-primary", showtitle: true, colorfromweekday: true}
-    {name: "video", color:"#f0ad4e", title:"Videos", icon:"glyphicon glyphicon-facetime-video", class:"label-success label",showtitle: true, inlineplay: true}
-    {name: "photo", color: "#d9534f", title:"Photos", icon:"glyphicon glyphicon-picture", class:"label label-warning"}
-    {name: "link", color: "#5bc0de",title:"Links", icon:"glyphicon glyphicon-link", class:"label label-info"}
+    {name: "event", color:"#428bca", title:"Events", icon:"glyphicon glyphicon-calendar", class:"label label-primary", showtitle: true, colorfromweekday: true, width: 250, height: 280}
+    {name: "video", color:"#f0ad4e", title:"Videos", icon:"glyphicon glyphicon-facetime-video", class:"label-success label",showtitle: true, inlineplay: true,width: 510, height: 280}
+    {name: "photo", color: "#d9534f", title:"Photos", icon:"glyphicon glyphicon-picture", class:"label label-warning", width: 250, height: 350}
+    {name: "link", color: "#5bc0de",title:"Links", icon:"glyphicon glyphicon-link", class:"label label-info", width: 250, height: 140}
   ]
 
   self.helpers =
@@ -36,6 +36,7 @@ define "ContentCommon", [], ->
         type.color
     , self)
     contentTypeMetaData: self.getContenttypeMetadata
+
 
   return self;
 

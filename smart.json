@@ -10,6 +10,7 @@
     "iron-router": {},
     "nprogress": {},
     "event-hooks": {},
-    "external-file-loader": {}
+    "external-file-loader": {},
+    "bootstrap-datepicker": {}
   }
 }
