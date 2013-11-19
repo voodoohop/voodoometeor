@@ -10,7 +10,8 @@
 
 
 <template name="contentitem">
-    <div id="{{_id}}" class="contentitemcontainer content_type_{{type}} {{#if isExpanded}} contentitemexpanded {{/if}}" style="border-color: {{bgcol}}">
+    <div id="{{_id}}" class="contentitemcontainer content_type_{{type}} {{#if isExpanded}} contentitemexpanded {{/if}} {{#if showDetail}} contentitemdetail {{/if}}"
+         style="border-color: {{bgcol}}; {{#if showDetail}} width: 100%; height: {{windowHeight}}px; {{/if}}">
         <span class="contenttypelabel {{contentTypeMetaData.icon}} {{contentTypeMetaData.class}}" style="background-color: {{bgcol}}; position: absolute; right: -2px; top: -2px;"> </span>
      {{#unless isExpanded}}
       <div class="front">

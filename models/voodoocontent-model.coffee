@@ -2,7 +2,7 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
 
   self= {};
 
-  self.contentCollection = new Meteor.Collection("voodoocontent")
+  self.contentCollection = new Meteor.SmartCollection("voodoocontent")
 
   self.contentBlockSize = 10
 
@@ -25,7 +25,10 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
     this.description.substring(0,300)+ "..."
 
   self.subscribeContent = (options, callback) ->
-    Meteor.subscribe "content", options, callback
+    if (options?.details)
+      Meteor.subscribe "contentDetail", options, callback
+    else
+      Meteor.subscribe "content", options, callback
 
   self.lastItemCount = -> self.cursor?.count() ? 0
   self.subscribeDetails = (id, callback) ->
@@ -61,11 +64,13 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
 
   if (Meteor.isServer)
 
-    #self.contentCollection._ensureIndex({type:1, post_date: 1})
+    self.contentCollection._ensureIndex({type:1, post_date: 1, num_app_users_attending: 1})
     Meteor.publish "content", (options = {}) ->
       console.log("client subscribed to content", options)
       if (! options.fields? && ! options.details )
         options.fields = { facebookData: 0, description: 0 }
+      self.getContent(options)
+    Meteor.publish "contentDetail", (options) ->
       self.getContent(options)
 
     Meteor.methods

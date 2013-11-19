@@ -22,7 +22,7 @@ define "EventManager",["VoodoocontentModel"], (model) ->
 
     Meteor.users.allow(
       update: (uid, doc, fieldNames, modifier) ->
-        return (uid == Meteor.userId() && fieldNames.length == 1 && fieldNames[0] == "attending")
+        return (uid == Meteor.userId() && fieldNames.length == 1 && (fieldNames[0] == "attending" or fieldNames[0] == "geolocation"))
 
     )
 

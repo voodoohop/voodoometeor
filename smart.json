@@ -11,6 +11,6 @@
     "nprogress": {},
     "event-hooks": {},
     "external-file-loader": {},
-    "bootstrap-datepicker": {}
+    "smart-collections": {}
   }
 }

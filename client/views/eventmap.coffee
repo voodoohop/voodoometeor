@@ -1,9 +1,11 @@
-define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) ->
+define "EventMap", ["VoodoocontentModel", "ContentItem", "LeafletUtils"], (model, contentItem, leafletUtils) ->
   self = {}
-  self.markers = {}
+
 
   self.eventQuery =
     type: "event"
+    #num_app_users_attending:
+    #  $gte: 5
 
 
   self.debouncedUpdateEvents = _.debounce( ->
@@ -15,7 +17,15 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
       self.eventQuery[key] = val
     self.debouncedUpdateEvents()
 
-
+  self.updateContentQueryBasedOnMapBounds = _.debounce( (bounds) ->
+    self.changeEventQuery
+      "address.latitude":
+        "$lte": bounds.getNorth()+0.1
+        "$gte": bounds.getSouth()-0.1
+      "address.longitude":
+        "$gte": bounds.getWest()-0.1
+        "$lte": bounds.getEast()+0.1
+  ,500)
 
 
   Template.contentitem_event.helpers model.helpers
@@ -24,84 +34,18 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
     'change, keyup #maptextfilter': (evt) ->
       val = $(evt.target).val();
       self.changeEventQuery
-        $or: [
-          title: { $regex: val, $options:"i" },
-          description: { $regex: val, $options:"i" }
-        ]
+        $or: [{description: { $regex: val, $options:"i" }}, {title: { $regex: val, $options:"i" }}]
 
+  individualMarkerAdd = (marker) -> self.clusterer.addLayer(marker)
+  self.batchifiedMarkerAdd = batchify( individualMarkerAdd , (markers) ->
+    console.log("batch adding "+markers.length+" markers")
+    self.clusterer.addLayers(_.flatten(markers))
+    self.addEventMapMarkerTooltips();
+  , 500)
 
-  self.cursorobserver =
-      added: (e) ->
-        id = e._id
-        #console.log("added to map",e)
-        #icon = new L.icon({iconUrl: "/images/voodoo-48.png", iconSize: [24,24], iconAnchor:[22,16]})
-        lat = e.address?.latitude
-        long = e.address?.longitude
-        if (lat? and long?)
-          lat += Math.random() * 0.00005
-          long += Math.random() * 0.00005
-
-          iconhtml = Meteor.render( -> Template.eventmapmarker(e))
-          icondivchild = L.DomUtil.create("div","lbqs")
-          icondivchild.appendChild(iconhtml)
-          self.icondivchild = icondivchild
-          icon = self.tomDivIcon(
-            className: "blabla"
-            iconSize: [40,60]
-            iconAnchor: [20,60]
-            div: icondivchild
-          )
-          e.expanded = true
-          #html = Template.contentitem(e)
-          subscription = null
-          m = L.marker([lat, long], {icon: icon}).on(
-            "click": (info) ->
-              #console.log("info", m._popup)
-              if m._popup?
-                return
-              NProgress.start()
-              subscription = model.subscribeDetails(e._id, ->
-                data = model.getContent({query: e._id, details: true}).fetch()[0]
-                #console.log(data)
-                data.expanded = true
-                content = Meteor.render( ->
-                  Template.contentitem(data)
-                )
-                div = L.DomUtil.create("div","lbqs")
-                div.appendChild(content)
-
-                #console.log("clickcontent",div)
-                m.bindPopup(div).openPopup()
-                NProgress.done()
-              )
-              #popup = L.popup().setLatLng(info.latlng).setContent(content).openOn(map)
-            "popupclose": (e) ->
-              subscription.stop()
-          )
-
-          #console.log(m)
-          #console.log("clustererlatproblem",self.clusterer,m)
-          self.clusterer.addLayer(m)
-          self.markers[e._id] = m
-      removed: (e) ->
-        #console.log("deleting marker",self.markers[e._id])
-        lat = e.address?.latitude
-        long = e.address?.longitude
-        unless (lat? and long?)
-          return
-        #console.log("removed",e._id)
-        if self.markers[e._id]
-          self.clusterer.removeLayer(self.markers[e._id])
-        else
-          console.log("no marker",self.markers, e._id)
-        delete self.markers[e._id]
-      changed: (e) ->
-        console.log("changed",e._id)
-        #self.markers[e._id].setPopupContent(Meteor.render( -> Template.contentitem(e)))   #unless self.markers[e._id]._popup?
-        #  return
-        #console.log("changed", e)
-        #console.log(self.markers[e._id])
-        #console.log("changed",Meteor.render( -> Template.contentitem(e)))
+  Template.eventmap.markerscount = ->
+    Session.get("markerscount")
+  Session.set("markerscount",0)
 
   self.addEventsToMap = (map) ->
 
@@ -109,13 +53,31 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
     #    post_date:
     #    "$gte": moment().subtract("hours",8).toISOString()
     #    "$lte": moment().add("days",1).t
-
+    self.updateContentQueryBasedOnMapBounds(self.map.getBounds())
     Deps.autorun ->
       console.log("events map query changed... resubscribing", Session.get("eventsmapquery"))
-      model.subscribeContent({query: Session.get("eventsmapquery")})
+      NProgress.start()
+      model.subscribeContent({query: Session.get("eventsmapquery")}, ->
+        console.log("done subscribing")
+        NProgress.done()
+      )
 
     eventscursor = model.getContent()
-    eventscursor.observe self.cursorobserver
+    eventscursor.observe leafletUtils.markermanager(self.batchifiedMarkerAdd, self.clusterer,
+      popupCreate: (e,div, done) ->
+        NProgress.start()
+        self.detailSubscription = model.subscribeDetails(e._id, ->
+          data = model.getContent({query: e._id, details: true}).fetch()[0]
+          data.expanded = true
+          content = Meteor.render( ->
+            Template.contentitem(data)
+          )
+          div.appendChild(content)
+          done()
+          NProgress.done()
+        )
+      popupClose: -> self.detailSubscription.stop()
+    )
 
 
   self.initializeMap = _.once ->
@@ -125,6 +87,7 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
       console.log("loaded mapbox js")
       Meteor.Loader.loadCss("//api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.css")
       self.map = L.mapbox.map('eventmapcontainer', 'examples.map-9ijuk24y').setView([-23.55, -46.6333], 13)  #examples.a4c252ab
+      self.startWatchingGeolocation()
       require "TomDivIcon", (tomDivIcon) ->
         self.tomDivIcon = tomDivIcon
         self.clusterer = new L.MarkerClusterGroup(
@@ -136,8 +99,21 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
             children = cluster.getAllChildMarkers()
             nochildren = children.length
             childopacity = 1.0/children.length + 0.2
+            locations = {}
+            _.each(children, (c) ->
+              if c.data.location?
+                locations[c.data.location] = (locations[c.data.location] ? 0) + 1
+            )
 
-            divParent = $("<div data-toggle='tooltip' data-placement='right' data-original-title='"+nochildren+" events in this region' ></div>")[0]
+            if _.keys(locations).length > 4
+              locations = {}
+              _.each(children, (c) ->
+                if c.data.address.city?
+                  locations[c.data.address.city] = (locations[c.data.address.city] ? 0) + 1
+              )
+
+            locationtext = _.keys(locations).join(", ")
+            divParent = $("<div data-toggle='tooltip' data-placement='right' data-original-title='"+nochildren+" events in this region at "+locationtext+"' ></div>")[0]
             divCC = L.DomUtil.create("div","eventmapclustercontainer")
 
             _.each(_.sample(children,3), (c) ->
@@ -158,15 +134,33 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
         )
         self.addEventsToMap(self.map, self.clusterer)
         self.map.addLayer(self.clusterer)
+
+        self.map.on("zoomend", ->
+          self.addEventMapMarkerTooltips();
+          $(".tooltip").hide();
+          self.updateContentQueryBasedOnMapBounds(self.map.getBounds())
+        )
+        self.map.on("moveend", ->
+          $(".tooltip").hide();
+          self.updateContentQueryBasedOnMapBounds(self.map.getBounds())
+        )
      )
     )
+
+
+  self.addEventMapMarkerTooltips = _.debounce( ->
+    Meteor.setTimeout( ->
+      $(".eventmapmarkertooltip").tooltip()
+      console.log("adding tooltips to eventmarker")
+    ,500)
+  , 1000)
 
   Template.eventmap.rendered = _.once ->
     self.initializeMap()
 
     self.updateRangeSliderLabelsAndEventsQuery = ->
         values = $("#eventmapdaterangeslider").val();
-        console.log(values)
+        #console.log(values)
         #self.popoverleft.setContent(values[0])
         #self.popoverright.setContent(values[1])
         startdate = moment().add("days",values[0])
@@ -177,6 +171,7 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
           post_date:
             "$gte": startdate.subtract("hours",4).toISOString()
             "$lt": enddate.toISOString()
+
 
     $("#eventmapdaterangeslider").noUiSlider(
       range: [0,100]
@@ -191,7 +186,7 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
       html: true
       content: "<div id='eventmapstartdate' style='width: 80px'>hey</div>"
       trigger: "manual"
-      placement: "top"
+      placement: "left"
     ).popover('show')
 
     $(".noUi-handle-upper").popover(
@@ -202,6 +197,42 @@ define "EventMap", ["VoodoocontentModel", "ContentItem"], (model, contentItem) -
     ).popover('show')
 
     self.updateRangeSliderLabelsAndEventsQuery()
+
+
+
+  self.startWatchingGeolocation = ->
+   if navigator.geolocation
+    console.log("watching geolocation")
+    navigator.geolocation.watchPosition ((p) ->
+
+      if not p.coords.latitude or not p.coords.longitude
+        console.warn "Position doesn't have lat/lng. Ignoring", pos
+        return # we don't want yer lousy geolocation anyway.
+
+      console.log("user pos", p)
+      pos = _.clone(p.coords)
+      pos.timestamp = p.timestamp;
+      # $.extend(true, {}, pos); // Fix FF error 'Cannot modify properties of a WrappedNative'
+
+      Session.set("geolocation",pos);
+
+      unless @hasCenteredMap
+        zoom = 16
+        self.map.setView [pos.latitude, pos.longitude], zoom
+        @hasCenteredMap = true
+    ), null,
+      enableHighAccuracy: false
+      maximumAge: 60000
+      timeout: 100000
+   else
+    console.log "geolocation not supported"
+   #update user geolocation
+   Deps.autorun ->
+    if (Meteor.user())
+      Meteor.users.update(Meteor.user()._id,
+       $set:
+         "geolocation": Session.get("geolocation")
+      )
 
   return self
 

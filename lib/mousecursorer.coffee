@@ -1,5 +1,5 @@
 require ["ClientShared"] , (mouseShare) ->
-
+  return #disable mouse sharing hack
   if (Meteor.isServer)
 
     Meteor.setInterval( ->
@@ -16,7 +16,7 @@ require ["ClientShared"] , (mouseShare) ->
         mouseShare.sharedData.update(m._id, {$set: {x: e.pageX, y: e.pageY, lastActivity: new Date()}})
       else
         mouseShare.sharedData.insert({owner: self.getUserId(), x: e.pageX, y: e.pageY, lastActivity: new Date()})
-    ,20)
+    ,100)
 
     $(document).on("mousemove",moveHandler)
     $(document).on("mousedown",moveHandler)

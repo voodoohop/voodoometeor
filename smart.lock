@@ -13,7 +13,7 @@
       "nprogress": {},
       "event-hooks": {},
       "external-file-loader": {},
-      "bootstrap-datepicker": {}
+      "smart-collections": {}
     },
     "packages": {
       "font-awesome": {
@@ -71,10 +71,10 @@
         "tag": "v0.1.4",
         "commit": "352694a7cf906b8241161c2fd1435161c1d5409f"
       },
-      "bootstrap-datepicker": {
-        "git": "https://github.com/acidsound/bootstrap-datepicker.git",
-        "tag": "v0.5.1",
-        "commit": "578d0bad1b5b5120c1abc333e449b8d0256969b4"
+      "smart-collections": {
+        "git": "https://github.com/arunoda/meteor-smart-collections.git",
+        "tag": "v0.3.22",
+        "commit": "34710960d08dddc206abefbb59dc17c93735a721"
       }
     }
   }

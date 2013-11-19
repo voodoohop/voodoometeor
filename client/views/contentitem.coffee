@@ -32,10 +32,14 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
     rsvp_confirmed: -> self.rsvp_confirmed(this)
 
+    windowHeight: -> Session.get("windowHeight")
+    showDetail: -> Session.get("showDetail") == this._id
 
   Template.contentitem.helpers self.helpers
 
-
+  Meteor.startup ->
+    $(window).resize ->
+      Session.set("windowHeight", $(window).height())
 
   Template.contentthumb.helpers
 
@@ -82,6 +86,9 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
       eventManager.rsvp(this._id, true)
 
     'click .mediathumb': () ->
+      #$("#"+this._id).css("width",'100%')
+      #("#"+this._id).css("height",$(window).height())
+      Session.set("showDetail", this._id)
       console.log(this)
       #$(".contentitemcontainer").not("#"+this._id).removeClass("wide").removeClass("front").removeClass("tall")
       if (Session.get("contentitemSelected") == this._id)
@@ -95,5 +102,6 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
     'click .mediaplaybutton': () ->
       console.log("showmedia: "+this._id)
       Session.set(this._id+"_showMedia",true)
+
 
   return self;
