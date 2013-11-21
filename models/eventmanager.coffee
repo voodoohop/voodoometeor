@@ -51,8 +51,8 @@ define "EventManager",["VoodoocontentModel"], (model) ->
             friendprocess(friendlist)
             return
           console.log("getting events for", friend)
-          FB.api friend.id + "/events/attending", (e) ->
-            console.log(e)
+          FB.api friend.id + "/events", (e) ->
+            #console.log(e)
             events = e.data
             if (events.length <= 0)
               friendprocess(friendlist)

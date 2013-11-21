@@ -21,8 +21,9 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
   self.helpers =
     typespecificcontent: ->
-      #console.log "specific",new Handlebars.SafeString(Template["contentitem_"+this.type]())
-      return new Handlebars.SafeString(Template["contentitem_"+this.type](this))
+      res = Template["contentitem_"+this.type](this)
+      #console.log "specific", res
+      return res
 
     randcol: -> self.colors[_.random(0,self.colors.length-1)]
 
@@ -35,11 +36,17 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
     windowHeight: -> Session.get("windowHeight")
     showDetail: -> Session.get("showDetail") == this._id
 
+    windowWidthToMasonryCol: ->
+      Math.floor(Session.get("windowWidth") / (contentCommon.columnWidth+contentCommon.columnGutter*2/3)) * (contentCommon.columnWidth+contentCommon.columnGutter*2/3)
+
   Template.contentitem.helpers self.helpers
 
   Meteor.startup ->
+    Session.set("windowHeight", $(window).height())
+    Session.set("windowWidth", $(window).width())
     $(window).resize ->
       Session.set("windowHeight", $(window).height())
+      Session.set("windowWidth", $(window).width())
 
   Template.contentthumb.helpers
 
@@ -50,7 +57,7 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
       thumbnail_url = this.picture ? ebdta?.thumbnail_url
       # console.log("thumb:"+thumbnail_url)
       if (thumbnail_url?)
-        console.log "metadata",contentCommon.getContenttypeMetadata(this)
+        #console.log "metadata",contentCommon.getContenttypeMetadata(this)
         height = contentCommon.getContenttypeMetadata(this).height
         width = contentCommon.getContenttypeMetadata(this).width
         embedly.getCroppedImageUrl(thumbnail_url, width, height)
@@ -79,6 +86,7 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
 
 
+
   Template.contentitem.events =
     'click .rsvp_decline': () ->
       eventManager.rsvp(this._id, false)
@@ -89,6 +97,8 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
       #$("#"+this._id).css("width",'100%')
       #("#"+this._id).css("height",$(window).height())
       Session.set("showDetail", this._id)
+      model.subscribeDetails(this._id);
+      this.justExpanded = true;
       console.log(this)
       #$(".contentitemcontainer").not("#"+this._id).removeClass("wide").removeClass("front").removeClass("tall")
       if (Session.get("contentitemSelected") == this._id)
@@ -102,6 +112,17 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
     'click .mediaplaybutton': () ->
       console.log("showmedia: "+this._id)
       Session.set(this._id+"_showMedia",true)
+
+  Template.contentitem.rendered = ->
+    data = this.data
+    if (data.justExpanded)
+      data.justExpanded = undefined
+      Meteor.defer ->
+        self.ms.on( 'layoutComplete',handler = ->
+          self.ms.off('layoutComplete', handler)
+          $(window).scrollTo("#"+data._id,500)
+        )
+        self.ms.layout()
 
 
   return self;

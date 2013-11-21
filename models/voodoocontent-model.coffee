@@ -17,18 +17,19 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
     isFeatured: -> (this.isFeatured == true)
     numlikes: -> this.like_count ? 0
     description: ->
-      #self.subscribeDetails(this._id)
       this.description
 
   description_reduced: ->
     console.log("reducing", this)
     this.description.substring(0,300)+ "..."
 
-  self.subscribeContent = (options, callback) ->
+  self.subscribeContent =  (options, callback) ->
+    console.log("subscribing to content", options)
     if (options?.details)
       Meteor.subscribe "contentDetail", options, callback
     else
       Meteor.subscribe "content", options, callback
+
 
   self.lastItemCount = -> self.cursor?.count() ? 0
   self.subscribeDetails = (id, callback) ->

@@ -14,7 +14,7 @@ require "ContentCommon", (contentCommon) ->
       "http://graph.facebook.com/"+Meteor.user().services.facebook.id+"/picture"
   Session.set("active_content_filters",[])
   #Session.set("content_sort", {name: "post_date", order: 1})
-  Session.set("content_sort", {name: "num_app_users_attending", order: -1})
+  Session.set("content_sort", {name: "numlikes", order: -1})
 
   Template.navbar.events =
     'click .sort_filter': () ->

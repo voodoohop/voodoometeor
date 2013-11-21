@@ -19,3 +19,7 @@ nodetime
 external-file-loader
 bootstrap-datepicker
 smart-collections
+accounts-admin-ui
+jquery-ui
+jqbootstrapvalidation
+roles

@@ -10,8 +10,8 @@
 
 
 <template name="contentitem">
-    <div id="{{_id}}" class="contentitemcontainer content_type_{{type}} {{#if isExpanded}} contentitemexpanded {{/if}} {{#if showDetail}} contentitemdetail {{/if}}"
-         style="border-color: {{bgcol}}; {{#if showDetail}} width: 100%; height: {{windowHeight}}px; {{/if}}">
+    <div id="{{_id}}" class="contentitemcontainer content_type_{{type}} {{#if isExpanded}} contentitemexpanded {{/if}} {{#if showDetail}} contentitemdetail  {{/if}} "
+         style="border-color: {{bgcol}}; {{#if showDetail}} width: {{windowWidthToMasonryCol}}px; height: {{windowHeight}}px; {{/if}}">
         <span class="contenttypelabel {{contentTypeMetaData.icon}} {{contentTypeMetaData.class}}" style="background-color: {{bgcol}}; position: absolute; right: -2px; top: -2px;"> </span>
      {{#unless isExpanded}}
       <div class="front">
@@ -24,7 +24,7 @@
         {{/if}}
         {{/if}}
         <div class="metadata">
-            <i class="icon-heart"></i> <span class="badge">{{numlikes}} </span>
+            <i class="icon-heart"></i> <span class="badge">{{numlikes}} ({{num_app_users_attending}})  </span>
            <!-- <span class="postdate" data-date="{{postedDate}}"><span class="glyphicon glyphicon-calendar"></span> {{postedDate}}</span>
             -->
         </div>
@@ -40,7 +40,7 @@
               {{>embeddedmedia}}
           </div>
           {{/unless}}
-          {{typespecificcontent}}
+          {{{typespecificcontent}}}
       </div>
      {{/unless}}
     </div>

@@ -20,7 +20,10 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       query: filters
       sort: sort
       blockno: Session.get("blockvisible")
-    model.subscribeContent(options, -> Session.set("contentoptions", options); callback() if callback? )#, -> Session.set("voodoocontent", model.getContent()))
+    model.subscribeContent(options, ->
+      Session.set("contentoptions", options);
+      callback() if callback?
+    )
 
   self.contentTypes = contentCommon.contentTypes;
 
@@ -29,7 +32,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
 
 
 
-  Template.contentgrid.voodoocontent = -> model.getContent(Session.get("contentoptions"))
+  #Template.contentgrid.voodoocontent = -> model.getContent(Session.get("contentoptions"))
 
   self.setupReactiveContentSubscription = _.once( ->
     Deps.autorun ->
@@ -40,10 +43,58 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       NProgress.start();
   )
 
-  Template.contentgrid.rendered = ->
+  debouncedMasonryRelayout = _.debounce( ->
+    self.ms.layout()
+  ,200)
+
+  Template.contentgrid.rendered = _.once ->
     self.setupReactiveContentSubscription();
+    container = $("#contentgridcontainer")
+    self.ms = new Masonry($("#contentgridcontainer")[0],
+      itemSelector: ".masonrycontainer"
+      columnWidth: contentCommon.columnWidth+contentCommon.columnGutter*2/3
+      gutter: contentCommon.columnGutter*1/3
+      isFitWidth: true
+    )
+    contentItem.ms = self.ms;
 
+    # masonrify contenitem collection changes
 
+    model.getContent({query: {}}).observe
+      addedAt: (e, index, before) ->
+        #console.log("added", e, index, before)
+        content = Meteor.render( ->
+          Template.contentitem(e)
+        )
+        appenddiv = $("<div class='masonrycontainer' id='msnry_"+e._id+"'/>").append(content)
+        if (before == null)
+          container.append(appenddiv)
+          self.ms.appended(appenddiv)
+        else
+          $("#msnry_"+before._id).before(appenddiv)
+          self.ms.addItems(appenddiv)
+          self.ms.reload()
+          debouncedMasonryRelayout()
+      removed: (e) ->
+        console.log("removed")
+        self.ms.remove($("#msnry_"+e._id)[0])
+        debouncedMasonryRelayout()
+      movedTo: (doc, fromIndex, toIndex, before) ->
+        console.log("moved", doc, fromIndex, toIndex, before)
+        if (before == null)
+          container.append($("#msnry_"+e._id))
+          self.ms.reload()
+          debouncedMasonryRelayout()
+        else
+          $("#msnry_"+before._id).before($("#msnry_"+e._id))
+          self.ms.reload()
+          debouncedMasonryRelayout()
+      changed: (newDoc, oldDoc) ->
+        console.log("changed",newDoc,oldDoc)
+        content = Meteor.render( ->
+          Template.contentitem(newDoc)
+        )
+        $("#"+newDoc._id).replaceWith(content)
 
 
   #infinite scroll
@@ -67,6 +118,8 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       # console.log('target became invisible (below viewable arae)');
       target.data "visible", false  if target.data("visible")
   , 10)
+
   Meteor.startup ->
     $(window).scroll(showMoreVisible);
+
   return self

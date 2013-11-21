@@ -3,13 +3,13 @@
 @background: white;
 @foreground: black;
 @grayscale_amount: 0.6;
-@contentitem_width: 250px;
+@contentitem_width: 230px;
 @contentitem_height: 280px;
 
-@contentitem_video_width: 510px;
+@contentitem_video_width: 460px;
 @contentitem_video_height: 280px;
 
-@contentitem_photo_width: 25Opx;
+@contentitem_photo_width: 345px;
 @contentitem_photo_height: 350px;
 
 
@@ -29,12 +29,16 @@ div.content_type_photo {
   height: @contentitem_photo_height;
 
 }
+.masonrycontainer {
+display: inline-block;
+  margin-bottom: 5px;
+}
 
 .contentitemcontainer {
   transition: border-color 1.5s ease;
   width: @contentitem_width;
   height: @contentitem_height;
-  display: inline-block;
+  //display: inline-block;
   color: @foreground;
   //line-height: 1.428571429;
   //background-color: #000000;
@@ -43,7 +47,7 @@ div.content_type_photo {
   //-webkit-transition: all 0.2s ease-in-out;
   //transition: all 0.2s ease-in-out;
   border: 0px solid black;
-  margin: 3px;
+  //margin: 3px;
   position: relative;
   box-sizing: content-box;
 
@@ -51,7 +55,7 @@ div.content_type_photo {
   text-overflow:ellipsis;
   overflow: hidden;
 
-  overflow-y: scroll;
+  //overflow-y: scroll;
 
   .front, .back {
     width: 100%;
@@ -205,8 +209,8 @@ div.content_type_photo {
 #contentgridcontainer {
 //  min-height: 200px;
 //  margin: 0 auto;
-  .transition(0.5s, ease);
-
+//  .transition(0.5s, ease);
+  margin: 0 auto;
   &:after {
     content: ' ';
     display: block;
@@ -283,7 +287,7 @@ img.parallax {
 }
 
 .eventcluster {
-  background-color: rgb(255,255,255,0.8);
+  background-color: rgb(255,255,255,1);
 }
 
 .eventmapicon {
@@ -331,7 +335,7 @@ img.parallax {
 
 .eventmapclusterchild {
   position: absolute; left: 0px; top: 0px;
-  opacity: 0.8;
+
 }
 
 div.tooltip-inner {

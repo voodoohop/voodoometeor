@@ -5,13 +5,7 @@ define "TomDivIcon", [], ->
   #
   @L.TomDivIcon = L.Icon.extend(
     options:
-      iconSize: [12, 12] # also can be set through CSS
-      #
-      #                iconAnchor: (Point)
-      #                popupAnchor: (Point)
-      #                html: (String)
-      #                bgPos: (Point)
-      #
+      iconSize: [12, 12]
       className: "leaflet-div-icon"
       html: false
 
@@ -35,22 +29,49 @@ define "TomDivIcon", [], ->
 
 define "LeafletUtils", [], ->
   self = {}
-  self.markermanager = (markerAdder, markerLayer, popupCreator) ->
-    self.markers = {}
-    observer =
+  self.initializeMap = _.once (options) ->
+    console.log("loading mapbox external js + css")
+    Meteor.Loader.loadJs("//api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.js", ->
+     Meteor.Loader.loadJs("/js/leaflet.markercluster.js", ->
+      require "TomDivIcon", (tomDivIcon) ->
+        self.tomDivIcon = tomDivIcon;
+      console.log("loaded mapbox js")
+      Meteor.Loader.loadCss("//api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.css")
+      self.map = L.mapbox.map('eventmapcontainer', 'examples.map-9ijuk24y').setView([-23.55, -46.6333], 13)  #examples.a4c252ab
+      options.mapCreated(self.map);
+     )
+    )
+
+
+  self.markermanager = (options) ->
+    me = {}
+    markers = {}
+
+    clusterer = new L.MarkerClusterGroup(
+      #removeOutsideVisibleBounds: false
+      animateAddingMarkers: true
+      maxClusterRadius: 20
+      spiderfyOnMaxZoom: true
+      iconCreateFunction: (cluster) ->
+        icondiv = options.clusterIconCreate(cluster);
+        self.tomDivIcon({div: icondiv, className: "eventmapclustertooltip", iconSize: L.point(40,60), iconAnchor: [20,60]})
+      )
+    self.map.addLayer(clusterer)
+    me.observer =
       added: (e) ->
-       Session.set("markerscount",Session.get("markerscount")+1)
-       require "TomDivIcon",(tomDivIcon) ->
+        #console.log("added",e)
+        Session.set("markerscount",Session.get("markerscount")+1)
         id = e._id
-        lat = e.address?.latitude
-        long = e.address?.longitude
+        latlng = options.getLatLng(e)
+        lat = latlng?.latitude
+        long = latlng?.longitude
         if (lat? and long?)
           lat += Math.random() * 0.00005
           long += Math.random() * 0.00005
-          iconhtml = Meteor.render( -> Template.eventmapmarker(e))
+          iconhtml = Meteor.render( -> options.markerTemplate(e))
           icondivchild = L.DomUtil.create("div","lbqs")
           icondivchild.appendChild(iconhtml)
-          icon = tomDivIcon(
+          icon = self.tomDivIcon(
             className: "blabla"
             iconSize: [40,60]
             iconAnchor: [20,60]
@@ -64,39 +85,50 @@ define "LeafletUtils", [], ->
               if m._popup?
                 return
               div = L.DomUtil.create("div","lbqs")
-              popupCreator.popupCreate(e, div, ->
+              options.popupCreate(e, div, ->
                 m.bindPopup(div).openPopup()
               )
           #popup = L.popup().setLatLng(info.latlng).setContent(content).openOn(map)
             "popupclose": (e) ->
-              popupCreator.popupClose(e)
+              options.popupClose(e)
           )
           m.data = e
 
 
           #console.log(m)
-          #console.log("clustererlatproblem",self.clusterer,m)
-          markerAdder(m)
-          #self.clusterer.addLayer(m)
-          self.markers[e._id] = m
+          #console.log("clustererlatproblem",clusterer,m)
+          me.batchifiedMarkerAdd(m)
+          #clusterer.addLayer(m)
+          markers[e._id] = m
       removed: (e) ->
         Session.set("markerscount",Session.get("markerscount")-1)
-        #console.log("deleting marker",self.markers[e._id])
+        #console.log("deleting marker",markers[e._id])
         lat = e.address?.latitude
         long = e.address?.longitude
         unless (lat? and long?)
           return
         #console.log("removed",e._id)
-        if self.markers[e._id]
-          markerLayer.removeLayer(self.markers[e._id])
+        if markers[e._id]
+          clusterer.removeLayer(markers[e._id])
         else
-          console.log("no marker",self.markers, e._id)
-        delete self.markers[e._id]
+          console.log("no marker",markers, e._id)
+        delete markers[e._id]
       changed: (e) ->
         console.log("changed",e._id)
-        #self.markers[e._id].setPopupContent(Meteor.render( -> Template.contentitem(e)))   #unless self.markers[e._id]._popup?
-        #  return
-        #console.log("changed", e)
-        #console.log(self.markers[e._id])
-        #console.log("changed",Meteor.render( -> Template.contentitem(e)))
+          #markers[e._id].setPopupContent(Meteor.render( -> Template.contentitem(e)))   #unless markers[e._id]._popup?
+          #  return
+          #console.log("changed", e)
+          #console.log(markers[e._id])
+          #console.log("changed",Meteor.render( -> Template.contentitem(e)))
+    me.individualMarkerAdd = (marker) ->
+      clusterer.addLayer(marker);
+      if (options.addedMarkers?)
+        options.addedMarkers();
+    me.batchifiedMarkerAdd = batchify( me.individualMarkerAdd , (markers) ->
+      console.log("batch adding "+markers.length+" markers")
+      clusterer.addLayers(_.flatten(markers))
+      if (options.addedMarkers?)
+        options.addedMarkers();
+    , 500)
+    return me;
   return self;

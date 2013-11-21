@@ -11,20 +11,23 @@ define "ContentCommon", [], ->
     "#d9534f"
   ]
 
+  self.columnWidth = 115;
+  self.columnGutter = 3;
+
   self.getContenttypeMetadata = _.partial( (c,ob = this) ->
     _.where(c.contentTypes, {name: ob.type })?[0]
   , self)
 
   self.sortTypes = [
     {name: "post_date", title:"Post Date", icon:"glyphicon glyphicon-calendar", accessor: (e) -> e?.post_date}
-    {name: "like_count", title:"Likes", icon:"glyphicon glyphicon-heart", accessor: (e) -> e?.like_count}
+    {name: "num_app_users_attending", title:"Likes", icon:"glyphicon glyphicon-heart", accessor: (e) -> e?.num_app_users_attending}
   ]
 
   self.contentTypes = [
-    {name: "event", color:"#428bca", title:"Events", icon:"glyphicon glyphicon-calendar", class:"label label-primary", showtitle: true, colorfromweekday: true, width: 250, height: 280}
-    {name: "video", color:"#f0ad4e", title:"Videos", icon:"glyphicon glyphicon-facetime-video", class:"label-success label",showtitle: true, inlineplay: true,width: 510, height: 280}
-    {name: "photo", color: "#d9534f", title:"Photos", icon:"glyphicon glyphicon-picture", class:"label label-warning", width: 250, height: 350}
-    {name: "link", color: "#5bc0de",title:"Links", icon:"glyphicon glyphicon-link", class:"label label-info", width: 250, height: 140}
+    {name: "event", color:"#428bca", title:"Events", icon:"glyphicon glyphicon-calendar", class:"label label-primary", showtitle: true, colorfromweekday: true, width: 230, height: 280}
+    {name: "video", color:"#f0ad4e", title:"Videos", icon:"glyphicon glyphicon-facetime-video", class:"label-success label",showtitle: true, inlineplay: true,width: 460, height: 280}
+    {name: "photo", color: "#d9534f", title:"Photos", icon:"glyphicon glyphicon-picture", class:"label label-warning", width: 345, height: 345}
+    {name: "link", color: "#5bc0de",title:"Links", icon:"glyphicon glyphicon-link", class:"label label-info", width: 230, height: 140}
   ]
 
   self.helpers =

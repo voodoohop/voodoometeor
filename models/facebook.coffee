@@ -54,15 +54,15 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
 
     fb.setAccessToken(""+config.current().facebook.appid+"|"+config.current().facebook.appsecret)
 
-    fb.api("/"+config.current().facebook.appid+"/subscriptions", (res) -> console.log(res))
+    #fb.api("/"+config.current().facebook.appid+"/subscriptions", (res) -> console.log(res))
 
     fb.setAccessToken(config.current().facebook.pageaccesstoken)
 
-
+    #fb.api("/voodoohop", (res) -> console.log("pagetest",res))
     # res = Meteor.sync((done) -> fb.api "/498352853588926/invited",{summary:true}, (fbres) -> done(null,fbres))
 
-  #  fb.api "218099148337486",{fields: ["picture","cover"]}, (res) ->
-  #    console.log(res)
+    #  fb.api "218099148337486",{fields: ["picture","cover"]}, (res) ->
+    #    console.log(res)
     self.importUpdateEvent = (fbid, update=false) ->
       return unless fbid
       console.log("update",update)
@@ -200,17 +200,24 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
         return userId
     )
 
-
+    #Meteor.setTimeout( ->
+    #  _.each([("a".charCodeAt(0))..("z".charCodeAt(0))], (l) ->
+    #    console.log("searching and inserting events with letter",l)
+    #    res = Meteor.sync ((done) -> fb.api "/search", {limit:5000,since: moment().unix(),locale:"pt_BR",q:String.fromCharCode(l),type:"event"}, (fbres) -> done(null, fbres) )
+    #    _.each( res.result.data, (post) ->
+    #      self.importUpdateEvent(post.id)
+    #
+    #    )
+    #  )
+    #,500)
 
     #contentModel.contentCollection.remove({})
     return self #hack to not load posts
-
-    pages= ["voodoohop", "ideafixa", "calefacaotropicaos", "209127459210998"]
+    console.log("importing page posts")
+    pages= ["voodoohop", "ideafixa", "calefacaotropicaos", "209127459210998", "CatracaLivre"]
     Meteor.setTimeout( ->
      for page in pages
-
-      res = Meteor.sync ((done) -> fb.api "/"+page+"/posts", {limit:30}, (fbres) -> done(null, fbres) )
-
+      res = Meteor.sync ((done) -> fb.api "/"+page+"/posts", {limit:50}, (fbres) -> done(null, fbres) )
       _.each( res.result.data, (post) ->
 
         self.importUpdatePost(post.id)
@@ -218,7 +225,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     ,500)
 
     # facebook realtime notifications
-
+    return self
 
     #update existing events
     Meteor.setTimeout( ->

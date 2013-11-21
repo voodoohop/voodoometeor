@@ -11,6 +11,7 @@
     "nprogress": {},
     "event-hooks": {},
     "external-file-loader": {},
-    "smart-collections": {}
+    "smart-collections": {},
+    "accounts-admin-ui": {}
   }
 }

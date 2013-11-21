@@ -15,6 +15,9 @@ require ["EventManager"], (eventmanager) ->
     Meteor.publish("userData", ->
       Meteor.users.find({_id: this.userId}, {fields: {attending: 1, services: 1, profile: 1, geolocation: 1}});
     )
+    Meteor.publish("userLocation", (query) ->
+      Meteor.users.find(query, {fields: {mrlf}});
+    )
     ## hack until we manage to set userId on server
     #Meteor.publish("users", ->
     #  Meteor.users.find({});

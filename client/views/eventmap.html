@@ -1,22 +1,22 @@
 <template name="eventmapmarker">
-    <div  style='position: relative; width: 40px; height: 60px;'  title="" >
+    <div  style='position: relative; width: 40px; height: 60px;'  title="" data-toggle="tooltip" data-placement="right" data-original-title="{{title}}" class='eventmapmarkertooltip '>
+    <img style='position: absolute; top: 2px; left:2px; width: 36px; height:34px'  class='eventmapicon img-rounded' src='http://graph.facebok.com/{{sourceId}}/picture?type=small'>
     {{#if rsvp_confirmed }}
-    <img style='position: absolute; top: 0px; left:0px' src='/images/mapmarker_green.png'>
+    <img style='position: absolute; top: 0px; left:0px' src='/images/eventmapmarker_green_sm.png'>
     {{else}}
-    <img style='position: absolute; top: 0px; left:0px' src='/images/mapmarker.png'>
+    <img style='position: absolute; top: 0px; left:0px' src='/images/eventmapmarker_sm.png'>
     {{/if}}
-    <img style='position: absolute; top: 2px; left:2px; width: 36px; height:36px' data-toggle="tooltip" data-placement="right" data-original-title="{{title}}" class='eventmapmarkertooltip  eventmapicon img-circle' src='http://graph.facebok.com/{{sourceId}}/picture?type=small'>
 </div>
 </template>
 
 <template name="usermapmarker">
     <div  style='position: relative; width: 40px; height: 60px;'  title="" >
         {{#if isme }}
-        <img style='position: absolute; top: 0px; left:0px' src='/images/mapmarker_green.png'>
+        <img style='position: absolute; top: 0px; left:0px' src='/images/usermapmarker_black.png'>
         {{else}}
-        <img style='position: absolute; top: 0px; left:0px' src='/images/mapmarker.png'>
+        <img style='position: absolute; top: 0px; left:0px' src='/images/usermapmarker_blue.png'>
         {{/if}}
-        <img style='position: absolute; top: 2px; left:2px; width: 36px; height:36px' data-toggle="tooltip" data-placement="right" data-original-title="{{name}}" class='eventmapmarkertooltip  eventmapicon img-circle' src='http://graph.facebok.com/{{services.facebook.id}}/picture?type=square'>
+        <img style='position: absolute; top: 2px; left:2px; width: 38px; height:36px' data-toggle="tooltip" data-placement="right" data-original-title="{{name}}" class='eventmapmarkertooltip  eventmapicon img-circle' src='http://graph.facebok.com/{{services.facebook.id}}/picture?type=square'>
     </div>
 </template>
 
