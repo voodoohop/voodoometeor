@@ -6,7 +6,7 @@ if (Meteor.isServer)
   )
   console.log("NodeTime Profiler inited")
 
-require ["EventManager"], (eventmanager) ->
+require ["EventManager","Embedly"], (eventmanager,embedly) ->
 
   if (Meteor.isServer)
     #  Meteor.users.remove({})

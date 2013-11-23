@@ -1,38 +1,36 @@
-define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","ContentCommon","ContentItem"], (model,config,packery,contentCommon, contentItem) ->
+define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","ContentCommon","ContentItem", "TomMasonry"], (model,config,packery,contentCommon, contentItem, tomMasonry) ->
 
   console.log("loading content grid")
   self = {}
 
+  self.RsortFilters = new ReactiveObject(["content_sort","active_content_filters","blockvisible"])
+
+  self.RsortFilters.blockvisible = 1
+
   self.subscribeFilteredSortedContent = (callback)  ->
-    content_sort = Session.get("content_sort")
+    content_sort = self.RsortFilters.content_sort
+    console.log("subs content_sort",content_sort)
     if content_sort?
       sort = {}
       sort[content_sort.name] = content_sort.order
-    filters =  {}
-    _.each Session.get("active_content_filters"), (f) ->
-      filters["type"] = f
+    orfilters =  []
+    console.log("active_c_filters",self.RsortFilters.active_content_filters)
+    _.each self.RsortFilters.active_content_filters, (f) ->
+      #console.log("adding filter:",f)
+      orfilters.push({type: f})
     #filters.post_date = { "$gte": (new Date()).toISOString() }
     #filters["address.city"] = "São Paulo"
-
+    #filters["type"] = "video"
     #filters["num_app_users_attending"] = {"$gte": 1}
 
     options =
-      query: filters
+      query: if orfilters.length > 0 then {$or: orfilters} else {}
       sort: sort
-      blockno: Session.get("blockvisible")
-    model.subscribeContent(options, ->
-      Session.set("contentoptions", options);
-      callback() if callback?
-    )
+      blockno: self.RsortFilters.blockvisible
+    console.log("calling model to subscribe",options)
+    model.subscribeContent(options, callback)
 
-  self.contentTypes = contentCommon.contentTypes;
-
-
-  Session.set("blockvisible",1)
-
-
-
-  #Template.contentgrid.voodoocontent = -> model.getContent(Session.get("contentoptions"))
+  self.RsortFilters.blockvisible = 1
 
   self.setupReactiveContentSubscription = _.once( ->
     Deps.autorun ->
@@ -43,20 +41,10 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       NProgress.start();
   )
 
-  debouncedMasonryRelayout = _.debounce( ->
-    self.ms.layout()
-  ,200)
-
   Template.contentgrid.rendered = _.once ->
-    self.setupReactiveContentSubscription();
+    self.setupReactiveContentSubscription()
     container = $("#contentgridcontainer")
-    self.ms = new Masonry($("#contentgridcontainer")[0],
-      itemSelector: ".masonrycontainer"
-      columnWidth: contentCommon.columnWidth+contentCommon.columnGutter*2/3
-      gutter: contentCommon.columnGutter*1/3
-      isFitWidth: true
-    )
-    contentItem.ms = self.ms;
+    tomMasonry.init(container)
 
     # masonrify contenitem collection changes
 
@@ -69,26 +57,24 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         appenddiv = $("<div class='masonrycontainer' id='msnry_"+e._id+"'/>").append(content)
         if (before == null)
           container.append(appenddiv)
-          self.ms.appended(appenddiv)
+          tomMasonry.ms.appended(appenddiv)
         else
           $("#msnry_"+before._id).before(appenddiv)
-          self.ms.addItems(appenddiv)
-          self.ms.reload()
-          debouncedMasonryRelayout()
+          tomMasonry.ms.addItems(appenddiv)
+          tomMasonry.ms.reload()
+          tomMasonry.debouncedRelayout()
       removed: (e) ->
         console.log("removed")
-        self.ms.remove($("#msnry_"+e._id)[0])
-        debouncedMasonryRelayout()
+        tomMasonry.remove($("#msnry_"+e._id))
+        tomMasonry.debouncedRelayout()
       movedTo: (doc, fromIndex, toIndex, before) ->
         console.log("moved", doc, fromIndex, toIndex, before)
         if (before == null)
           container.append($("#msnry_"+e._id))
-          self.ms.reload()
-          debouncedMasonryRelayout()
+          tomMasonry.debouncedRelayout(true)
         else
           $("#msnry_"+before._id).before($("#msnry_"+e._id))
-          self.ms.reload()
-          debouncedMasonryRelayout()
+          tomMasonry.debouncedRelayout(true)
       changed: (newDoc, oldDoc) ->
         console.log("changed",newDoc,oldDoc)
         content = Meteor.render( ->
@@ -112,7 +98,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       unless target.data("visible")
         # console.log('target became visible (inside viewable area)');
         target.data "visible", true
-        Session.set "blockvisible", Session.get("blockvisible") + 1
+        self.RsortFilters.blockvisible++
     else
 
       # console.log('target became invisible (below viewable arae)');

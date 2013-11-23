@@ -14,7 +14,8 @@
       "event-hooks": {},
       "external-file-loader": {},
       "smart-collections": {},
-      "accounts-admin-ui": {}
+      "accounts-admin-ui": {},
+      "reactive-extra": {}
     },
     "packages": {
       "font-awesome": {
@@ -81,6 +82,11 @@
         "git": "https://github.com/kenyee/meteor-accounts-admin-ui.git",
         "tag": "v1.0.4",
         "commit": "b9f81a3077cca1c4b5785978ad2240cc4e902f24"
+      },
+      "reactive-extra": {
+        "git": "https://github.com/boekkooi/reactive-extra.git",
+        "tag": "v0.0.6",
+        "commit": "fe8d2f8e27c501be6533b419c3a00aae884b838b"
       },
       "jquery-ui": {
         "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",

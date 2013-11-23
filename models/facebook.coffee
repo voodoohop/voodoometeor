@@ -3,6 +3,10 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
   # Meteor.users.remove({})
   if Meteor.isServer
 
+    fbApi = (path,options, callback) ->
+      fb.api(path, options, callback)
+    fbSync = Meteor._wrapAsync(fbApi)
+
     Hooks.onLoggedIn = (p) ->
         ## exchange access token for long-lived ##
         console.log(p)
@@ -210,7 +214,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     #    )
     #  )
     #,500)
-
+    #console.log("fbsynctest",fbSync("/voodoohop"))
     #contentModel.contentCollection.remove({})
     return self #hack to not load posts
     console.log("importing page posts")

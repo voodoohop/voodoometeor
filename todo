@@ -1,0 +1,3 @@
+! change config to settings
+# move contentitem masonry calls to tommasonry
+! make embedly use proper data for creating media embeds... also make videos respect aspect ratio

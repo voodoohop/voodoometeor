@@ -1,8 +1,8 @@
-define "VoodoocontentModel",["Embedly"], (embedly) ->
+define "VoodoocontentModel",[], ->
 
   self= {};
 
-  self.contentCollection = new Meteor.SmartCollection("voodoocontent")
+  self.contentCollection = new Meteor.Collection("voodoocontent")
 
   self.contentBlockSize = 10
 
@@ -34,7 +34,12 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
   self.lastItemCount = -> self.cursor?.count() ? 0
   self.subscribeDetails = (id, callback) ->
     if (Meteor.isClient)
-      self.subscribeContent({query: id, details: true}, callback)
+      if (self.detailSubscription and id==null)
+        self.detailSubscription.stop();
+        self.detailSubscription = null;
+        callback() if (callback?)
+      if (id)
+        self.detailSubscription = self.subscribeContent({query: id, details: true}, callback)
 
   #self.subscribeDetailsIronRouter = (id, callback) ->
   #  if (Meteor.isClient)
@@ -73,27 +78,6 @@ define "VoodoocontentModel",["Embedly"], (embedly) ->
       self.getContent(options)
     Meteor.publish "contentDetail", (options) ->
       self.getContent(options)
-
-    Meteor.methods
-      prepareMediaEmbeds: (embedParams) ->
-        this.unblock();
-        console.log("preparing embeds")
-
-        # find and update all documents for which we have not generated the media embed for the specified params
-        #self.contentCollection.update({},$unset:{embedlyData: ""})
-
-        _.each self.contentCollection.find({embedlyData: { $not: { $elemMatch: embedParams }} }).fetch(), (content) ->
-          if (content.link)
-            # push empty result so we avoid doing the operation twice
-            self.contentCollection.update(content._id, $push:{ embedParams} )
-            console.log("running embedly for link:"+content.link)
-            params = _.clone(embedParams)
-            _.extend(params,embedly.runembedly(_.extend(_.clone(params), {url: content.link}))[0])
-            # remove dummy entry and push final
-            self.contentCollection.update(content._id, $pull: {embedlyData: embedParams } )
-            self.contentCollection.update(content._id, $push: {embedlyData: params})
-
-
 
   #if (Meteor.isClient)
   #  self.contentsubscription = Meteor.subscribe "content"

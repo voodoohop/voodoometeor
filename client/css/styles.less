@@ -14,8 +14,8 @@
 
 
 .eventgridimage {
-//  width:100%;
-//  height:100%;
+  //  width:100%;
+  //  height:100%;
 }
 
 div.content_type_video {
@@ -30,11 +30,12 @@ div.content_type_photo {
 
 }
 .masonrycontainer {
-display: inline-block;
+  display: inline-block;
   margin-bottom: 5px;
 }
 
 .contentitemcontainer {
+  transition: width 0.4s, height 0.4s;
   transition: border-color 1.5s ease;
   width: @contentitem_width;
   height: @contentitem_height;
@@ -49,7 +50,7 @@ display: inline-block;
   border: 0px solid black;
   //margin: 3px;
   position: relative;
-  box-sizing: content-box;
+  //box-sizing: content-box;
 
   border-radius: 3px;
   text-overflow:ellipsis;
@@ -91,6 +92,8 @@ display: inline-block;
     left:0px;
     top:0px;
     cursor: pointer;
+
+
     img {
       -webkit-transition:all .4s;
       -moz-transition:all .4s;
@@ -115,6 +118,18 @@ display: inline-block;
       -o-filter:sepia(0);
       filter:sepia(0);
     }
+
+
+    .blackgradient {
+      // transparent->black gradient overlay for text captions
+
+      background: url(/images/photoblackgradient.png) bottom left repeat-x;
+      position:absolute;
+      top: 0;
+      left: 0;
+      right:0;
+      bottom:0;
+    }
   }
 
   .back .mediathumb {
@@ -123,8 +138,6 @@ display: inline-block;
 
 
   .title {
-    text-overflow:ellipsis;
-    overflow: hidden;
     font-size: 16px;
     max-height:50px;
 
@@ -134,12 +147,10 @@ display: inline-block;
     left:0px;
     bottom:0px;
     z-index: 5;
-    display: inline-block;
     width: 100%;
+    padding: 4px;
     span {
-      background-color: rgba(0,0,0,0.7);
       color: white;
-      padding: 4px;
     }
   }
 
@@ -168,10 +179,15 @@ display: inline-block;
   }
 
   .metadata {
-    position: absolute;
-    bottom: 5px;
-    width: 95%;
+    position:absolute;
+    bottom: 0px;
+    right: 2px;
+    font-size:18px;
     box-sizing: border-box;
+    color: @background;
+    span {
+      color: rgba(255,0,0,0.9)
+   }
   }
 
   .event_confirmed_indicator {
@@ -249,6 +265,8 @@ display: inline-block;
 
 
 body {
+  transition: zoom 1.5s;
+  transition: scale 1.5s;
   background-color: @background;
   font-family: verdana;
   text-rendering: optimizeLegibility;
@@ -347,7 +365,6 @@ div.tooltip-inner {
 }
 
 
-
 .noUi-handle, .noUi-handle-active {
   margin: 0 0 0 0;
   width: 10px;
@@ -355,7 +372,6 @@ div.tooltip-inner {
   background-color: @foreground;
   height: 38px;
 }
-
 
 .eventmapdaterangeslider {
 }
