@@ -1,50 +1,58 @@
-<template name="navbar">
-    <nav class="navbar navbar-default navbar-inverse" role="navigation">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">VOODOOHOP</a>
-        </div>
-        <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav nav-stacked">
-            {{#each contentTypes}}
-            <li class="{{activeContentFilter}}"><a href="#" class="content_filter dropdown-toggle" style="font-size:130%" data-toggle="dropdown" id="content_filter_{{name}}"><span class="{{icon}}"></span> {{title}} <span class="caret"></span></a></li>
+<template name="filterbar">
+    <nav class="navbar navbar-inverse voodoonav" role="navigation">
+        <ul class="navbar-nav nav nav-pills nav-stacked">
+            {{#each filters}}
+            <li class="{{activeContentFilter}}"><a href="#" class="content_filter" style="font-size:130%" id="content_filter_{{name}}"><span class="{{icon}}"></span><span class="title {{titleclass}}">{{title}}</span></a></li>
+            {{#each ssubFilters}}
+               <li>
+                <b>{{title}}</b><br>
+               </li>
+            {{#each ssortFilters}}
+            <li>
+                <b>{{title}}</b><br>
+            </li>
             {{/each}}
-            {{#each sortTypes}}
-            <li class="{{activeSortFilter}}"><a href="#" class="sort_filter dropdown-toggle" style="font-size:130%" data-toggle="dropdown" id="sort_filter_{{name}}"><span class="{{icon}}"></span> {{title}}</a></li>
             {{/each}}
-        </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <!--<li>
-                    <input type="text" class="form-control search" placeholder="Search">
-                </li> -->
-                <!-- user login dropdown start-->
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                       {{#if user}}
-                        <img alt="" src="{{profileimg}}" width="20" height="20">
-                        <span>{{userfirstname}}</span>
-                       {{else}}
-                         <span>login</span>
-                       {{/if}}
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu extended logout">
-                        <div class="log-arrow-up"></div>
-                        <li><a href="#"><i class=" icon-suitcase"></i>Profile</a></li>
-                        <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
-                        <li><a href="#"><i class="icon-bell-alt"></i> Notification</a></li>
-                        <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
-                    </ul>
-                </li>
-                <!-- user login dropdown end -->
-            </ul>
+            {{#each ssortFilters}}
+            <li>
+                <b>{{title}}</b><br>
+            </li>
+            {{/each}}
+            {{/each}}
 
-        </div>
+        </ul>
+
+   </nav>
+</template>
+
+<template name="userbar">
+    {{#each sortTypes}}
+    <li class="{{activeSortFilter}}"><a href="#" class="sort_filter dropdown-toggle" style="font-size:130%" data-toggle="dropdown" id="sort_filter_{{name}}"><span class="{{icon}}"></span> {{title}}</a></li>
+    {{/each}}
+
+    <nav class="navbar-inverse" role="navigation">
+        <ul class="nav nav-pills nav-stacked">
+            <!--<li>
+                <input type="text" class="form-control search" placeholder="Search">
+            </li> -->
+            <!-- user login dropdown start-->
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                    {{#if user}}
+                    <img alt="" src="{{profileimg}}" width="20" height="20">
+                    <span>{{userfirstname}}</span>
+                    {{else}}
+                    <span>login</span>
+                    {{/if}}
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu extended logout">
+                    <div class="log-arrow-up"></div>
+                    <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+                </ul>
+            </li>
+            <!-- user login dropdown end -->
+        </ul>
 
     </nav>
 </template>

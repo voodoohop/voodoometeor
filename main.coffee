@@ -43,8 +43,8 @@ require ["EventManager","Embedly"], (eventmanager,embedly) ->
           path:'/'
           template: 'contentgrid'
           layoutTemplate: 'mainlayout'
-          yieldTemplates:
-            'navbar': {to: 'navbar'}
+          #yieldTemplates:
+           # 'filterbar': {to: 'navbar'}
 
       console.log("configured router")
 

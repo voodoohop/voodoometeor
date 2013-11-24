@@ -226,12 +226,9 @@ div.content_type_photo {
 //  min-height: 200px;
 //  margin: 0 auto;
 //  .transition(0.5s, ease);
+  position: relative;
   margin: 0 auto;
-  &:after {
-    content: ' ';
-    display: block;
-    clear: both;
-  }
+
 }
 
 
@@ -271,6 +268,7 @@ body {
   font-family: verdana;
   text-rendering: optimizeLegibility;
   color: @foreground;
+  padding: 10px;
 }
 
 
@@ -374,4 +372,36 @@ div.tooltip-inner {
 }
 
 .eventmapdaterangeslider {
+}
+
+.navbar {
+   z-index: 99999; border-radius: 4px;
+ .nav {
+   li {
+     float: none;
+   }
+ }
+}
+
+
+
+#msnrynav {
+  z-index: 99999;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  transition: width 0.4s
+
+}
+
+.attop {
+  width: 460px;
+}
+
+div.floating .title {
+    display: none;
+}
+
+.voodoologo {
+  font-weight: bold;
 }

@@ -12,7 +12,6 @@
     "event-hooks": {},
     "external-file-loader": {},
     "smart-collections": {},
-    "accounts-admin-ui": {},
     "reactive-extra": {}
   }
 }

@@ -11,11 +11,13 @@ define "TomMasonry",[], ->
     columnGutter: 3
 
     init: (container) ->
-      self.ms = new Masonry(container[0],
+      self.ms = new Packery(container[0],
         itemSelector: ".masonrycontainer"
         columnWidth: self.columnWidth + self.columnGutter*2/3
         gutter: self.columnGutter*1/3
         isFitWidth: true
+        stamp: ".stamp"
+        #transitionDuration: 0.5
       )
     debouncedRelayout: _.debounce( (reload=false) ->
 
@@ -23,8 +25,18 @@ define "TomMasonry",[], ->
         if (reload)
           self.ms.reload()
         self.ms.layout()
-    ,200)
+    ,300)
+
     remove: (item) -> self.ms.remove(item[0])
+
+    unStamp: (element,callback) ->
+      self.ms.unstamp(element);
+      callback() if callback?
+      self.debouncedRelayout(false);
+    reStamp: (element, callback) ->
+      self.ms.stamp(element);
+      callback() if callback?
+      self.debouncedRelayout(false);
   }
 
 

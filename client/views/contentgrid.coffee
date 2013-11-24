@@ -1,32 +1,22 @@
-define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","ContentCommon","ContentItem", "TomMasonry"], (model,config,packery,contentCommon, contentItem, tomMasonry) ->
+define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","ContentCommon","ContentItem", "TomMasonry", "NavStamper"], (model,config,packery,contentCommon, contentItem, tomMasonry, navStamper) ->
 
   console.log("loading content grid")
   self = {}
 
-  self.RsortFilters = new ReactiveObject(["content_sort","active_content_filters","blockvisible"])
+  self.RsortFilters = new ReactiveObject(["filter","blockvisible"])
 
   self.RsortFilters.blockvisible = 1
 
-  self.subscribeFilteredSortedContent = (callback)  ->
-    content_sort = self.RsortFilters.content_sort
-    console.log("subs content_sort",content_sort)
-    if content_sort?
-      sort = {}
-      sort[content_sort.name] = content_sort.order
-    orfilters =  []
-    console.log("active_c_filters",self.RsortFilters.active_content_filters)
-    _.each self.RsortFilters.active_content_filters, (f) ->
-      #console.log("adding filter:",f)
-      orfilters.push({type: f})
-    #filters.post_date = { "$gte": (new Date()).toISOString() }
-    #filters["address.city"] = "São Paulo"
-    #filters["type"] = "video"
-    #filters["num_app_users_attending"] = {"$gte": 1}
+  self.RsubscribeFilteredSortedContent = (callback) ->
+    self.subscribeFilteredSortedContent(self.RsortFilters, callback)
+
+  self.subscribeFilteredSortedContent = (sortFilterOptions, callback)  ->
+    console.log("subscribing",sortFilterOptions)
 
     options =
-      query: if orfilters.length > 0 then {$or: orfilters} else {}
-      sort: sort
-      blockno: self.RsortFilters.blockvisible
+      query: sortFilterOptions.filter.query
+      sort: sortFilterOptions.filter.sortFilter
+      blockno: sortFilterOptions.blockvisible
     console.log("calling model to subscribe",options)
     model.subscribeContent(options, callback)
 
@@ -35,7 +25,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
   self.setupReactiveContentSubscription = _.once( ->
     Deps.autorun ->
       console.log("subscribing to content")
-      self.subscribeFilteredSortedContent( ->
+      self.RsubscribeFilteredSortedContent( ->
         NProgress.done();
       )
       NProgress.start();
@@ -107,5 +97,18 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
 
   Meteor.startup ->
     $(window).scroll(showMoreVisible);
+
+  Template.filterbar.rendered = _.once ->
+    navStamper.init($("#msnrynav"), 200,
+      onStamped: (el) ->
+        el.addClass("attop")
+        el.removeClass("floating")
+        console.log("stamped")
+
+      onUnstamped: (el) ->
+        el.removeClass("attop")
+        el.addClass("floating")
+        console.log("unstamped")
+    )
 
   return self

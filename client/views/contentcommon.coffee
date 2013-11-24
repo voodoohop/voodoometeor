@@ -1,5 +1,23 @@
 define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
 
+  sortTypes =
+    post_date_desc:
+      title:"Post Date"
+      name:"post_date_desc"
+      field:"post_date"
+      direction: -1
+      icon:"glyphicon glyphicon-calendar"
+    post_date_asc:
+      title:"Post Date"
+      name:"post_date_desc"
+      field:"post_date"
+      direction: 1
+      icon:"glyphicon glyphicon-calendar"
+    num_app_users_attending:
+      title:"Likes"
+      name: "num_app_users_attending"
+      direction: -1
+      icon:"glyphicon glyphicon-heart"
 
 
   self = {
@@ -14,16 +32,100 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
       "#d9534f"
     ]
 
-    sortTypes: [
-      {name: "post_date", title:"Post Date", icon:"glyphicon glyphicon-calendar", accessor: (e) -> e?.post_date}
-      {name: "num_app_users_attending", title:"Likes", icon:"glyphicon glyphicon-heart", accessor: (e) -> e?.num_app_users_attending}
-    ]
+
+
     contentTypes: [
       {name: "event", color:"#428bca", title:"Events", icon:"glyphicon glyphicon-calendar", class:"label label-primary", showtitle: true, colorfromweekday: true, width: 230, height: 280}
       {name: "video", color:"#f0ad4e", title:"Videos", icon:"glyphicon glyphicon-facetime-video", class:"label-success label",showtitle: true, inlineplay: true,width: 460, height: 280, allowDynamicAspectRatio: true, maxWidth: 460, maxHeight: 480, minHeight: 150}
       {name: "photo", color: "#d9534f", title:"Photos", icon:"glyphicon glyphicon-picture", class:"label label-warning", width: 345, height: 345, showtitle:true, allowDynamicAspectRatio: true, maxWidth: 460, maxHeight: 480}
       {name: "link", color: "#5bc0de",title:"Links", icon:"glyphicon glyphicon-link", class:"label label-info", width: 230, height: 140}
     ]
+
+
+
+    filterOptions: [
+      {
+        name:"voodoohop"
+        title:"VOODOOHOP"
+        query:
+          num_app_users_attending: {"$gte": 5}
+        titleclass: "voodoologo"
+        icon: "icon-voodoologo"
+        subFilters: [
+          {
+            title:"Events"
+            name:"events"
+            query:
+              {type: "event", post_date: {$gte: new Date().toISOString() }}
+
+            sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
+          }
+          {
+            title:"Media"
+            name:"media"
+            query:
+              $or: [{type: "photo"}, {type: "video"}]
+            sortFilters: [sortTypes.post_date_desc, sortTypes.num_app_users_attending]
+          }
+          {
+            title: "Artists"
+            name: "artists"
+            query:
+              type: "photo"
+              artistprofile: true
+            sortFilters: [sortTypes.post_date_desc]
+          }
+        ]
+      }
+      {
+        title:"Media"
+        name: "media"
+        query:
+          $or: [{type: "photo"}, {type: "video"}]
+        icon: "glyphicon glyphicon-facetime-video"
+        sortFilters: [sortTypes.post_date_desc, sortTypes.num_app_users_attending]
+      }
+      {
+        title:"Links"
+        name: "links"
+        query: {type: "link"}
+        icon: "glyphicon glyphicon-facetime-video"
+        sortFilters: [sortTypes.post_date_desc, sortTypes.num_app_users_attending]
+      }
+
+    ]
+
+    constructFilters: (filterSelectPath) ->
+      tokenizedpath = filterSelectPath.split(".")
+      console.log(tokenizedpath)
+      recursiveConstructQuery = (tokenizedpath, subobj, query= []) ->
+        #console.log("reccq",tokenizedpath, subobj, query)
+        current = tokenizedpath.shift()
+        filterOption = null
+        if (isNaN(current))
+          filterOption = _.findWhere(subobj, {name: current})
+        else
+          filterOption = subobj[parseInt(current)]
+        if filterOption.query
+          query.push(filterOption.query)
+        if (filterOption.subFilters?)
+          return recursiveConstructQuery(tokenizedpath, filterOption.subFilters, query)
+        else
+          if (filterOption.sortFilters?)
+            #console.log("getting sort option from path, obj", tokenizedpath,filterOption.sortFilters[parseInt(tokenizedpath[0])])
+            sortFilter = null
+            if (isNaN(tokenizedpath[0]))
+              sortFilter = _.findWhere(filterOption.sortFilters, {name: tokenizedpath[0]})
+            else
+              sortFilter = filterOption.sortFilters[parseInt(tokenizedpath[0])]
+            console.log("returning sort filter, tok path",tokenizedpath,)
+            return {sortFilter: sortFilter, query: query}
+          return {query: query};
+      q = recursiveConstructQuery(tokenizedpath, self.filterOptions)
+      sortFilter = {}
+      sortFilter[q.sortFilter.field] = q.sortFilter.direction
+      return {query: {$and: q.query}, sortFilter: sortFilter}
+
 
     contentWidthInGrid: (item) ->
       metadata = self.getContenttypeMetadata(item)

@@ -14,7 +14,6 @@
       "event-hooks": {},
       "external-file-loader": {},
       "smart-collections": {},
-      "accounts-admin-ui": {},
       "reactive-extra": {}
     },
     "packages": {
@@ -22,11 +21,6 @@
         "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
         "tag": "v4.0.3",
         "commit": "61e9361384347547ae144f8228faa4deffda23db"
-      },
-      "HTML5-History-API": {
-        "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
-        "tag": "v4.0.0",
-        "commit": "dc4965f1424cfca625ec3fbea17eace03f8e32c5"
       },
       "define": {
         "git": "https://github.com/apendua/require.git",
@@ -78,30 +72,10 @@
         "tag": "v0.3.22",
         "commit": "34710960d08dddc206abefbb59dc17c93735a721"
       },
-      "accounts-admin-ui": {
-        "git": "https://github.com/kenyee/meteor-accounts-admin-ui.git",
-        "tag": "v1.0.4",
-        "commit": "b9f81a3077cca1c4b5785978ad2240cc4e902f24"
-      },
       "reactive-extra": {
         "git": "https://github.com/boekkooi/reactive-extra.git",
         "tag": "v0.0.6",
         "commit": "fe8d2f8e27c501be6533b419c3a00aae884b838b"
-      },
-      "jquery-ui": {
-        "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",
-        "tag": "v1.9.2",
-        "commit": "c437d45edcf1367df8d5ffa8bad2867758030bd2"
-      },
-      "jqbootstrapvalidation": {
-        "git": "https://github.com/nate-strauser/meteor-jqbootstrapvalidation.git",
-        "tag": "v0.1.0",
-        "commit": "2af4625d41a9b24311544a53790f14fa38c27b10"
-      },
-      "roles": {
-        "git": "https://github.com/alanning/meteor-roles.git",
-        "tag": "v1.0.6",
-        "commit": "f81cbf7c765a4ed7e16a580c288db6f10a90856b"
       }
     }
   }
