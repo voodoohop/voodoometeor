@@ -50,8 +50,20 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         query:
           num_app_users_attending: {"$gte": 5}
         titleclass: "voodoologo"
-        icon: "icon-voodoologo"
+        icon: "icon-voodoologo2"
         subFilters: [
+          {
+            title:"All"
+            name:"all"
+            query:
+              $or : [
+                {type: "event", post_date: {$gte: new Date().toISOString() }}
+                {type: "photo"}
+                {type: "video"}
+                {type: "link"}
+              ]
+            sortFilters: [sortTypes.num_app_users_attending,sortTypes.post_date_asc]
+          }
           {
             title:"Events"
             name:"events"
@@ -89,8 +101,8 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         title:"Links"
         name: "links"
         query: {type: "link"}
-        icon: "glyphicon glyphicon-facetime-video"
-        sortFilters: [sortTypes.post_date_desc, sortTypes.num_app_users_attending]
+        icon: "glyphicon glyphicon-link"
+        sortFilters: [sortTypes.num_app_users_attending, sortTypes.post_date_desc]
       }
 
     ]

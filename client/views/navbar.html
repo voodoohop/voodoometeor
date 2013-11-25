@@ -1,23 +1,31 @@
+<template name="sortfilteritem">
+    <li cslass="{{activeContentFilter}}"><a href="#" class="content_filter" style="font-size:130%" id="content_filter_{{name}}"><span class="{{icon}} toplevelfiltericon"></span><span class="title {{titleclass}}">{{title}}</span></a></li>
+</template>
+
+<template name="filteritem">
+    <li cslass="{{activeContentFilter}}"><a href="#" class="content_filter" style="font-size:130%" id="content_filter_{{name}}"><span class="{{icon}} toplevelfiltericon"></span><span class="title {{titleclass}}">{{title}}</span></a></li>
+    {{#if subFilters}}
+    <ul cslass="navbar-nav nav nav-pills nav-stacked">
+    {{#each subFilters}}
+      {{>filteritem}}
+    {{/each}}
+    </ul>
+    {{/if}}
+    {{#if sortFilters}}
+    <ul cslass="navbar-nav nav nav-pills nav-stacked">
+        {{#each sortFilters}}
+        {{>sortfilteritem}}
+        {{/each}}
+    </ul>
+    {{/if}}
+
+</template>
+
 <template name="filterbar">
-    <nav class="navbar navbar-inverse voodoonav" role="navigation">
-        <ul class="navbar-nav nav nav-pills nav-stacked">
+    <nav cslass="navbar navbar-inerse voodoonav" role="navigation">
+        <ul cslass="navbar-nav nav nav-pills nav-stacked">
             {{#each filters}}
-            <li class="{{activeContentFilter}}"><a href="#" class="content_filter" style="font-size:130%" id="content_filter_{{name}}"><span class="{{icon}}"></span><span class="title {{titleclass}}">{{title}}</span></a></li>
-            {{#each ssubFilters}}
-               <li>
-                <b>{{title}}</b><br>
-               </li>
-            {{#each ssortFilters}}
-            <li>
-                <b>{{title}}</b><br>
-            </li>
-            {{/each}}
-            {{/each}}
-            {{#each ssortFilters}}
-            <li>
-                <b>{{title}}</b><br>
-            </li>
-            {{/each}}
+                {{>filteritem}}
             {{/each}}
 
         </ul>

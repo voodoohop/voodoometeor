@@ -1,4 +1,4 @@
-define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventManager","TomMasonry"], (embedly, model, contentCommon,eventManager, tomMasonry) ->
+define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventManager","TomMasonry","ContentgridController"], (embedly, model, contentCommon,eventManager, tomMasonry, grid) ->
   self = {}
 
 
@@ -7,6 +7,8 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
     _.contains(Meteor.user()?.attending, item._id)
 
 
+  Rselected = grid.RselectedItem
+
   self.helpers =
     typespecificcontent: ->
       res = Template["contentitem_"+this.type](this)
@@ -14,12 +16,12 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
     randcol: -> contentCommon.colors[_.random(0,contentCommon.colors.length-1)]
 
-    showMedia: -> Session.get(this._id+"_showMedia")
+    showMedia: -> Rselected.id == this._id  and Rselected.playingMedia
 
-    isExpanded: -> (Session.get("contentitemSelected") == this._id) or this.expanded
+    isExpanded: -> (Rselected.id == this._id) or this.expanded
 
     rsvp_confirmed: -> self.rsvp_confirmed(this)
-    showDetail: -> Session.get("showDetail") == this._id
+    showDetail: -> Rselected.id == this._id and Rselected.showingDetail
 
     titleellipsis: ->
       this.title?.substr(0,40) + (if this.title.length >40 then "..." else "")
@@ -37,12 +39,13 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
         ebdta = embedly.get(this, contentCommon.contentWidthInGrid(this), contentCommon.contentHeightInGrid(this))
         thumbnail_url = ebdta?.thumbnail_url
       # console.log("thumb:"+thumbnail_url)
-      if (thumbnail_url?)
+      if (thumbnail_url? and isExternalLink(thumbnail_url))
         #console.log "metadata",contentCommon.getContenttypeMetadata(this)
         height = contentCommon.contentHeightInGrid(this)
         width = contentCommon.contentWidthInGrid(this)
         embedly.getCroppedImageUrl(thumbnail_url, width, height)
-
+      else
+        return thumbnail_url
 
   Template.contentitem.helpers contentCommon.helpers
 
@@ -75,20 +78,23 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
       eventManager.rsvp(this._id, true)
 
     'click .mediathumb': () ->
-      Session.set("showDetail", this._id)
       #detailSubscription = model.subscribeDetails(this._id);
       this.justExpanded = true;
       console.log(this)
-      if (Session.get("contentitemSelected") == this._id)
-        Session.set("contentitemSelected",null)
+      if (Rselected.id == this._id)
+        Rselected.id = null
+        Rselected.showMedia = false
+        Rselected.showingDetail = false
       else
-        Session.set("contentitemSelected",this._id)
+        Rselected.id = this._id
+        Rselected.showMedia = false
+        Rselected.showingDetail = true
 
     'click .mediaplaybutton': () ->
       console.log(this)
       console.log("showmedia: "+this._id)
-      Session.set("contentitemSelected",this._id)
-      Session.set(this._id+"_showMedia",true)
+      Rselected.id = this._id
+      Rselected.showMedia = true
 
   Template.contentitem.rendered = ->
     data = this.data
@@ -97,12 +103,40 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
       Meteor.defer ->
         tomMasonry.ms.on( 'layoutComplete',handler = ->
           tomMasonry.ms.off('layoutComplete', handler)
-          $(window).scrollTo("#"+data._id,500)
+          $(window).scrollTo("#"+data._id,500,
+            onAfter: -> self.listenForDetailLeavingWindow = true
+          )
         )
         tomMasonry.ms.layout()
 
-  Deps.autorun ->
-    console.log("subscribing to detail", Session.get("showDetail"))
-    model.subscribeDetails(Session.get("showDetail"))
+  Meteor.startup ->
+    $(window).scroll _.debounce( ->
+      if (Rselected.showingDetail and self.listenForDetailLeavingWindow)
+        detailtop = $("#"+Rselected.id).offset().top
+        if Math.abs($(window).scrollTop() - detailtop) > $(window).height()/2
+          gridwidth = contentCommon.contentWidthInGrid(self.openDetailItem)
+          gridheight = contentCommon.contentHeightInGrid(self.openDetailItem)
+          console.log("animating closing:",gridwidth, gridheight)
+          $("#"+Rselected.id).animate(
+            width: ""+gridwidth+"px"
+            height: ""+gridheight+"px"
+          , 200, null, ->
+            self.listenForDetailLeavingWindow = false
+            Rselected.showingDetail = false
+            Rselected.id = null)
+          Meteor.setTimeout( ->
+            tomMasonry.debouncedRelayout()
+          , 500)
+    , 500)
 
+
+  Deps.autorun ->
+    if (Rselected.showingDetail)
+      console.log("subscribing to detail", Rselected.id)
+      model.subscribeDetails(Rselected.id, ->
+        self.openDetailItem = model.getContentById(Rselected.id)
+        console.log("open detail item:", self.openDetailItem)
+      )
+    else
+      model.subscribeDetails(null)
   return self;

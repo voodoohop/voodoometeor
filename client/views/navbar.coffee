@@ -18,7 +18,10 @@ require ["ContentCommon","ContentgridController"], (contentCommon, controller) -
       return null unless Meteor.user()?
       "http://graph.facebook.com/"+Meteor.user().services.facebook.id+"/picture"
 
-  Rfilters.filter = contentCommon.constructFilters("0.0.0")
+
+  initpath = "voodoohop.all.num_app_users_attending"
+  Rfilters.filter = contentCommon.constructFilters(initpath)
+  Rfilters.path = initpath;
 
   Template.filterbar.events =
     'click .sort_filter': () ->
@@ -34,6 +37,7 @@ require ["ContentCommon","ContentgridController"], (contentCommon, controller) -
 
     'click .content_filter': () ->
       currobj = this
+
       sub = null
       path=this.name
       while currobj.subFilters? or currobj.sortFilters?
@@ -49,6 +53,7 @@ require ["ContentCommon","ContentgridController"], (contentCommon, controller) -
       #  filters = _.without filters, this.name
       #else
       #  filters.push(this.name)
+      Rfilters.path = path
       Rfilters.filter = filter
       Rfilters.blockvisible = 1
 

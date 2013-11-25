@@ -1,4 +1,4 @@
-define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","ContentCommon","ContentItem", "TomMasonry", "NavStamper"], (model,config,packery,contentCommon, contentItem, tomMasonry, navStamper) ->
+define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","ContentCommon", "TomMasonry", "NavStamper"], (model,config,packery,contentCommon, tomMasonry, navStamper) ->
 
   console.log("loading content grid")
   self = {}
@@ -6,6 +6,8 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
   self.RsortFilters = new ReactiveObject(["filter","blockvisible"])
 
   self.RsortFilters.blockvisible = 1
+
+  self.RselectedItem = new ReactiveObject(["id","showingDetail","playingMedia"])
 
   self.RsubscribeFilteredSortedContent = (callback) ->
     self.subscribeFilteredSortedContent(self.RsortFilters, callback)
@@ -99,7 +101,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
     $(window).scroll(showMoreVisible);
 
   Template.filterbar.rendered = _.once ->
-    navStamper.init($("#msnrynav"), 200,
+    navStamper.init($("#msnrynav"), 120,
       onStamped: (el) ->
         el.addClass("attop")
         el.removeClass("floating")

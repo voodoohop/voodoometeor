@@ -16,7 +16,7 @@ require ["EventManager","Embedly"], (eventmanager,embedly) ->
       Meteor.users.find({_id: this.userId}, {fields: {attending: 1, services: 1, profile: 1, geolocation: 1}});
     )
     Meteor.publish("userLocation", (query) ->
-      Meteor.users.find(query, {fields: {mrlf}});
+      Meteor.users.find(query, {fields: {profile:1, geolocation: 1, "services.facebook.id": 1}});
     )
     ## hack until we manage to set userId on server
     #Meteor.publish("users", ->

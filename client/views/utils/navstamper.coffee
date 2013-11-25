@@ -35,7 +35,7 @@ define "NavStamper", ["TomMasonry"], (tomMasonry) ->
         #el.stop()
         topos = if isInStampArea then originalelpos else windowpos + originalelpos
         el.stop()
-        el.animate({top: topos, opacity: 0.6}, 300, 'swing', ->
+        el.animate({top: topos - originalelpos, opacity: 0.9}, 300, 'swing', ->
           el.animate({opacity: 1}, 200, 'swing', ->
             ismoving = false
             if (isInStampArea)
@@ -50,7 +50,7 @@ define "NavStamper", ["TomMasonry"], (tomMasonry) ->
         if (true or (!isfadingout and !ismoving))
           isfadingout = true
           el.stop()
-          el.animate({ opacity: 0.4 }, 100, "swing", ->
+          el.animate({ opacity: 0.6 }, 100, "swing", ->
             isfadingout = false
             ismoving = true
             doFadingInAndStamping()

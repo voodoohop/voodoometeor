@@ -72,7 +72,6 @@ define "EventMap", ["VoodoocontentModel", "ContentItem", "LeafletUtils"], (model
         console.log("done subscribing")
         NProgress.done()
       )
-    detailSubscription = null;
     eventscursor = model.getContent()
     eventMarkerManager = leafletUtils.markermanager(
       getLatLng: (doc) -> doc.address
@@ -80,7 +79,7 @@ define "EventMap", ["VoodoocontentModel", "ContentItem", "LeafletUtils"], (model
       addedMarkers: self.addEventMapMarkerTooltips
       popupCreate: (e,div, done) ->
         NProgress.start()
-        detailSubscription = model.subscribeDetails(e._id, ->
+        model.subscribeDetails(e._id, ->
           data = model.getContent({query: e._id, details: true}).fetch()[0]
           data.expanded = true
           content = Meteor.render( ->
@@ -90,7 +89,7 @@ define "EventMap", ["VoodoocontentModel", "ContentItem", "LeafletUtils"], (model
           done()
           NProgress.done()
         )
-      popupClose: -> console.log("stopping subscription"); detailSubscription.stop()
+      popupClose: -> console.log("stopping subscription"); model.subscribeDetails(null)
       clusterIconCreate: (cluster) ->
             children = cluster.getAllChildMarkers()
             nochildren = children.length

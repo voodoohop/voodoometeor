@@ -135,7 +135,7 @@
 					// DOMElement / jQuery
 					if (targ.is || targ.style)
 						// Get the real position of the target 
-						toff = (targ = $(targ)).offset();
+						toff = (targ = $(targ)).offset()    ;
 			}
 			$.each( settings.axis.split(''), function( i, axis ) {
 				var Pos	= axis == 'x' ? 'Left' : 'Top',

@@ -32,21 +32,18 @@ define "VoodoocontentModel",[], ->
 
 
   self.lastItemCount = -> self.cursor?.count() ? 0
-  self.subscribeDetails = (id, callback) ->
-    if (Meteor.isClient)
-      if (self.detailSubscription and id==null)
-        self.detailSubscription.stop();
-        self.detailSubscription = null;
-        callback() if (callback?)
+
+  if (Meteor.isClient)
+    self.subscribeDetails = (id, callback) ->
+      if (self.detailSubscription and id != self.detailId)
+        self.detailSubscription.stop()
+        self.detailSubscription = null
+        self.detailId = null
+        #if (id == null)
+        #  callback() if (callback?)
       if (id)
         self.detailSubscription = self.subscribeContent({query: id, details: true}, callback)
-
-  #self.subscribeDetailsIronRouter = (id, callback) ->
-  #  if (Meteor.isClient)
-  #    self.subscribeContentIronRouter({query: id, details: true}, callback)
-  #self.subscribeContentIronRouter = (options, callback) ->
-  #  this.subscribe "content", {query: id, details: true}, callback
-
+        self.detailId = id
 
 
   self.lastLimit = 0
@@ -65,7 +62,8 @@ define "VoodoocontentModel",[], ->
 
   self.getContentBySourceId = (sourceId) -> self.contentCollection.findOne({sourceId: sourceId})
   self.getContentById = (id) ->
-    self.subscribeDetails(id);
+    if (self.detailId != id)
+      self.subscribeDetails(id);
     self.contentCollection.findOne(id)
 
   if (Meteor.isServer)
@@ -78,9 +76,6 @@ define "VoodoocontentModel",[], ->
       self.getContent(options)
     Meteor.publish "contentDetail", (options) ->
       self.getContent(options)
-
-  #if (Meteor.isClient)
-  #  self.contentsubscription = Meteor.subscribe "content"
 
 
   return self

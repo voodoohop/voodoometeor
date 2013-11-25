@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:url('/glyphs/voodoo_icomoon.eot');
-    src:url('/glyphs/voodoo_icomoon.eot?#iefix') format('embedded-opentype'),
-    url('/glyphs/voodoo_icomoon.ttf') format('truetype'),
-    url('/glyphs/voodoo_icomoon.woff') format('woff'),
-    url('/glyphs/voodoo_icomoon.svg#icomoon') format('svg');
+    src:url('/glyphs/icomoon.eot');
+    src:url('/glyphs/icomoon.eot?#iefix') format('embedded-opentype'),
+    url('/glyphs/icomoon.ttf') format('truetype'),
+    url('/glyphs/icomoon.woff') format('woff'),
+    url('/glyphs/icomoon.svg#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -25,9 +25,4 @@
 
 .icon-voodoologo:before {
     content: "\e600";
-    font-size: 2em;
-    top: 0.1em;
-    left: -0.18em;
-    margin-right: -0.2em;
-    position: relative;
 }

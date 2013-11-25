@@ -14,3 +14,5 @@
           #console.log("calling batched version", processargs)
           batchfunc.call(this, processargs,1)
     , time)
+
+@isExternalLink = (url) -> RegExp('^((f|ht)tps?:)?//').test(url);
