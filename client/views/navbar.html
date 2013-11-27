@@ -1,17 +1,22 @@
 <template name="sortfilteritem">
-    <li cslass="{{activeContentFilter}}"><a href="#" class="content_filter" style="font-size:130%" id="content_filter_{{name}}"><span class="{{icon}} toplevelfiltericon"></span><span class="title {{titleclass}}">{{title}}</span></a></li>
+    <li class="{{activeContentFilter}}"><a href="#" class="content_filter" style="font-size:130%" id="content_filter_{{name}}"><span class="{{icon}} toplevelfiltericon"></span><span class="title {{titleclass}}">{{title}}</span></a></li>
 </template>
 
 <template name="filteritem">
-    <li cslass="{{activeContentFilter}}"><a href="#" class="content_filter" style="font-size:130%" id="content_filter_{{name}}"><span class="{{icon}} toplevelfiltericon"></span><span class="title {{titleclass}}">{{title}}</span></a></li>
+    <li class="{{activeContentFilter}} dropdown">
+        <a href="#" class="content_filter {{#if subFilters}}dropdown-toggle{{/if}}" {{#if subFilters}}data-toggle="dropdown"{{/if}} style="font-size:130%" id="content_filter_{{name}}"><span class="{{icon}} toplevelfiltericon"></span><span class="title {{titleclass}}">{{title}}</span></a>
     {{#if subFilters}}
-    <ul cslass="navbar-nav nav nav-pills nav-stacked">
+        <ul class="dropdown-menu">
     {{#each subFilters}}
+
       {{>filteritem}}
+
     {{/each}}
-    </ul>
+        </ul>
+
     {{/if}}
-    {{#if sortFilters}}
+    </li>
+    {{#if ssortFilters}}
     <ul cslass="navbar-nav nav nav-pills nav-stacked">
         {{#each sortFilters}}
         {{>sortfilteritem}}
@@ -22,13 +27,14 @@
 </template>
 
 <template name="filterbar">
-    <nav cslass="navbar navbar-inerse voodoonav" role="navigation">
-        <ul cslass="navbar-nav nav nav-pills nav-stacked">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav ">
             {{#each filters}}
                 {{>filteritem}}
             {{/each}}
-
         </ul>
+        </div>
 
    </nav>
 </template>

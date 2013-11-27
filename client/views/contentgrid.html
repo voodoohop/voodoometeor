@@ -6,11 +6,16 @@
 
 
 <template name="contentgrid">
-
     <div id="contentgridcontainer">
+
         <div id="msnrynav" class="stamp attop">
             {{>filterbar}}
+
         </div>
+
+        {{#each featured}}
+            {{>contentitem}}
+        {{/each}}
     </div>
     {{#if moreResults}}
     <div id="showMoreResults" style="margin-left: 25px;">

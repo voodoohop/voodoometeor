@@ -35,10 +35,11 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
 
 
     contentTypes: [
-      {name: "event", color:"#428bca", title:"Events", icon:"glyphicon glyphicon-calendar", class:"label label-primary", showtitle: true, colorfromweekday: true, width: 230, height: 280}
-      {name: "video", color:"#f0ad4e", title:"Videos", icon:"glyphicon glyphicon-facetime-video", class:"label-success label",showtitle: true, inlineplay: true,width: 460, height: 280, allowDynamicAspectRatio: true, maxWidth: 460, maxHeight: 480, minHeight: 150}
-      {name: "photo", color: "#d9534f", title:"Photos", icon:"glyphicon glyphicon-picture", class:"label label-warning", width: 345, height: 345, showtitle:true, allowDynamicAspectRatio: true, maxWidth: 460, maxHeight: 480}
-      {name: "link", color: "#5bc0de",title:"Links", icon:"glyphicon glyphicon-link", class:"label label-info", width: 230, height: 140}
+      {name: "event", color:"voodoocolor1", title:"Events", icon:"glyphicon glyphicon-calendar", class:"label label-primary", showtitle: true, colorfromweekday: true, width: 230, height: 200}
+      {name: "video", color:"voodoocolor2", title:"Videos", icon:"glyphicon glyphicon-facetime-video", class:"label-success label",showtitle: true, inlineplay: true,width: 460, height: 280, allowDynamicAspectRatio: true, maxWidth: 460, maxHeight: 480, minHeight: 150}
+      {name: "photo", color: "voodoocolor3", title:"Photos", icon:"glyphicon glyphicon-picture", class:"label label-warning", width: 345, height: 345, showtitle:true, allowDynamicAspectRatio: true, maxWidth: 460, maxHeight: 440}
+      {name: "link", color: "voodoocolor4",title:"Links", icon:"glyphicon glyphicon-link", class:"label label-info", width: 230, height: 140}
+      {name: "coverphoto", color: "voodoocolor5",title:null, icon:null, class:"label label-info", width: 575, height: 400, allowDynamicAspectRatio: true}
     ]
 
 
@@ -165,10 +166,19 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
     bgcol: _.partial( (c) ->
       type = _.findWhere(c.contentTypes, {name: this.type})
       if (type.colorfromweekday)
-        self.colors[moment(new Date(this.post_date)).day() % self.colors.length]
+        return "bgvoodoocolor"+([moment(new Date(this.post_date)).day() % 5+ 1] )
       else
         type.color
     , self)
+
+    fgcol: _.partial( (c) ->
+      type = _.findWhere(c.contentTypes, {name: this.type})
+      if (type.colorfromweekday)
+        return "fgvoodoocolor"+([moment(new Date(this.post_date)).day() % 5+ 1] )
+      else
+        type.color
+    , self)
+
     contentTypeMetaData: self.getContenttypeMetadata
 
     width: (showDetail) ->

@@ -75,6 +75,11 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         $("#"+newDoc._id).replaceWith(content)
 
 
+  Template.contentgrid.featured = ->
+    console.log("getting cover photo")
+    c = model.getContent({query:{featured: true}}).fetch();
+    console.log("got featured",c)
+    c
   #infinite scroll
 
 

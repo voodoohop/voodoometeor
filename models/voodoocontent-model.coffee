@@ -4,15 +4,15 @@ define "VoodoocontentModel",[], ->
 
   self.contentCollection = new Meteor.Collection("voodoocontent")
 
-  self.contentBlockSize = 10
+  self.contentBlockSize = 30
 
   self.helpers =
     postedDate: -> moment(new Date(this.post_date)).fromNow()
     day: ->
-      format = "dddd"
+      format = "ddd"
       p = moment(new Date(this.post_date))
       if ! (p.diff(moment(),"days") in [0..6])
-        format += " D/M/YY"
+        format += " D/M"
       p.format(format)
     isFeatured: -> (this.isFeatured == true)
     numlikes: -> this.like_count ? 0
@@ -31,9 +31,14 @@ define "VoodoocontentModel",[], ->
       Meteor.subscribe "content", options, callback
 
 
+
+
   self.lastItemCount = -> self.cursor?.count() ? 0
 
   if (Meteor.isClient)
+    Meteor.startup ->
+      Meteor.subscribe( "featuredContent")
+
     self.subscribeDetails = (id, callback) ->
       if (self.detailSubscription and id != self.detailId)
         self.detailSubscription.stop()
@@ -57,8 +62,8 @@ define "VoodoocontentModel",[], ->
         sort: options?.sort
       q = options?.query ? {}
       console.log("running find on db",q,opts)
-
-      return self.cursor = self.contentCollection.find(q, opts)
+      self.cursor = self.contentCollection.find(q, opts)
+      return self.cursor
 
   self.getContentBySourceId = (sourceId) -> self.contentCollection.findOne({sourceId: sourceId})
   self.getContentById = (id) ->
@@ -76,6 +81,8 @@ define "VoodoocontentModel",[], ->
       self.getContent(options)
     Meteor.publish "contentDetail", (options) ->
       self.getContent(options)
+    Meteor.publish "featuredContent", ->
+      self.getContent({query: {featured: true}})
 
 
   return self

@@ -7,8 +7,8 @@ define "TomMasonry",[], ->
     windowWidthToMasonryCol: ->
       Math.floor(Session.get("windowWidth") / (self.columnWidth+self.columnGutter*2/3)) * (self.columnWidth+ self.columnGutter*2/3)
 
-    columnWidth: 115/5
-    columnGutter: 3
+    columnWidth: 230
+    columnGutter: 0
 
     init: (container) ->
       self.ms = new Packery(container[0],

@@ -185,9 +185,9 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
         self.numEventsImporting--;
         return evtid
 
-      importFacebookPost: ->
+      importFacebookPost: (params) ->
         this.unblock()
-        self.importUpdatePost
+        self.importUpdatePost(params)
       facebook_login: (fbUser, accessToken, permissions) ->
         serviceData =
           id: fbUser.id

@@ -1,5 +1,13 @@
 @import "elements.lessimport";
 
+.saturate(@pct) {
+  filter: ~"saturate(@{pct})";
+  -webkit-filter: ~"saturate(@{pct})";
+  -moz-filter: ~"saturate(@{pct})";
+  -o-filter: ~"saturate(@{pct})";
+  -ms-filter: ~"saturate(@{pct})";
+}
+
 @background: white;
 @foreground: black;
 @grayscale_amount: 0.6;
@@ -11,6 +19,12 @@
 
 @contentitem_photo_width: 345px;
 @contentitem_photo_height: 350px;
+
+@voodoocol1: #5cb85c;
+@voodoocol2: #5bc0de;
+@voodoocol3: #f0ad4e;
+@voodoocol4: #428bca;
+@voodoocol5: #d9534f;
 
 
 .eventgridimage {
@@ -31,12 +45,14 @@ div.content_type_photo {
 }
 .masonrycontainer {
   display: inline-block;
-  margin-bottom: 5px;
+  // border: 1px solid white;
+
+  //margin-bottom: 5px;
 }
 
 .contentitemcontainer {
   transition: width 0.4s, height 0.4s;
-  transition: border-color 1.5s ease;
+  transition: border-color 0.4s ease;
   width: @contentitem_width;
   height: @contentitem_height;
   //display: inline-block;
@@ -47,7 +63,7 @@ div.content_type_photo {
   //border-radius: 4px;
   //-webkit-transition: all 0.2s ease-in-out;
   //transition: all 0.2s ease-in-out;
-  border: 0px solid black;
+  border: 5px solid white;
   //margin: 3px;
   position: relative;
   //box-sizing: content-box;
@@ -64,10 +80,11 @@ div.content_type_photo {
   }
 
   &:hover {
-    margin: 1px;
-    border: 5px solid @foreground !important;
+    //margin: 1px;
+    border: 5px solid @foreground;
     .title {
-      font-weight: bold;
+      color: @foreground;
+      background-color: @background;
     }
   }
 
@@ -126,7 +143,7 @@ div.content_type_photo {
     .blackgradient {
       // transparent->black gradient overlay for text captions
 
-      background: url(/images/photoblackgradient.png) bottom left repeat-x;
+      background: url(/images/photoblackgradient.png?a=b) bottom left repeat-x;
       position:absolute;
       top: 0;
       left: 0;
@@ -142,7 +159,7 @@ div.content_type_photo {
 
   .title {
     font-size: 16px;
-    max-height:50px;
+    max-height:25px;
 
     //word-break: break-all;
     position: absolute;
@@ -152,9 +169,12 @@ div.content_type_photo {
     z-index: 5;
     width: 100%;
     padding: 4px;
-    span {
-      color: white;
-    }
+    padding-top: 0px;
+    padding-left:0px;
+    //color: @foreground;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background-color: @background;
     transition: all 200ms linear;
   }
 
@@ -172,10 +192,11 @@ div.content_type_photo {
     left:0px;
     border-bottom-style: solid;
     border-bottom-right-radius: 5px;
-    border-color: blue;
-    background-color:blue;
+    //border-color: black !important;
+    //background-color:black !important;
     padding: 0px;
     padding-right: 4px;
+    padding-left: 2px;
     //font-weight: bold;
     font-size: 16px;
     z-index: 5;
@@ -231,8 +252,9 @@ div.content_type_photo {
 //  margin: 0 auto;
 //  .transition(0.5s, ease);
   position: relative;
+  left: 80px;
   margin: 0 auto;
-
+  right: 80px;
 }
 
 
@@ -244,6 +266,17 @@ div.content_type_photo {
   to {
     -webkit-filter: drop-shadow(50px 50px 20px black);
   }
+}
+
+
+.content_type_event .mediathumb{
+  img:not(:hover) {
+   .saturate(0);
+  }
+  img:hover {
+    .saturate(1);
+  }
+
 }
 
 .mousecursorer {
@@ -269,7 +302,7 @@ body {
   transition: zoom 1.5s;
   transition: scale 1.5s;
   background-color: @background;
-  font-family: verdana;
+  font-family: Helvetica;
   text-rendering: optimizeLegibility;
   color: @foreground;
   padding: 10px;
@@ -396,8 +429,8 @@ div.tooltip-inner {
   top: 0px;
   .navbar {
     transition: background-color 1s;
-    background-color: #f5f5f5;
-    border-color: #f0f0f0;
+    //background-color: #f5f5f5;
+    //border-color: #f0f0f0;
     .navbar-nav > li > a {
       color: #000;
     }
@@ -406,8 +439,10 @@ div.tooltip-inner {
 
 .attop {
   .navbar {
-  width: 460px;
-  background-color: #f5f5f5;
+  width: 690px;
+  background-image: url(http://sphotos-b.ak.fbcdn.net/hphotos-ak-ash4/1403708_10151950164758290_1278807300_o.jpg);
+  height: 400px;
+  //background-color: #;
   }
 }
 
@@ -430,7 +465,7 @@ div.tooltip-inner {
   }
 }
 #msnrynav.floating {
-  left: 10px;
+  left: -70px;
   .navbar {
 
   background-color: #222222;
@@ -449,3 +484,54 @@ div.tooltip-inner {
 .voodoologo {
   font-weight: bold;
 }
+
+.bgvoodoocolor1 {
+  background-color: @voodoocol1;
+  border-color: @voodoocol1;
+}
+
+.bgvoodoocolor2 {
+  background-color: @voodoocol2;
+  border-color: @voodoocol2;
+}
+
+.bgvoodoocolor3 {
+  background-color: @voodoocol3;
+  border-color: @voodoocol3;
+}
+
+.bgvoodoocolor4 {
+  background-color: @voodoocol4;
+  border-color: @voodoocol4;
+}
+
+.bgvoodoocolor5 {
+  background-color: @voodoocol5;
+  border-color: @voodoocol5;
+}
+
+.fgvoodoocolor1 {
+  color: @voodoocol1;
+}
+
+.fgvoodoocolor2 {
+  color: @voodoocol2;
+}
+
+.fgvoodoocolor3 {
+  color: @voodoocol3;
+}
+
+.fgvoodoocolor4 {
+  color: @voodoocol4;
+}
+
+.fgvoodoocolor5 {
+  color: @voodoocol5;
+}
+
+
+
+
+
+

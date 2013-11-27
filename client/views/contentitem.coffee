@@ -11,7 +11,7 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
   self.helpers =
     typespecificcontent: ->
-      res = Template["contentitem_"+this.type](this)
+      res = Template["contentitem_"+this.type]?(this)
       return res
 
     randcol: -> contentCommon.colors[_.random(0,contentCommon.colors.length-1)]
@@ -24,7 +24,7 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
     showDetail: -> Rselected.id == this._id and Rselected.showingDetail
 
     titleellipsis: ->
-      this.title?.substr(0,40) + (if this.title.length >40 then "..." else "")
+      this.title?.substr(0,20) + (if this.title.length >40 then "..." else "")
 
   Template.contentitem.helpers self.helpers
 
