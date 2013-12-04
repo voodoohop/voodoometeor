@@ -1,5 +1,4 @@
 require ["EventManager"], (eventmanager) ->
-
   window.fbAsyncInit = ->
     # init the FB JS SDK
     FB.init(

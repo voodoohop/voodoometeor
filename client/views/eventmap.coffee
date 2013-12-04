@@ -287,7 +287,7 @@ define "EventMap", ["VoodoocontentModel", "ContentItem", "LeafletUtils"], (model
   return self
 
 require "EventMap", (eventMap) ->
-  Router.map ->
+  Router?.map ->
     this.route 'eventmap',
       path:'/eventmap'
       template: 'eventmap'

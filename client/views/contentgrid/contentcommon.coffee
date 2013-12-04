@@ -51,31 +51,20 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         query:
           num_app_users_attending: {"$gte": 5}
         titleclass: "voodoologo"
-        icon: "icon-voodoologo2"
+        icon: "icon-voodoologo"
         subFilters: [
           {
-            title:"All"
-            name:"all"
+            title :"All"
+            name: "all"
+            icon: "icon-voodoologo"
             query:
-              $or : [
-                {type: "event", post_date: {$gte: new Date().toISOString() }}
-                {type: "photo"}
-                {type: "video"}
-                {type: "link"}
-              ]
-            sortFilters: [sortTypes.num_app_users_attending,sortTypes.post_date_asc]
-          }
-          {
-            title:"Events"
-            name:"events"
-            query:
-              {type: "event", post_date: {$gte: new Date().toISOString() }}
-
+              $or: [{type: "video"},{type: "event"}, {type: "photo"}]
             sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
           }
           {
-            title:"Media"
-            name:"media"
+            title:"Music"
+            name:"music"
+            icon: "icon-voodoomusic"
             query:
               $or: [{type: "photo"}, {type: "video"}]
             sortFilters: [sortTypes.post_date_desc, sortTypes.num_app_users_attending]
@@ -83,6 +72,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
           {
             title: "Artists"
             name: "artists"
+            icon: "icon-voodooartists"
             query:
               type: "photo"
               artistprofile: true
@@ -93,23 +83,56 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
       {
         title:"Media"
         name: "media"
+        icon: "icon-voodoomedia"
         query:
           $or: [{type: "photo"}, {type: "video"}]
-        icon: "glyphicon glyphicon-facetime-video"
+        subFilters: [
+          {
+            title:"Photos"
+            name: "photo"
+            query: {type: "photo"}
+            icon: "icon-voodoopictures"
+            sortFilters: [sortTypes.num_app_users_attending, sortTypes.post_date_desc]
+          }
+          {
+            title:"Radio"
+            name: "radio"
+            query: {type: "radio"}
+            icon: "icon-voodooradio"
+            sortFilters: [sortTypes.num_app_users_attending, sortTypes.post_date_desc]
+          }
+          {
+            title:"Links"
+            name: "links"
+            query: {type: "link"}
+            icon: "glyphicon glyphicon-link"
+            sortFilters: [sortTypes.num_app_users_attending, sortTypes.post_date_desc]
+          }
+        ]
         sortFilters: [sortTypes.post_date_desc, sortTypes.num_app_users_attending]
       }
       {
-        title:"Links"
-        name: "links"
-        query: {type: "link"}
-        icon: "glyphicon glyphicon-link"
-        sortFilters: [sortTypes.num_app_users_attending, sortTypes.post_date_desc]
+        title:"Events"
+        name:"events"
+        icon:"icon-voodooevent"
+        query:
+          {type: "event", post_date: {$gte: new Date().toISOString() }}
+        sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
+      }
+      {
+        title:"Map"
+        name:"map"
+        icon:"icon-voodoomap"
+        query:
+          {type: "event", post_date: {$gte: new Date().toISOString() }}
+        sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
       }
 
     ]
+    initpath: ["voodoohop"]
 
-    constructFilters: (filterSelectPath) ->
-      tokenizedpath = filterSelectPath.split(".")
+    constructFilters: (path) ->
+      tokenizedpath = _.clone(path)
       console.log(tokenizedpath)
       recursiveConstructQuery = (tokenizedpath, subobj, query= []) ->
         #console.log("reccq",tokenizedpath, subobj, query)
@@ -121,10 +144,10 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
           filterOption = subobj[parseInt(current)]
         if filterOption.query
           query.push(filterOption.query)
-        if (filterOption.subFilters?)
+        if (filterOption.subFilters? and tokenizedpath.length > 0)
           return recursiveConstructQuery(tokenizedpath, filterOption.subFilters, query)
         else
-          if (filterOption.sortFilters?)
+          if (filterOption.sortFilters? and tokenizedpath.length > 0)
             #console.log("getting sort option from path, obj", tokenizedpath,filterOption.sortFilters[parseInt(tokenizedpath[0])])
             sortFilter = null
             if (isNaN(tokenizedpath[0]))
@@ -136,7 +159,8 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
           return {query: query};
       q = recursiveConstructQuery(tokenizedpath, self.filterOptions)
       sortFilter = {}
-      sortFilter[q.sortFilter.field] = q.sortFilter.direction
+      if (q.sortFilter)
+        sortFilter[q.sortFilter.field] = q.sortFilter.direction
       return {query: {$and: q.query}, sortFilter: sortFilter}
 
 

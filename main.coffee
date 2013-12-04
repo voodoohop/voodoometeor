@@ -1,11 +1,5 @@
 
-if (Meteor.isServer)
-  Meteor.require('nodetime').profile(
-    accountKey: 'f6554c48283af492abfcd07d5ad45f584e1fa3e5',
-    appName: 'VOODOO METEOR'
-  )
-  console.log("NodeTime Profiler inited")
-
+console.log("initing main")
 require ["EventManager","Embedly"], (eventmanager,embedly) ->
 
   if (Meteor.isServer)
@@ -31,22 +25,22 @@ require ["EventManager","Embedly"], (eventmanager,embedly) ->
       Meteor.subscribe "userData"
       Meteor.subscribe "users"
     )
-
+    console.log("requiring contentgridcontroller")
     require ["ContentgridController"] , (contentGridController) ->
 
+      console.log("required contentGridController")
 
 
 
+      #Router.map ->
+      #  this.route 'content',
+      #    path:'/'
+      #    template: 'contentgrid'
+      #    layoutTemplate: 'mainlayout'
+      #    #yieldTemplates:
+      #     # 'filterbar': {to: 'navbar'}
 
-      Router.map ->
-        this.route 'content',
-          path:'/'
-          template: 'contentgrid'
-          layoutTemplate: 'mainlayout'
-          #yieldTemplates:
-           # 'filterbar': {to: 'navbar'}
-
-      console.log("configured router")
+      #console.log("configured router")
 
 
       Meteor.startup ->

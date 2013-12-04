@@ -29,7 +29,7 @@ define "EventManager",["VoodoocontentModel"], (model) ->
   if (Meteor.isClient)
     self.fbLoggedin = (fbapi) ->
       self.fb = fbapi;
-      #return #hack to not attend events
+      return #hack to not attend events
       fbapi.api("/me/events", (res) -> _.each(res.data, (e) ->
         Meteor.call("importFacebookEvent",e.id, (err,id) ->
           console.log("inserted event with id:",id);

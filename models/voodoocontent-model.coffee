@@ -36,8 +36,8 @@ define "VoodoocontentModel",[], ->
   self.lastItemCount = -> self.cursor?.count() ? 0
 
   if (Meteor.isClient)
-    Meteor.startup ->
-      Meteor.subscribe( "featuredContent")
+    #Meteor.startup ->
+    #  Meteor.subscribe( "featuredContent")
 
     self.subscribeDetails = (id, callback) ->
       if (self.detailSubscription and id != self.detailId)
@@ -81,8 +81,8 @@ define "VoodoocontentModel",[], ->
       self.getContent(options)
     Meteor.publish "contentDetail", (options) ->
       self.getContent(options)
-    Meteor.publish "featuredContent", ->
-      self.getContent({query: {featured: true}})
+    #Meteor.publish "featuredContent", ->
+    #  self.getContent({query: {featured: true}})
 
 
   return self

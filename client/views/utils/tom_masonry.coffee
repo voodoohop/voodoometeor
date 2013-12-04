@@ -7,7 +7,7 @@ define "TomMasonry",[], ->
     windowWidthToMasonryCol: ->
       Math.floor(Session.get("windowWidth") / (self.columnWidth+self.columnGutter*2/3)) * (self.columnWidth+ self.columnGutter*2/3)
 
-    columnWidth: 230
+    columnWidth: 115
     columnGutter: 0
 
     init: (container) ->
@@ -22,7 +22,7 @@ define "TomMasonry",[], ->
     debouncedRelayout: _.debounce( (reload=false) ->
       if (self.ms)
         if (reload)
-          self.ms.reload()
+          self.ms.reloadItems()
         self.ms.layout()
     ,300)
 

@@ -1,7 +1,7 @@
 require ["VoodoocontentModel","ContentItem"], (model, contentItem) ->
   console.log("adding content detail route")
   Meteor.startup ->
-   Router.map ->
+   Router?.map ->
     this.route 'contentdetail',
       path: '/contentdetail/:_id'
       #template: 'contentdetail'
@@ -16,8 +16,8 @@ require ["VoodoocontentModel","ContentItem"], (model, contentItem) ->
         model.subscribeDetails(this.params._id)
       data: ->
         console.log("getting content for:", this.params._id)
-        console.log(d = model.getContentById(this.params._id, true))
-        d
+        model.getContentById(this.params._id, true)
+
 
   Template.contentdetail.helpers(model.helpers)
   Template.contentdetail.helpers(contentItem.helpers)

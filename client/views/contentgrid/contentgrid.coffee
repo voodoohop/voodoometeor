@@ -1,9 +1,9 @@
-define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","ContentCommon", "TomMasonry", "NavStamper"], (model,config,packery,contentCommon, tomMasonry, navStamper) ->
+define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","ContentCommon","TomMasonry","NavBar", "NavStamper"], (model,config,packery,contentCommon, tomMasonry,navBar, navStamper) ->
 
   console.log("loading content grid")
   self = {}
 
-  self.RsortFilters = new ReactiveObject(["filter","blockvisible"])
+  self.RsortFilters = new ReactiveObject(["filter","blockvisible", "path"])
 
   self.RsortFilters.blockvisible = 1
 
@@ -11,7 +11,6 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
 
   self.RsubscribeFilteredSortedContent = (callback) ->
     self.subscribeFilteredSortedContent(self.RsortFilters, callback)
-
   self.subscribeFilteredSortedContent = (sortFilterOptions, callback)  ->
     console.log("subscribing",sortFilterOptions)
 
@@ -34,9 +33,21 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
   )
 
   Template.contentgrid.rendered = _.once ->
-    self.setupReactiveContentSubscription()
+    console.log("rendered content grid")
+
     container = $("#contentgridcontainer")
     tomMasonry.init(container)
+
+    console.log("setting up default content path")
+    self.RsortFilters.filter = contentCommon.constructFilters(contentCommon.initpath)
+    self.RsortFilters.path = contentCommon.initpath;
+
+    console.log("rendering nav bar");
+
+    navBar.initNavbar(container, self.RsortFilters)
+
+
+    self.setupReactiveContentSubscription()
 
     # masonrify contenitem collection changes
 
@@ -75,11 +86,12 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         $("#"+newDoc._id).replaceWith(content)
 
 
-  Template.contentgrid.featured = ->
-    console.log("getting cover photo")
-    c = model.getContent({query:{featured: true}}).fetch();
-    console.log("got featured",c)
-    c
+
+  #Template.contentgrid.featured = ->
+  #  console.log("getting cover photo")
+  #  c = model.getContent({query:{featured: true}}).fetch();
+  #  console.log("got featured",c)
+  #  c
   #infinite scroll
 
 

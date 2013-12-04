@@ -23,33 +23,37 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-voodoologo_path2:before {
-	content: "\e600";
+
+.icon-voodoomap:before {
+    content: "\e600";
 }
-.icon-noun_project_23956:before {
-	content: "\e601";
+.icon-voodoomedia:before {
+    content: "\e601";
 }
-.icon-noun_project_23946:before {
-	content: "\e602";
+.icon-voodoologo:before {
+    content: "\e602";
 }
-.icon-noun_project_15440:before {
-	content: "\e603";
+.icon-voodooprinter:before {
+    content: "\e603";
 }
-.icon-noun_project_9837:before {
-	content: "\e604";
+.icon-voodoosearch:before {
+    content: "\e604";
 }
-.icon-noun_project_5287:before {
-	content: "\e605";
+.icon-voodoomusic:before {
+    content: "\e605";
 }
-.icon-noun_project_3043:before {
-	content: "\e606";
+.icon-voodooartists:before {
+    content: "\e606";
 }
-.icon-noun_project_2019:before {
-	content: "\e607";
+.icon-voodoopictures:before {
+    content: "\e607";
 }
-.icon-noun_project_1316:before {
-	content: "\e608";
+.icon-voodooevent:before {
+    content: "\e608";
 }
-.icon-noun_project_219:before {
-	content: "\e609";
+.icon-voodooradio:before {
+    content: "\e609";
+}
+.icon-voodooheart:before {
+    content: "\e60a";
 }

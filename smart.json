@@ -3,15 +3,12 @@
     "font-awesome": {},
     "HTML5-History-API": {},
     "define": {},
-    "bootstrap-3": {},
     "handlebar-helpers": {},
-    "spin": {},
     "moment": {},
-    "iron-router": {},
     "nprogress": {},
     "event-hooks": {},
     "external-file-loader": {},
-    "smart-collections": {},
-    "reactive-extra": {}
+    "reactive-extra": {},
+    "bootstrap-3": {}
   }
 }

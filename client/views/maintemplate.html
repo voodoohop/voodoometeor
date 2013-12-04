@@ -2,14 +2,5 @@
     <head>
         {{yield 'head'}}
     </head>
-    <div id="head2">
-    {{yield 'head2'}}
-    </div>
-   {{yield 'navbar'}}
-    <div class="">
-    {{yield}}
-    <div class="eventdetailmodal">
-        {{yield 'contentdetail'}}
-    </div>
-    </div>
+    {{>contentgrid}}
 </template>
