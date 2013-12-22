@@ -7,7 +7,9 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
 
   self.RsortFilters.blockvisible = 1
 
-  self.RselectedItem = new ReactiveObject(["id","showingDetail","playingMedia"])
+  self.RselectedItem = new ReactiveObject(["id","showingDetail","playingMedia", "itemWithDetails"])
+
+  self.selectedItem = -> self.RselectedItem
 
   self.RsubscribeFilteredSortedContent = (callback) ->
     self.subscribeFilteredSortedContent(self.RsortFilters, callback)
@@ -55,17 +57,17 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       addedAt: (e, index, before) ->
         #console.log("added", e, index, before)
         content = Meteor.render( ->
-          Template.contentitem(e)
+          Template.contentitemgridsizer(e)
         )
         appenddiv = $("<div class='masonrycontainer' id='msnry_"+e._id+"'/>").append(content)
         if (before == null)
           container.append(appenddiv)
-          tomMasonry.ms.appended(appenddiv)
+          tomMasonry.appended(appenddiv)
         else
           $("#msnry_"+before._id).before(appenddiv)
-          tomMasonry.ms.addItems(appenddiv)
-          tomMasonry.ms.reload()
-          tomMasonry.debouncedRelayout()
+          tomMasonry.addItems(appenddiv)
+          #tomMasonry.ms.reload()
+          tomMasonry.debouncedRelayout(true)
       removed: (e) ->
         console.log("removed")
         tomMasonry.remove($("#msnry_"+e._id))
@@ -117,6 +119,69 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
   Meteor.startup ->
     $(window).scroll(showMoreVisible);
 
+  self.isExpanded = (item) -> (self.RselectedItem.id == item._id) or item.expanded
+  self.isShowDetail = (item) -> self.RselectedItem.id ==item._id and self.RselectedItem.showingDetail
+  self.isPlayingMedia = (item) -> (self.RselectedItem.id == item._id) and self.RselectedItem.playingMedia
+
+  self.playMedia =  (item) ->
+    self.Rselected.id = item._id
+    self.Rselected.showMedia = true
+
+  Template.contentitemgridsizer.helpers contentCommon.helpers
+  Template.contentitemgridsizer.isExpanded = -> self.isExpanded(this)
+  Template.contentitemgridsizer.showDetail = -> self.isShowDetail(this)
+
+  self.expandItem = (item) ->
+    if (self.RselectedItem.id?)
+      previousdata = model.contentCollection.findOne(self.RselectedItem.id)
+      previousdata.justShrinked = true
+    #console.log("expanding item, previous:",item, previousdata)
+    if (self.RselectedItem.id == item._id)
+      self.RselectedItem.id = null
+      self.RselectedItem.showMedia = false
+      self.RselectedItem.showingDetail = false
+      item.justShrinked = true;
+    else
+      self.RselectedItem.id = item._id
+      self.RselectedItem.showMedia = false
+      self.RselectedItem.showingDetail = true
+    console.log("set up reactive variables to expand item",self.RselectedI  tem)
+  Template.contentitemgridsizer.rendered = ->
+    data = this.data
+    if data.renderedcount?
+      data.renderedcount++
+    else
+      data.renderedcount = 1
+    console.log("rendered contentitemgridsizer ",data.title, data.renderedcount, data.justExpanded)
+    if (data.justExpanded or data.justShrinked)
+      console.log("just expanded or shrnked", data)
+      Meteor.defer ->
+        tomMasonry.ms?.on( 'layoutComplete',handler = ->
+          tomMasonry.ms.off('layoutComplete', handler)
+          $(window).scrollTo("#"+data._id,500,
+            onAfter: -> self.listenForDetailLeavingWindow = true
+          )
+        )
+      if (data.justExpanded)
+        tomMasonry.ms.fit($("#msnry_"+data._id)[0])
+      if (data.justShrinked)
+        tomMasonry.ms.layout()
+      data.justExpanded = undefined
+      data.justShrinked = undefined
+
+  Deps.autorun ->
+    if (self.RselectedItem.showingDetail)
+      console.log("subscribing to detail", self.RselectedItem.id)
+      model.subscribeDetails(self.RselectedItem.id, ->
+        self.RselectedItem.openDetailItem = model.getContentById(self.RselectedItem.id)
+        console.log("open detail item:", self.RselectedItem.openDetailItem)
+        self.RselectedItem.openDetailItem.justExpanded = true;
+      )
+    else
+      model.subscribeDetails(null)
+      self.RselectedItem.openDetailItem.justShrinked = true;
+
+
   Template.filterbar.rendered = _.once ->
     navStamper.init($("#msnrynav"), 120,
       onStamped: (el) ->
@@ -129,5 +194,6 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         el.addClass("floating")
         console.log("unstamped")
     )
+
 
   return self

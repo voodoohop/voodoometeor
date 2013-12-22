@@ -1,23 +1,24 @@
 <template name="contentthumb">
-    {{#if showThumb}}
+
     <div id="mediathumb_{{_id}}" class="mediathumb">
         <img src="{{thumbnailurl}}">
         <div class="blackgradientdisabled"></div>
     </div>
-    {{/if}}
+
 </template>
 
 
 
 
 <template name="contentitem">
-    <div id="{{_id}}" class="contentitemcontainer content_type_{{type}} {{#if isExpanded}} contentitemexpanded {{/if}} {{#if showDetail}} contentitemdetail  {{/if}} "
-         style=" width: {{width showDetail}}px; height: {{height showDetail}}px;">
+    <div id="{{_id}}" class="contentitemcontainer content_type_{{type}} {{#if isExpanded}} contentitemexpanded {{/if}} {{#if showDetail}} contentitemdetail  {{/if}} ">
         <!--<span class="contenttypelabel {{contentTypeMetaData.icon}} {{contentTypeMetaData.class}} {{bgcol}}" style="position: absolute; right: -2px; top: -2px;"> </span>
      -->
      {{#unless isExpanded}}
       <div class="front">
-        {{>contentthumb}}
+        {{#if showThumb}}
+            {{>contentthumb}}
+        {{/if}}
         {{#if title}}
         {{#if contentTypeMetaData.showtitle}}
         <div class="title {{fgcol}}">

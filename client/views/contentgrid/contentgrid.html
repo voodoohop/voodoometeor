@@ -4,10 +4,15 @@
     {{{content}}}
 </template>
 
+<template name="contentitemgridsizer">
+    <div class="contentitemgridsizer content_type_{{type}}_default_size {{#if isExpanded}} contentitemexpanded {{/if}}"
+         style="width: {{width showDetail}}px; {{#unless isExpanded}}height: {{height showDetail}}px; {{/unless}}">
+        {{>contentitem}}
+    </div>
+</template>
+
 
 <template name="contentgrid">
-
-
     <div id="contentgridcontainer">
     </div>
     {{#if moreResults}}

@@ -1,6 +1,6 @@
-define "EventManager",["VoodoocontentModel"], (model) ->
 
-
+define "EventManager", ["VoodoocontentModel"], (model) ->
+  console.log("defining event manager")
   self = {}
 
   if Meteor.isServer

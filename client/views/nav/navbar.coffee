@@ -32,7 +32,7 @@ define "NavBar", ["ContentCommon", "TomMasonry"], (contentCommon, masonry) ->
       #console.log("rendered item", this)
       #self.msnryitems = _.map(self.items, (i) -> masonry.ms.getItem(i))
       #console.log("relayouting", self.msnryitems)
-      masonry.ms.layout()
+      #masonry.ms.layout()
       #masonry.debouncedRelayout();
         #  debouncedLayoutTemplate()
     Template.navmasonryitem.events =
@@ -73,10 +73,10 @@ define "NavBar", ["ContentCommon", "TomMasonry"], (contentCommon, masonry) ->
       item = Meteor.render( ->
           Template.navmasonryitem(filter)
       )
-      appenddiv = $("<div class='masonrycontainer masonrybuttoncontainer' id='navbutton_"+filter.name+"'/>").append(item)
+      appenddiv = $("<div class='masonrycontainer masonrybuttoncontainer ' id='navbutton_"+filter.name+"'/>").append(item)
       container.append(appenddiv)
 
-      masonry.ms.appended(appenddiv)
+      masonry.appended(appenddiv)
       self.items.push(appenddiv[0])
       #self.items.push($("#navbutton_"+filter.name)[0])
     )

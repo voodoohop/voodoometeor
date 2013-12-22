@@ -1,4 +1,4 @@
-define "TomMasonry",[], ->
+define "TomMasonry_freewall",[], ->
   self = {
 
     windowHeight: -> Session.get("windowHeight")
@@ -10,25 +10,28 @@ define "TomMasonry",[], ->
     windowWidthToMasonryCol: -> self.widthToMasonryCol Session.get("windowWidth")
 
     columnWidth: 115
-    columnHeight: 115
+    columnHeight: 100
     columnGutter: 0
-    addItems: (items) -> self.ms.addItems(items)
-    appended: (div) -> self.ms.appended(div)
+    addItems: (items) -> self.ms.appendMore(items)
+    appended: (div) -> self.ms.appendMore(div)
     init: (container) ->
-      self.ms = new Packery(container[0],
-        itemSelector: ".masonrycontainer"
-        columnWidth: self.columnWidth + self.columnGutter*2/3
-        #rowHeight: self.columnHeight
-        gutter: self.columnGutter*1/3
+      self.ms = new freewall(container);
+      self.ms.reset(
+        selector: ".masonrycontainer"
+        cellW: self.columnWidth + self.columnGutter*2/3
+        cellH: 70
+        gutterX: self.columnGutter*1/3
+        gutterY: self.columnGutter*1/3
         isFitWidth: true
         stamp: ".stamp"
         #transitionDuration: 0.5
       )
     debouncedRelayout: _.debounce( (reload=false) ->
       if (self.ms)
-        if (reload)
-          self.ms.reloadItems()
-        self.ms.layout()
+        #if (reload)
+        #  self.ms.reloadItems()
+        self.ms.refesh()
+        self.ms.fitWidth()
     ,300)
 
     remove: (item) -> self.ms.remove(item[0])

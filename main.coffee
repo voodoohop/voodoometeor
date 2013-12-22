@@ -1,7 +1,11 @@
 
 console.log("initing main")
-require ["EventManager","Embedly"], (eventmanager,embedly) ->
 
+require "VoodoocontentModel", (model) ->
+  console.log("got model")
+
+require ["EventManager","Embedly"], (eventmanager,embedly) ->
+  console.log("loaded eventmanager and embedly")
   if (Meteor.isServer)
     #  Meteor.users.remove({})
     #Meteor.publish "user", ->
@@ -26,7 +30,7 @@ require ["EventManager","Embedly"], (eventmanager,embedly) ->
       Meteor.subscribe "users"
     )
     console.log("requiring contentgridcontroller")
-    require ["ContentgridController"] , (contentGridController) ->
+    require ["ContentgridController", "ContentItem"] , (contentGridController, contentItem) ->
 
       console.log("required contentGridController")
 

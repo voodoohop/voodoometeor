@@ -4,7 +4,7 @@ define "VoodoocontentModel",[], ->
 
   self.contentCollection = new Meteor.Collection("voodoocontent")
 
-  self.contentBlockSize = 30
+  self.contentBlockSize = 5
 
   self.helpers =
     postedDate: -> moment(new Date(this.post_date)).fromNow()

@@ -1,0 +1,28 @@
+@import "../../css/elements.lessimport";
+
+.saturate(@pct) {
+  filter: ~"saturate(@{pct})";
+  -webkit-filter: ~"saturate(@{pct})";
+  -moz-filter: ~"saturate(@{pct})";
+  -o-filter: ~"saturate(@{pct})";
+  -ms-filter: ~"saturate(@{pct})";
+}
+
+@background: white;
+@foreground: black;
+@grayscale_amount: 0.6;
+@contentitem_width: 230px;
+@contentitem_height: 280px;
+
+@contentitem_video_width: 460px;
+@contentitem_video_height: 280px;
+
+@contentitem_photo_width: 345px;
+@contentitem_photo_height: 350px;
+
+@voodoocol1: #5cb85c;
+@voodoocol2: #5bc0de;
+@voodoocol3: #f0ad4e;
+@voodoocol4: #428bca;
+@voodoocol5: #d9534f;
+

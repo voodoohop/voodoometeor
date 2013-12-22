@@ -38,7 +38,7 @@ fetchmails= (startno, increment) ->
       #console.log("message", data)
       mp = new mailparser.MailParser()
       mp.on("headers", (headers) ->
-        #console.log("HEADERS");
+        #console.log("HEADERS", headers);
         console.log(currentMsg, headers.from);
         currentMsg += increment
         client.retr currentMsg
@@ -51,6 +51,8 @@ fetchmails= (startno, increment) ->
       console.log "RETR failed for msgnumber " + msgnumber
       client.quit()
 
+
+totalmails = 8952
 numthreads = 3
 for i in [0..numthreads-1]
-  fetchmails(i+1,numthreads)
+  fetchmails(totalmails-i,-numthreads) #backwards

@@ -6,9 +6,6 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
     return false unless Meteor.user()
     _.contains(Meteor.user()?.attending, item._id)
 
-
-  Rselected = grid.RselectedItem
-
   self.helpers =
     typespecificcontent: ->
       res = Template["contentitem_"+this.type]?(this)
@@ -18,19 +15,21 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
     showMedia: -> Rselected.id == this._id  and Rselected.playingMedia
 
-    isExpanded: -> (Rselected.id == this._id) or this.expanded
+    isExpanded: -> grid.isExpanded(this)
 
     rsvp_confirmed: -> self.rsvp_confirmed(this)
-    showDetail: -> Rselected.id == this._id and Rselected.showingDetail
+    showDetail: -> grid.isShowDetail(this)
 
     titleellipsis: ->
       this.title?.substr(0,20) + (if this.title.length >40 then "..." else "")
 
+    showThumb: true # -> ! grid.isPlayingMedia(this)
+
+  console.log("registering content item helpers")
   Template.contentitem.helpers self.helpers
 
   Template.contentthumb.helpers
 
-    showThumb: -> !Session.get(this._id+"_showMedia")
 
     thumbnailurl: ->
 
@@ -79,45 +78,25 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
     'click .mediathumb': () ->
       #detailSubscription = model.subscribeDetails(this._id);
-      this.justExpanded = true;
-      console.log(this)
-      if (Rselected.id == this._id)
-        Rselected.id = null
-        Rselected.showMedia = false
-        Rselected.showingDetail = false
-      else
-        Rselected.id = this._id
-        Rselected.showMedia = false
-        Rselected.showingDetail = true
+      grid.expandItem(this)
 
     'click .mediaplaybutton': () ->
       console.log(this)
       console.log("showmedia: "+this._id)
-      Rselected.id = this._id
-      Rselected.showMedia = true
+      grid.playMedia(this)
 
   Template.contentitem.rendered = ->
-    data = this.data
-    if (data.justExpanded)
-      data.justExpanded = undefined
-      Meteor.defer ->
-        tomMasonry.ms.on( 'layoutComplete',handler = ->
-          tomMasonry.ms.off('layoutComplete', handler)
-          $(window).scrollTo("#"+data._id,500,
-            onAfter: -> self.listenForDetailLeavingWindow = true
-          )
-        )
-        tomMasonry.ms.layout()
+    #console.log(this)
 
   Meteor.startup ->
     $(window).scroll _.debounce( ->
-      if (Rselected.showingDetail and self.listenForDetailLeavingWindow)
-        detailtop = $("#"+Rselected.id).offset().top
+      if (grid.selectedItem().showingDetail and self.listenForDetailLeavingWindow)
+        detailtop = $("#"+grid.selectedItem().id).offset().top
         if Math.abs($(window).scrollTop() - detailtop) > $(window).height()/2
-          gridwidth = contentCommon.contentWidthInGrid(self.openDetailItem)
-          gridheight = contentCommon.contentHeightInGrid(self.openDetailItem)
+          gridwidth = contentCommon.contentWidthInGrid(Rselected.openDetailItem)
+          gridheight = contentCommon.contentHeightInGrid(Rselected.openDetailItem)
           console.log("animating closing:",gridwidth, gridheight)
-          $("#"+Rselected.id).animate(
+          $("#"+grid.selectedItem().id).animate(
             width: ""+gridwidth+"px"
             height: ""+gridheight+"px"
           , 200, null, ->
@@ -129,14 +108,4 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
           , 500)
     , 500)
 
-
-  Deps.autorun ->
-    if (Rselected.showingDetail)
-      console.log("subscribing to detail", Rselected.id)
-      model.subscribeDetails(Rselected.id, ->
-        self.openDetailItem = model.getContentById(Rselected.id)
-        console.log("open detail item:", self.openDetailItem)
-      )
-    else
-      model.subscribeDetails(null)
   return self;

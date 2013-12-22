@@ -186,6 +186,20 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
     _.where(c.contentTypes, {name: ob.type })?[0]
   ,self)
 
+  self.itemWidth = (item, showDetail) ->
+      if (showDetail)
+        return tomMasonry.widthToMasonryCol(6*tomMasonry.columnWidth)
+      else
+        return self.contentWidthInGrid(item)
+
+  self.itemHeight = (item, showDetail) ->
+      if (showDetail)
+        tomMasonry.windowHeight()
+      else
+        #console.log("detheight", this)
+        return self.contentHeightInGrid(item)
+
+
   self.helpers =
     bgcol: _.partial( (c) ->
       type = _.findWhere(c.contentTypes, {name: this.type})
@@ -203,20 +217,12 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         type.color
     , self)
 
-    contentTypeMetaData: self.getContenttypeMetadata
+    contentTypeMetaData: self.getContenttypeMetadata(this)
 
     width: (showDetail) ->
-      if (showDetail)
-        return tomMasonry.windowWidthToMasonryCol(self)
-      else
-        return self.contentWidthInGrid(this)
-
+      self.itemWidth(this, showDetail)
     height: (showDetail) ->
-      if (showDetail)
-        tomMasonry.windowHeight()
-      else
-        #console.log("detheight", this)
-        return self.contentHeightInGrid(this)
+      self.itemHeight(this, showDetail)
 
   calcMaxSize = (origWidth, origHeight, metadata) ->
     aspectRatio = origWidth/origHeight
@@ -233,7 +239,9 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         cHeight = cWidth / aspectRatio
       cols = colno - 1
       multiplier = cols*tomMasonry.columnWidth/origWidth
-    return [Math.round(origWidth*multiplier), Math.round(origHeight * multiplier)];
+    height = Math.round(origHeight * multiplier)
+    snapheight = Math.floor(height/tomMasonry.columnHeight)*tomMasonry.columnHeight
+    return [Math.round(origWidth*multiplier), snapheight];
 
 
 
