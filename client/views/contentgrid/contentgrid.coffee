@@ -34,6 +34,10 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       NProgress.start();
   )
 
+  Template.contentitem.rendered = ->
+    console.log("rendered content item", this)
+
+
   Template.contentgrid.rendered = _.once ->
     console.log("rendered content grid")
 
@@ -55,19 +59,18 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
 
     model.getContent({query: {}}).observe
       addedAt: (e, index, before) ->
-        #console.log("added", e, index, before)
-        content = Meteor.render( ->
-          Template.contentitemgridsizer(e)
-        )
-        appenddiv = $("<div class='masonrycontainer' id='msnry_"+e._id+"'/>").append(content)
+        console.log("added", e, index, before)
+        content = UI.render(Template.contentitemgridsizer.withData(e))
         if (before == null)
-          container.append(appenddiv)
-          tomMasonry.appended(appenddiv)
+          UI.insert(content,container[0])
+          #container.append(appenddiv)
+          #tomMasonry.appended(content)
         else
+          UI.insert(content, container[0], $("#msnry_"+before._id)[0])
           $("#msnry_"+before._id).before(appenddiv)
           tomMasonry.addItems(appenddiv)
           #tomMasonry.ms.reload()
-          tomMasonry.debouncedRelayout(true)
+        tomMasonry.debouncedRelayout(true)
       removed: (e) ->
         console.log("removed")
         tomMasonry.remove($("#msnry_"+e._id))
@@ -80,13 +83,13 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         else
           $("#msnry_"+before._id).before($("#msnry_"+e._id))
           tomMasonry.debouncedRelayout(true)
-      changed: (newDoc, oldDoc) ->
+      changed: (newDoc, oldDoc, atIndex) ->
         console.log("changed",newDoc,oldDoc)
-        content = Meteor.render( ->
-          Template.contentitem(newDoc)
-        )
-        $("#"+newDoc._id).replaceWith(content)
-
+        content = UI.render(Template.contentitemgridsizer.withData(newDoc))
+        UI.insert(content, container[0], container.children("#msnry_"+oldDoc._id)[0])
+        container.children("#msnry_"+oldDoc._id).eq(1).remove()
+        # $("#"+newDoc._id).replaceWith(content)
+        tomMasonry.debouncedRelayout(true)
 
 
   #Template.contentgrid.featured = ->
@@ -145,14 +148,16 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       self.RselectedItem.id = item._id
       self.RselectedItem.showMedia = false
       self.RselectedItem.showingDetail = true
-    console.log("set up reactive variables to expand item",self.RselectedI  tem)
+    console.log("set up reactive variables to expand item",self.RselectedItem)
+  Template.contentitemgridsizer.removed = ->
+    console.log("removed from grid", this)
   Template.contentitemgridsizer.rendered = ->
     data = this.data
     if data.renderedcount?
       data.renderedcount++
     else
       data.renderedcount = 1
-    console.log("rendered contentitemgridsizer ",data.title, data.renderedcount, data.justExpanded)
+    console.log("rendered contentitemgridsizer ",data, data.renderedcount, data.justExpanded)
     if (data.justExpanded or data.justShrinked)
       console.log("just expanded or shrnked", data)
       Meteor.defer ->
@@ -179,7 +184,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       )
     else
       model.subscribeDetails(null)
-      self.RselectedItem.openDetailItem.justShrinked = true;
+      self.RselectedItem.openDetailItem?.justShrinked = true;
 
 
   Template.filterbar.rendered = _.once ->

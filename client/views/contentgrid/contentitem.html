@@ -31,7 +31,7 @@
            <!-- <span class="postdate" data-date="{{postedDate}}"><span class="glyphicon glyphicon-calendar"></span> {{postedDate}}</span>
             -->
         </div>
-         {{{typespecificcontent}}}
+         {{> typespecificcontent }}
       </div>
      {{else}}
       <div class="back">
@@ -43,7 +43,7 @@
               {{>embeddedmedia}}
           </div>
           {{/unless}}
-          {{{typespecificcontent}}}
+          {{> typespecificcontent}}
       </div>
      {{/unless}}
     </div>
@@ -92,9 +92,7 @@
     </div>
     <p>
         <small>
-            {{#markdown}}
          {{description}}
-            {{/markdown}}
         </small>
     </p>
     </div>

@@ -1,10 +1,10 @@
 define "VoodoocontentModel",[], ->
-
+  console.log("loading content model")
   self= {};
 
   self.contentCollection = new Meteor.Collection("voodoocontent")
 
-  self.contentBlockSize = 5
+  self.contentBlockSize = 20
 
   self.helpers =
     postedDate: -> moment(new Date(this.post_date)).fromNow()
@@ -17,6 +17,7 @@ define "VoodoocontentModel",[], ->
     isFeatured: -> (this.isFeatured == true)
     numlikes: -> this.like_count ? 0
     description: ->
+      #console.log("getting description", this.description)
       this.description
 
   description_reduced: ->

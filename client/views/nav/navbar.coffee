@@ -70,14 +70,12 @@ define "NavBar", ["ContentCommon", "TomMasonry"], (contentCommon, masonry) ->
 
     console.log("rendering nav items")
     _.each(contentCommon.filterOptions, (filter) ->
-      item = Meteor.render( ->
-          Template.navmasonryitem(filter)
-      )
-      appenddiv = $("<div class='masonrycontainer masonrybuttoncontainer ' id='navbutton_"+filter.name+"'/>").append(item)
-      container.append(appenddiv)
+      item = UI.render( Template.navmasonryitem.withData(filter))
+      UI.insert(item, container[0])
+      #container.append(appenddiv)
 
-      masonry.appended(appenddiv)
-      self.items.push(appenddiv[0])
+      #masonry.appended(appenddiv)
+      #self.items.push(appenddiv[0])
       #self.items.push($("#navbutton_"+filter.name)[0])
     )
     masonry.debouncedRelayout(true)

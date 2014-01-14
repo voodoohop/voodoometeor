@@ -8,12 +8,13 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
   self.helpers =
     typespecificcontent: ->
-      res = Template["contentitem_"+this.type]?(this)
+      res = Template["contentitem_"+this.type].withData(this)
+      console.log("getting type specific content for", this)
       return res
 
     randcol: -> contentCommon.colors[_.random(0,contentCommon.colors.length-1)]
 
-    showMedia: -> Rselected.id == this._id  and Rselected.playingMedia
+    showMedia: -> grid.RselectedItem.id == this._id  and grid.RselectedItem.playingMedia
 
     isExpanded: -> grid.isExpanded(this)
 
@@ -85,8 +86,7 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
       console.log("showmedia: "+this._id)
       grid.playMedia(this)
 
-  Template.contentitem.rendered = ->
-    #console.log(this)
+
 
   Meteor.startup ->
     $(window).scroll _.debounce( ->
