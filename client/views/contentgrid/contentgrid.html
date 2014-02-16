@@ -5,6 +5,7 @@
 </template>
 
 <template name="contentitemgridsizer">
+    {{dataChanged}}
     <div class='masonrycontainer' id='msnry_{{_id}}'>
     <div class="contentitemgridsizer content_type_{{type}}_default_size {{#if isExpanded}} contentitemexpanded {{/if}}"
          style="width: {{width showDetail}}px; {{#unless isExpanded}}height: {{height showDetail}}px; {{/unless}}">
@@ -16,6 +17,9 @@
 
 <template name="contentgrid">
     <div id="contentgridcontainer">
+        {{#each voodoocontent}}
+          {{> contentitemgridsizer}}
+        {{/each}}
     </div>
     {{#if moreResults}}
     <div id="showMoreResults" style="margin-left: 25px;">

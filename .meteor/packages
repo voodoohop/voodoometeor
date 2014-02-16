@@ -23,5 +23,8 @@ event-hooks
 npm
 external-file-loader
 reactive-extra
-bootstrap-3
 define
+flat-ui
+iron-router
+ms-seo
+spiderable

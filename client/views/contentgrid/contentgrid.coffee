@@ -37,7 +37,8 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
   Template.contentitem.rendered = ->
     console.log("rendered content item", this)
 
-
+  Template.contentgrid.voodoocontent = ->
+    model.getContent({query: {}})
   Template.contentgrid.rendered = _.once ->
     console.log("rendered content grid")
 
@@ -57,6 +58,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
 
     # masonrify contenitem collection changes
 
+    ###
     model.getContent({query: {}}).observe
       addedAt: (e, index, before) ->
         console.log("added", e, index, before)
@@ -90,7 +92,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         container.children("#msnry_"+oldDoc._id).eq(1).remove()
         # $("#"+newDoc._id).replaceWith(content)
         tomMasonry.debouncedRelayout(true)
-
+    ###
 
   #Template.contentgrid.featured = ->
   #  console.log("getting cover photo")
@@ -127,12 +129,13 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
   self.isPlayingMedia = (item) -> (self.RselectedItem.id == item._id) and self.RselectedItem.playingMedia
 
   self.playMedia =  (item) ->
-    self.Rselected.id = item._id
-    self.Rselected.showMedia = true
+    self.RselectedItem.id = item._id
+    self.RselectedItem.showMedia = true
 
   Template.contentitemgridsizer.helpers contentCommon.helpers
   Template.contentitemgridsizer.isExpanded = -> self.isExpanded(this)
   Template.contentitemgridsizer.showDetail = -> self.isShowDetail(this)
+
 
   self.expandItem = (item) ->
     if (self.RselectedItem.id?)
@@ -149,10 +152,13 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       self.RselectedItem.showMedia = false
       self.RselectedItem.showingDetail = true
     console.log("set up reactive variables to expand item",self.RselectedItem)
-  Template.contentitemgridsizer.removed = ->
-    console.log("removed from grid", this)
+  #Template.contentitemgridsizer.destroyed = ->
+  #  console.log("removed from grid", this)
+
   Template.contentitemgridsizer.rendered = ->
-    data = this.data
+    console.log("dataChanged")
+    data = this
+    tomMasonry.appended($("#msnry_"+data._id)[0])
     if data.renderedcount?
       data.renderedcount++
     else
@@ -200,5 +206,14 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         console.log("unstamped")
     )
 
+
+
+  Router?.map ->
+    this.route 'content',
+      path:'/'
+      template: 'contentgrid'
+      layoutTemplate: 'mainlayout'
+      #yieldTemplates:
+      #  'filterbar': {to: 'navbar'}
 
   return self

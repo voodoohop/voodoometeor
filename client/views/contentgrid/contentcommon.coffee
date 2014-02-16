@@ -49,7 +49,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         name:"voodoohop"
         title:"VOODOOHOP"
         query:
-          num_app_users_attending: {"$gte": 5}
+          num_app_users_attending: {"$gte": 0}
         titleclass: "voodoologo"
         icon: "icon-voodoologo"
         subFilters: [
@@ -129,7 +129,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
       }
 
     ]
-    initpath: ["voodoohop"]
+    initpath: ["events"]
 
     constructFilters: (path) ->
       tokenizedpath = _.clone(path)

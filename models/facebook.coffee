@@ -28,18 +28,6 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
           console.log("bind failed",ex)
         ))
 
-
-    Meteor.Router.add '/fbrealtime',  ->
-      console.log(this.request.body.entry);
-      console.log(this.request.body);
-      _.each(this.request.body.entry, (update) ->
-        console.log("update",update.uid)
-        if (update.uid?)
-          res = Meteor.sync((done) -> fb.api ""+update.uid+"/events",{summary:true}, (fbres) -> done(null,fbres))
-          console.log(res.result)
-      )
-      return this.request.query["hub.challenge"]
-
     Meteor.startup ->
       Accounts.loginServiceConfiguration.remove
         service: "facebook"
@@ -218,7 +206,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     #contentModel.contentCollection.remove({})
     return self #hack to not load posts
     console.log("importing page posts")
-    pages= ["voodoohop", "ideafixa", "calefacaotropicaos", "209127459210998", "CatracaLivre"]
+    pages= ["FreeFolk","voodoohop", "ideafixa", "calefacaotropicaos", "209127459210998", "CatracaLivre"]
     Meteor.setTimeout( ->
      for page in pages
       res = Meteor.sync ((done) -> fb.api "/"+page+"/posts", {limit:50}, (fbres) -> done(null, fbres) )

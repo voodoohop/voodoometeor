@@ -292,6 +292,6 @@ require "EventMap", (eventMap) ->
       path:'/eventmap'
       template: 'eventmap'
       layoutTemplate: 'mainlayout'
-      yieldTemplates:
-        'navbar': {to: 'navbar'}
+      #yieldTemplates:
+      #  'navbar': {to: 'navbar'}
 

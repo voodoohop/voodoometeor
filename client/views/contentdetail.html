@@ -8,11 +8,20 @@
 <template name="contentdetail">
 
     <div class="jumbotron">
-            <h1>{{title}}</h1>
-            <p><a class="btn btn-primary btn-lg">Learn more</a></p>
-        <img src="{{picture}}">
+        <div class="datefloat">
+            {{> eventdate}}
         </div>
-    <div>{{#markdown}}{{description}}{{/markdown}}</div>
-        <div id="images">{{friendsAttending}}{{{profileimages}}}</div>
+            <h1>{{title}}  <small>{{> eventlocation}}</small></h1>
+        <div class="detach-on-scroll">
+            <div class="detach-content">
+                {{> eventtoolbar size='lg'}}
+            </div>
+        </div>
+
+        </div>
+    <img src="{{picture}}" align="right">
+
+    <div>{{description}}</div>
+        <div id="images">{{> friendsAttending}}{{> profileimages}}</div>
 
 </template>

@@ -1,0 +1,29 @@
+<template name="eventtoolbar">
+<div class="btn-group btn-group-{{size}}">
+    <button type="button" data-toggle="dropdown" class="rsvpbutton btn btn-primary dropdown-toggle"><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-question-sign{{/if}}"></span> {{#if rsvp_confirmed}}Attending{{else}}RSVP{{/if}} <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu">
+        <li><a class="rsvp_attend" href="#"><span class="glyphicon glyphicon-ok"></span> Attending</a></li>
+        <li><a class="rsvp_decline" href="#"><span class="glyphicon glyphicon-question-sign"></span> Undecided</a></li>
+    </ul>
+</div>
+<div class="btn-group btn-group-{{size}}">
+    <button type="button" class="btn btn-success" id="fb_invite_button"><span class="glyphicon glyphicon-bullhorn"></span> Invite</button>
+</div>
+
+<div class="btn-group btn-group-{{size}}">
+    <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-share"></span> Share</button>
+</div>
+</template>
+
+<template name="eventlocation">
+    {{location}}
+</template>
+
+<template name="eventdate">
+    {{day}}
+    <div class="fancydate">
+        <span class="fancyday">30</span>
+        <span class="fancymonth">Jun</span>
+        <span class="fancyyear">2009</span>
+    </div>
+</template>

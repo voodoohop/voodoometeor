@@ -69,6 +69,7 @@ define "NavBar", ["ContentCommon", "TomMasonry"], (contentCommon, masonry) ->
         Rfilters.blockvisible = 1
 
     console.log("rendering nav items")
+    return
     _.each(contentCommon.filterOptions, (filter) ->
       item = UI.render( Template.navmasonryitem.withData(filter))
       UI.insert(item, container[0])

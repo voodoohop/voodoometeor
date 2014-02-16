@@ -1,5 +1,5 @@
 {
-  "packages": {
+    "packages": {
     "font-awesome": {},
     "HTML5-History-API": {},
     "define": {},
@@ -9,6 +9,13 @@
     "event-hooks": {},
     "external-file-loader": {},
     "reactive-extra": {},
-    "bootstrap-3": {}
+    "bootstrap-3": {},
+    "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "branch": "shark"
+    },
+    "ms-seo": {
+        "git": "https://github.com/DerMambo/ms-seo"
+    }
   }
 }

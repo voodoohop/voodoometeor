@@ -50,6 +50,7 @@ define "VoodoocontentModel",[], ->
       if (id)
         self.detailSubscription = self.subscribeContent({query: id, details: true}, callback)
         self.detailId = id
+      return self.detailSubscription
 
 
   self.lastLimit = 0
@@ -69,6 +70,7 @@ define "VoodoocontentModel",[], ->
   self.getContentBySourceId = (sourceId) -> self.contentCollection.findOne({sourceId: sourceId})
   self.getContentById = (id) ->
     if (self.detailId != id)
+      console.log("not yet subscribed... subscribing",id)
       self.subscribeDetails(id);
     self.contentCollection.findOne(id)
 
