@@ -8,9 +8,10 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     fbSync = Meteor._wrapAsync(fbApi)
 
     Hooks.onLoggedIn = (p) ->
+
         ## exchange access token for long-lived ##
         console.log(p)
-        currentToken = Meteor.users.find(p).fetch()[0].services.facebook.accessToken
+        currentToken = Meteor.users.find(p).fetch()[0].services.tomfacebook.accessToken
         console.log("loggedin, getting extended access token",p)
         fb.api("/oauth/access_token",
           client_id: config.current().facebook.appid,
@@ -21,24 +22,12 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
           if (res.access_token?)
             Meteor.users.update(p,
               $set:
-                "services.facebook.accessToken": res.access_token
+                "services.tomfacebook.accessToken": res.access_token
             )
             console.log("updated extended access token")
         , (ex) ->
           console.log("bind failed",ex)
         ))
-
-    Meteor.startup ->
-      Accounts.loginServiceConfiguration.remove
-        service: "facebook"
-
-
-      Accounts.loginServiceConfiguration.insert
-        service: "facebook",
-        appId: config.current().facebook.appid,
-        secret: config.current().facebook.appsecret
-
-
 
 
     fb = Meteor.require "fb"
@@ -176,20 +165,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       importFacebookPost: (params) ->
         this.unblock()
         self.importUpdatePost(params)
-      facebook_login: (fbUser, accessToken, permissions) ->
-        serviceData =
-          id: fbUser.id
-          accessToken: accessToken
-          email: fbUser.email
-          permissions: permissions
-        options =
-          profile:
-            name: fbUser.name
-        console.log("adding/updating user from facebook user",serviceData,options)
-        userId = Accounts.updateOrCreateUserFromExternalService("facebook", serviceData, options).id
-        this.setUserId(userId)
-        Meteor.users.update(userId,{$set: options})
-        return userId
+
     )
 
     #Meteor.setTimeout( ->

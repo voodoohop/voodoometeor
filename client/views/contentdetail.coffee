@@ -16,6 +16,8 @@ Meteor.startup ->
 
   require ["VoodoocontentModel","ContentItem", "FacebookClient"], (model, contentItem, fb) ->
     console.log("adding content detail route")
+
+
     Router?.map ->
       this.route 'contentdetail',
         path: '/contentdetail/:_id'

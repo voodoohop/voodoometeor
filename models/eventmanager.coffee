@@ -92,6 +92,6 @@ define "EventManager", ["VoodoocontentModel"], (model) ->
           fbConnection = if confirm then "attending" else "maybe"
           fb.ensureLoggedIn( (res) ->
             self.fb.api(model.getContentById(eventid).sourceId+"/"+fbConnection,"POST", (res) -> console.log(res))
-          , "rsvp_event")
+          , ["rsvp_event"])
       fb.onLoggedIn(self.fbLoggedin)
   return self;

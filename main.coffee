@@ -31,25 +31,4 @@ require "VoodoocontentModel", (model) ->
       )
 
 
-      #console.log("requiring contentgridcontroller")
-      #require ["ContentgridController", "ContentItem"] , (contentGridController, contentItem) ->
-      #
-      #  console.log("required contentGridController")
-
-
-
-
-        #console.log("configured router")
-
-
-      Meteor.startup ->
-          Handlebars.registerHelper("user", ->
-            Meteor.user()
-          )
-
-         # console.log("logging in with facebook")
-         # Meteor.loginWithFacebook({ requestPermissions: ['email']}, (err) ->
-         #   console.log(err)  if err?
-         # )
-
 

@@ -82,8 +82,8 @@
     #container = "<div id=\"fs-dialog\" class=\"fs-color-" + fsOptions.color + "\">" + "<h2 id=\"fs-dialog-title\"><span>" + fsOptions.lang.title + "</span></h2>" + "<div id=\"fs-filter-box\">" + "<div id=\"fs-input-wrap\">" + "<input type=\"text\" id=\"fs-input-text\" title=\"" + fsOptions.lang.searchText + "\" />" + "<a href=\"javascript:{}\" id=\"fs-reset\">Reset</a>" + "</div>" + "</div>" + "<div id=\"fs-user-list\">" + "<ul></ul>" + "</div>" + "<div id=\"fs-filters-buttons\">" + "<div id=\"fs-filters\">" + "<a href=\"javascript:{}\" id=\"fs-show-selected\"><span>" + fsOptions.lang.buttonShowSelected + "</span></a>" + "</div>" + "<div id=\"fs-dialog-buttons\">" + "<a href=\"javascript:{}\" id=\"fs-submit-button\" class=\"fs-button\"><span>" + fsOptions.lang.buttonSubmit + "</span></a>" + "<a href=\"javascript:{}\" id=\"fs-cancel-button\" class=\"fs-button\"><span>" + fsOptions.lang.buttonCancel + "</span></a>" + "</div>" + "</div>" + "</div>"
     #content.html container
     #console.log($('<div>').append(content.clone()).html())
-    Template.fbfriendselectdialog.rendered = ->
-
+    Template.fbfriendselectdialog?.rendered = ->
+      console.log("rendering fbfriendselector")
       wrap = $("#fs-dialog-box-wrap")
       _getFacebookFriend()
       _resize true
@@ -436,3 +436,35 @@
 
   return
 ) window, document, jQuery
+
+
+define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"], (eventManager, fb, model) ->
+
+  self = {}
+  self.RfacebookFriends = new ReactiveObject(["data"])
+
+  Template.fbeventinvite.rendered = ->
+    console.log("event invite dialog rendered")
+
+  Router?.map ->
+    this.route 'eventinvite',
+      path: '/contentdetail/:_id/inviteFriends'
+      template: 'fbeventinvite'
+      layoutTemplate: 'mainlayout'
+      before: _.once ->
+        console.log("ensuring logged in with create_event permission")
+        fb.ensureLoggedIn( (success) ->
+          if (success)
+            fb.api.api("/fql",{q: "SELECT uid,name  FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1"}, (res) ->
+              self.RfacebookFriends.data = _.map(res.data, (i) -> { username: i.name, id: i.uid })
+            )
+        , ["create_event"])
+      waitOn: ->
+        model.subscribeDetails(this.params._id)
+      data: ->
+        console.log("getting event invite data from router")
+        {event: model.getContentById(this.params._id), friends: self.RfacebookFriends.data}
+        #{friends: self.RfacebookFriends.data}
+
+
+require "FBFriendInviter", (fbfi) -> console.log(fbfi)
