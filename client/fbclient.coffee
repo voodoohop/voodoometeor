@@ -15,7 +15,17 @@ Meteor.startup ->
         if self.loggedIn
           callback(self.api)
       api: null
-      ensureFBLogin: (callback) ->
+      ensureLoggedIn: (callback, perms) ->
+        hasPerms = ! perms?  #if no perms argument specified hasPerms is true by default
+        unless hasPerms
+          hasPerms = _.intersection(_.keys(Meteor.user().services.facebook.permissions), perms).length == perms.length
+        console.log("loggedin?",self.loggedIn, "has all fb permissions?", hasPerms)
+        if (self.loggedIn and hasPerms)
+          callback?(true)
+        else
+          FB.login( (response) ->
+            callback?(response.authResponse)
+          , {scope: if perms then perms.join(",") else undefined });
 
 
     window.fbAsyncInit = ->
@@ -46,6 +56,7 @@ Meteor.startup ->
                   #console.log("calling event manager")
                   self.api = FB
                   self.loggedIn = true
+                  console.log("fb client: set self.loggedIn to true",self)
                   Session.set("fbloggedin",true);
                   _.each(loggedInListeners, (l) -> l(FB))
               )

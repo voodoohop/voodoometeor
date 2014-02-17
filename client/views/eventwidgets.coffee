@@ -12,6 +12,6 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
   Template.eventtoolbar.rendered = ->
     $("#fb_invite_button").fSelector
       onPreStart: ->
-        fb.
+        fb.ensureLoggedIn()
       onSubmit: (response) ->
         alert(response)

@@ -90,13 +90,8 @@ define "EventManager", ["VoodoocontentModel"], (model) ->
           Meteor.users.update(Meteor.userId(), $pull: { attending: eventid})
         if (self.fb?)
           fbConnection = if confirm then "attending" else "maybe"
-          doRsvp = -> self.fb.api(model.getContentById(eventid).sourceId+"/"+fbConnection,"POST", (res) -> console.log(res))
-          if (Meteor.user().services.facebook.permissions.rsvp_event)
-            doRsvp()
-          else
-            FB.login( ->
-              doRsvp()
-            , {scope:"rsvp_event"});
-
+          fb.ensureLoggedIn( (res) ->
+            self.fb.api(model.getContentById(eventid).sourceId+"/"+fbConnection,"POST", (res) -> console.log(res))
+          , "rsvp_event")
       fb.onLoggedIn(self.fbLoggedin)
   return self;
