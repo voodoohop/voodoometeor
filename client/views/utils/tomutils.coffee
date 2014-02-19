@@ -16,3 +16,30 @@
     , time)
 
 @isExternalLink = (url) -> RegExp('^((f|ht)tps?:)?//').test(url);
+
+@eachWithDelay = (coll, delay, itemcallback, finishedcallback = null) ->
+  c = _.clone(coll)
+  processItem = ->
+    current = c.shift()
+    itemcallback(current)
+    if (c.length > 0)
+      _.delay(processItem, delay)
+    else
+      finishedcallback() if finishedcallback?
+  processItem()
+
+
+@eachWithDelayPerN = (coll, delay, n, itemcallback, finishedcallback = null) ->
+  c = _.clone(coll)
+  processItem = ->
+    for blockno in [1..n]
+      if c.length == 0
+        finishedcallback() if finishedcallback?
+        return
+      current = c.shift()
+      itemcallback(current)
+    if (c.length > 0)
+      _.delay(processItem, delay)
+    else
+      finishedcallback() if finishedcallback?
+  processItem()

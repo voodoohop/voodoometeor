@@ -2,12 +2,12 @@
 <div class="btn-group btn-group-{{size}}">
     <button type="button" data-toggle="dropdown" class="rsvpbutton btn btn-primary dropdown-toggle"><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-question-sign{{/if}}"></span> {{#if rsvp_confirmed}}Attending{{else}}RSVP{{/if}} <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu">
-        <li><a class="rsvp_attend" href="#"><span class="glyphicon glyphicon-ok"></span> Attending</a></li>
-        <li><a class="rsvp_decline" href="#"><span class="glyphicon glyphicon-question-sign"></span> Undecided</a></li>
+        <li><button type="button" class="rsvp_attend" href="#"><span class="glyphicon glyphicon-ok"></span> Attending</button></li>
+        <li><button type="button" class="rsvp_decline" href="#"><span class="glyphicon glyphicon-question-sign"></span> Undecided</button></li>
     </ul>
 </div>
 <div class="btn-group btn-group-{{size}}">
-    <button type="button" class="btn btn-success" id="fb_invite_button"><span class="glyphicon glyphicon-bullhorn"></span> Invite</button>
+    <a class="btn btn-success" id="fb_invite_button" href="/contentdetail/{{_id}}/inviteFriends"><span class="glyphicon glyphicon-bullhorn"></span> Invite</a>
 </div>
 
 <div class="btn-group btn-group-{{size}}">

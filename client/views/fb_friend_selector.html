@@ -1,36 +1,64 @@
 <template name="fbeventinvite">
 
 
-<div id="fs-dialog-box-content">
-    <div id="fs-dialog" class="fs-color-default">
-        <h2 id="fs-dialog-title"><span>Friend Selector</span></h2>
-        <div id="fs-filter-box">
-            <div id="fs-input-wrap"><input type="text" id="fs-input-text" title="Enter a friend's name"><a href="javascript:{}" id="fs-reset">Reset</a></div>
+<div class="container">
+
+        <div id="fs-filters-buttons">
+            Select: <div class="btn-group" data-toggle="buttons" style="display: inline-block">
+            <button id="selectall" class="btn btn-info">All</button>
+            <button id="selectnone" class="btn btn-danger">None</button>
         </div>
+
+        </div>
+        <div id="fs-submit-button-div">
+            <div class="btn-group" data-toggle="buttons" style="display: inline-block">
+                <button type="button" id="invitesubmit" class="btn btn-primary btn-lg ladda-button" data-style="expand-left">
+                    <span class="ladda-label">
+                    {{#if loadingFriends}}
+                        loading Friends
+                    {{else}}
+                       <!--   -->
+                    {{#if inviting}}
+                        Inviting
+                    {{else}}
+                        <span class="glyphicon glyphicon-ok"></span>
+                        Invite
+                    {{/if}}
+                    {{/if}}
+                    </span>
+                </button>
+                <button type="button" class="btn btn-danger btn-lg">&times; Close</button>
+            </div>
+         </div>
+            <div id="fs-filter-box">
+                <div class="form-search search-only">
+                    <input  id="fs-search-text" type="text" class="form-control search-query">
+                </div>
+            </div>
+
         <div id="fs-user-list">
-            <ul>
+
                 {{#if friends}}
                 {{#each friends}}
                 {{> fbeventinvite_user}}
                 {{/each}}
                 {{/if}}
-            </ul>
+
         </div>
-        <div id="fs-filters-buttons">
-            <div id="fs-filters"><a href="javascript:{}" id="fs-show-selected"><span>Show Selected</span></a></div>
-            <div id="fs-dialog-buttons"><a href="javascript:{}" id="fs-submit-button" class="fs-button"><span>Send</span></a><a href="javascript:{}" id="fs-cancel-button" class="fs-button"><span>Cancel</span></a></div>
-        </div>
+
+
+
     </div>
-</div>
+
 </template>
 
 <template name="fbeventinvite_user">
-    <li>
-    <a class="fs-anchor" href="javascript://">
-        <input class="fs-fullname" type="hidden" name="fullname[]" value="{{username}}">
-        <input class="fs-friends" type="checkbox" name="friend[]" value="{{id}}" />
+    <div class="fs-userlistitem {{checked}}"  >
+    <div class="fs-anchor {{inviting}}">
         <img class="fs-thumb" src="https://graph.facebook.com/{{id}}/picture" />
-        <span class="fs-name">{{cropstring username 10}}</span>
-    </a>
-    </li>
+        {{#unless isnviting}}
+        <span class="fs-name">{{cropstring username 13}}</span>
+        {{/unless}}
+    </div>
+    </div>
 </template>

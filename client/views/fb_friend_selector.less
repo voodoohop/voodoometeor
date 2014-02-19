@@ -13,82 +13,8 @@
 
 
 
-/* @group Title */
-
-#fs-dialog-title {
-  background: #6d84b4;  
-  border: 1px solid #3b5998;
-  border-bottom: none;
-  
-  color: #fff;
-  font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif !important;
-  font-size: 14px;
-  font-weight: 700;
-  
-  margin: 0;
-  padding: 0
-}
-#fs-dialog-title span {
-  display: block;
-  padding: 5px 10px
-}
-
-/* @end of Title */
-
-#fs-filter-box {
-  background: #f2f2f2;
-  border: 1px solid #ccc;
-  border-top: none;
-  
-  padding: 10px
-}
-
-/* @group Search Bar */
-
-#fs-input-wrap {
-  background: #fff;
-  border: 1px solid #bdc7d8;
-  
-  position: relative
-}
-#fs-input-text {
-  background: #fff;
-  border: 0;
-  
-  color: #333;
-  font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif !important;
-  font-size: 11px;
-  
-  padding: 3px;
-  margin: 0;
-  width: 95%
-}
-#fs-reset {
-  background: url(friend-selector-erase.png) no-repeat 0 0 #adbdd6;
-  
-  text-indent: -9999px;
-  
-  height: 15px;
-  width: 15px;
-  position: absolute;
-  right: 2px;
-  top: 3px
-}
-#fs-reset:hover {
-  background-position: 0 -16px;
-  background-color: #6584b2
-}
-#fs-reset:active {
-  background-position:0 -16px;
-  background-color: #325c99
-}
-
-/* @end of Search Bar */
-
-
 #fs-summary-box {
-  border-bottom: 1px solid #ccc;
-  
+
   padding: 10px 5px;
   overflow: hidden
 }
@@ -98,12 +24,11 @@
 }
 
 .fs-limit.fs-count {
-  color: #080;
   float: right
 }
 
 .fs-limit.fs-full {
-  color: #a00;
+
   float: right
 }
 
@@ -111,48 +36,48 @@
 /* @group User List */
 
 #fs-user-list {
-  border-bottom: 1px solid #ccc;
-  
-  height: 353px;
-  overflow: auto;
-  position: relative
+  width: 100%;
+  //overflow: auto;
 }
-#fs-user-list ul {
-  list-style: none;
-  
-  margin: 0;
-  padding: 0;
-  overflow: hidden
-}
-#fs-user-list li {
-  float: left;
-  padding: 5px 0 0 5px;
-  width: 173px;
-  overflow: hidden
+
+.fs-userlistitem {
+
+  margin: 2px;
+  display: inline-block;
 }
 
 .fs-anchor {
-  border-color: #fff;
-  border-style: solid;
-  border-width: 1px 0;
+  width: 150px;
+
   
   color: #333;
   text-decoration: none;
   cursor: pointer;
   
-  display: block;
+  display: inline-block;
   padding: 2px;
   overflow: hidden
 }
-.fs-anchor:hover {
+
+.fs-anchor.sinviting {
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+
+}
+
+.fs-anchor.checked:hover {
   background-color: #eceff5;
   border-color: #eceff5;
-  
-  text-decoration: none !important
 }
-li.checked .fs-anchor {
+
+.fs-anchor:hover {
+  background-color: #fcfff5;
+  border-color: #eceff5;
+}
+
+.fs-userlistitem.checked .fs-anchor {
   background-color: #d8dfea;
-  border-color: #c3cce1
 }
 
 #fs-user-list input[type="checkbox"] {
@@ -167,6 +92,7 @@ li.checked .fs-anchor {
   margin-right: 5px;
   width: 30px
 }
+
 .fs-name {
   display: table-cell;
   vertical-align: middle;
@@ -178,12 +104,23 @@ li.checked .fs-anchor {
 
 /* @group Filters and Buttons */
 
+
+#fs-filter-box {
+   position: fixed;
+  left: 0px;
+  bottom: 0px;
+  padding: 10px;
+  z-index: 10;
+}
+
 #fs-filters-buttons {
-  background: #f2f2f2; 
    
-  padding: 8px 10px;
-  position: relative;
-  overflow: hidden;
+  padding: 10px;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+
+  z-index: 10;
 }
 
   /* @group Filters */
@@ -245,20 +182,14 @@ li.checked .fs-anchor {
     padding: 3px 6px 4px;
     position: relative
   }
-  #fs-submit-button {
-    background-color: #5b74a8;
-    border-color: #29447e #29447e #1a356e;
+  #fs-submit-button-div {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    padding: 10px;
+    z-index: 10;
+  }
 
-    color: #fff
-  }
-  #fs-submit-button:active {
-    background-color: #4f6aa3;
-    border-color: #29447e
-  }
-  #fs-submit-button:active span {
-    border-top: 1px solid #4f6aa3
-  }
-  
   #fs-cancel-button {
     background: #eae9e9;
     border-color: #999;
@@ -303,9 +234,7 @@ li.checked .fs-anchor {
   background-color: #41505b;
   border-color: #212a30 #212a30 #112a30
 }
-.fs-color-dark #fs-submit-button span {
-  border-top: 1px solid #777
-}
+
 
 .fs-color-dark #fs-reset {
   background-color: #ccc
@@ -622,4 +551,9 @@ li.checked .fs-anchor {
   position: absolute;
   top: 50%;
   left: 50%;
+}
+
+
+#invitesubmit.disabled, #invitesubmit[disabled] {
+  opacity: 0.75;
 }
