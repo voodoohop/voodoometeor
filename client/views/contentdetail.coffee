@@ -14,7 +14,7 @@ Meteor.startup ->
 
 
 
-  require ["VoodoocontentModel","ContentItem", "FacebookClient"], (model, contentItem, fb) ->
+  require ["VoodoocontentModel","ContentItem", "FacebookClient", "EventManager"], (model, contentItem, fb, eventManager) ->
     console.log("adding content detail route")
 
 
@@ -29,9 +29,19 @@ Meteor.startup ->
         #waitOn: ->
         #  console.log("router subscribing to ",this.params._id)
         #  model.getDetails(this.params._id)
+
+        before: ->
+          id = this.params._id
+          fb.onLoggedIn ->
+            console.log("updating event stats", id)
+
+            eventManager.updateEventStats(id)
+
+
         waitOn: ->
           console.log("ROUTE BEFORE - subscribing to ",this.params._id)
           model.subscribeDetails(this.params._id)
+
         data: ->
           #console.log("getting content for:", this.params._id)
           model.getContentById(this.params._id)
@@ -46,22 +56,7 @@ Meteor.startup ->
     Template.contentdetail.helpers(contentItem.helpers)
 
 
-    Template.contentdetail.friendsAttending = ->
-      console.log("checking if we can get facebook friends attending")
-      if Session.get("fbloggedin") && this.sourceId
-        console.log(this)
-        fqlQuery = "SELECT uid FROM event_member WHERE eid = " + this.sourceId + " and rsvp_status = 'attending' AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me())";
-        console.log(fqlQuery)
-        FB.api("/fql",{q:fqlQuery}, (res) ->
-          images= _.map(res.data, (e) ->
-            "<img src='http://graph.facebook.com/" + e.uid + "/picture'>"
-          )
-          console.log("loaded profile images")
-          Session.set("profileimages",images.join(" "))
-        )
 
-    Template.contentdetail.profileimages = ->
-      Session.get("profileimages")
 
     $(window).scroll( ->
       $(".detach-on-scroll").each ->
@@ -72,4 +67,5 @@ Meteor.startup ->
           $(this).find(".detach-content").removeClass("detached")
 
     )
+
 

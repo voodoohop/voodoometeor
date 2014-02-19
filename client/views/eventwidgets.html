@@ -2,8 +2,8 @@
 <div class="btn-group btn-group-{{size}}">
     <button type="button" data-toggle="dropdown" class="rsvpbutton btn btn-primary dropdown-toggle"><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-question-sign{{/if}}"></span> {{#if rsvp_confirmed}}Attending{{else}}RSVP{{/if}} <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu">
-        <li><button type="button" class="rsvp_attend" href="#"><span class="glyphicon glyphicon-ok"></span> Attending</button></li>
-        <li><button type="button" class="rsvp_decline" href="#"><span class="glyphicon glyphicon-question-sign"></span> Undecided</button></li>
+        <li><a type="button" class="rsvp_attend"><span class="glyphicon glyphicon-ok"></span> Attending</a></li>
+        <li><a type="button" class="rsvp_decline"><span class="glyphicon glyphicon-question-sign"></span> Undecided</a></li>
     </ul>
 </div>
 <div class="btn-group btn-group-{{size}}">
@@ -26,4 +26,20 @@
         <span class="fancymonth">Jun</span>
         <span class="fancyyear">2009</span>
     </div>
+</template>
+
+
+<template name="event_genderratio">
+    <span class="label label-danger" style="font-size:100%"><i class="fa fa-female"></i> {{ratio}}</span>
+</template>
+
+<template name="event_voodooratio">
+    <span class="label label-info" style="font-size:100%"> <span class="icon-voodoologo"></span> {{ratio}} </span>
+</template>
+
+
+<template name="event_friends">
+    {{#each profileImages}}
+    <img src="{{this}}">
+    {{/each}}
 </template>

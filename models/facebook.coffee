@@ -10,8 +10,11 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     Hooks.onLoggedIn = (p) ->
 
         ## exchange access token for long-lived ##
-        console.log(p)
-        currentToken = Meteor.users.find(p).fetch()[0].services.tomfacebook.accessToken
+
+        user = Meteor.users.findOne(p)
+        return if user.services.tomfacebook.extendedAccessToken
+        console.log("exchanging access token to extended for user", p)
+        currentToken = user.services.tomfacebook.accessToken
         console.log("loggedin, getting extended access token",p)
         fb.api("/oauth/access_token",
           client_id: config.current().facebook.appid,
@@ -23,6 +26,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
             Meteor.users.update(p,
               $set:
                 "services.tomfacebook.accessToken": res.access_token
+                "services.tomfacebook.extendedAccessToken": true
             )
             console.log("updated extended access token")
         , (ex) ->

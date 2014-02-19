@@ -1,23 +1,22 @@
 <template name="fbeventinvite">
 
 
-<div class="container">
 
+        {{#unless inviting}}
         <div id="fs-filters-buttons">
             Select: <div class="btn-group" data-toggle="buttons" style="display: inline-block">
             <button id="selectall" class="btn btn-info">All</button>
             <button id="selectnone" class="btn btn-danger">None</button>
+            </div>
         </div>
+        {{/unless}}
 
-        </div>
-        <div id="fs-submit-button-div">
-            <div class="btn-group" data-toggle="buttons" style="display: inline-block">
+        <div class="fs-invite-button-div {{inviting}} {{inline}}">
                 <button type="button" id="invitesubmit" class="btn btn-primary btn-lg ladda-button" data-style="expand-left">
                     <span class="ladda-label">
                     {{#if loadingFriends}}
                         loading Friends
                     {{else}}
-                       <!--   -->
                     {{#if inviting}}
                         Inviting
                     {{else}}
@@ -27,15 +26,17 @@
                     {{/if}}
                     </span>
                 </button>
+                {{#unless minimized}}
                 <button type="button" class="btn btn-danger btn-lg">&times; Close</button>
-            </div>
+                {{/unless}}
          </div>
+
+    {{#unless inviting}}
             <div id="fs-filter-box">
                 <div class="form-search search-only">
                     <input  id="fs-search-text" type="text" class="form-control search-query">
                 </div>
             </div>
-
         <div id="fs-user-list">
 
                 {{#if friends}}
@@ -45,10 +46,7 @@
                 {{/if}}
 
         </div>
-
-
-
-    </div>
+    {{/unless}}
 
 </template>
 
