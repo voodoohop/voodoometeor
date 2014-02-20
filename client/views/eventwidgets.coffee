@@ -31,6 +31,7 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
 
     Template.event_friends.profileImages = ->
       eventId = this._id
+      console.log("instData vs this", instData, this)
       console.log("checking if we can get facebook friends attending", eventId)
       return unless eventId
       unless instData.loadingFriendsAttending
