@@ -10,6 +10,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     Hooks.onLoggedIn = (p) ->
 
         ## exchange access token for long-lived ##
+        return unless p?
 
         user = Meteor.users.findOne(p)
         console.log("onloggedin",user, p)

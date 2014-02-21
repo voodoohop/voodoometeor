@@ -17,6 +17,8 @@
     "ms-seo": {
       "git": "https://github.com/DerMambo/ms-seo"
     },
-    "bootstrap-alerts": {}
+    "bootstrap-alerts": {},
+    "marked": {},
+    "pagedown-bootstrap": {}
   }
 }

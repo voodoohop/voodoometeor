@@ -56,7 +56,10 @@ Meteor.startup ->
     Template.contentdetail.helpers(model.helpers)
     Template.contentdetail.helpers(contentItem.helpers)
 
-
+    pagedown = new Markdown.Converter();
+    Template.contentdetail.markdownDescription = ->
+      if (this.description)
+        pagedown.makeHtml(this.description)
 
 
     $(window).scroll( ->
