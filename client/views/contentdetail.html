@@ -23,6 +23,31 @@
     <div>{{> event_voodooratio}}</div>
     <div>{{> event_friends}}</div>
 
-    <div>{{{ markdownDescription }}}</div>
+    <div class="eventDescription" id="description_{{_id}}">{{{ markdownDescription }}}</div>
 
+    {{> mootForum}}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Media</div>
+        <div class="panel-content clearfix" id="eventMedia_{{_id}}">
+        </div>
+    </div>
+
+
+</template>
+
+<template name="eventmedia">
+    <div class="thumbnail eventmediacontainer ">
+        <div class="caption">
+            <em><a href="{{url}}" data-toggle="tooltip" data-placement="top" data-title="{{cropstring description 200 }} ...">{{cropstring title 20}} </a>{{#if provider_name}}<small>{{provider_name}}</small>{{/if}}</em>
+        </div>
+        {{#if html}}
+        {{{html}}}
+        {{else}}
+        <a href="{{url}}" data-toggle="tooltip" data-placement="top" data-title="{{cropstring description 200 }} ...">
+        <img src="{{thumbnail_url}}">
+        </a>
+        {{/if}}
+
+    </div>
 </template>

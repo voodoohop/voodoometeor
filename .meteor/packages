@@ -7,9 +7,7 @@ preserve-inputs
 coffeescript
 less
 accounts-password
-accounts-facebook
 showdown
-accounts-ui
 standard-app-packages
 font-awesome
 handlebar-helpers
@@ -25,7 +23,8 @@ reactive-extra
 define
 iron-router
 ms-seo
-spiderable
 nprogress
-flat-ui
 pagedown-bootstrap
+bootstrap-3
+urlify
+spiderable

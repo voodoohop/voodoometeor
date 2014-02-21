@@ -22,7 +22,9 @@
       },
       "bootstrap-alerts": {},
       "marked": {},
-      "pagedown-bootstrap": {}
+      "pagedown-bootstrap": {},
+      "bootstrap-themes": {},
+      "urlify": {}
     },
     "packages": {
       "font-awesome": {
@@ -99,6 +101,16 @@
         "git": "https://github.com/Blahah/meteor-pagedown-bootstrap.git",
         "tag": "v0.0.1",
         "commit": "504130865bccd2b8ff62f0bba5999de29ea5e3d8"
+      },
+      "bootstrap-themes": {
+        "git": "https://github.com/eprochasson/meteor-bootstrap-themes",
+        "tag": "v0.0.5",
+        "commit": "7b711bd22646db199662bc05fea1df6ad5cc4c22"
+      },
+      "urlify": {
+        "git": "https://github.com/audreyr/meteor-urlify.git",
+        "tag": "v0.1.0",
+        "commit": "f04d6da29890a980873b319a3e05339e299ef4ed"
       }
     }
   }

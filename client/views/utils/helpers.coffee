@@ -4,5 +4,5 @@ Meteor.startup ->
     Meteor.user()
   )
   Handlebars.registerHelper("cropstring", (string, length) ->
-    string.substr(0,length)
+    string?.substr(0,length)
   )

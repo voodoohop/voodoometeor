@@ -39,13 +39,19 @@ Meteor.startup ->
 
 
         waitOn: ->
-          console.log("ROUTE WAITON - subscribing to ",this.params._id)
-          model.subscribeDetails(this.params._id)
+          console.log("ROUTE WAITON - subscribing to ",id = this.params._id)
+          Deps.nonreactive ->
+            model.subscribeDetails(id)
 
+        action: ->
+          if this.ready()
+            this.render()
+          else
+            this.render("loadingScreen")
         data: ->
           #console.log("getting content for:", this.params._id)
-          console.log("got content for", this.params._id, res = model.getContentById(this.params._id))
-          res
+          #console.log("got content for", this.params._id, res = model.getContentById(this.params._id))
+          model.getContentById(this.params._id)
 
         #after: ->
         #  data = this.getData()
@@ -56,12 +62,30 @@ Meteor.startup ->
     Template.contentdetail.helpers(model.helpers)
     Template.contentdetail.helpers(contentItem.helpers)
 
-    pagedown = new Markdown.Converter();
+    pagedown = new Markdown.Converter(true);
     Template.contentdetail.markdownDescription = ->
+      id = this._id
       if (this.description)
+        Meteor.setTimeout( ->
+          console.log("running embedly on all links")
+          $("#description_"+id+" a").embedly(
+            key: "b5d3386c6d7711e193c14040d3dc5c07"
+            method: null
+            query:
+              maxwidth: 200
+              maxheight: 200
+            display: (param) ->
+              console.log("embedly display", param)
+              if (param.title?.length >0)
+                UI.insert(UI.render(Template.eventmedia.withData(param)),$("#eventMedia_"+id)[0])
+                param.$elem.tooltip({title: param.description?.substring(0,200)})
+          )
+        ,1000)
         pagedown.makeHtml(this.description)
 
-
+    Template.eventmedia.rendered = ->
+      #console.log(this)
+      $(this.find("a")).tooltip()
     $(window).scroll( ->
       $(".detach-on-scroll").each ->
         #console.log($(this).offset())
@@ -72,4 +96,7 @@ Meteor.startup ->
 
     )
 
+
+    Template.mootForum.currentURL = ->
+      Meteor.absoluteUrl(location.pathname)
 

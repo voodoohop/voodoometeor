@@ -13,7 +13,7 @@ Meteor.startup ->
     self.onLoggedIn= (callback) ->
         loggedInListeners.push(callback)
         if self.loggedIn
-          callback(self.api)
+          callback(self.api, self.loggedIn)
     self.api= null
 
     processFBAuthResponse = (response, callback=null) ->
@@ -37,7 +37,7 @@ Meteor.startup ->
                 console.log("logged in, user:",Meteor.user())
                 self.api = FB
                 self.loggedIn = true
-                _.each(loggedInListeners, (l) -> l(FB))
+                _.each(loggedInListeners, (l) -> l(FB, true))
                 callback?(true)
               )
 
@@ -79,6 +79,7 @@ Meteor.startup ->
         console.log("fb login status", response)
         if (response.status != "connected")
           self.loggedIn = false
+          _.each(loggedInListeners, (l) -> l(FB, false))
 
       FB.Event.subscribe 'auth.authResponseChange', (response) ->
         processFBAuthResponse(response)

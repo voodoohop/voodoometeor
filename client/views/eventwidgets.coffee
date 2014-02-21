@@ -9,6 +9,10 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
       eventManager.rsvp(this._id, true)
   Template.eventdate.day = model.helpers.day
 
+  Template.eventtoolbar.eventInviteData = (arg1) ->
+    console.log("eventInviteData",arg1,this)
+    {minimized: true, event: this}
+
   Template.eventtoolbar.rendered = ->
 
 

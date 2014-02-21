@@ -19,6 +19,8 @@
     },
     "bootstrap-alerts": {},
     "marked": {},
-    "pagedown-bootstrap": {}
+    "pagedown-bootstrap": {},
+    "bootstrap-themes": {},
+    "urlify": {}
   }
 }

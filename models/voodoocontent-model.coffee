@@ -47,7 +47,7 @@ define "VoodoocontentModel",[], ->
         self.detailId = null
         #if (id == null)
         #  callback() if (callback?)
-      if (id)
+      if (id and id != self.detailId)
         self.detailSubscription = self.subscribeContent({query: id, details: true}, callback)
         self.detailId = id
       return self.detailSubscription
