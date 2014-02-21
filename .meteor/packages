@@ -17,14 +17,14 @@ HTML5-History-API
 moment
 page-js-ie-support
 router
-nprogress
 accounts-base
 event-hooks
 npm
 external-file-loader
 reactive-extra
 define
-flat-ui
 iron-router
 ms-seo
 spiderable
+nprogress
+flat-ui

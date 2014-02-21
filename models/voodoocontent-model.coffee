@@ -41,15 +41,18 @@ define "VoodoocontentModel",[], ->
     #  Meteor.subscribe( "featuredContent")
 
     self.subscribeDetails = (id, callback) ->
-      if (self.detailSubscription and id != self.detailId)
-        self.detailSubscription.stop()
-        self.detailSubscription = null
-        self.detailId = null
-        #if (id == null)
-        #  callback() if (callback?)
-      if (id)
-        self.detailSubscription = self.subscribeContent({query: id, details: true}, callback)
+      if (id != self.detailId)
+        if (self.detailSubscription)
+          self.detailSubscription.stop()
+          self.detailSubscription = null
+          self.detailId = null
+          console.log("canceled previous subscribtion")
+        self.detailSubscription = self.subscribeContent({query: id, details: true}, ->
+          console.log("subscription ready",id)
+          callback?()
+        )
         self.detailId = id
+        console.log("subscribed to detail of", id)
       return self.detailSubscription
 
 
@@ -68,10 +71,9 @@ define "VoodoocontentModel",[], ->
       return self.cursor
 
   self.getContentBySourceId = (sourceId) -> self.contentCollection.findOne({sourceId: sourceId})
+
   self.getContentById = (id) ->
-    if (self.detailId != id)
-      console.log("not yet subscribed... subscribing",id)
-      self.subscribeDetails(id);
+    self.subscribeDetails(id);
     self.contentCollection.findOne(id)
 
   if (Meteor.isServer)

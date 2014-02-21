@@ -30,21 +30,22 @@ Meteor.startup ->
         #  console.log("router subscribing to ",this.params._id)
         #  model.getDetails(this.params._id)
 
-        before: ->
+        after: ->
           id = this.params._id
-          fb.onLoggedIn ->
-            console.log("updating event stats", id)
 
-            eventManager.updateEventStats(id)
+          fb.onLoggedIn ->
+              console.log("updating event stats", id)
+              eventManager.updateEventStats(id)
 
 
         waitOn: ->
-          console.log("ROUTE BEFORE - subscribing to ",this.params._id)
+          console.log("ROUTE WAITON - subscribing to ",this.params._id)
           model.subscribeDetails(this.params._id)
 
         data: ->
           #console.log("getting content for:", this.params._id)
-          model.getContentById(this.params._id)
+          console.log("got content for", this.params._id, res = model.getContentById(this.params._id))
+          res
 
         #after: ->
         #  data = this.getData()

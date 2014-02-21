@@ -189,7 +189,6 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         self.RselectedItem.openDetailItem.justExpanded = true;
       )
     else
-      model.subscribeDetails(null)
       self.RselectedItem.openDetailItem?.justShrinked = true;
 
 

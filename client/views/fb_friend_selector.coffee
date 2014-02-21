@@ -58,6 +58,8 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
             )
             console.log("got friends", self.RfacebookFriends)
         , ["create_event"])
+        if (!fb.loggedIn)
+          this.stop()
       waitOn: ->
         model.subscribeDetails(this.params._id)
       data: ->

@@ -12,6 +12,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
         ## exchange access token for long-lived ##
 
         user = Meteor.users.findOne(p)
+        console.log("onloggedin",user, p)
         return if user.services.tomfacebook.extendedAccessToken
         console.log("exchanging access token to extended for user", p)
         currentToken = user.services.tomfacebook.accessToken

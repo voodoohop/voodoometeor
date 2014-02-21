@@ -37,21 +37,25 @@
                     <input  id="fs-search-text" type="text" class="form-control search-query">
                 </div>
             </div>
-        <div id="fs-user-list">
-
                 {{#if friends}}
+    <div id="fs-user-list" class="panel panel-default">
+        <div class="panel-heading">Friends</div>
+            <div class="panel-content clearfix">
                 {{#each friends}}
+
                 {{> fbeventinvite_user}}
+
                 {{/each}}
+           </div>
+    </div>
                 {{/if}}
 
-        </div>
     {{/unless}}
 
 </template>
 
 <template name="fbeventinvite_user">
-    <div class="fs-userlistitem {{checked}}"  >
+    <div class="fs-userlistitem {{checked}} clearfix"  >
     <div class="fs-anchor {{inviting}}">
         <img class="fs-thumb" src="https://graph.facebook.com/{{id}}/picture" />
         {{#unless isnviting}}

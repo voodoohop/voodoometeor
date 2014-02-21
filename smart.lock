@@ -19,13 +19,19 @@
       "ms-seo": {
         "git": "https://github.com/DerMambo/ms-seo",
         "branch": "master"
-      }
+      },
+      "bootstrap-alerts": {}
     },
     "packages": {
       "font-awesome": {
         "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
         "tag": "v4.0.3",
         "commit": "61e9361384347547ae144f8228faa4deffda23db"
+      },
+      "HTML5-History-API": {
+        "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
+        "tag": "v4.0.0",
+        "commit": "dc4965f1424cfca625ec3fbea17eace03f8e32c5"
       },
       "define": {
         "git": "https://github.com/apendua/require.git",
@@ -75,7 +81,12 @@
       "ms-seo": {
         "git": "https://github.com/DerMambo/ms-seo",
         "branch": "master",
-        "commit": "f4c4192a074f08be37d1581691874aa23ad08eb7"
+        "commit": "52287280685c0769c43127966f8ab265b72aebaa"
+      },
+      "bootstrap-alerts": {
+        "git": "https://github.com/asktomsk/bootstrap-alerts.git",
+        "tag": "v0.0.5",
+        "commit": "6ddd650208a77677ab86af9dfccc3a69b1ba8d32"
       }
     }
   }
