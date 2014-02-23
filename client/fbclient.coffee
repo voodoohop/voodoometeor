@@ -7,14 +7,18 @@ Meteor.startup ->
 
 
 
-    self = new ReactiveObject(["loggedIn"])
+    self = new ReactiveObject(["RloggedIn"])
+    self.setLoggedInStatus = (s) ->
+      self.loggedIn = s
+      self.RloggedIn = s
+      _.each(loggedInListeners, (l) -> l(FB, s))
 
     self.loggedIn = undefined
     self.onLoggedIn= (callback) ->
         loggedInListeners.push(callback)
-        if self.loggedIn
+        if self.loggedIn?
           callback(self.api, self.loggedIn)
-    self.api= null
+    self.api = null
 
     processFBAuthResponse = (response, callback=null) ->
         if (response.status == 'connected')
@@ -36,15 +40,13 @@ Meteor.startup ->
               ->
                 console.log("logged in, user:",Meteor.user())
                 self.api = FB
-                self.loggedIn = true
-                _.each(loggedInListeners, (l) -> l(FB, true))
+                self.setLoggedInStatus(true)
                 callback?(true)
               )
 
 
 
     self.ensureLoggedIn= (callback, perms) ->
-
         # wait if facebook is still determining whether or not the user is already connected
         if ! self.loggedIn?
           console.log("fb login status not determined yet... waiting", self.loggedIn)
@@ -78,8 +80,7 @@ Meteor.startup ->
       FB.getLoginStatus (response) ->
         console.log("fb login status", response)
         if (response.status != "connected")
-          self.loggedIn = false
-          _.each(loggedInListeners, (l) -> l(FB, false))
+          self.setLoggedInStatus(false)
 
       FB.Event.subscribe 'auth.authResponseChange', (response) ->
         processFBAuthResponse(response)

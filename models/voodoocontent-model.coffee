@@ -41,16 +41,17 @@ define "VoodoocontentModel",[], ->
     #  Meteor.subscribe( "featuredContent")
 
     self.subscribeDetails = (id, callback) ->
-      if (self.detailSubscription and id != self.detailId)
-        self.detailSubscription.stop()
-        self.detailSubscription = null
-        self.detailId = null
-        #if (id == null)
-        #  callback() if (callback?)
-      if (id and id != self.detailId)
-        self.detailSubscription = self.subscribeContent({query: id, details: true}, callback)
-        self.detailId = id
-      return self.detailSubscription
+      Deps.nonreactive ->
+        if (self.detailSubscription and id != self.detailId)
+          self.detailSubscription.stop()
+          self.detailSubscription = null
+          self.detailId = null
+          #if (id == null)
+          #  callback() if (callback?)
+        if (id and id != self.detailId)
+          self.detailSubscription = self.subscribeContent({query: id, details: true}, callback)
+          self.detailId = id
+        return self.detailSubscription
 
 
   self.lastLimit = 0

@@ -1,8 +1,7 @@
 <template name="fbeventinvite">
-    {{#unless doneInviting}}
 
-        <div class="fs-invite-button-div {{inviting}} {{inline}} btn-group">
-                <a href="/contentDetail/{{event._id}}/inviteFriends" id="invitebutton_{{event._id}}" class="invitebutton btn btn-success btn-lg ladda-button" data-style="expand-left">
+        <div class="fs-invite-button-div {{inviting}} {{inline}} btn-group btn-group-lg">
+                <a href="/contentDetail/{{event._id}}/inviteFriends" id="invitebutton_{{event._id}}" class="invitebutton btn btn-success ladda-button" data-style="expand-left" {{disabledAttribute}}>
                     <span class="ladda-label">
                     {{#if loadingFriends}}
                         loading Friends
@@ -17,7 +16,7 @@
                     </span>
                 </a>
                 {{#if minimized}}
-                    <button type="button" class="btn btn-success dropdown-toggle btn-lg" data-toggle="dropdown">
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" {{disabledAttribute}}>
                         <span class="caret"></span>
                         <span class="sr-only">Invite Dropdown</span>
                     </button>
@@ -26,7 +25,7 @@
                         <li><a href="/contentDetail/{{event._id}}/inviteFriends"><span class="glyphicon glyphicon-hand-right"></span> Select</a></li>
                     </ul>
                 {{else}}
-                <button type="button" class="btn btn-danger btn-lg">&times; Close</button>
+                <button type="button" class="btn btn-danger">&times; Close</button>
                 {{/if}}
          </div>
 
@@ -36,8 +35,8 @@
 
     <div id="fs-filters-buttons">
         Select: <div class="btn-group" data-toggle="buttons" style="display: inline-block">
-        <button id="selectall" class="btn btn-info">All</button>
-        <button id="selectnone" class="btn btn-danger">None</button>
+        <button id="selectall" class="btn btn-info btn-responsive">All</button>
+        <button id="selectnone" class="btn btn-danger btn-responsive">None</button>
     </div>
     </div>
 
@@ -64,7 +63,6 @@
     {{/unless}}
 
 
-    {{/unless}}
 </template>
 
 <template name="fbeventinvite_user">

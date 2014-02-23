@@ -9,21 +9,27 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
 
   self.noneSelected = false
 
-
-  beforeDisplay = new ReactiveObject(["gotPermissions"])
-  beforeDisplay.gotPermissions = undefined
-  beforeDisplay.run = (callback) ->
-    console.log("ensuring logged in with create_event permission")
+  loginDep = new Deps.Dependency
+  loginResult = undefined
+  beforeDisplay = (callback = null) ->
+    if loginResult
+      callback?()
+    else
+      doFBLogin(callback)
+  doFBLogin = _.once( (callback=null) ->
     fb.ensureLoggedIn( (success) ->
-          beforeDisplay.gotPermissions = success
-          callback?(beforeDisplay.gotPermissions)
-        , ["create_event"])
-    return beforeDisplay
+      loginResult = success
+      loginDep.changed()
+      callback?()
+    , ["create_event"])
+  )
+  virtualLoginAndPermSubscription =  { ready: -> loginDep.depend(); loginResult }
 
-  beforeDisplay.ready = ->
-    beforeDisplay.gotPermissions
+  setButtonProgress = (progress) ->
+    self.inviteLadda.start() unless self.inviteLadda.isLoading()
+    self.inviteLadda.setProgress(progress)
 
-  loadFriends = (option, callback) ->
+  loadFriends = (option, callback = null) ->
     console.log("loading friends, assuming template rendered")
     self.inviteLadda.start()
     self.Rfilter.loadingFriends = true
@@ -37,11 +43,11 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
 
         processedno++
         if (processedno % 5 == 0)
-          self.inviteLadda.setProgress(processedno / total )
-      , ->  self.Rfilter.loadingFriends = false; self.inviteLadda.stop(); callback?(); )
+          setButtonProgress(processedno / total)
+      , ->  self.Rfilter.loadingFriends = false; self.loadedFriends = true; self.inviteLadda.stop(); callback?(); )
     )
 
-  inviteFriends = ->
+  inviteFriends = (callback = null) ->
       friends = self.getFriends(true).fetch()
       total = friends.length
       processedNo = 0
@@ -51,7 +57,7 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
           self.RfacebookFriends.remove(r._id)
         )
         processedNo += removed.length
-        self.inviteLadda.setProgress(processedNo / total)
+        setButtonProgress(processedNo / total)
         if friends.length > 0
           _.delay( ->
             processn(n)
@@ -59,7 +65,8 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
         else
           self.Rfilter.inviting = "doneInviting"
           self.inviteLadda.stop()
-      processn(20)
+          callback?()
+      processn(10)
       self.Rfilter.inviting = "inviting"
       self.inviteLadda.start()
 
@@ -68,7 +75,9 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
 
   Template.fbeventinvite.rendered = ->
     console.log("event invite dialog rendered", this, this.data?.event?._id)
-    self.inviteLadda = Ladda.create($("#invitebutton_"+this.data.event._id)[0])
+    if (self.inviteLadda)
+      self.inviteLadda.stop()
+    self.inviteLadda = Ladda.create($("#invitebutton_"+this.data?.event?._id)[0])
     loadFriends() unless this.data.minimized
 
   self.friendQuery = (onlySelected = false) ->
@@ -84,26 +93,39 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
     console.log query = self.friendQuery(onlySelected)
     self.RfacebookFriends.find(query)
 
-  Template.fbeventinvite.friends = self.getFriends
+  #Template.fbeventinvite.friends = self.getFriends
   Template.fbeventinvite.inviting = -> self.Rfilter.inviting
   Template.fbeventinvite.loadingFriends = -> self.Rfilter.loadingFriends
-  Template.fbeventinvite.state = ->
+  Template.fbeventinvite.disabledAttribute = ->
+    return {disabled: true} if self.Rfilter.inviting == "doneInviting"
+    {}
 
   Template.fbeventinvite_user.checked = -> if this.selected then "checked" else ""
 
+  eventDetailSubscription = null
   Router?.map ->
     this.route 'eventinvite',
-      path: '/contentdetail/:_id/inviteFriends'
+      path: '/contentDetail/:_id/inviteFriends'
       template: 'fbeventinvite'
       layoutTemplate: 'mainlayout'
+      before: ->
+        id = this.params._id
+        Deps.nonreactive ->
+          console.log("before hook event_invite router")
+          beforeDisplay()
+          eventDetailSubscription = model.subscribeDetails(id) unless eventDetailSubscription
       action: ->
-        console.log("fb_friend_selector_action", this, this.ready())
+        #console.log("fb_friend_selector_action", this, this.ready())
+        console.log("action",[eventDetailSubscription.ready(), virtualLoginAndPermSubscription.ready()])
         if this.ready()
           this.render()
       waitOn: ->
-        [model.subscribeDetails(this.params._id), beforeDisplay.run()]
+        console.log("waitOn called")
+        #Deps.autorun (computation) ->
+        #  computation.onInvalidate -> console.trace();
+        [eventDetailSubscription, virtualLoginAndPermSubscription]
       data: ->
-        {event: model.getContentById(this.params._id)}
+        {event: model.getContentById(this.params._id), friends: self.getFriends }
 
   Template.fbeventinvite_user.events
     "click .fs-anchor": ->
@@ -114,15 +136,18 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
       text = $(e.target).val()
       self.Rfilter.filter = text
     "click .inviteall": ->
-      beforeDisplay.run ->
-        if (beforeDisplay.gotPermissions)
-          loadFriends {fast: true}, ->
+      beforeDisplay( ->
+          loadFriends ({fast: true}), ->
             inviteFriends()
-        else
-          alert("no permission")
+      )
 
-    "click .invitebutton": ->
-      inviteFriends()
+    "click .invitebutton": (e) ->
+      console.log("invite button", this, this._id)
+
+      if (self.loadedFriends)
+        e.preventDefault()
+        Router.go("contentDetail", { "_id": this.event._id} )
+        inviteFriends( )
 
 
     "click #selectnone": ->
@@ -131,5 +156,7 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
     "click #selectall": ->
       self.RfacebookFriends.update({}, {$set:{selected: true}}, {multi: true})
       self.noneSelected = false
+
+  return self
 
 require "FBFriendInviter", (fbfi) ->

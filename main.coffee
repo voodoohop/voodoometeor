@@ -29,6 +29,7 @@ require "VoodoocontentModel", (model) ->
         Meteor.subscribe "userData"
         Meteor.subscribe "users"
       )
-
+      #console.log("configured router without autoRender")
+      #Router?.configure({autoRender: false})
 
 

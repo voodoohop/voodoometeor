@@ -102,6 +102,11 @@ define "EventManager", ["VoodoocontentModel"], (model) ->
               voodooCount: voodoocount
               attendingCount: res.data.length
             )
+            console.log @genderratios =
+              genderRatio: femalecount / (malecount + femalecount)
+              voodooRatio: voodoocount / res.data.length
+              voodooCount: voodoocount
+              attendingCount: res.data.length
           )
 
         )

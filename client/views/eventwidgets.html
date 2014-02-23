@@ -1,6 +1,6 @@
 <template name="eventtoolbar">
 <div class="btn-group btn-group-{{size}}">
-    <button type="button" data-toggle="dropdown" class="rsvpbutton btn btn-primary dropdown-toggle"><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-question-sign{{/if}}"></span> {{#if rsvp_confirmed}}Attending{{else}}RSVP{{/if}} <span class="caret"></span></button>
+    <button type="button" data-toggle="dropdown" class="rsvpbutton btn btn-primary dropdown-toggle btn-responsive"><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-question-sign{{/if}}"></span> {{#if rsvp_confirmed}}Attending{{else}}RSVP{{/if}} <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu">
         <li><a type="button" class="rsvp_attend"><span class="glyphicon glyphicon-ok"></span> Attending</a></li>
         <li><a type="button" class="rsvp_decline"><span class="glyphicon glyphicon-question-sign"></span> Undecided</a></li>
@@ -11,7 +11,7 @@
 {{> fbeventinvite eventInviteData}}
 
 <div class="btn-group btn-group-{{size}}">
-    <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-share"></span> Share</button>
+    <button type="button" class="btn btn-info btn-responsive"><span class="glyphicon glyphicon-share"></span> Share</button>
 </div>
 
 </template>
@@ -42,7 +42,7 @@
 
 
 <template name="event_friends">
-    {{#each profileImages}}
-    <img src="{{this}}">
+    {{#each profiles}}
+    <a href="http://facebook.com/profile.php?id={{this.fbid}}" target="_blank"><img src="{{this.image}}"></a>
     {{/each}}
 </template>

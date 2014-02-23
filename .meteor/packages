@@ -21,10 +21,10 @@ npm
 external-file-loader
 reactive-extra
 define
-iron-router
-ms-seo
 nprogress
-pagedown-bootstrap
-bootstrap-3
 urlify
 spiderable
+pagedown-bootstrap
+iron-router
+ms-seo
+bootstrap3-less

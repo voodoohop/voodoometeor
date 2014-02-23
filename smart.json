@@ -18,9 +18,10 @@
       "git": "https://github.com/DerMambo/ms-seo"
     },
     "bootstrap-alerts": {},
-    "marked": {},
     "pagedown-bootstrap": {},
-    "bootstrap-themes": {},
-    "urlify": {}
+    "urlify": {},
+    "bootstrap3-less": {
+        "git": "https://github.com/Nemo64/bootstrap3-less"
+    }
   }
 }

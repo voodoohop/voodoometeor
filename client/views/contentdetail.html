@@ -6,6 +6,7 @@
 </template>
 
 <template name="contentdetail">
+    {{#with eventData}}
     <div class="jumbotron">
         <div class="datefloat">
             {{> eventdate}}
@@ -25,7 +26,6 @@
 
     <div class="eventDescription" id="description_{{_id}}">{{{ markdownDescription }}}</div>
 
-    {{> mootForum}}
 
     <div class="panel panel-default">
         <div class="panel-heading">Media</div>
@@ -33,7 +33,7 @@
         </div>
     </div>
 
-
+   {{/with}}
 </template>
 
 <template name="eventmedia">

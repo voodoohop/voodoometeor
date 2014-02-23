@@ -10,7 +10,7 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
   Template.eventdate.day = model.helpers.day
 
   Template.eventtoolbar.eventInviteData = (arg1) ->
-    console.log("eventInviteData",arg1,this)
+    console.log("eventInviteData",this)
     {minimized: true, event: this}
 
   Template.eventtoolbar.rendered = ->
@@ -27,24 +27,26 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
   Template.event_friends.created = ->
     console.log("event_friends template CREATED", this)
 
-    this.data = {} unless this.data?
-    instData = this.data
+    #this.instData = {} unless this.data?
 
-    instData.RfriendsAttending = new ReactiveObject(["friends"])
-    instData.loadingFriendsAttending = false
 
-    Template.event_friends.profileImages = ->
+    this.RfriendsAttending = new ReactiveObject(["friends"])
+    this.loadingFriendsAttending = false
+    component = this
+
+    Template.event_friends.profiles = ->
       eventId = this._id
-      console.log("instData vs this", instData, this)
       console.log("checking if we can get facebook friends attending", eventId)
       return unless eventId
-      unless instData.loadingFriendsAttending
-        instData.loadingFriendsAttending = true
+      if ! component.RfriendsAttending.friends and ! component.loadingFriendsAttending
+        component.loadingFriendsAttending = true
         fb.onLoggedIn ->
-            eventManager.getFriendsAttending(eventId, (attending) -> instData.RfriendsAttending.friends = attending)
+            eventManager.getFriendsAttending(eventId, (attending) -> component.RfriendsAttending.friends = attending)
 
 
-      if instData.RfriendsAttending.friends
-         _.map(instData.RfriendsAttending.friends, (u) -> "http://graph.facebook.com/" + u.fbUid + "/picture")
-      else
-        null
+      if component.RfriendsAttending.friends
+        _.map(component.RfriendsAttending.friends, (u) ->
+          image: "http://graph.facebook.com/" + u.fbUid + "/picture"
+          name: u.name
+          fbid: u.fbUid
+        )
