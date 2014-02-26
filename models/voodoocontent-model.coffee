@@ -88,5 +88,12 @@ define "VoodoocontentModel",[], ->
     #Meteor.publish "featuredContent", ->
     #  self.getContent({query: {featured: true}})
 
+    Meteor.methods
+      like: (contentId) ->
+        if (!this.userId?)
+          return false;
+        console.log("adding like to ",contentId, "from user", this.userId)
+        self.contentCollection.update(contentId, {$addToSet: {likes: this.userId }})
+        return true;
 
   return self

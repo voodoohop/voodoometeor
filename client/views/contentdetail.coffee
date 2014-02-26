@@ -37,9 +37,6 @@ Meteor.startup ->
 
         waitOn: ->
           console.log("ROUTE WAITON - subscribing to ",id = this.params._id)
-          Deps.autorun (computation) ->
-            computation.onInvalidate -> console.trace();
-
           res = Deps.nonreactive ->
             model.subscribeDetails(id)
           console.log("res subscribedatils.ready()", res.ready())

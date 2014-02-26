@@ -23,11 +23,11 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
 
 
   Template.event_genderratio.ratio = ->
-    return unless this.stats?
-    "" + Math.round(this.stats.genderRatio * 100) + "%"
+    return unless this.fbstats?
+    "" + Math.round(this.fbstats.genderRatio * 100) + "%"
   Template.event_voodooratio.ratio = ->
-    return unless this.stats?
-    "" + Math.round(this.stats.voodooRatio * 100) + "%"
+    return unless this.fbstats?
+    "" + Math.round(this.fbstats.voodooRatio * 100) + "%"
 
 
   Template.event_friends.created = ->

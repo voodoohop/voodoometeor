@@ -22,7 +22,7 @@ define "EventManager", ["VoodoocontentModel"], (model) ->
 
       updateContentStats: (id, stats) ->
         this.unblock()
-        model.contentCollection.update(id,{$set: {stats: stats}})
+        model.contentCollection.update(id,{$set: {fbstats: stats}})
 
     Meteor.users.allow(
       update: (uid, doc, fieldNames, modifier) ->
@@ -99,7 +99,7 @@ define "EventManager", ["VoodoocontentModel"], (model) ->
             Meteor.call("updateContentStats", eventid,
               genderRatio: femalecount / (malecount + femalecount)
               voodooRatio: voodoocount / res.data.length
-              voodooCount: voodoocount
+              voodooAttendingCount: voodoocount
               attendingCount: res.data.length
             )
             console.log @genderratios =

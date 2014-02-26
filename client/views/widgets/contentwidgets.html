@@ -1,5 +1,5 @@
 <template name="likewidget">
     <button type="button" class="likebutton btn btn-warning btn-responsive ladda-button" data-style="expand-left">
-        <span class="glyphicon glyphicon-heart"></span> Like <span class="badge">{{like_count}}</span>
+        <span class="glyphicon glyphicon-heart"></span> {{#if liked }} liked {{else}} Like {{/if}} <span class="badge">{{inferred_likes}}</span>
     </button>
 </template>
