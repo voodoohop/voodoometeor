@@ -9,7 +9,6 @@
     "event-hooks": {},
     "external-file-loader": {},
     "reactive-extra": {},
-    "bootstrap-3": {},
     "iron-router": {
       "git": "https://github.com/EventedMind/iron-router.git",
       "branch": "shark"
@@ -20,13 +19,11 @@
     "bootstrap-alerts": {},
     "pagedown-bootstrap": {},
     "urlify": {},
-    "bootstrap3-less": {
-      "git": "https://github.com/Nemo64/bootstrap3-less"
-    },
     "bootstrap3-less-tom": {
       "path": "packages/bootstrap3-less-tom"
     },
     "spiderable-404": {},
-    "collection-helpers": {}
+    "collection-helpers": {},
+    "collection-hooks": {}
   }
 }

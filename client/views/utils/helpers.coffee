@@ -6,3 +6,9 @@ Meteor.startup ->
   Handlebars.registerHelper("cropstring", (string, length) ->
     string?.substr(0,length)
   )
+
+  Handlebars.registerHelper("conditionalAttr", (tagname, condition) ->
+    res = {}
+    res[tagname] = true if condition
+    res
+  )
