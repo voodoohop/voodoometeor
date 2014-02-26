@@ -23,8 +23,9 @@ reactive-extra
 define
 nprogress
 urlify
-spiderable
 pagedown-bootstrap
 iron-router
 ms-seo
-bootstrap3-less
+bootstrap3-less-tom
+spiderable
+collection-helpers

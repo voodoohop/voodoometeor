@@ -1,0 +1,29 @@
+
+@media (max-width: @screen-xs-max) {
+    .btn-group-responsive > .btn {
+        .btn-sm;
+    }
+    .btn.btn-responsive {
+            .btn-sm;
+    }
+}
+
+@media (min-width: @screen-xs-min) and (max-width: @screen-sm-max) {
+
+    .btn-group-responsive > .btn {
+      .btn;
+    }
+        .btn.btn-responsive {
+                .btn;
+        }
+}
+
+
+@media (min-width: @screen-sm-min) {
+    .btn-group-responsive > .btn {
+      .btn-lg;
+    }
+    .btn.btn-responsive {
+        .btn-lg;
+    }
+}

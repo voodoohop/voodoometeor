@@ -43,3 +43,22 @@
     else
       finishedcallback() if finishedcallback?
   processItem()
+
+
+
+Meteor.startup ->
+  Meteor.RwindowSize = new ReactiveObject(["width","height"])
+  $(window).resize (  updateRwindowSize = _.debounce( ->
+    Meteor.RwindowSize.width = $(window).width()
+    Meteor.RwindowSize.height = $(window).height()
+  , 100))
+  updateRwindowSize()
+  $(window).scroll( ->
+    $(".detach-on-scroll").each ->
+      #console.log($(this).offset())
+      if ($(this).offset().top  < $(window).scrollTop())
+        $(this).find(".detach-content").addClass("detached")
+      else
+        $(this).find(".detach-content").removeClass("detached")
+
+  )

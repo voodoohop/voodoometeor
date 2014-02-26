@@ -1,0 +1,5 @@
+.idea/
+.build*
+bootstrap/
+update_bootstrap.sh
+smart.lock

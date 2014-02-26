@@ -11,6 +11,9 @@ Meteor.startup ->
         title: data.title
         description: data.description
         image: data.picture
+        type: "event"
+        start_time: "2014-10-25T20:00:00+02:00"
+        url: Meteor.absoluteUrl(Router.path("contentDetail", {_id: this._id}))
 
 
 
@@ -107,15 +110,7 @@ Meteor.startup ->
     Template.eventmedia.rendered = ->
       #console.log(this)
       $(this.find("a")).tooltip()
-    $(window).scroll( ->
-      $(".detach-on-scroll").each ->
-        #console.log($(this).offset())
-        if ($(this).offset().top  < $(window).scrollTop())
-          $(this).find(".detach-content").addClass("detached")
-        else
-          $(this).find(".detach-content").removeClass("detached")
 
-    )
 
 
     Template.mootForum.currentURL = ->

@@ -1,4 +1,4 @@
-@import "../../css/elements.lessimport";
+@import "../../style/elements.lessimport";
 
 .saturate(@pct) {
   filter: ~"saturate(@{pct})";

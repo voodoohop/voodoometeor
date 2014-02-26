@@ -1,9 +1,12 @@
 <template name="mainlayout">
+
+    <div class="detach-on-scroll detacheableuserstatus">
+        <div class="detach-content">
+        {{> userLoginStatus}}
+        </div>
+    </div>
     <div class="container">
     {{> yield}}
-    </div>
-    <div id="forum">
-        {{> mootForum}}
     </div>
 </template>
 

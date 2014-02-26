@@ -7,6 +7,12 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
     'click .rsvp_attend': () ->
       console.log("rsvp_attend click")
       eventManager.rsvp(this._id, true)
+    'click .facebook_share': ->
+      FB.ui(
+        method: 'feed'
+        link: Meteor.absoluteUrl(Router.path("contentDetail", {_id: this._id}))+"?_escaped_fragment_="
+        caption: 'An example caption'
+      , (res) -> console.log(res));
   Template.eventdate.day = model.helpers.day
 
   Template.eventtoolbar.eventInviteData = (arg1) ->
@@ -35,18 +41,19 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
     component = this
 
     Template.event_friends.profiles = ->
-      eventId = this._id
-      console.log("checking if we can get facebook friends attending", eventId)
-      return unless eventId
-      if ! component.RfriendsAttending.friends and ! component.loadingFriendsAttending
-        component.loadingFriendsAttending = true
-        fb.onLoggedIn ->
-            eventManager.getFriendsAttending(eventId, (attending) -> component.RfriendsAttending.friends = attending)
+      if (Meteor.RwindowSize.width > 640)
+        eventId = this._id
+        console.log("checking if we can get facebook friends attending", eventId)
+        return unless eventId
+        if ! component.RfriendsAttending.friends and ! component.loadingFriendsAttending
+          component.loadingFriendsAttending = true
+          fb.onLoggedIn ->
+              eventManager.getFriendsAttending(eventId, (attending) -> component.RfriendsAttending.friends = attending)
 
 
-      if component.RfriendsAttending.friends
-        _.map(component.RfriendsAttending.friends, (u) ->
-          image: "http://graph.facebook.com/" + u.fbUid + "/picture"
-          name: u.name
-          fbid: u.fbUid
-        )
+        if component.RfriendsAttending.friends
+          _.map(component.RfriendsAttending.friends, (u) ->
+            image: "http://graph.facebook.com/" + u.fbUid + "/picture"
+            name: u.name
+            fbid: u.fbUid
+          )

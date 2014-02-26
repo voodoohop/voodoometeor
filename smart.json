@@ -21,7 +21,12 @@
     "pagedown-bootstrap": {},
     "urlify": {},
     "bootstrap3-less": {
-        "git": "https://github.com/Nemo64/bootstrap3-less"
-    }
+      "git": "https://github.com/Nemo64/bootstrap3-less"
+    },
+    "bootstrap3-less-tom": {
+      "path": "packages/bootstrap3-less-tom"
+    },
+    "spiderable-404": {},
+    "collection-helpers": {}
   }
 }

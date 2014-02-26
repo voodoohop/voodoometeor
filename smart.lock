@@ -26,7 +26,12 @@
       "bootstrap3-less": {
         "git": "https://github.com/Nemo64/bootstrap3-less",
         "branch": "master"
-      }
+      },
+      "bootstrap3-less-tom": {
+        "path": "packages/bootstrap3-less-tom"
+      },
+      "spiderable-404": {},
+      "collection-helpers": {}
     },
     "packages": {
       "font-awesome": {
@@ -108,6 +113,19 @@
         "git": "https://github.com/Nemo64/bootstrap3-less",
         "branch": "master",
         "commit": "a52ec0f4bf77dae3bf778c77a929077910393c14"
+      },
+      "bootstrap3-less-tom": {
+        "path": "packages/bootstrap3-less-tom"
+      },
+      "spiderable-404": {
+        "git": "https://github.com/wojas/spiderable-404.git",
+        "tag": "v0.6.6.1",
+        "commit": "04013254e4cf1e6d38ac5e78d48a33e5ddf554b2"
+      },
+      "collection-helpers": {
+        "git": "https://github.com/dburles/meteor-collection-helpers.git",
+        "tag": "v0.2.3",
+        "commit": "52c4c692421acea557fb329f43f65ed11b4832df"
       },
       "marked": {
         "git": "https://github.com/chuangbo/meteor-marked.git",

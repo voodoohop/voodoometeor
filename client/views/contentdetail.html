@@ -7,6 +7,7 @@
 
 <template name="contentdetail">
     {{#with eventData}}
+    <div class="contentdetail">
     <div class="jumbotron">
         <div class="datefloat">
             {{> eventdate}}
@@ -19,7 +20,7 @@
             </div>
         </div>
         </div>
-    <img src="{{picture}}" align="right">
+    <img class="contentDetailFlyer" src="{{picture}}" align="right">
     <div>{{> event_genderratio}}</div>
     <div>{{> event_voodooratio}}</div>
     <div>{{> event_friends}}</div>
@@ -32,7 +33,7 @@
         <div class="panel-content clearfix" id="eventMedia_{{_id}}">
         </div>
     </div>
-
+    </div>
    {{/with}}
 </template>
 
