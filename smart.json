@@ -1,4 +1,8 @@
 {
+  "meteor": {
+    "git": "https://github.com/meteor/meteor.git",
+    "branch": "shark"
+  },
   "packages": {
     "font-awesome": {},
     "HTML5-History-API": {},
@@ -11,7 +15,10 @@
     "reactive-extra": {},
     "iron-router": {
       "git": "https://github.com/EventedMind/iron-router.git",
-      "branch": "shark"
+      "branch": "blaze-integration"
+    },
+    "blaze-layout": {
+      "git": "https://github.com/EventedMind/blaze-layout.git"
     },
     "ms-seo": {
       "git": "https://github.com/DerMambo/ms-seo"
@@ -22,8 +29,12 @@
     "bootstrap3-less-tom": {
       "path": "packages/bootstrap3-less-tom"
     },
+    "bootstrap-alerts-blaze-tom": {
+      "path": "packages/bootstrap-alerts-blaze-tom"
+    },
     "spiderable-404": {},
     "collection-helpers": {},
-    "collection-hooks": {}
+    "collection-hooks": {},
+    "publish-composite": {}
   }
 }

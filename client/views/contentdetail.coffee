@@ -50,6 +50,7 @@ Meteor.startup ->
             console.log("rendering loading screen")
             this.render("loadingScreen")
         data: -> {id: this.params._id }
+
           #console.log("getting content for:", this.params._id)
           #console.log("got content for", this.params._id, res = model.getContentById(this.params._id))
 
@@ -71,7 +72,6 @@ Meteor.startup ->
 
     pagedown = new Markdown.Converter(false);
     Template.contentdetail.markdownDescription = ->
-      console.log("got markdowned description", this.description)
       id = this._id
       if (this.description)
         if (!runEmbedly)
@@ -87,7 +87,7 @@ Meteor.startup ->
               display: (param) ->
                 #console.log("embedly display", param)
                 if (param.title?.length >0)
-                  UI.insert(UI.render(Template.eventmedia.withData(param)),$("#eventMedia_"+id)[0])
+                  UI.DomRange.insert(UI.render(Template.eventmedia.extend({data: param})).dom,$("#eventMedia_"+id)[0])
                   param.$elem.tooltip({title: param.description?.substring(0,200)})
             )
           ,2000)
@@ -98,11 +98,12 @@ Meteor.startup ->
 
     Template.contentdetail.rendered = ->
       console.log("contentdetail rendered", this)
-      id = this.data.id
-      updateHeadData(model.getContentById(this.data.id))
+      event = this.data
+
+      updateHeadData(model.getContentById(event.id))
       fb.onLoggedIn ->
-          console.log("updating event stats", id)
-          eventManager.updateEventStats(id)
+          console.log("updating event stats", event.id)
+          eventManager.updateEventStats(model.getContentById(event.id))
 
     Template.eventmedia.rendered = ->
       #console.log(this)

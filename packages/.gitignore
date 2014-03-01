@@ -35,3 +35,6 @@ urlify
 bootstrap3-less
 spiderable-404
 collection-helpers
+collection-hooks
+blaze-layout
+publish-composite

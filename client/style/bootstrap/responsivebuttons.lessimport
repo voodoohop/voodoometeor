@@ -1,29 +1,13 @@
 
-@media (max-width: @screen-xs-max) {
-    .btn-group-responsive > .btn {
-        .btn-sm;
+    div.responsive-buttons[max-width~="400px"] .btn {
+          .btn-xs;
     }
-    .btn.btn-responsive {
-            .btn-sm;
+    div.responsive-buttons[min-width~="400px"][max-width~="500px"]  .btn {
+      .btn-sm;
     }
-}
-
-@media (min-width: @screen-xs-min) and (max-width: @screen-sm-max) {
-
-    .btn-group-responsive > .btn {
+    div.responsive-buttons[min-width~="500px"][max-width~="800px"]  .btn {
       .btn;
     }
-        .btn.btn-responsive {
-                .btn;
-        }
-}
-
-
-@media (min-width: @screen-sm-min) {
-    .btn-group-responsive > .btn {
-      .btn-lg;
+    div.responsive-buttons[min-width~="800px"]  .btn {
+          .btn-lg;
     }
-    .btn.btn-responsive {
-        .btn-lg;
-    }
-}

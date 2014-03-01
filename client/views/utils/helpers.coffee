@@ -12,3 +12,11 @@ Meteor.startup ->
     res[tagname] = true if condition
     res
   )
+
+  Handlebars.registerHelper("responsiveButtons", ->
+    _.delay( ->
+      Meteor.refreshResponsiveElements();
+      console.log("refreshed responsive elements")
+    , 200)
+    return "responsive-buttons"
+  )

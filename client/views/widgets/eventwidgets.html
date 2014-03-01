@@ -1,6 +1,8 @@
 <template name="eventtoolbar">
 <div class="btn-group btn-group-responsive">
-    <button type="button" data-toggle="dropdown" class="rsvpbutton btn btn-primary dropdown-toggle"><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-question-sign{{/if}}"></span> {{#if rsvp_confirmed}}Attending{{else}}RSVP{{/if}} <span class="caret"></span></button>
+    <button type="button" data-toggle="dropdown" class="rsvpbutton btn btn-primary dropdown-toggle"><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-question-sign{{/if}}"></span> {{#if rsvp_confirmed}}Attending{{else}}RSVP{{/if}}
+        <span class="badge">{{fbstats.attendingCount}}</span>
+        <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu">
         <li><a type="button" class="rsvp_attend"><span class="glyphicon glyphicon-ok"></span> Attending</a></li>
         <li><a type="button" class="rsvp_decline"><span class="glyphicon glyphicon-question-sign"></span> Undecided</a></li>

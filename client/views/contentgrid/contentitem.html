@@ -2,7 +2,6 @@
 
     <div id="mediathumb_{{_id}}" class="mediathumb">
         <img src="{{thumbnailurl}}">
-        <div class="blackgradientdisabled"></div>
     </div>
 
 </template>
@@ -37,7 +36,7 @@
       <div class="back">
 
           {{#unless showMedia}}
-          {{>contentthumb}}
+
           {{else}}
           <div id="mediacontent_{{_id}}" >
               {{>embeddedmedia}}
@@ -73,20 +72,10 @@
             <span class="glyphicon glyphicon-map-marker text-info"></span>
             {{location}} <br>
            </p>
-    <div class="btn-group btn-group-xs">
-        <button type="button" data-toggle="dropdown" class="rsvpbutton btn btn-primary dropdown-toggle"><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-question-sign{{/if}}"></span> {{#if rsvp_confirmed}}Attending{{else}}RSVP{{/if}} <span class="caret"></span></button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a class="rsvp_attend" href="#"><span class="glyphicon glyphicon-ok"></span> Attending</a></li>
-            <li><a class="rsvp_decline" href="#"><span class="glyphicon glyphicon-question-sign"></span> Undecided</a></li>
-        </ul>
-    </div>
-    <div class="btn-group btn-group-xs">
-        <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-bullhorn"></span> Invite</button>
-    </div>
+          <div class="{{responsiveButtons}}">
+          {{> eventtoolbar }}
+          </div>
 
-    <div class="btn-group btn-group-xs">
-        <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-share"></span> Share</button>
-    </div>
     <div class="btn-group btn-group-xs">
         <a href="{{pathFor 'contentDetail'}}" class="btn btn-info"><span class="glyphicon glyphicon-share"></span> Details</a>
     </div>

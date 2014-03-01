@@ -1,5 +1,9 @@
 {
-  "meteor": {},
+  "meteor": {
+    "git": "https://github.com/meteor/meteor.git",
+    "branch": "shark",
+    "commit": "9b2b61281043835263edbb031b5853d490cbf748"
+  },
   "dependencies": {
     "basePackages": {
       "font-awesome": {},
@@ -11,10 +15,13 @@
       "event-hooks": {},
       "external-file-loader": {},
       "reactive-extra": {},
-      "bootstrap-3": {},
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "shark"
+        "branch": "blaze-integration"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "branch": "master"
       },
       "ms-seo": {
         "git": "https://github.com/DerMambo/ms-seo",
@@ -23,15 +30,16 @@
       "bootstrap-alerts": {},
       "pagedown-bootstrap": {},
       "urlify": {},
-      "bootstrap3-less": {
-        "git": "https://github.com/Nemo64/bootstrap3-less",
-        "branch": "master"
-      },
       "bootstrap3-less-tom": {
         "path": "packages/bootstrap3-less-tom"
       },
+      "bootstrap-alerts-blaze-tom": {
+        "path": "packages/bootstrap-alerts-blaze-tom"
+      },
       "spiderable-404": {},
-      "collection-helpers": {}
+      "collection-helpers": {},
+      "collection-hooks": {},
+      "publish-composite": {}
     },
     "packages": {
       "font-awesome": {
@@ -79,15 +87,15 @@
         "tag": "v0.0.6",
         "commit": "fe8d2f8e27c501be6533b419c3a00aae884b838b"
       },
-      "bootstrap-3": {
-        "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
-        "tag": "v3.1.0-1",
-        "commit": "329dccb08bfc18c635676dea600ac9953162cda9"
-      },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "shark",
-        "commit": "4f55d0acc293abb4a9492229e8d2be0ec0e176c1"
+        "branch": "blaze-integration",
+        "commit": "6fd133401bb6de65a30ba148f7d61ea1b4dc9b43"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "branch": "master",
+        "commit": "fa631b7b192618e8690d43f0033a3f4c7f77fa1d"
       },
       "ms-seo": {
         "git": "https://github.com/DerMambo/ms-seo",
@@ -109,13 +117,11 @@
         "tag": "v0.1.0",
         "commit": "f04d6da29890a980873b319a3e05339e299ef4ed"
       },
-      "bootstrap3-less": {
-        "git": "https://github.com/Nemo64/bootstrap3-less",
-        "branch": "master",
-        "commit": "a52ec0f4bf77dae3bf778c77a929077910393c14"
-      },
       "bootstrap3-less-tom": {
         "path": "packages/bootstrap3-less-tom"
+      },
+      "bootstrap-alerts-blaze-tom": {
+        "path": "packages/bootstrap-alerts-blaze-tom"
       },
       "spiderable-404": {
         "git": "https://github.com/wojas/spiderable-404.git",
@@ -126,6 +132,16 @@
         "git": "https://github.com/dburles/meteor-collection-helpers.git",
         "tag": "v0.2.3",
         "commit": "52c4c692421acea557fb329f43f65ed11b4832df"
+      },
+      "collection-hooks": {
+        "git": "https://github.com/matb33/meteor-collection-hooks.git",
+        "tag": "v0.6.2",
+        "commit": "29484b2110206be93b01c6d11ce06ec9208de7bd"
+      },
+      "publish-composite": {
+        "git": "https://github.com/reywood/meteor-publish-composite.git",
+        "tag": "v1.0.1",
+        "commit": "6fb7f961c15ee046fff9e59bc1d332e9936d4adf"
       },
       "marked": {
         "git": "https://github.com/chuangbo/meteor-marked.git",

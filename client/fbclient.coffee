@@ -91,7 +91,7 @@ Meteor.startup ->
 
   e = document.createElement("script")
   e.async = true
-  e.src = document.location.protocol + "//connect.facebook.net/en_US/all.js"
+  e.src = document.location.protocol + "//connect.facebook.net/pt_BR/all.js"
   document.getElementById("fb-root").appendChild e
   #Meteor.loginWithFacebook({requestPermissions: ["friends_events","user_events"]})
 

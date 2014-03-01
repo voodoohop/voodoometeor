@@ -56,7 +56,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       console.log("importing fb event with graph id:"+fbid)
       if (!update and contentModel.getContentBySourceId(fbid))
         console.log("event already exists")
-        return contentModel.getContentBySourceId(fbid)._id
+        return {event: contentModel.getContentBySourceId(fbid), alreadyInDB: true}
       res = Meteor.sync((done) ->
         query= "select uid from user where is_app_user=1 and uid in (select uid from event_member where eid = "+fbid+" and rsvp_status='attending')";
         fb.api("/fql",{q:query},  (fbres) -> done(null,fbres))
@@ -65,7 +65,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       res = Meteor.sync((done) -> fb.api fbid, {fields: fbschemas.event_fields}, (fbres) -> done(null,fbres))
       #console.log(res)
       event = res.result
-      return unless event.id
+      return {error: "eventnotloadedfromfb"} unless event.id
 
       res = Meteor.sync((done) -> fb.api ""+fbid+"/attending",{summary:true}, (fbres) -> done(null,fbres))
       numattending = res.result.summary.count
@@ -96,7 +96,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
         contentModel.contentCollection.update {sourceId: event.id}, {$set: voodoocontent}
       modified = contentModel.getContentBySourceId(event.id)
       #console.log("inserted/modified event:", modified)
-      return contentModel.getContentBySourceId(fbid)?._id
+      return {event: contentModel.getContentBySourceId(fbid), alreadyInDB: false}
 
     self.importUpdatePost = (fbid) ->
           res = Meteor.sync ((done) -> fb.api fbid, {fields: fbschemas.post_fields}, (fbres) -> done(null, fbres) )
@@ -115,8 +115,8 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
             post.like_count = Meteor.sync((done) -> fb.api ""+post.id+"/likes",{summary:true}, (fbres) -> done(null, fbres) ).result.summary.total_count
 
             res = Meteor.sync((done) ->
-              #console.log(post)
-              whereclause =  if post.object_id? " object_id='" + post.object_id + "' " else " post_id='"+post.id+"'"
+
+              whereclause =  if post.object_id? then " object_id='" + post.object_id + "' " else " post_id='"+post.id+"'"
               query= "select uid from user where is_app_user=1 and uid in (select user_id from like where "+whereclause+")";
               console.log(query)
               fb.api("/fql",{q:query},  (fbres) -> done(null,fbres))
@@ -164,9 +164,10 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
 
         this.unblock() #if self.numEventsImporting < 10
         console.log("calling update", params)
-        evtid = self.importUpdateEvent(params)
+        result = self.importUpdateEvent(params)
         self.numEventsImporting--;
-        return evtid
+
+        return result;
 
       importFacebookPost: (params) ->
         this.unblock()

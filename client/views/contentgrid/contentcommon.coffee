@@ -187,13 +187,13 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
   ,self)
 
   self.itemWidth = (item, showDetail) ->
-      if (showDetail)
+      if (showDetail && false)
         return tomMasonry.widthToMasonryCol(6*tomMasonry.columnWidth)
       else
         return self.contentWidthInGrid(item)
 
   self.itemHeight = (item, showDetail) ->
-      if (showDetail)
+      if (showDetail && false)
         tomMasonry.windowHeight()
       else
         #console.log("detheight", this)

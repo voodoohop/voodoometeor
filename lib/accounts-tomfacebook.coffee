@@ -24,11 +24,13 @@ if (Meteor.isServer)
 
       console.log("creating or updating user from fb with", serviceData, opts)
       userId = Accounts.updateOrCreateUserFromExternalService("tomfacebook", serviceData, opts).id
-
-      ## maybe unnecessary
-      Meteor.users.update(userId,{$set: opts})
-
-      return {id: userId}
+      console.log("got userId", userId)
+      stampedToken = Accounts._generateStampedLoginToken();
+      Meteor.users.update(userId,
+        $push: {'services.resume.loginTokens': Accounts._hashStampedToken(stampedToken)}
+        $set: opts
+      )
+      return {id: userId, token: stampedToken.token, tokenExpires: Accounts._tokenExpiration(stampedToken.when) }
 
 else
   Meteor.loginWithTomFacebook = (userdetails, callback) ->

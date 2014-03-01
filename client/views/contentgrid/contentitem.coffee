@@ -8,7 +8,7 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
   self.helpers =
     typespecificcontent: ->
-      res = Template["contentitem_"+this.type].withData(this)
+      res = Template["contentitem_"+this.type]
       console.log("getting type specific content for", this)
       return res
 

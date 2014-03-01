@@ -12,9 +12,15 @@
         <ul class="dropdown-menu" role="menu">
          <!--   <li><a type="button" class="rsvp_decline"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
          -->
-            <li><a type="button" class="logout"><span class="glyphicon glyphicon-remove"></span> logout</a></li>
+            <li><a type="button" class="importeventbutton"><span class="glyphicon glyphicon-calendar"></span> Import Events</a></li>
+            <li><a type="button" class="logoutbutton"><span class="glyphicon glyphicon-remove"></span> logout</a></li>
         </ul>
         {{else}}
         {{/if}}
     </div>
+</template>
+
+
+<template name="eventInsertedMessage">
+    Inserted event {{cropString title 13}}
 </template>

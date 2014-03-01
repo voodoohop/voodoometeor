@@ -1,5 +1,5 @@
 
-define "EventManager", ["VoodoocontentModel"], (model) ->
+define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHelpers) ->
   console.log("defining event manager")
   self = {}
 
@@ -31,15 +31,16 @@ define "EventManager", ["VoodoocontentModel"], (model) ->
     )
 
   if (Meteor.isClient)
-    require ["FacebookClient"], (fb) ->
+    require ["FacebookClient","FacebookApiHelpers"], (fb, apiHelpers) ->
 
       self.fbLoggedin = (fbapi) ->
         #return #hack to not attend events
         fbapi.api("/me/events", (res) -> _.each(res.data, (e) ->
-          Meteor.call("importFacebookEvent",e.id, (err,id) ->
-            console.log("inserted event with id:",id);
-            if id
-              Meteor.users.update(Meteor.userId(), $addToSet: { attending: id})
+          Meteor.call("importFacebookEvent",e.id, (err,res) ->
+            console.log("imported", res)
+            if res.event?._id
+              Alerts.add("eventInsertedMessage", res.event, "success",  {autoHide: 6000, html: true});
+              Meteor.users.update(Meteor.userId(), $addToSet: { attending: res.event._id})
             #Meteor.call("attendEvent", id, (err, res) -> console.log(err,res));
           )
         ))
@@ -86,30 +87,11 @@ define "EventManager", ["VoodoocontentModel"], (model) ->
           friendprocess(_.shuffle(res.data))
 
 
-      self.updateEventStats = (eventid) ->
+      self.updateEventStats = (event) ->
         fb.ensureLoggedIn( ->
-          console.log("updating gender ratio for", eventid)
-          fb.api.api(model.getContentById(eventid).sourceId+"/attending?fields=gender,installed", (res) ->
-            console.log(res)
-            malecount = _.filter(res.data, (u) -> u.gender == "male").length
-            femalecount = _.filter(res.data, (u) -> u.gender == "female").length
-            voodoocount = _.filter(res.data, (u) -> u.installed).length
-
-            console.log("female, male counts", femalecount, malecount)
-            Meteor.call("updateContentStats", eventid,
-              genderRatio: femalecount / (malecount + femalecount)
-              voodooRatio: voodoocount / res.data.length
-              voodooAttendingCount: voodoocount
-              attendingCount: res.data.length
-            )
-            console.log @genderratios =
-              genderRatio: femalecount / (malecount + femalecount)
-              voodooRatio: voodoocount / res.data.length
-              voodooCount: voodoocount
-              attendingCount: res.data.length
-          )
-
+          fbHelpers.eventStats.run(event, fb, (res) -> console.log("updated event stats", res))
         )
+
       self.rsvp = (eventid,confirm) ->
         if (confirm)
           Meteor.users.update(Meteor.userId(), $addToSet: { attending: eventid})
