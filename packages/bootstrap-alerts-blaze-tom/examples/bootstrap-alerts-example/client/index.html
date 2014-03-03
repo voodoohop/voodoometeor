@@ -1,0 +1,36 @@
+<head>
+    <title>bootstrap-alerts-app</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="span6">
+            <h1>Bootstrap Alerts</h1>
+
+            <div>
+                {{> buttons}}
+            </div>
+
+        </div>
+        <div class="offset6">
+            {{> bootstrapAlerts}}
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+<template name="buttons">
+    <input id="m-success" class="alert-link" type="button" value="Success"/>
+    <input id="m-info" type="button" value="Info"/>
+    <input id="m-warning" type="button" value="Warning"/>
+    <input id="m-danger" type="button" value="Danger"/>
+    <br>
+    <input id="m-success-1" type="button" value="Success dismissable=false"/>
+    <input id="m-info-1" type="button" value="Info autoHide=3000"/>
+    <input id="m-warning-1" type="button" value="alertsLimit=1"/>
+    <input id="m-danger-1" type="button" value="fadeIn=fadeOut=1000, autoHide=3000"/>
+    <input id="m-remove" type="button" value="Remove"/>
+</template>

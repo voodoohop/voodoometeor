@@ -1,0 +1,100 @@
+<template name="contentthumb">
+
+    <div id="mediathumb_{{_id}}" class="mediathumb">
+        <img src="{{thumbnailurl}}">
+    </div>
+
+</template>
+
+
+
+
+<template name="contentitem">
+    <div id="{{_id}}" class="contentitemcontainer content_type_{{type}} {{#if isExpanded}} contentitemexpanded {{/if}} {{#if showDetail}} contentitemdetail  {{/if}} ">
+        <!--<span class="contenttypelabel {{contentTypeMetaData.icon}} {{contentTypeMetaData.class}} {{bgcol}}" style="position: absolute; right: -2px; top: -2px;"> </span>
+     -->
+     {{#unless isExpanded}}
+      <div class="front">
+        {{#if showThumb}}
+            {{>contentthumb}}
+        {{/if}}
+        {{#if title}}
+        {{#if contentTypeMetaData.showtitle}}
+        <div class="title {{fgcol}}">
+            {{title}}
+        </div>
+        {{/if}}
+        {{/if}}
+        <div class="metadata">
+            <span class="glyphicon glyphicon-heart"></span><sup>{{numlikes}}</sup>
+           <!-- <span class="postdate" data-date="{{postedDate}}"><span class="glyphicon glyphicon-calendar"></span> {{postedDate}}</span>
+            -->
+        </div>
+         {{> typespecificcontent }}
+      </div>
+     {{else}}
+      <div class="back">
+
+          {{#unless showMedia}}
+
+          {{else}}
+          <div id="mediacontent_{{_id}}" >
+              {{>embeddedmedia}}
+          </div>
+          {{/unless}}
+          {{> typespecificcontent}}
+      </div>
+     {{/unless}}
+    </div>
+</template>
+
+<template name="contentitem_video">
+    <div class="mediaplaybutton">
+        <button type="button" class="btn btn-default btn-lg"><span style="color: {{bgcol}}" class="glyphicon glyphicon-expand" > </span></button>
+    </div>
+
+</template>
+
+<template name="contentitem_event">
+    {{#unless isExpanded}}
+    <div class="date {{bgcol}}">
+        {{day}}
+    </div>
+    {{else}}
+      <div class="info">
+        <h4>{{title}}</h4>
+
+            <p class="text-muted">
+           <span class="glyphicon glyphicon-user text-info"></span>
+           {{num_attending}} ({{num_app_users_attending}}) &nbsp;
+          <span class="glyphicon glyphicon-calendar text-info"></span>
+          {{day}}  <br>
+            <span class="glyphicon glyphicon-map-marker text-info"></span>
+            {{location}} <br>
+           </p>
+          <div class="{{responsiveButtons}}">
+          {{> eventtoolbar }}
+          </div>
+
+    <div class="btn-group btn-group-xs">
+        <a href="{{pathFor 'contentDetail'}}" class="btn btn-info"><span class="glyphicon glyphicon-share"></span> Details</a>
+    </div>
+    <p>
+        <small>
+         {{description}}
+        </small>
+    </p>
+    </div>
+    {{/unless}}
+    {{#if rsvp_confirmed}}
+        <div class="event_confirmed_indicator {{bgcol}}"><span class="glyphicon glyphicon-ok"></span></div>
+    {{/if}}
+</template>
+
+<template name="contentitem_photo">
+    foto
+</template>
+
+<template name="contentitem_link">
+    link
+</template>

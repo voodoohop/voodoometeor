@@ -1,0 +1,146 @@
+
+
+
+#msnrynav {
+  z-index: 99999;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  .navbar {
+    transition: background-color 1s;
+    //background-color: #f5f5f5;
+    //border-color: #f0f0f0;
+    .navbar-nav > li > a {
+      color: #000;
+    }
+  }
+}
+
+.attop {
+  width: 460px;
+  //background-image: url(http://sphotos-b.ak.fbcdn.net/hphotos-ak-ash4/1403708_10151950164758290_1278807300_o.jpg);
+  height: 400px;
+  //background-color: #;
+}
+
+#msnrynav {
+  .toplevelfiltericon {
+    font-size: 130%;
+  }
+  .content_filter {
+    .title, .toplevelfiltericon {
+      transition: all 150ms linear;
+    }
+    &:hover {
+      .title {
+        font-size:80%;
+      }
+      .toplevelfiltericon {
+        font-size: 170%;
+      }
+    }
+  }
+}
+#msnrynav.floating {
+  left: -70px;
+  .navbar {
+
+    background-color: #222222;
+    border-color: #080808;
+
+    .navbar-nav > li > a {
+      color: #ccc;
+    }
+  }
+}
+
+#msnrynav.floating .title {
+  display: none;
+}
+
+
+.masonrybuttoncontainer {
+  display: inline-block;
+}
+
+.masonrynavbutton {
+  width: 115px;
+  height: 115px;
+  border: 8px solid white;
+  position: relative;
+
+  button {
+    border-radius: 3px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    width: 100%;
+    height: 100%;
+    .toplevelfiltericon {
+      font-size: 55px;
+    }
+    .topleveltitle {
+      font-size: 16px;
+    }
+  }
+
+}
+
+.masonrynavbutton.selected {
+  //width: 230px;
+  //height: 230px;
+  .toplevelfiltericon {
+    font-size: 55px;
+  }
+  .topleveltitle {
+    display: none;
+  }
+
+}
+
+.masonrynavbutton.selected.hasSubFilters {
+  border: 2px solid white;
+
+  .toplevelbutton {
+    height: 56%;
+    position: absolute;
+    width: 56%;
+    left: -3%;
+    top: -3%;
+    z-index: 9;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    span {
+      font-size: 36px;
+    }
+
+  }
+  .sublevelbutton {
+    height: 50%;
+    position: absolute;
+    width: 50%;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .sublevelbutton:nth-child(1) {
+    right: 0px;
+    top:0px;
+  }
+  .sublevelbutton:nth-child(2) {
+    right: 0px;
+    bottom:0px;
+  }
+  .sublevelbutton:nth-child(3) {
+    left: 0px;
+    bottom:0px;
+  }
+  .sublevelfiltericon {
+    font-size: 30px;
+  }
+}
+
+.masonrynavbutton
+
+.voodoologo {
+  font-weight: bold;
+}

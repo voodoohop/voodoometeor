@@ -1,0 +1,28 @@
+<template name="userLoginStatus">
+    <div class="userloginstatus pull-right btn-group btn-group-responsive">
+       <button type="button" class="btn ladda-button" data-toggle="dropdown">
+        {{#if user}}
+        <img class="profileimage" src="{{profileImage}}"> <span class="profilename">{{user.profile.name}}</span>
+        {{else}}
+        not logged in...
+        {{/if}}
+           <span class="caret"></span>
+        </button>
+        {{#if user}}
+        <ul class="dropdown-menu" role="menu">
+         <!--   <li><a type="button" class="rsvp_decline"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+         -->
+            <li><a type="button" class="importeventbutton"><span class="glyphicon glyphicon-calendar"></span> Import Events</a></li>
+            <li><a type="button" class="logoutbutton"><span class="glyphicon glyphicon-remove"></span> logout</a></li>
+        </ul>
+        {{else}}
+        {{/if}}
+    </div>
+</template>
+
+
+<template name="eventInsertedMessage">
+    Imported <em><span class="glyphicon glyphicon-calendar"></span> {{cropstring title 18}}</em>
+</template>
+
+

@@ -1,0 +1,109 @@
+
+/* @group User List */
+
+#fs-user-list {
+
+  overflow: auto;
+}
+
+.fs-userlistitem {
+
+  margin-right: 2px;
+  float: left;
+
+  //background-color: white;
+  color: #888;
+}
+
+.fs-anchor {
+  width: 150px;
+
+  
+  //color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  
+  display: inline-block;
+  //padding: 2px;
+  overflow: hidden
+}
+
+.fs-anchor.checked:hover {
+  //background-color: #eceff5;
+  //border-color: #eceff5;
+}
+
+.fs-anchor:hover {
+  //background-color: #fcfff5;
+  //border-color: #eceff5;
+}
+
+.fs-userlistitem.checked .fs-anchor {
+  background-color: #888;
+  color: black;
+}
+
+.fs-thumb {
+  //border: none;
+
+  float: left;
+  height: 30px;
+  margin-right: 5px;
+  width: 30px
+}
+
+.fs-name {
+  display: table-cell;
+  vertical-align: middle;
+  height: 29px
+}
+
+/* @end User List */
+
+
+/* @group Filters and Buttons */
+
+
+#fs-filter-box {
+   position: fixed;
+  left: 0px;
+  bottom: 0px;
+  padding: 10px;
+  z-index: 10;
+}
+
+#fs-filters-buttons {
+   
+  padding: 10px;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+
+  z-index: 10;
+}
+
+  /* @group Filters */
+
+  
+  /* @end Filters */
+
+  //.dropdown-menu {
+  //  font-size: 16px;
+  //}
+
+  .fs-invite-button-div.opened {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    padding: 10px;
+    z-index: 10;
+  }
+
+  .fs-invite-button-div.justbutton {
+  }
+
+
+
+.invitebutton.disabled, .invitebutton[disabled] {
+  opacity: 0.75;
+}

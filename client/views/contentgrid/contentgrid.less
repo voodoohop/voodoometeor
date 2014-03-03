@@ -1,0 +1,182 @@
+@import "contentcommon.lessimport";
+
+.masonrycontainer {
+  display: inline-block;
+  // border: 1px solid white;
+
+  //margin-bottom: 5px;
+}
+
+
+
+#contentgridcontainer {
+//  min-height: 200px;
+//  margin: 0 auto;
+//  .transition(0.5s, ease);
+  position: relative;
+  //left: 80px;
+  //margin: 0 auto;
+  //right: 80px;
+}
+
+
+@keyframes changeDropShadow {
+  from {
+    -webkit-filter: drop-shadow(24px 24px 20px black);
+  }
+
+  to {
+    -webkit-filter: drop-shadow(50px 50px 20px black);
+  }
+}
+
+
+.content_type_event .mediathumb{
+  img:not(:hover) {
+   .saturate(0);
+  }
+  img:hover {
+    .saturate(1);
+  }
+
+}
+
+.mousecursorer {
+  z-index: 10;
+  position: absolute;
+  opacity: 0.7;
+  animation-duration: 1s;
+  animation-name: changeDropShadow;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  //-webkit-filter: drop-shadow(24px 24px 20px black);
+}
+
+.mouseisme {
+  pointer-events: none;
+}
+
+
+
+
+
+bodydisabled {
+  background-color: @background;
+  font-family: Helvetica;
+  text-rendering: optimizeLegibility;
+  color: @foreground;
+  padding: 10px;
+}
+
+
+span.postdate {
+  float: right
+}
+
+
+
+img.parallax {
+    display: block;
+}
+
+.scene {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+
+
+
+.contentdetailmodal {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 5%;
+  left: 5%;
+}
+
+
+
+.bgvoodoocolor1 {
+  background-color: @voodoocol1;
+  border-color: @voodoocol1;
+}
+
+.bgvoodoocolor2 {
+  background-color: @voodoocol2;
+  border-color: @voodoocol2;
+}
+
+.bgvoodoocolor3 {
+  background-color: @voodoocol3;
+  border-color: @voodoocol3;
+}
+
+.bgvoodoocolor4 {
+  background-color: @voodoocol4;
+  border-color: @voodoocol4;
+}
+
+.bgvoodoocolor5 {
+  background-color: @voodoocol5;
+  border-color: @voodoocol5;
+}
+
+.fgvoodoocolor1 {
+  color: @voodoocol1;
+}
+
+.fgvoodoocolor2 {
+  color: @voodoocol2;
+}
+
+.fgvoodoocolor3 {
+  color: @voodoocol3;
+}
+
+.fgvoodoocolor4 {
+  color: @voodoocol4;
+}
+
+.fgvoodoocolor5 {
+  color: @voodoocol5;
+}
+
+.noUi-handle, .noUi-handle-active {
+  margin: 0 0 0 0;
+  width: 10px;
+  border: none;
+  background-color: @foreground;
+  height: 38px;
+}
+
+
+.contentitemgridsizer {
+  transition: width 0.4s, height 0.4s;
+  transition: border-color 0.4s ease;
+  border: 5px solid @background;
+  &:hover {
+    border: 5px solid @foreground;
+  };
+  &.contentitemexpanded {
+    border: 10px solid @foreground;
+  }
+}
+.contentgridsizer {
+  :not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+div.content_type_video_default_size {
+  width: @contentitem_video_width;
+  height: @contentitem_video_height;
+
+}
+
+div.content_type_photo_default_size {
+  width: @contentitem_photo_width;
+  height: @contentitem_photo_height;
+}
+

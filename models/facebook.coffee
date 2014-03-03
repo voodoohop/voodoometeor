@@ -8,9 +8,16 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     fbSync = Meteor._wrapAsync(fbApi)
 
     Hooks.onLoggedIn = (p) ->
+
         ## exchange access token for long-lived ##
-        console.log(p)
-        currentToken = Meteor.users.find(p).fetch()[0].services.facebook.accessToken
+        return unless p?
+
+        user = Meteor.users.findOne(p)
+        return unless user.services?.tomfacebook
+        console.log("onloggedin",user, p)
+        return if user.services.tomfacebook.extendedAccessToken
+        console.log("exchanging access token to extended for user", p)
+        currentToken = user.services.tomfacebook.accessToken
         console.log("loggedin, getting extended access token",p)
         fb.api("/oauth/access_token",
           client_id: config.current().facebook.appid,
@@ -21,36 +28,13 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
           if (res.access_token?)
             Meteor.users.update(p,
               $set:
-                "services.facebook.accessToken": res.access_token
+                "services.tomfacebook.accessToken": res.access_token
+                "services.tomfacebook.extendedAccessToken": true
             )
             console.log("updated extended access token")
         , (ex) ->
           console.log("bind failed",ex)
         ))
-
-
-    Meteor.Router.add '/fbrealtime',  ->
-      console.log(this.request.body.entry);
-      console.log(this.request.body);
-      _.each(this.request.body.entry, (update) ->
-        console.log("update",update.uid)
-        if (update.uid?)
-          res = Meteor.sync((done) -> fb.api ""+update.uid+"/events",{summary:true}, (fbres) -> done(null,fbres))
-          console.log(res.result)
-      )
-      return this.request.query["hub.challenge"]
-
-    Meteor.startup ->
-      Accounts.loginServiceConfiguration.remove
-        service: "facebook"
-
-
-      Accounts.loginServiceConfiguration.insert
-        service: "facebook",
-        appId: config.current().facebook.appid,
-        secret: config.current().facebook.appsecret
-
-
 
 
     fb = Meteor.require "fb"
@@ -73,7 +57,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       console.log("importing fb event with graph id:"+fbid)
       if (!update and contentModel.getContentBySourceId(fbid))
         console.log("event already exists")
-        return contentModel.getContentBySourceId(fbid)._id
+        return {event: contentModel.getContentBySourceId(fbid), alreadyInDB: true}
       res = Meteor.sync((done) ->
         query= "select uid from user where is_app_user=1 and uid in (select uid from event_member where eid = "+fbid+" and rsvp_status='attending')";
         fb.api("/fql",{q:query},  (fbres) -> done(null,fbres))
@@ -82,7 +66,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       res = Meteor.sync((done) -> fb.api fbid, {fields: fbschemas.event_fields}, (fbres) -> done(null,fbres))
       #console.log(res)
       event = res.result
-      return unless event.id
+      return {error: "eventnotloadedfromfb"} unless event.id
 
       res = Meteor.sync((done) -> fb.api ""+fbid+"/attending",{summary:true}, (fbres) -> done(null,fbres))
       numattending = res.result.summary.count
@@ -113,7 +97,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
         contentModel.contentCollection.update {sourceId: event.id}, {$set: voodoocontent}
       modified = contentModel.getContentBySourceId(event.id)
       #console.log("inserted/modified event:", modified)
-      return contentModel.getContentBySourceId(fbid)?._id
+      return {event: contentModel.getContentBySourceId(fbid), alreadyInDB: false}
 
     self.importUpdatePost = (fbid) ->
           res = Meteor.sync ((done) -> fb.api fbid, {fields: fbschemas.post_fields}, (fbres) -> done(null, fbres) )
@@ -132,8 +116,8 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
             post.like_count = Meteor.sync((done) -> fb.api ""+post.id+"/likes",{summary:true}, (fbres) -> done(null, fbres) ).result.summary.total_count
 
             res = Meteor.sync((done) ->
-              #console.log(post)
-              whereclause =  if post.object_id? " object_id='" + post.object_id + "' " else " post_id='"+post.id+"'"
+
+              whereclause =  if post.object_id? then " object_id='" + post.object_id + "' " else " post_id='"+post.id+"'"
               query= "select uid from user where is_app_user=1 and uid in (select user_id from like where "+whereclause+")";
               console.log(query)
               fb.api("/fql",{q:query},  (fbres) -> done(null,fbres))
@@ -181,27 +165,15 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
 
         this.unblock() #if self.numEventsImporting < 10
         console.log("calling update", params)
-        evtid = self.importUpdateEvent(params)
+        result = self.importUpdateEvent(params)
         self.numEventsImporting--;
-        return evtid
+
+        return result;
 
       importFacebookPost: (params) ->
         this.unblock()
         self.importUpdatePost(params)
-      facebook_login: (fbUser, accessToken, permissions) ->
-        serviceData =
-          id: fbUser.id
-          accessToken: accessToken
-          email: fbUser.email
-          permissions: permissions
-        options =
-          profile:
-            name: fbUser.name
-        console.log("adding/updating user from facebook user",serviceData,options)
-        userId = Accounts.updateOrCreateUserFromExternalService("facebook", serviceData, options).id
-        this.setUserId(userId)
-        Meteor.users.update(userId,{$set: options})
-        return userId
+
     )
 
     #Meteor.setTimeout( ->
@@ -218,7 +190,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     #contentModel.contentCollection.remove({})
     return self #hack to not load posts
     console.log("importing page posts")
-    pages= ["voodoohop", "ideafixa", "calefacaotropicaos", "209127459210998", "CatracaLivre"]
+    pages= ["FreeFolk","voodoohop", "ideafixa", "calefacaotropicaos", "209127459210998", "CatracaLivre"]
     Meteor.setTimeout( ->
      for page in pages
       res = Meteor.sync ((done) -> fb.api "/"+page+"/posts", {limit:50}, (fbres) -> done(null, fbres) )

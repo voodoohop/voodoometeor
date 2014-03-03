@@ -4,16 +4,21 @@ define "TomMasonry",[], ->
     windowHeight: -> Session.get("windowHeight")
 
     # find maximal width of window to snap down to the masonry column width
-    windowWidthToMasonryCol: ->
-      Math.floor(Session.get("windowWidth") / (self.columnWidth+self.columnGutter*2/3)) * (self.columnWidth+ self.columnGutter*2/3)
+    widthToMasonryCol: (width) ->
+      Math.floor(width / (self.columnWidth+self.columnGutter*2/3)) * (self.columnWidth+ self.columnGutter*2/3)
 
-    columnWidth: 230
+    windowWidthToMasonryCol: -> self.widthToMasonryCol Session.get("windowWidth")
+
+    columnWidth: 115
+    columnHeight: 115
     columnGutter: 0
-
+    addItems: (items) -> self.ms.addItems(items)
+    appended: (div) -> self.ms.appended(div)
     init: (container) ->
       self.ms = new Packery(container[0],
         itemSelector: ".masonrycontainer"
         columnWidth: self.columnWidth + self.columnGutter*2/3
+        #rowHeight: self.columnHeight
         gutter: self.columnGutter*1/3
         isFitWidth: true
         stamp: ".stamp"
@@ -22,7 +27,7 @@ define "TomMasonry",[], ->
     debouncedRelayout: _.debounce( (reload=false) ->
       if (self.ms)
         if (reload)
-          self.ms.reload()
+          self.ms.reloadItems()
         self.ms.layout()
     ,300)
 

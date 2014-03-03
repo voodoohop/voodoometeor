@@ -1,20 +1,45 @@
 {
-  "meteor": {},
+  "meteor": {
+    "git": "https://github.com/meteor/meteor.git",
+    "branch": "shark",
+    "commit": "9b2b61281043835263edbb031b5853d490cbf748"
+  },
   "dependencies": {
     "basePackages": {
       "font-awesome": {},
       "HTML5-History-API": {},
       "define": {},
-      "bootstrap-3": {},
       "handlebar-helpers": {},
-      "spin": {},
       "moment": {},
-      "iron-router": {},
       "nprogress": {},
       "event-hooks": {},
       "external-file-loader": {},
-      "smart-collections": {},
-      "reactive-extra": {}
+      "reactive-extra": {},
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "branch": "new-location"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "branch": "master"
+      },
+      "ms-seo": {
+        "git": "https://github.com/DerMambo/ms-seo",
+        "branch": "master"
+      },
+      "bootstrap-alerts": {},
+      "pagedown-bootstrap": {},
+      "urlify": {},
+      "bootstrap3-less-tom": {
+        "path": "packages/bootstrap3-less-tom"
+      },
+      "bootstrap-alerts-blaze-tom": {
+        "path": "packages/bootstrap-alerts-blaze-tom"
+      },
+      "spiderable-404": {},
+      "collection-helpers": {},
+      "collection-hooks": {},
+      "jqBootstrapValidation": {}
     },
     "packages": {
       "font-awesome": {
@@ -22,35 +47,25 @@
         "tag": "v4.0.3",
         "commit": "61e9361384347547ae144f8228faa4deffda23db"
       },
+      "HTML5-History-API": {
+        "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
+        "tag": "v4.0.0",
+        "commit": "dc4965f1424cfca625ec3fbea17eace03f8e32c5"
+      },
       "define": {
         "git": "https://github.com/apendua/require.git",
         "tag": "v0.9.0.2",
         "commit": "5c3bdfdf7c747dc7297e7697d5f1a28ef86772f2"
-      },
-      "bootstrap-3": {
-        "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
-        "tag": "v0.3.6",
-        "commit": "711dbcabe333c8714298b2fd1de97fdcdae6efa7"
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
         "tag": "v0.0.9",
         "commit": "71e94c99462b8801a34c5363510758b6ff5f5ac7"
       },
-      "spin": {
-        "git": "https://github.com/SachaG/meteor-spin.git",
-        "tag": "v0.2.0",
-        "commit": "fd3a2871a69442848b4b4e74f5e1ae28fa4a95a4"
-      },
       "moment": {
         "git": "https://github.com/acreeger/meteor-moment.git",
-        "tag": "v2.2.1",
-        "commit": "9ee12e714afe56b189f53076447b7b54f3012065"
-      },
-      "iron-router": {
-        "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.1",
-        "commit": "4e1ee0581d68bff422a915dacb0bd30eae10fe08"
+        "tag": "v2.5.1",
+        "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
       },
       "nprogress": {
         "git": "https://github.com/zhouzhuojie/meteor-nprogress.git",
@@ -67,15 +82,71 @@
         "tag": "v0.1.4",
         "commit": "352694a7cf906b8241161c2fd1435161c1d5409f"
       },
-      "smart-collections": {
-        "git": "https://github.com/arunoda/meteor-smart-collections.git",
-        "tag": "v0.3.22",
-        "commit": "34710960d08dddc206abefbb59dc17c93735a721"
-      },
       "reactive-extra": {
         "git": "https://github.com/boekkooi/reactive-extra.git",
         "tag": "v0.0.6",
         "commit": "fe8d2f8e27c501be6533b419c3a00aae884b838b"
+      },
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "branch": "new-location",
+        "commit": "91ab402fc5aa2d755317e29f2338cb7aee6f73ae"
+      },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "branch": "master",
+        "commit": "fa631b7b192618e8690d43f0033a3f4c7f77fa1d"
+      },
+      "ms-seo": {
+        "git": "https://github.com/DerMambo/ms-seo",
+        "branch": "master",
+        "commit": "52287280685c0769c43127966f8ab265b72aebaa"
+      },
+      "bootstrap-alerts": {
+        "git": "https://github.com/asktomsk/bootstrap-alerts.git",
+        "tag": "v0.0.5",
+        "commit": "6ddd650208a77677ab86af9dfccc3a69b1ba8d32"
+      },
+      "pagedown-bootstrap": {
+        "git": "https://github.com/Blahah/meteor-pagedown-bootstrap.git",
+        "tag": "v0.0.3",
+        "commit": "940abd8b0137da751f60b8acdd53b8c5577a2f82"
+      },
+      "urlify": {
+        "git": "https://github.com/audreyr/meteor-urlify.git",
+        "tag": "v0.1.0",
+        "commit": "f04d6da29890a980873b319a3e05339e299ef4ed"
+      },
+      "bootstrap3-less-tom": {
+        "path": "packages/bootstrap3-less-tom"
+      },
+      "bootstrap-alerts-blaze-tom": {
+        "path": "packages/bootstrap-alerts-blaze-tom"
+      },
+      "spiderable-404": {
+        "git": "https://github.com/wojas/spiderable-404.git",
+        "tag": "v0.6.6.1",
+        "commit": "04013254e4cf1e6d38ac5e78d48a33e5ddf554b2"
+      },
+      "collection-helpers": {
+        "git": "https://github.com/dburles/meteor-collection-helpers.git",
+        "tag": "v0.2.3",
+        "commit": "52c4c692421acea557fb329f43f65ed11b4832df"
+      },
+      "collection-hooks": {
+        "git": "https://github.com/matb33/meteor-collection-hooks.git",
+        "tag": "v0.6.2",
+        "commit": "29484b2110206be93b01c6d11ce06ec9208de7bd"
+      },
+      "jqBootstrapValidation": {
+        "git": "https://github.com/wahyuaw/meteor-jqBootstrapValidation.git",
+        "tag": "v0.0.1",
+        "commit": "66a91f82b8a8a955e639357ebf895f3256f0df16"
+      },
+      "marked": {
+        "git": "https://github.com/chuangbo/meteor-marked.git",
+        "tag": "v0.3.1",
+        "commit": "3d9a9c94793b20e1ee7c807931cb536010d6f820"
       }
     }
   }

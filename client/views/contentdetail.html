@@ -1,18 +1,52 @@
-<template name="contentdetailhead">
-    <meta property="og:title" content="{{title}}"/>
-    <meta property="og:image" content="{{picture}}"/>
-    <meta property="og:description" content="{{description}}" />
-    <title>VOODOOHOP - {{title}}</title>
+<template name="contentdetailcaption">
+    {{#with contentItem}}
+    <div class="jumbotron">
+        <div class="datefloat">
+            {{> eventdate}}
+        </div>
+
+        <h1>{{title}}  <small>{{> eventlocation}}</small></h1>
+        <div class="detach-on-scroll">
+            <div class="detach-content {{responsiveButtons}}">
+                {{> eventtoolbar }}
+            </div>
+        </div>
+    </div>
+    {{/with}}
 </template>
 
 <template name="contentdetail">
+    {{#with contentItem}}
+    <div class="contentdetail">
+    <img class="contentDetailFlyer" src="{{picture}}" align="right">
+    <div>{{> event_genderratio}}</div>
+    <div>{{> event_voodooratio}}</div>
+    <div>{{> event_friends}}</div>
 
-    <div class="jumbotron">
-            <h1>{{title}}</h1>
-            <p><a class="btn btn-primary btn-lg">Learn more</a></p>
-        <img src="{{picture}}">
+    <div class="eventDescription" id="description_{{_id}}">{{{ markdownDescription }}}</div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Media</div>
+        <div class="panel-content clearfix" id="eventMedia_{{_id}}">
         </div>
-    <div>{{#markdown}}{{description}}{{/markdown}}</div>
-        <div id="images">{{friendsAttending}}{{{profileimages}}}</div>
+    </div>
+    </div>
+   {{/with}}
+</template>
 
+<template name="eventmedia">
+    <div class="thumbnail eventmediacontainer ">
+        <div class="caption">
+            <em><a href="{{url}}" data-toggle="tooltip" data-placement="top" data-title="{{cropstring description 200 }} ...">{{cropstring title 20}} </a>{{#if provider_name}}<small>{{provider_name}}</small>{{/if}}</em>
+        </div>
+        {{#if html}}
+        {{{html}}}
+        {{else}}
+        <a href="{{url}}" data-toggle="tooltip" data-placement="top" data-title="{{cropstring description 200 }} ...">
+        <img src="{{thumbnail_url}}">
+        </a>
+        {{/if}}
+
+    </div>
 </template>

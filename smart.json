@@ -1,17 +1,40 @@
 {
+  "meteor": {
+    "git": "https://github.com/meteor/meteor.git",
+    "branch": "shark"
+  },
   "packages": {
     "font-awesome": {},
     "HTML5-History-API": {},
     "define": {},
-    "bootstrap-3": {},
     "handlebar-helpers": {},
-    "spin": {},
     "moment": {},
-    "iron-router": {},
     "nprogress": {},
     "event-hooks": {},
     "external-file-loader": {},
-    "smart-collections": {},
-    "reactive-extra": {}
+    "reactive-extra": {},
+    "iron-router": {
+      "git": "https://github.com/EventedMind/iron-router.git",
+      "branch": "new-location"
+    },
+    "blaze-layout": {
+      "git": "https://github.com/EventedMind/blaze-layout.git"
+    },
+    "ms-seo": {
+      "git": "https://github.com/DerMambo/ms-seo"
+    },
+    "bootstrap-alerts": {},
+    "pagedown-bootstrap": {},
+    "urlify": {},
+    "bootstrap3-less-tom": {
+      "path": "packages/bootstrap3-less-tom"
+    },
+    "bootstrap-alerts-blaze-tom": {
+      "path": "packages/bootstrap-alerts-blaze-tom"
+    },
+    "spiderable-404": {},
+    "collection-helpers": {},
+    "collection-hooks": {},
+    "jqBootstrapValidation": {}
   }
 }

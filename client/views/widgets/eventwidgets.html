@@ -1,0 +1,73 @@
+<template name="eventtoolbar">
+<div class="btn-group btn-group-responsive">
+    <button type="button" data-toggle="dropdown" class="rsvpbutton btn btn-primary dropdown-toggle"><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-question-sign{{/if}}"></span> {{#if rsvp_confirmed}}Attending{{else}}RSVP{{/if}}
+        <span class="badge">{{fbstats.attendingCount}}</span>
+        <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu">
+        <li><a type="button" class="rsvp_attend"><span class="glyphicon glyphicon-ok"></span> Attending</a></li>
+        <li><a type="button" class="rsvp_decline"><span class="glyphicon glyphicon-question-sign"></span> Undecided</a></li>
+    </ul>
+</div>
+
+
+{{> fbeventinvite eventInviteData}}
+
+{{> likewidget }}
+
+</template>
+
+<template name="eventlocation">
+    {{location}}
+</template>
+
+<template name="eventdate">
+    {{day}}
+    {{#if fancydate}}
+    <div class="fancydate">
+        <span class="fancyday">30</span>
+        <span class="fancymonth">Jun</span>
+        <span class="fancyyear">2009</span>
+    </div>
+    {{/if}}
+</template>
+
+
+<template name="event_genderratio">
+    <span class="label label-danger" style="font-size:100%"><i class="fa fa-female"></i> {{ratio}}</span>
+</template>
+
+<template name="event_voodooratio">
+    <span class="label label-info" style="font-size:100%"> <span class="icon-voodoologo"></span> {{ratio}} </span>
+</template>
+
+
+<template name="event_friends">
+    {{#each profiles}}
+    <a href="http://facebook.com/profile.php?id={{this.fbid}}" target="_blank"><img src="{{this.image}}"></a>
+    {{/each}}
+</template>
+
+
+
+<template name="updateticketinfo">
+    <h3>Update ticket info</h3>
+
+    {{#each eventTickets}}
+      {{>ticketlistname}}
+    {{/each}}
+</template>
+
+<template name="ticketlistname">
+   <form>
+    <div class="control-group">
+        <div class="input-group">     <span class="input-group-addon">Name {{index}}</span>
+        <input value="{{nameOnList}}" type="text" class="form-control input-lg name-validator" id="listname_input_{{index}}" required data-validation-regex-regex="^[a-z,A-Z,',-,\u00C0-\u017F]+(\s)[a-z,A-Z,',-,\u00C0-\u017F]+.*$" data-validation-regex-message="Please use full name">
+
+        <span class="input-group-btn">
+                      <button class="btn btn-default btn-lg ladda-button savebutton" type="button" {{conditionalAttr "disabled" buttonState.disabled}}>Save</button>
+                    </span>
+            </div>
+        <div class="help-block"></div>
+    </div>
+   </form>
+</template>

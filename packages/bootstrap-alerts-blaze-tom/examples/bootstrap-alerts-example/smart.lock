@@ -1,0 +1,15 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "bootstrap-alerts": {}
+    },
+    "packages": {
+      "bootstrap-alerts": {
+        "git": "https://github.com/asktomsk/bootstrap-alerts.git",
+        "tag": "v0.0.1",
+        "commit": "4d92fa77511796bd29a89ee6711145ec59da1d26"
+      }
+    }
+  }
+}

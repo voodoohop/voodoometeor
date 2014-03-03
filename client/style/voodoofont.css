@@ -1,0 +1,59 @@
+@font-face {
+	font-family: 'voodoofont';
+	src:url('/glyphs/voodoofont.eot');
+	src:url('/glyphs/voodoofont.eot?#iefix') format('embedded-opentype'),
+		url('/glyphs/voodoofont.ttf') format('truetype'),
+		url('/glyphs/voodoofont.woff') format('woff'),
+		url('/glyphs/voodoofont.svg#voodoofont') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'voodoofont';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-voodoomap:before {
+    content: "\e600";
+}
+.icon-voodoomedia:before {
+    content: "\e601";
+}
+.icon-voodoologo:before {
+    content: "\e602";
+}
+.icon-voodooprinter:before {
+    content: "\e603";
+}
+.icon-voodoosearch:before {
+    content: "\e604";
+}
+.icon-voodoomusic:before {
+    content: "\e605";
+}
+.icon-voodooartists:before {
+    content: "\e606";
+}
+.icon-voodoopictures:before {
+    content: "\e607";
+}
+.icon-voodooevent:before {
+    content: "\e608";
+}
+.icon-voodooradio:before {
+    content: "\e609";
+}
+.icon-voodooheart:before {
+    content: "\e60a";
+}

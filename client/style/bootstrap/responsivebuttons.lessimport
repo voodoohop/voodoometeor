@@ -1,0 +1,13 @@
+
+    div.responsive-buttons[max-width~="400px"] .btn {
+          .btn-xs;
+    }
+    div.responsive-buttons[min-width~="400px"][max-width~="500px"]  .btn {
+      .btn-sm;
+    }
+    div.responsive-buttons[min-width~="500px"][max-width~="800px"]  .btn {
+      .btn;
+    }
+    div.responsive-buttons[min-width~="800px"]  .btn {
+          .btn-lg;
+    }

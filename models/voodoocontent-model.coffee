@@ -1,10 +1,10 @@
 define "VoodoocontentModel",[], ->
-
+  console.log("loading content model")
   self= {};
 
   self.contentCollection = new Meteor.Collection("voodoocontent")
 
-  self.contentBlockSize = 30
+  self.contentBlockSize = 20
 
   self.helpers =
     postedDate: -> moment(new Date(this.post_date)).fromNow()
@@ -17,6 +17,7 @@ define "VoodoocontentModel",[], ->
     isFeatured: -> (this.isFeatured == true)
     numlikes: -> this.like_count ? 0
     description: ->
+      #console.log("getting description", this.description)
       this.description
 
   description_reduced: ->
@@ -36,19 +37,21 @@ define "VoodoocontentModel",[], ->
   self.lastItemCount = -> self.cursor?.count() ? 0
 
   if (Meteor.isClient)
-    Meteor.startup ->
-      Meteor.subscribe( "featuredContent")
+    #Meteor.startup ->
+    #  Meteor.subscribe( "featuredContent")
 
     self.subscribeDetails = (id, callback) ->
-      if (self.detailSubscription and id != self.detailId)
-        self.detailSubscription.stop()
-        self.detailSubscription = null
-        self.detailId = null
-        #if (id == null)
-        #  callback() if (callback?)
-      if (id)
-        self.detailSubscription = self.subscribeContent({query: id, details: true}, callback)
-        self.detailId = id
+      Deps.nonreactive ->
+        if (self.detailSubscription and id != self.detailId)
+          self.detailSubscription.stop()
+          self.detailSubscription = null
+          self.detailId = null
+          #if (id == null)
+          #  callback() if (callback?)
+        if (id and id != self.detailId)
+          self.detailSubscription = self.subscribeContent({query: id, details: true}, callback)
+          self.detailId = id
+        return self.detailSubscription
 
 
   self.lastLimit = 0
@@ -68,6 +71,7 @@ define "VoodoocontentModel",[], ->
   self.getContentBySourceId = (sourceId) -> self.contentCollection.findOne({sourceId: sourceId})
   self.getContentById = (id) ->
     if (self.detailId != id)
+      console.log("not yet subscribed... subscribing",id)
       self.subscribeDetails(id);
     self.contentCollection.findOne(id)
 
@@ -81,8 +85,15 @@ define "VoodoocontentModel",[], ->
       self.getContent(options)
     Meteor.publish "contentDetail", (options) ->
       self.getContent(options)
-    Meteor.publish "featuredContent", ->
-      self.getContent({query: {featured: true}})
+    #Meteor.publish "featuredContent", ->
+    #  self.getContent({query: {featured: true}})
 
+    Meteor.methods
+      like: (contentId) ->
+        if (!this.userId?)
+          return false;
+        console.log("adding like to ",contentId, "from user", this.userId)
+        self.contentCollection.update(contentId, {$addToSet: {likes: this.userId }})
+        return true;
 
   return self
