@@ -4,9 +4,9 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
   self = {}
 
   if Meteor.isServer
-
     Accounts.onCreateUser( (options, user) ->
       user.attending = [];
+      user.eventTickets = [];
       return user;
     )
 
@@ -15,6 +15,12 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
     #console.log("users",Meteor.users.find({}).fetch())
 
     Meteor.methods
+      updateTicketName: (eventid, ticketindex, name) ->
+        mongoop = {}
+        mongoop["eventTickets.#{eventid}.#{ ticketindex }.nameOnList"] = name
+        mongoop["eventTickets.#{eventid}.#{ ticketindex }.changedName"] = true
+        console.log("updated ticket name", this.userId, {$set: mongoop})
+        Meteor.users.update(this.userId, {$set: mongoop})
       attendEvent: (eventid) ->
         this.unblock();
         console.log(""+this.userId+" attending" +eventid)
@@ -39,7 +45,8 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
           Meteor.call("importFacebookEvent",e.id, (err,res) ->
             console.log("imported", res)
             if res.event?._id
-              Alerts.add("eventInsertedMessage", res.event, "success",  {autoHide: 6000, html: true});
+              console.log("alerting for event", res)
+              Alerts.add("eventInsertedMessage", res.event, "success",  {autoHide: 10000, html: true});
               Meteor.users.update(Meteor.userId(), $addToSet: { attending: res.event._id})
             #Meteor.call("attendEvent", id, (err, res) -> console.log(err,res));
           )
@@ -92,7 +99,12 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
           fbHelpers.eventStats.run(event, fb, (res) -> console.log("updated event stats", res))
         )
 
+      self.rsvp_confirmed = (event) ->
+        return false unless Meteor.user()
+        _.contains(Meteor.user().attending, event._id)
+
       self.rsvp = (eventid,confirm) ->
+        console.log("rsvp, evt id:", eventid)
         if (confirm)
           Meteor.users.update(Meteor.userId(), $addToSet: { attending: eventid})
         else

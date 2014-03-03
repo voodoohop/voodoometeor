@@ -11,7 +11,8 @@ Meteor.startup ->
     self.setLoggedInStatus = (s) ->
       self.loggedIn = s
       self.RloggedIn = s
-      _.each(loggedInListeners, (l) -> l(FB, s))
+      if s
+        _.each(loggedInListeners, (l) -> l(FB, s))
 
     self.loggedIn = undefined
     self.onLoggedIn= (callback) ->
@@ -32,17 +33,22 @@ Meteor.startup ->
               if response and response.data and response.data.length
                 permissions = response.data.shift()
               console.log("expecting facebook_login message immediately")
-              Meteor.loginWithTomFacebook(
-                fbAuthResponse: authResponse
-                username: fbUser.name
-                permissions: permissions
-                email: fbUser.email,
-              ->
-                console.log("logged in, user:",Meteor.user())
-                self.api = FB
-                self.setLoggedInStatus(true)
-                callback?(true)
-              )
+
+              finallyLoggedIn = ->
+                  console.log("logged in, user:",Meteor.user())
+                  self.api = FB
+                  self.setLoggedInStatus(true)
+                  callback?(true)
+              unless Meteor.userId()
+                Meteor.loginWithTomFacebook(
+                  fbAuthResponse: authResponse
+                  username: fbUser.name
+                  permissions: permissions
+                  email: fbUser.email,
+                -> finallyLoggedIn())
+              else
+                #should check here if facebook user is equal to logged in user of meteor (token login)
+                finallyLoggedIn()
 
 
 

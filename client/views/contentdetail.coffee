@@ -12,7 +12,8 @@ Meteor.startup ->
         description: data.description
         image: data.picture
         type: "event"
-        start_time: "2014-10-25T20:00:00+02:00"
+        start_time: data.start_time
+        end_time: data.end_time
         url: Meteor.absoluteUrl(Router.path("contentDetail", {_id: this._id}))
 
 
@@ -20,20 +21,13 @@ Meteor.startup ->
   require ["VoodoocontentModel","ContentItem", "FacebookClient", "EventManager"], (model, contentItem, fb, eventManager) ->
     console.log("adding content detail route")
 
+    Template.contentdetailcaption.rendered =
+      console.log("contentdetailcaption rendered", this)
 
-
-    Router?.map ->
-      this.route 'contentDetail',
-        path: '/contentDetail/:_id'
-        template: 'contentdetail'
+    routeDefaults =
         layoutTemplate: 'mainlayout'
-        #yieldTemplates:
-        #  'contentdetailhead': {to: 'head'}
-        #  'contentdetail': {to: 'contentdetail'}
-        #waitOn: ->
-        #  console.log("router subscribing to ",this.params._id)
-        #  model.getDetails(this.params._id)
-
+        yieldTemplates:
+          'contentdetailcaption': {to: 'contentheader'}
 
         waitOn: ->
           console.log("ROUTE WAITON - subscribing to ",id = this.params._id)
@@ -41,31 +35,40 @@ Meteor.startup ->
             model.subscribeDetails(id)
           console.log("res subscribedatils.ready()", res.ready())
           res
+
         action: ->
           console.log("action, ready", this)
           if this.ready()
             console.log("rendering default screen")
             this.render()
+            #this.render({"contentdetailheader": {to: "header"}})
           else
             console.log("rendering loading screen")
             this.render("loadingScreen")
-        data: -> {id: this.params._id }
 
-          #console.log("getting content for:", this.params._id)
-          #console.log("got content for", this.params._id, res = model.getContentById(this.params._id))
+        data: ->
+          {contentItem: model.getContentById(this.params._id)}
 
 
-        #after: ->
-        #  data = this.getData()
-        #  console.log("updating header", this, data)
+
+    Router?.map ->
+      this.route 'contentdetail', _.extend(
+        path: '/contentDetail/:_id/'
+        template: 'contentdetail'
+      ,routeDefaults)
+
+      this.route 'updateticketinfo', _.extend(
+        path: '/updateTicketInfo/:_id'
+        template: 'updateticketinfo'
+        before: ->
+          console.log("route before, params", this.params)
+          if this.params.hash
+            Meteor.loginWithTokenFromHash(this.params.hash)
+      ,routeDefaults)
+
+
 
     runEmbedly=false
-
-    Template.contentdetail.eventData = ->
-      console.log("contentdetail data helper", this)
-
-      if (this.id)
-        model.getContentById(this.id)
 
     Template.contentdetail.helpers(model.helpers)
     Template.contentdetail.helpers(contentItem.helpers)
@@ -94,16 +97,16 @@ Meteor.startup ->
         urlize(pagedown.makeHtml(this.description), {target:"_blank",django_compatible: false, trim: "http"})
 
     Template.contentdetail.eventToolBarData = ->
-      {event: model.getContentById(this.id), minimized: true}
+      {event: this.contentItem, minimized: true}
 
     Template.contentdetail.rendered = ->
       console.log("contentdetail rendered", this)
       event = this.data
 
-      updateHeadData(model.getContentById(event.id))
+      updateHeadData(event)
       fb.onLoggedIn ->
           console.log("updating event stats", event.id)
-          eventManager.updateEventStats(model.getContentById(event.id))
+          eventManager.updateEventStats(event)
 
     Template.eventmedia.rendered = ->
       #console.log(this)

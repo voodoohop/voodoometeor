@@ -21,6 +21,7 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
 
   Template.eventtoolbar.rendered = ->
 
+  Template.eventtoolbar.rsvp_confirmed = -> eventManager.rsvp_confirmed(this)
 
   Template.event_genderratio.ratio = ->
     return unless this.fbstats?
@@ -29,6 +30,30 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
     return unless this.fbstats?
     "" + Math.round(this.fbstats.voodooRatio * 100) + "%"
 
+
+  Template.updateticketinfo.eventTickets = ->
+    eventid = this.contentItem._id
+    tickets = Meteor.user().eventTickets?[eventid]
+    if tickets
+      console.log "eventTickets", res = _.map(tickets, (v,k) -> _.extend({index: k+1, eventId: eventid, buttonState: new ReactiveObject({disabled: true})},v))
+      res
+    else
+      null
+
+  Template.updateticketinfo.inputFailed = ->
+    console.log("inputFailed",this)
+
+  Template.ticketlistname.rendered = ->
+    console.log("ticketlistname created", this, $("#listname_input_"+this.data.index))
+    $("#listname_input_"+this.data.index).jqBootstrapValidation()
+
+  Template.ticketlistname.events
+    "change, keyup input": (e) ->
+      console.log(this)
+      this.buttonState.disabled = $(e.target).jqBootstrapValidation("hasErrors")
+    "click .savebutton": (e) ->
+      console.log("saving name",this.index - 1, $("#listname_input_"+this.index).val())
+      Meteor.call("updateTicketName", this.eventId, this.index - 1, $("#listname_input_"+this.index).val())
 
   Template.event_friends.created = ->
     console.log("event_friends template CREATED", this)
@@ -48,6 +73,7 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
         if ! component.RfriendsAttending.friends and ! component.loadingFriendsAttending
           component.loadingFriendsAttending = true
           fb.onLoggedIn ->
+              console.log("fb logged in, calling eventmanager to get friends")
               eventManager.getFriendsAttending(eventId, (attending) -> component.RfriendsAttending.friends = attending)
 
 

@@ -46,3 +46,28 @@
     <a href="http://facebook.com/profile.php?id={{this.fbid}}" target="_blank"><img src="{{this.image}}"></a>
     {{/each}}
 </template>
+
+
+
+<template name="updateticketinfo">
+    <h3>Update ticket info</h3>
+
+    {{#each eventTickets}}
+      {{>ticketlistname}}
+    {{/each}}
+</template>
+
+<template name="ticketlistname">
+   <form>
+    <div class="control-group">
+        <div class="input-group">     <span class="input-group-addon">Name {{index}}</span>
+        <input value="{{nameOnList}}" type="text" class="form-control input-lg name-validator" id="listname_input_{{index}}" required data-validation-regex-regex="^[a-z,A-Z,',-,\u00C0-\u017F]+(\s)[a-z,A-Z,',-,\u00C0-\u017F]+.*$" data-validation-regex-message="Please use full name">
+
+        <span class="input-group-btn">
+                      <button class="btn btn-default btn-lg ladda-button savebutton" type="button" {{conditionalAttr "disabled" buttonState.disabled}}>Save</button>
+                    </span>
+            </div>
+        <div class="help-block"></div>
+    </div>
+   </form>
+</template>

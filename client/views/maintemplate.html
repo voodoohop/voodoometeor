@@ -1,13 +1,18 @@
 <template name="mainlayout">
     <div class="detach-on-scroll-deactivated detacheableuserstatus">
         <div class="detach-content detached">
-        {{> userLoginStatus}}
+          <div style="position: relative">
+            {{> userLoginStatus}}
+          </div>
             <div>
         {{> bootstrapAlerts}}
             </div>
         </div>
     </div>
     <div class="container">
+    <div>
+    {{> yield region='contentheader'}}
+    </div>
     {{> yield}}
     </div>
 </template>

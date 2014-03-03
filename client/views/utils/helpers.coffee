@@ -13,6 +13,12 @@ Meteor.startup ->
     res
   )
 
+  Handlebars.registerHelper("conditionalClass", (classname, condition) ->
+    res= {}
+    if (condition)
+      res.class = classname
+    res
+  )
   Handlebars.registerHelper("responsiveButtons", ->
     _.delay( ->
       Meteor.refreshResponsiveElements();

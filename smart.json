@@ -15,7 +15,7 @@
     "reactive-extra": {},
     "iron-router": {
       "git": "https://github.com/EventedMind/iron-router.git",
-      "branch": "blaze-integration"
+      "branch": "new-location"
     },
     "blaze-layout": {
       "git": "https://github.com/EventedMind/blaze-layout.git"
@@ -35,6 +35,6 @@
     "spiderable-404": {},
     "collection-helpers": {},
     "collection-hooks": {},
-    "publish-composite": {}
+    "jqBootstrapValidation": {}
   }
 }

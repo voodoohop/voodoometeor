@@ -1,25 +1,23 @@
-<template name="contentdetailhead">
-    <meta property="og:title" content="{{title}}"/>
-    <meta property="og:image" content="{{picture}}"/>
-    <meta property="og:description" content="{{description}}" />
-    <title>VOODOOHOP - {{title}}</title>
-</template>
-
-<template name="contentdetail">
-    {{#with eventData}}
-    <div class="contentdetail">
+<template name="contentdetailcaption">
+    {{#with contentItem}}
     <div class="jumbotron">
         <div class="datefloat">
             {{> eventdate}}
         </div>
 
-            <h1>{{title}}  <small>{{> eventlocation}}</small></h1>
+        <h1>{{title}}  <small>{{> eventlocation}}</small></h1>
         <div class="detach-on-scroll">
             <div class="detach-content {{responsiveButtons}}">
                 {{> eventtoolbar }}
             </div>
         </div>
-        </div>
+    </div>
+    {{/with}}
+</template>
+
+<template name="contentdetail">
+    {{#with contentItem}}
+    <div class="contentdetail">
     <img class="contentDetailFlyer" src="{{picture}}" align="right">
     <div>{{> event_genderratio}}</div>
     <div>{{> event_voodooratio}}</div>

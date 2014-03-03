@@ -13,6 +13,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
         return unless p?
 
         user = Meteor.users.findOne(p)
+        return unless user.services?.tomfacebook
         console.log("onloggedin",user, p)
         return if user.services.tomfacebook.extendedAccessToken
         console.log("exchanging access token to extended for user", p)

@@ -17,14 +17,12 @@ page-js-ie-support
 router
 accounts-base
 event-hooks
-npm
 external-file-loader
 reactive-extra
 define
 nprogress
 urlify
 pagedown-bootstrap
-iron-router
 ms-seo
 bootstrap3-less-tom
 spiderable
@@ -34,3 +32,6 @@ blaze-layout
 bootstrap-alerts-blaze-tom
 http
 publish-composite
+npm
+iron-router
+jqBootstrapValidation

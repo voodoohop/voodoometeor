@@ -1,0 +1,18 @@
+<template name="eventticketadmin">
+        <h3>{{event.title}}</h3>
+        <table class="table table-striped table-hover">
+            <thead><td>Name</td><td>Buyer Name</td><td>Buyer Email</td><td>Payment Method</td></thead>
+            <tbody>
+            {{#each eventTickets}}
+
+            <tr {{conditionalClass 'warning' changedName}}>
+                <td>{{nameOnList}}</td>
+                <td><a href="/updateTicketInfo/{{eventId}}#/login-token/{{loginToken}}">{{buyerName}}</a></td>
+                <td>{{buyerEmail}}</td>
+                <td>{{paymentMethod}}</td>
+
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+</template>

@@ -26,5 +26,5 @@ Template.bootstrapAlerts.helpers({
 });
 Template.bootstrapAlert.message = function() {
     console.log("bootstrapalert msg", this)
-    return Template[this.templateName].extend({data: this.data})
+    return _.extend(Template[this.templateName],{data: this.data})
 }

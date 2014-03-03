@@ -17,7 +17,7 @@
       "reactive-extra": {},
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "blaze-integration"
+        "branch": "new-location"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
@@ -39,7 +39,7 @@
       "spiderable-404": {},
       "collection-helpers": {},
       "collection-hooks": {},
-      "publish-composite": {}
+      "jqBootstrapValidation": {}
     },
     "packages": {
       "font-awesome": {
@@ -89,8 +89,8 @@
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "blaze-integration",
-        "commit": "6fd133401bb6de65a30ba148f7d61ea1b4dc9b43"
+        "branch": "new-location",
+        "commit": "91ab402fc5aa2d755317e29f2338cb7aee6f73ae"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
@@ -138,10 +138,10 @@
         "tag": "v0.6.2",
         "commit": "29484b2110206be93b01c6d11ce06ec9208de7bd"
       },
-      "publish-composite": {
-        "git": "https://github.com/reywood/meteor-publish-composite.git",
-        "tag": "v1.0.1",
-        "commit": "6fb7f961c15ee046fff9e59bc1d332e9936d4adf"
+      "jqBootstrapValidation": {
+        "git": "https://github.com/wahyuaw/meteor-jqBootstrapValidation.git",
+        "tag": "v0.0.1",
+        "commit": "66a91f82b8a8a955e639357ebf895f3256f0df16"
       },
       "marked": {
         "git": "https://github.com/chuangbo/meteor-marked.git",
