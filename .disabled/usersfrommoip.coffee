@@ -218,3 +218,13 @@ _.each(data, (user) ->
   #console.log "createUserWithTickets",user.name, user.email, "2tFkF3j7CgN5K8EFy",user.count
   Meteor.call("createUserWithTickets",user.name, user.email, "2tFkF3j7CgN5K8EFy",user.count, "MoIP", (err,res) -> console.log(res))
 )
+
+
+text = ""
+_.each($("a"), (link) ->
+  token = _.last(link.href.split("/"))
+
+  email = Meteor.users.findOne({"services.resume.loginTokens.token": token})?.emails[0]?.address
+  text += email+","+token+","+link.href+"\n"
+)
+console.log(text)

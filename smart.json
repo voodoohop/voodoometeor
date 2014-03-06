@@ -1,8 +1,4 @@
 {
-  "meteor": {
-    "git": "https://github.com/meteor/meteor.git",
-    "branch": "shark"
-  },
   "packages": {
     "font-awesome": {},
     "HTML5-History-API": {},
