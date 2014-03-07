@@ -787,14 +787,14 @@
 //##
 
 @code-color:                  #c7254e;
-@code-bg:                     #f9f2f4;
+@code-bg:                     transparent;
 
 @kbd-color:                   #fff;
 @kbd-bg:                      #333;
 
-@pre-bg:                      #f5f5f5;
-@pre-color:                   @gray-dark;
-@pre-border-color:            #ccc;
+@pre-bg:                      transparent;
+@pre-color:                   @gray-light;
+@pre-border-color:            transparent;
 @pre-scrollable-max-height:   340px;
 
 

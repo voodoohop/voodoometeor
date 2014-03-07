@@ -158,7 +158,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
   Template.contentitemgridsizer.rendered = ->
     console.log("dataChanged")
     data = this
-    tomMasonry.appended($("#msnry_"+data._id)[0])
+    tomMasonry?.appended($("#msnry_"+data._id)[0])
     if data.renderedcount?
       data.renderedcount++
     else

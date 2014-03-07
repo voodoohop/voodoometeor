@@ -114,6 +114,3 @@ Meteor.startup ->
 
 
 
-    Template.mootForum.currentURL = ->
-      Meteor.absoluteUrl(location.pathname)
-

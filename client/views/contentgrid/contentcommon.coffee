@@ -129,7 +129,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
       }
 
     ]
-    initpath: ["events"]
+    initpath: ["voodoohop"]
 
     constructFilters: (path) ->
       tokenizedpath = _.clone(path)

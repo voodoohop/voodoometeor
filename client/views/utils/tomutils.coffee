@@ -53,12 +53,12 @@ Meteor.startup ->
     Meteor.RwindowSize.height = $(window).height()
   , 100))
   updateRwindowSize()
-  $(window).scroll( ->
+  $(window).scroll( _.debounce(->
     $(".detach-on-scroll").each ->
       #console.log($(this).offset())
       if ($(this).offset().top  < $(window).scrollTop())
-        $(this).find(".detach-content").addClass("detached")
+        $(this).find(".detach-content").addClass("detached animated slideInDown")
       else
-        $(this).find(".detach-content").removeClass("detached")
+        $(this).find(".detach-content").removeClass("detached animated slideInDown")
 
-  )
+  , 100))

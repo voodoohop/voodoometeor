@@ -34,15 +34,15 @@ Meteor.startup ->
       #)
 
 
-      namesAndEmails = _.map(_.filter(moippayments.split("\t"), (v,k) -> k % 6 == 0), (v,k) ->
-        v.trim()
-        nameandemail = v.trim().split(" ")
-        email = nameandemail.pop().trim()
-        name = nameandemail.join(" ").trim()
-        return {name, email}
-      )
-      data = _.map(_.countBy(namesAndEmails, (i) -> i.name+","+i.email), (v,k) -> {name: k.split(",")[0], email: k.split(",")[1], count: v})
-      _.each(data, (user) ->
-        #console.log "createUserWithTickets",user.name, user.email, "2tFkF3j7CgN5K8EFy",user.count
-        Meteor.call("createUserWithTickets",user.name, user.email, eventid, user.count, "MoIP", (err,res) -> console.log(res))
-      )
+      #namesAndEmails = _.map(_.filter(moippayments.split("\t"), (v,k) -> k % 6 == 0), (v,k) ->
+      #  v.trim()
+      #  nameandemail = v.trim().split(" ")
+      #  email = nameandemail.pop().trim()
+      #  name = nameandemail.join(" ").trim()
+      #  return {name, email}
+      #)
+      #data = _.map(_.countBy(namesAndEmails, (i) -> i.name+","+i.email), (v,k) -> {name: k.split(",")[0], email: k.split(",")[1], count: v})
+      #_.each(data, (user) ->
+      #  #console.log "createUserWithTickets",user.name, user.email, "2tFkF3j7CgN5K8EFy",user.count
+      #  Meteor.call("createUserWithTickets",user.name, user.email, eventid, user.count, "MoIP", (err,res) -> console.log(res))
+      #)

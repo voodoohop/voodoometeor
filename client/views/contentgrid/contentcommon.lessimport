@@ -1,4 +1,5 @@
 @import "../../style/elements.lessimport";
+@import "../../style/bootstrap/bootstrap-import.lessimport";
 
 .saturate(@pct) {
   filter: ~"saturate(@{pct})";
@@ -8,8 +9,8 @@
   -ms-filter: ~"saturate(@{pct})";
 }
 
-@background: white;
-@foreground: black;
+@background: @body-bg;
+@foreground: @text-color;
 @grayscale_amount: 0.6;
 @contentitem_width: 230px;
 @contentitem_height: 280px;

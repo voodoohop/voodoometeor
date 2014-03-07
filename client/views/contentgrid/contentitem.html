@@ -81,7 +81,9 @@
     </div>
     <p>
         <small>
-         {{description}}
+          {{#markdown}}
+         {{cropstring description 250}} ...
+          {{/markdown}}
         </small>
     </p>
     </div>

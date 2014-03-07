@@ -188,12 +188,12 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     #,500)
     #console.log("fbsynctest",fbSync("/voodoohop"))
     #contentModel.contentCollection.remove({})
-    return self #hack to not load posts
+    #return self #hack to not load posts
     console.log("importing page posts")
     pages= ["FreeFolk","voodoohop", "ideafixa", "calefacaotropicaos", "209127459210998", "CatracaLivre"]
     Meteor.setTimeout( ->
      for page in pages
-      res = Meteor.sync ((done) -> fb.api "/"+page+"/posts", {limit:50}, (fbres) -> done(null, fbres) )
+      res = Meteor.sync ((done) -> fb.api "/"+page+"/posts", {limit:20}, (fbres) -> done(null, fbres) )
       _.each( res.result.data, (post) ->
 
         self.importUpdatePost(post.id)
