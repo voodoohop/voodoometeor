@@ -10,19 +10,18 @@
 
 
 <template name="contentitem">
-    <div id="{{_id}}" class="contentitemcontainer content_type_{{type}} {{#if isExpanded}} contentitemexpanded {{/if}} {{#if showDetail}} contentitemdetail  {{/if}} ">
+    <div id="{{_id}}" class="panel panel-default contentitemcontainer content_type_{{type}} {{#if isExpanded}} contentitemexpanded {{/if}} {{#if showDetail}} contentitemdetail  {{/if}} ">
         <!--<span class="contenttypelabel {{contentTypeMetaData.icon}} {{contentTypeMetaData.class}} {{bgcol}}" style="position: absolute; right: -2px; top: -2px;"> </span>
      -->
      {{#unless isExpanded}}
-      <div class="front">
         {{#if showThumb}}
             {{>contentthumb}}
         {{/if}}
+      <div class="panel-footer">
         {{#if title}}
         {{#if contentTypeMetaData.showtitle}}
-        <div class="title {{fgcol}}">
-            {{title}}
-        </div>
+
+            <h4>{{cropstring title 25 '...'}}</h4>
         {{/if}}
         {{/if}}
         <div class="metadata">
@@ -33,17 +32,14 @@
          {{> typespecificcontent }}
       </div>
      {{else}}
-      <div class="back">
+          {{#if showMedia}}
 
-          {{#unless showMedia}}
 
-          {{else}}
           <div id="mediacontent_{{_id}}" >
               {{>embeddedmedia}}
           </div>
-          {{/unless}}
+          {{/if}}
           {{> typespecificcontent}}
-      </div>
      {{/unless}}
     </div>
 </template>

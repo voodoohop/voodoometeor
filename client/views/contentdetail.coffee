@@ -101,7 +101,7 @@ Meteor.startup ->
 
     Template.contentdetail.rendered = ->
       console.log("contentdetail rendered", this)
-      event = this.data
+      event = this.data.contentItem
 
       updateHeadData(event)
       fb.onLoggedIn ->

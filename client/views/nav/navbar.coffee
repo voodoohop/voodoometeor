@@ -4,17 +4,17 @@ define "NavBar", ["ContentCommon", "TomMasonry"], (contentCommon, masonry) ->
   self.items= []
   self.initNavbar = (container, Rfilters) ->
 
-    Template.navmasonryitems.helpers
-      contentTypes: -> contentCommon.contentTypes
-      filters: -> contentCommon.filterOptions
-      sortTypes: -> contentCommon.sortTypes
-      activeContentFilters: -> Rfilters.active_content_filters
-      activeContentFilter: -> if _.contains(Rfilters.active_content_filters,this.name) then "active" else ""
+#    Template.navmasonryitems.helpers
+#      contentTypes: -> contentCommon.contentTypes
+#      filters: -> contentCommon.filterOptions
+#      sortTypes: -> contentCommon.sortTypes
+#      activeContentFilters: -> Rfilters.active_content_filters
+#      activeContentFilter: -> if _.contains(Rfilters.active_content_filters,this.name) then "active" else ""
 
     Template.navmasonryitem.helpers
       isSelected: ->
         console.log("checking if selected")
-        this.name == Rfilters.path[0]
+        this.name == Rfilters.path?[0]
 
     Template.userbar.helpers
       user: -> Meteor.user()
@@ -35,6 +35,7 @@ define "NavBar", ["ContentCommon", "TomMasonry"], (contentCommon, masonry) ->
       #masonry.ms.layout()
       #masonry.debouncedRelayout();
         #  debouncedLayoutTemplate()
+
     Template.navmasonryitem.events =
       'click .sort_filter': () ->
         Rfilters.blockvisible= 1
@@ -69,17 +70,19 @@ define "NavBar", ["ContentCommon", "TomMasonry"], (contentCommon, masonry) ->
         Rfilters.blockvisible = 1
 
     console.log("rendering nav items")
-    return
-    _.each(contentCommon.filterOptions, (filter) ->
-      item = UI.render( Template.navmasonryitem.withData(filter))
-      UI.insert(item, container[0])
-      #container.append(appenddiv)
+#    #return
+#    _.each(contentCommon.filterOptions, (filter) ->
+#      item = UI.render( Template.navmasonryitem.extend({data: filter}))
+#      UI.DomRange.insert(item.dom, container[0])
+#      #container.append(appenddiv)
+#
+#      #masonry.appended(appenddiv)
+#      #self.items.push(appenddiv[0])
+#      #self.items.push($("#navbutton_"+filter.name)[0])
+#    )
+#    masonry.debouncedRelayout(true)
 
-      #masonry.appended(appenddiv)
-      #self.items.push(appenddiv[0])
-      #self.items.push($("#navbutton_"+filter.name)[0])
-    )
-    masonry.debouncedRelayout(true)
-
+    Template.navboxestomasonry.navBoxes = ->
+      contentCommon.filterOptions
   console.log("returned navbar", self)
   return self

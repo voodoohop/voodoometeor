@@ -3,8 +3,13 @@ Meteor.startup ->
     console.log("user helper")
     Meteor.user()
   )
-  Handlebars.registerHelper("cropstring", (string, length) ->
-    string?.substr(0,length)
+  Handlebars.registerHelper("cropstring", (string, length, overLengthAppend=null) ->
+    return string if string.length <= length
+    res = string?.substr(0,length)
+    attachOverlength = res.length < string.length and overLengthAppend
+    res = res.substr(0,res.lastIndexOf(" "))
+    res += overLengthAppend if attachOverlength
+    return res
   )
 
   Handlebars.registerHelper("conditionalAttr", (tagname, condition) ->

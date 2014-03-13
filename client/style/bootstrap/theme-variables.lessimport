@@ -13,7 +13,7 @@
 @gray-light:             #888;   // #999
 @gray-lighter:           #ADAFAE; // #eee
 
-@brand-primary:         #2A9FD6;
+@brand-primary:        #3b5998;// facebook instead of  #2A9FD6;
 @brand-success:         #77B300;
 @brand-info:            #9933CC;
 @brand-warning:         #FF8800;

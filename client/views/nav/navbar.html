@@ -38,12 +38,9 @@
    </nav>
 </template>
 
-<template name="navmasonryitems">
-
-</template>
 
 <template name="navmasonryitem">
-    <div class='masonrycontainer masonrybuttoncontainer ' id='navbutton_{{filter.name}}' >
+    <div class='masonrybuttoncontainer ' id='navbutton_{{filter.name}}' >
     <div class="masonrynavbutton {{#if isSelected}} selected {{/if}}   {{#if subFilters}} hasSubFilters {{/if}}">
         <button type="button" class="toplevelbutton content_filter btn btn-primary btn-lg {{#if isSelected}} active {{/if}}">
             <span class="{{icon}} toplevelfiltericon"></span><br>
@@ -62,7 +59,6 @@
         {{/if}}
     </div>
     </div>
-
 </template>
 
 <template name="userbar">
@@ -95,4 +91,12 @@
         </ul>
 
     </nav>
+</template>
+
+<template name="navboxestomasonry">
+  {{#each navBoxes}}
+  {{#masonryElement "ContentGrid"}}
+    {{> navmasonryitem}}
+  {{/masonryElement}}
+  {{/each}}
 </template>

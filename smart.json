@@ -11,7 +11,7 @@
     "reactive-extra": {},
     "iron-router": {
       "git": "https://github.com/EventedMind/iron-router.git",
-      "branch": "new-location"
+      "branch": "blaze-integration"
     },
     "blaze-layout": {
       "git": "https://github.com/EventedMind/blaze-layout.git"
@@ -25,12 +25,18 @@
     "bootstrap3-less-tom": {
       "path": "packages/bootstrap3-less-tom"
     },
+    "masonrify": {
+      "path": "packages/masonrify"
+    },
     "bootstrap-alerts-blaze-tom": {
       "path": "packages/bootstrap-alerts-blaze-tom"
     },
     "spiderable-404": {},
     "collection-helpers": {},
     "collection-hooks": {},
-    "jqBootstrapValidation": {}
+    "jqBootstrapValidation": {},
+    "apm": {},
+    "connection-banner": {},
+    "bower": {}
   }
 }

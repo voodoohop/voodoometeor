@@ -5,25 +5,51 @@
 </template>
 
 <template name="contentitemgridsizer">
-    {{dataChanged}}
-    <div class='masonrycontainer' id='msnry_{{_id}}'>
     <div class="contentitemgridsizer content_type_{{type}}_default_size {{#if isExpanded}} contentitemexpanded {{/if}}"
-         style="width: {{width showDetail}}px; {{#unless isExpanded}}height: {{height showDetail}}px; {{/unless}}">
+         style="width: {{width showDetail}}px;">
         {{>contentitem}}
     </div>
-    </div>
-</template>
 
+</template>
 
 <template name="contentgrid">
     <div id="contentgridcontainer">
-        {{#each voodoocontent}}
+
+      {{#masonryContainer columnWidth=115 transitionDuration="0.1s" id="Contentgrid" }}
+        {{> navboxestomasonry containerId=id}}
+
+
+      {{#masonryElement container="Contentgrid" stamped="stamped-top-right"}}
+       {{> fbpagelikebutton }}
+      {{/masonryElement}}
+
+        {{#each this}}
+      {{#if dayDifferent previous this}}
+      {{#masonryElement "Contentgrid"}}
+      <div style="width: 230px; height: 230px; background-color: #808080">      <h1>{{day}}</h1>
+      </div>
+
+      {{/masonryElement}}
+      {{/if}}
+
+      {{#masonryElement "Contentgrid"}}
           {{> contentitemgridsizer}}
+      {{/masonryElement}}
         {{/each}}
+      {{/masonryContainer}}
     </div>
     {{#if moreResults}}
     <div id="showMoreResults" style="margin-left: 25px;">
         <span class="loading"> </span>
     </div>
     {{/if}}
+</template>
+
+<template name="fbpagelikebutton">
+  <div class="fblikecontainer text-center">
+    <div class="fblikecontent">
+      <i class="fa fa-facebook"></i><br>
+      <div class="fb-like fbiframe2" data-href="http://facebook.com/voodoohop" data-layout="button" data-action="like" data-show-faces="false" data-share="false">...</div>
+    </div>
+    </div>
 </template>

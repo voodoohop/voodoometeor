@@ -1,6 +1,9 @@
 <template name="mainlayout">
     <div class="detach-on-scroll-deactivated detacheableuserstatus">
-        <div class="detach-content detached">
+      {{>connectionBanner}}
+
+
+      <div class="detach-content detached">
           <div style="position: relative">
             {{> userLoginStatus}}
           </div>

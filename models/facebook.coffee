@@ -190,7 +190,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     #contentModel.contentCollection.remove({})
     #return self #hack to not load posts
     console.log("importing page posts")
-    pages= ["FreeFolk","voodoohop", "ideafixa", "calefacaotropicaos", "209127459210998", "CatracaLivre"]
+    pages= ["FreeFolk","voodoohop", "ideafixa", "calefacaotropicaos", "209127459210998", "CatracaLivre","ateliecompartilhado","240801296089491"]
     Meteor.setTimeout( ->
      for page in pages
       res = Meteor.sync ((done) -> fb.api "/"+page+"/posts", {limit:20}, (fbres) -> done(null, fbres) )

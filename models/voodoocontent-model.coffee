@@ -20,6 +20,8 @@ define "VoodoocontentModel",[], ->
       #console.log("getting description", this.description)
       this.description
 
+  self.contentCollection.helpers self.helpers
+
   description_reduced: ->
     console.log("reducing", this)
     this.description.substring(0,300)+ "..."

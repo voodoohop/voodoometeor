@@ -116,7 +116,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         name:"events"
         icon:"icon-voodooevent"
         query:
-          {type: "event", post_date: {$gte: new Date().toISOString() }}
+          {type: "event", post_date: {$gte: new Date().toISOString() }, num_app_users_attending: {"$gt": 5}}
         sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
       }
       {
@@ -129,7 +129,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
       }
 
     ]
-    initpath: ["voodoohop"]
+    initpath: ["events"]
 
     constructFilters: (path) ->
       tokenizedpath = _.clone(path)
@@ -217,7 +217,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         type.color
     , self)
 
-    contentTypeMetaData: self.getContenttypeMetadata(this)
+    contentTypeMetaData: -> self.getContenttypeMetadata(this)
 
     width: (showDetail) ->
       self.itemWidth(this, showDetail)

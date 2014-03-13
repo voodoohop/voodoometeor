@@ -1,12 +1,16 @@
 @import "contentcommon.lessimport";
 
-.masonrycontainer {
+.masonry_element {
   float: left;
   // border: 1px solid white;
 
   //margin-bottom: 5px;
 }
 
+.stamped-top-right {
+  position: absolute;
+  top: 0px; right: 0px;
+}
 
 
 #contentgridcontainer {
@@ -180,3 +184,36 @@ div.content_type_photo_default_size {
   height: @contentitem_photo_height;
 }
 
+.fblikecontainer {
+  width: 115px;
+  padding: 8px;
+  .fblikecontent {
+    background-color: @brand-primary;
+    padding: 5px;
+    .fa-facebook {
+      font-size: 36px;
+      font-weight: bold;
+      color: white;
+    }
+  }
+}
+
+.fbiframe
+{
+  transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  transform-origin: top left;
+  -ms-transform-origin: top left;
+  -webkit-transform-origin: top left;
+  -moz-transform-origin: top left;
+  -webkit-transform-origin: top left;
+
+
+}
+
+.fbiframe2 {
+  height:  22px;
+}

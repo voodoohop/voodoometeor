@@ -32,6 +32,9 @@ blaze-layout
 bootstrap-alerts-blaze-tom
 http
 publish-composite
-npm
 iron-router
 jqBootstrapValidation
+npm
+connection-banner
+masonrify
+bower
