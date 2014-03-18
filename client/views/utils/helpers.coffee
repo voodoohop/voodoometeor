@@ -3,7 +3,8 @@ Meteor.startup ->
     console.log("user helper")
     Meteor.user()
   )
-  Handlebars.registerHelper("cropstring", (string, length, overLengthAppend=null) ->
+  Handlebars.registerHelper("cropstring", (string, length, overLengthAppend="") ->
+    return "" unless string
     return string if string.length <= length
     res = string?.substr(0,length)
     attachOverlength = res.length < string.length and overLengthAppend

@@ -8,3 +8,8 @@ Template.userLoginStatus.profileImage = ->
 Template.userLoginStatus.events
   "click .logoutbutton": ->
     Meteor.logout()
+  "click .facebookloginbutton": ->
+    require ["FacebookClient"], (fbClient) ->
+      fbClient.doLogin( ->
+        console.log("fb loggedin")
+      )

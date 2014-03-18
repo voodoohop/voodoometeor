@@ -14,14 +14,14 @@ Meteor.startup ->
         type: "event"
         start_time: data.start_time
         end_time: data.end_time
-        url: Meteor.absoluteUrl(Router.path("contentDetail", {_id: this._id}))
+        url: Meteor.absoluteUrl(Router.path("contentdetail", {_id: this._id}))
 
 
 
   require ["VoodoocontentModel","ContentItem", "FacebookClient", "EventManager"], (model, contentItem, fb, eventManager) ->
     console.log("adding content detail route")
 
-    Template.contentdetailcaption.rendered =
+    Template.contentdetailcaption.rendered = ->
       console.log("contentdetailcaption rendered", this)
 
     routeDefaults =
@@ -34,6 +34,7 @@ Meteor.startup ->
           res = Deps.nonreactive ->
             model.subscribeDetails(id)
           console.log("res subscribedatils.ready()", res.ready())
+          this.contentDetailSubscription = res
           res
 
         action: ->
@@ -48,6 +49,9 @@ Meteor.startup ->
 
         data: ->
           {contentItem: model.getContentById(this.params._id)}
+        onStop: ->
+          console.log("contentdetail left route", this)
+          this.contentDetailSubscription.stop()
 
 
 
@@ -60,7 +64,7 @@ Meteor.startup ->
       this.route 'updateticketinfo', _.extend(
         path: '/updateTicketInfo/:_id'
         template: 'updateticketinfo'
-        before: ->
+        onBeforeAction: ->
           console.log("route before, params", this.params)
           if this.params.hash
             Meteor.loginWithTokenFromHash(this.params.hash)
@@ -68,7 +72,7 @@ Meteor.startup ->
 
 
 
-    runEmbedly=false
+
 
     Template.contentdetail.helpers(model.helpers)
     Template.contentdetail.helpers(contentItem.helpers)
@@ -77,23 +81,6 @@ Meteor.startup ->
     Template.contentdetail.markdownDescription = ->
       id = this._id
       if (this.description)
-        if (!runEmbedly)
-          runEmbedly=true
-          Meteor.setTimeout(  ->
-            console.log("running embedly on all links")
-            $("#description_"+id+" a").embedly(
-              key: "b5d3386c6d7711e193c14040d3dc5c07"
-              method: null
-              query:
-                maxwidth: 200
-                maxheight: 200
-              display: (param) ->
-                #console.log("embedly display", param)
-                if (param.title?.length >0)
-                  UI.DomRange.insert(UI.render(Template.eventmedia.extend({data: param})).dom,$("#eventMedia_"+id)[0])
-                  param.$elem.tooltip({title: param.description?.substring(0,200)})
-            )
-          ,2000)
         urlize(pagedown.makeHtml(this.description), {target:"_blank",django_compatible: false, trim: "http"})
 
     Template.contentdetail.eventToolBarData = ->
@@ -102,6 +89,23 @@ Meteor.startup ->
     Template.contentdetail.rendered = ->
       console.log("contentdetail rendered", this)
       event = this.data.contentItem
+      if (!this.runEmbedly)
+        this.runEmbedly=true
+        Meteor.setTimeout(  ->
+          console.log("running embedly on all links")
+          $("#description_"+event._id+" a").embedly(
+            key: "b5d3386c6d7711e193c14040d3dc5c07"
+            method: null
+            query:
+              maxwidth: 200
+              maxheight: 200
+            display: (param) ->
+              #console.log("embedly display", param)
+              if (param.title?.length >0)
+                UI.DomRange.insert(UI.render(Template.eventmedia.extend({data: param})).dom,$("#eventMedia_"+event._id)[0])
+                param.$elem.tooltip({title: param.description?.substring(0,200)})
+          )
+        ,2000)
 
       updateHeadData(event)
       fb.onLoggedIn ->

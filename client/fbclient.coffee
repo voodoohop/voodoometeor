@@ -51,15 +51,21 @@ Meteor.startup ->
                 finallyLoggedIn()
 
 
+    self.doLogin = (callback, perms) ->
+      FB.login( (response) ->
+        processFBAuthResponse response, ->
+          callback?(response.authResponse)
+        , {scope: if perms then perms.join(",") else undefined });
 
-    self.ensureLoggedIn= (callback, perms) ->
+    self.ensureLoggedIn= (callback, perms, loginPopUp = false) ->
         # wait if facebook is still determining whether or not the user is already connected
         if ! self.loggedIn?
           console.log("fb login status not determined yet... waiting", self.loggedIn)
           Meteor.setTimeout( ->
-            self.ensureLoggedIn(callback, perms)
+            self.ensureLoggedIn(callback, perms, true)
           , 200)
-          return
+          if (! loginPopUp)
+            return
         hasPerms = ! perms?  #if no perms argument specified hasPerms is true by default
         if Meteor.user() and ! hasPerms
           hasPerms = _.intersection(_.keys(Meteor.user().services.tomfacebook.permissions), perms).length == perms.length

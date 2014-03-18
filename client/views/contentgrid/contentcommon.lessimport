@@ -21,9 +21,9 @@
 @contentitem_photo_width: 345px;
 @contentitem_photo_height: 350px;
 
-@voodoocol1: #5cb85c;
-@voodoocol2: #5bc0de;
-@voodoocol3: #f0ad4e;
-@voodoocol4: #428bca;
+@voodoocol1: @brand-success;
+@voodoocol2: @brand-info;
+@voodoocol3: @brand-danger;
+@voodoocol4: @brand-warning;
 @voodoocol5: #d9534f;
 

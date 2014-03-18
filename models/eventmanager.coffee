@@ -10,10 +10,6 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
       return user;
     )
 
-    #Meteor.users.update({}, {$set: {attending: []}})
-
-    #console.log("users",Meteor.users.find({}).fetch())
-
     Meteor.methods
       updateTicketName: (eventid, ticketindex, name) ->
         mongoop = {}
@@ -44,8 +40,9 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
         fbapi.api("/me/events", (res) -> _.each(res.data, (e) ->
           Meteor.call("importFacebookEvent",e.id, (err,res) ->
             console.log("imported", res)
-            if res.event?._id
+            if res.event?._id and ! res.alreadyInDB
               console.log("alerting for event", res)
+
               Alerts.add("eventInsertedMessage", res.event, "success",  {autoHide: 10000, html: true});
               Meteor.users.update(Meteor.userId(), $addToSet: { attending: res.event._id})
             #Meteor.call("attendEvent", id, (err, res) -> console.log(err,res));

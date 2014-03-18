@@ -9,7 +9,6 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
   self.helpers =
     typespecificcontent: ->
       res = Template["contentitem_"+this.type]
-      console.log("getting type specific content for", this)
       return res
 
     randcol: -> contentCommon.colors[_.random(0,contentCommon.colors.length-1)]
@@ -55,7 +54,7 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
   Template.contentitem_event.helpers contentCommon.helpers
   Template.contentitem_event.helpers self.helpers
 
-
+  model.contentCollection.helpers contentCommon.helpers
 
   Template.contentitem_video.helpers model.helpers
   Template.contentitem_video.helpers contentCommon.helpers
@@ -72,14 +71,6 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
 
   Template.contentitem.events =
-    'click .rsvp_decline': () ->
-      eventManager.rsvp(this._id, false)
-    'click .rsvp_attend': () ->
-      eventManager.rsvp(this._id, true)
-
-    'click .mediathumb': () ->
-      #detailSubscription = model.subscribeDetails(this._id);
-      grid.expandItem(this)
 
     'click .mediaplaybutton': () ->
       console.log(this)

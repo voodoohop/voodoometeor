@@ -35,7 +35,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
 
 
     contentTypes: [
-      {name: "event", color:"voodoocolor1", title:"Events", icon:"glyphicon glyphicon-calendar", class:"label label-primary", showtitle: true, colorfromweekday: true, width: 230, height: 200}
+      {name: "event", color:"voodoocolor1", title:"Events", icon:"glyphicon glyphicon-calendar", class:"label label-primary", showtitle: true, colorfromweekday: true, width: 230, height: 180}
       {name: "video", color:"voodoocolor2", title:"Videos", icon:"glyphicon glyphicon-facetime-video", class:"label-success label",showtitle: true, inlineplay: true,width: 460, height: 280, allowDynamicAspectRatio: true, maxWidth: 460, maxHeight: 480, minHeight: 150}
       {name: "photo", color: "voodoocolor3", title:"Photos", icon:"glyphicon glyphicon-picture", class:"label label-warning", width: 345, height: 345, showtitle:true, allowDynamicAspectRatio: true, maxWidth: 460, maxHeight: 440}
       {name: "link", color: "voodoocolor4",title:"Links", icon:"glyphicon glyphicon-link", class:"label label-info", width: 230, height: 140}
@@ -47,11 +47,12 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
     filterOptions: [
       {
         name:"voodoohop"
-        title:"VOODOOHOP"
+        title:"VOODOO"
         query:
           num_app_users_attending: {"$gte": 0}
         titleclass: "voodoologo"
         icon: "icon-voodoologo"
+        disabled: true
         subFilters: [
           {
             title :"All"
@@ -80,49 +81,50 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
           }
         ]
       }
+#      {
+#        title:"Media"
+#        name: "media"
+#        icon: "icon-voodoomedia"
+#        query:
+#          $or: [{type: "photo"}, {type: "video"}]
+#        subFilters: [
+#          {
+#            title:"Photos"
+#            name: "photo"
+#            query: {type: "photo"}
+#            icon: "icon-voodoopictures"
+#            sortFilters: [sortTypes.num_app_users_attending, sortTypes.post_date_desc]
+#          }
+#          {
+#            title:"Radio"
+#            name: "radio"
+#            query: {type: "radio"}
+#            icon: "icon-voodooradio"
+#            sortFilters: [sortTypes.num_app_users_attending, sortTypes.post_date_desc]
+#          }
+#          {
+#            title:"Links"
+#            name: "links"
+#            query: {type: "link"}
+#            icon: "glyphicon glyphicon-link"
+#            sortFilters: [sortTypes.num_app_users_attending, sortTypes.post_date_desc]
+#          }
+#        ]
+#        sortFilters: [sortTypes.post_date_desc, sortTypes.num_app_users_attending]
+#      }
       {
-        title:"Media"
-        name: "media"
-        icon: "icon-voodoomedia"
-        query:
-          $or: [{type: "photo"}, {type: "video"}]
-        subFilters: [
-          {
-            title:"Photos"
-            name: "photo"
-            query: {type: "photo"}
-            icon: "icon-voodoopictures"
-            sortFilters: [sortTypes.num_app_users_attending, sortTypes.post_date_desc]
-          }
-          {
-            title:"Radio"
-            name: "radio"
-            query: {type: "radio"}
-            icon: "icon-voodooradio"
-            sortFilters: [sortTypes.num_app_users_attending, sortTypes.post_date_desc]
-          }
-          {
-            title:"Links"
-            name: "links"
-            query: {type: "link"}
-            icon: "glyphicon glyphicon-link"
-            sortFilters: [sortTypes.num_app_users_attending, sortTypes.post_date_desc]
-          }
-        ]
-        sortFilters: [sortTypes.post_date_desc, sortTypes.num_app_users_attending]
-      }
-      {
-        title:"Events"
+        title:"Calendar"
         name:"events"
         icon:"icon-voodooevent"
         query:
-          {type: "event", post_date: {$gte: new Date().toISOString() }, num_app_users_attending: {"$gt": 5}}
+          {type: "event", post_date: {$gte: new Date().toISOString() }, num_app_users_attending: {"$gt": 4}}
         sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
       }
       {
         title:"Map"
         name:"map"
         icon:"icon-voodoomap"
+        disabled: true
         query:
           {type: "event", post_date: {$gte: new Date().toISOString() }}
         sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
@@ -204,7 +206,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
     bgcol: _.partial( (c) ->
       type = _.findWhere(c.contentTypes, {name: this.type})
       if (type.colorfromweekday)
-        return "bgvoodoocolor"+([moment(new Date(this.post_date)).day() % 5+ 1] )
+        return "bgvoodoocolor"+([moment(new Date(this.post_date)).day() % 4+ 1] )
       else
         type.color
     , self)

@@ -188,7 +188,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     #,500)
     #console.log("fbsynctest",fbSync("/voodoohop"))
     #contentModel.contentCollection.remove({})
-    #return self #hack to not load posts
+    return self #hack to not load posts
     console.log("importing page posts")
     pages= ["FreeFolk","voodoohop", "ideafixa", "calefacaotropicaos", "209127459210998", "CatracaLivre","ateliecompartilhado","240801296089491"]
     Meteor.setTimeout( ->

@@ -15,18 +15,24 @@
 <template name="contentgrid">
     <div id="contentgridcontainer">
 
-      {{#masonryContainer columnWidth=115 transitionDuration="0.1s" id="Contentgrid" }}
-        {{> navboxestomasonry containerId=id}}
+      {{#masonryContainer columnWidth=115 transitionDuration="0.1s" gutter=2 id="Contentgrid" }}
+     {{> navboxestomasonry containerId=id}}
+      {{#masonryElement "Contentgrid"}}
+        {{> userLoginStatus}}
+      {{/masonryElement}}
 
-
+  <!--
       {{#masonryElement container="Contentgrid" stamped="stamped-top-right"}}
        {{> fbpagelikebutton }}
       {{/masonryElement}}
-
+  -->
         {{#each this}}
       {{#if dayDifferent previous this}}
       {{#masonryElement "Contentgrid"}}
-      <div style="width: 230px; height: 230px; background-color: #808080">      <h1>{{day}}</h1>
+      <div class="dateMasonryBox {{bgcol}}">
+        <div>
+        <h1>{{fullDay}}</h1>
+        </div>
       </div>
 
       {{/masonryElement}}

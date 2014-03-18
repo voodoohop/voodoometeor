@@ -33,5 +33,12 @@ require "VoodoocontentModel", (model) ->
       )
       #console.log("configured router without autoRender")
       #Router?.configure({autoRender: false})
+      Router.map ->
+        this.route('landing',
+          path: '/'
+          action: ->
+            this.redirect("/content/events")
+        )
+
 
 

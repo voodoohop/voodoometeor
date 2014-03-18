@@ -146,7 +146,7 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
 
       if (self.loadedFriends)
         e.preventDefault()
-        Router.go("contentDetail", { "_id": this.event._id} )
+        Router.go("contentdetail", { "_id": this.event._id} )
         inviteFriends( )
 
 

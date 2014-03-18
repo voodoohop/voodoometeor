@@ -29,9 +29,6 @@
       "bootstrap3-less-tom": {
         "path": "packages/bootstrap3-less-tom"
       },
-      "masonrify": {
-        "path": "packages/masonrify"
-      },
       "bootstrap-alerts-blaze-tom": {
         "path": "packages/bootstrap-alerts-blaze-tom"
       },
@@ -41,7 +38,12 @@
       "jqBootstrapValidation": {},
       "apm": {},
       "connection-banner": {},
-      "bower": {}
+      "bower": {},
+      "masonrify": {
+        "path": "packages/meteor-masonrify"
+      },
+      "reactive-store": {},
+      "urlify2": {}
     },
     "packages": {
       "font-awesome": {
@@ -92,17 +94,17 @@
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
         "branch": "blaze-integration",
-        "commit": "f8ffd44bceacc6a55f4ebcc218c072f5a18138b4"
+        "commit": "947991731df164e56b53cfdae8ef23802d989142"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
         "branch": "master",
-        "commit": "f52f416d6277f27b11832355298553e46b8cc6fd"
+        "commit": "2664f817844fba0fab0455a79bc62782c9091ad0"
       },
       "ms-seo": {
         "git": "https://github.com/DerMambo/ms-seo",
         "branch": "master",
-        "commit": "457c9124d1cfbb36e06932c9dd4ff538890e7640"
+        "commit": "aea2f932b3a75e19ab1be376a8e3e5e67891dbba"
       },
       "bootstrap-alerts": {
         "git": "https://github.com/asktomsk/bootstrap-alerts.git",
@@ -122,9 +124,6 @@
       "bootstrap3-less-tom": {
         "path": "packages/bootstrap3-less-tom"
       },
-      "masonrify": {
-        "path": "packages/masonrify"
-      },
       "bootstrap-alerts-blaze-tom": {
         "path": "packages/bootstrap-alerts-blaze-tom"
       },
@@ -135,13 +134,13 @@
       },
       "collection-helpers": {
         "git": "https://github.com/dburles/meteor-collection-helpers.git",
-        "tag": "v0.2.3",
-        "commit": "52c4c692421acea557fb329f43f65ed11b4832df"
+        "tag": "v0.2.4",
+        "commit": "e10ac53aa03e9656ee8ecaff7b9054dcb3a8a791"
       },
       "collection-hooks": {
         "git": "https://github.com/matb33/meteor-collection-hooks.git",
-        "tag": "v0.6.2",
-        "commit": "29484b2110206be93b01c6d11ce06ec9208de7bd"
+        "tag": "v0.6.3",
+        "commit": "70f2598bf991cb36effd72aea2555cba96f88355"
       },
       "jqBootstrapValidation": {
         "git": "https://github.com/wahyuaw/meteor-jqBootstrapValidation.git",
@@ -150,8 +149,8 @@
       },
       "apm": {
         "git": "https://github.com/arunoda/meteor-apm-client.git",
-        "tag": "v0.2.13",
-        "commit": "f9e77e1ca6a7ccab5a4f3a7b5c8295296906cf35"
+        "tag": "v0.2.14",
+        "commit": "3727371164f28d4fbf50efb12a9c75617198b596"
       },
       "connection-banner": {
         "git": "https://github.com/nate-strauser/meteor-connection-banner.git",
@@ -160,8 +159,21 @@
       },
       "bower": {
         "git": "https://github.com/mquandalle/meteor-bower.git",
-        "tag": "v0.1.2",
-        "commit": "780b841593c355d1522982e50e7a59fe35d33fee"
+        "tag": "v0.1.4",
+        "commit": "71576ed3baf311a12268bc7eb044dac1ddc52b31"
+      },
+      "masonrify": {
+        "path": "packages/meteor-masonrify"
+      },
+      "reactive-store": {
+        "git": "https://github.com/andrewreedy/reactive-store.git",
+        "tag": "v0.0.1",
+        "commit": "18a945ff0d1a449938f35afd2bbbf09d1ecd322a"
+      },
+      "urlify2": {
+        "git": "https://github.com/peerlibrary/meteor-urlify2.git",
+        "tag": "v0.2.1",
+        "commit": "6af78cad650ee216b640a418a5557a0a7e5be538"
       },
       "marked": {
         "git": "https://github.com/chuangbo/meteor-marked.git",

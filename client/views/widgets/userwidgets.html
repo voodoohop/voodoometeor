@@ -1,28 +1,31 @@
 <template name="userLoginStatus">
-    <div class="userloginstatus pull-right btn-group btn-group-responsive">
-       <button type="button" class="btn ladda-button" data-toggle="dropdown">
+    <div class="userloginstatus btn-group btn-group-responsive masonrynavbutton">
+       <button type="button" class="btn btn-default btn-sm ladda-button" data-toggle="dropdown">
         {{#if user}}
-        <img class="profileimage" src="{{profileImage}}"> <span class="profilename">{{user.profile.name}}</span>
+        <img class="profileimage" src="{{profileImage}}">
+         <br><span class="profilename">{{cropstring user.profile.name 10 ''}}</span>
         {{else}}
-        not logged in...
+        log in....
         {{/if}}
-           <span class="caret"></span>
         </button>
-        {{#if user}}
         <ul class="dropdown-menu" role="menu">
          <!--   <li><a type="button" class="rsvp_decline"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
          -->
+          {{#if user}}
             <li><a type="button" class="importeventbutton"><span class="glyphicon glyphicon-calendar"></span> Import Events</a></li>
             <li><a type="button" class="logoutbutton"><span class="glyphicon glyphicon-remove"></span> logout</a></li>
+          {{else}}
+          <li><a type="button" class="facebookloginbutton"><span class=""></span> facebook</a></li>
+          {{/if}}
+
         </ul>
-        {{else}}
-        {{/if}}
+
     </div>
 </template>
 
 
 <template name="eventInsertedMessage">
-    Imported <em><span class="glyphicon glyphicon-calendar"></span> {{cropstring title 18}}</em>
+    <em><span class="glyphicon glyphicon-calendar"></span> {{cropstring title 18 ''}}</em> imported
 </template>
 
 

@@ -4,7 +4,9 @@
   float: left;
   // border: 1px solid white;
 
-  //margin-bottom: 5px;
+  margin-bottom: 4px;
+  //border: 3px solid transparent;
+
 }
 
 .stamped-top-right {
@@ -103,28 +105,23 @@ img.parallax {
 
 
 .bgvoodoocolor1 {
-  background-color: @voodoocol1;
-  border-color: @voodoocol1;
+  background-color: @voodoocol1 !important;
+  border-color: @voodoocol1 !important;
 }
 
 .bgvoodoocolor2 {
-  background-color: @voodoocol2;
-  border-color: @voodoocol2;
+  background-color: @voodoocol2 !important;
+  border-color: @voodoocol2 !important;
 }
 
 .bgvoodoocolor3 {
-  background-color: @voodoocol3;
-  border-color: @voodoocol3;
+  background-color: @voodoocol3 !important;
+  border-color: @voodoocol3 !important;
 }
 
 .bgvoodoocolor4 {
-  background-color: @voodoocol4;
-  border-color: @voodoocol4;
-}
-
-.bgvoodoocolor5 {
-  background-color: @voodoocol5;
-  border-color: @voodoocol5;
+  background-color: @voodoocol4 !important;
+  border-color: @voodoocol4 !important;
 }
 
 .fgvoodoocolor1 {
@@ -159,13 +156,6 @@ img.parallax {
 .contentitemgridsizer {
   transition: width 0.4s, height 0.4s;
   transition: border-color 0.4s ease;
-  border: 5px solid @background;
-  &:hover {
-    border: 5px solid @foreground;
-  };
-  &.contentitemexpanded {
-    border: 10px solid @foreground;
-  }
 }
 .contentgridsizer {
   :not(:hover) {
@@ -216,4 +206,15 @@ div.content_type_photo_default_size {
 
 .fbiframe2 {
   height:  22px;
+}
+
+.dateMasonryBox {
+  width: 230px;
+  height: 230px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  padding: 10px;
+  h1 {
+    margin-top: 0px;
+  }
 }

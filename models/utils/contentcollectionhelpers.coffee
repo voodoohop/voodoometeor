@@ -5,8 +5,6 @@ define "ContentcollectionHelpers", ["VoodoocontentModel","FacebookApiAbstraction
         a.apiCall(this, fb)
     )
 
-
-
   model.contentCollection.before.insert (uid, doc) ->
     doc.likes = [] unless doc.likes
 
@@ -21,4 +19,4 @@ define "ContentcollectionHelpers", ["VoodoocontentModel","FacebookApiAbstraction
       model.contentCollection.update(doc._id, {$set: {inferred_likes: like_count }})
 
 
-require ["ContentcollectionHelpers"], (collHelpers) ->
+require ["contentcollectionhelpers"], (collHelpers) ->

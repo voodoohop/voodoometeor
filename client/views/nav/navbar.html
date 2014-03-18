@@ -39,10 +39,9 @@
 </template>
 
 
-<template name="navmasonryitem">
-    <div class='masonrybuttoncontainer ' id='navbutton_{{filter.name}}' >
-    <div class="masonrynavbutton {{#if isSelected}} selected {{/if}}   {{#if subFilters}} hasSubFilters {{/if}}">
-        <button type="button" class="toplevelbutton content_filter btn btn-primary btn-lg {{#if isSelected}} active {{/if}}">
+<template name="navitem">
+    <div class="masonrynavbutton {{#if subFilters}} hasSubFilters {{/if}}">
+        <button type="button" class="toplevelbutton content_filter btn btn-primary btn-lg {{#if isSelected}} active {{/if}}" {{conditionalAttr 'disabled' disabled}} >
             <span class="{{icon}} toplevelfiltericon"></span><br>
             <span class="topleveltitle">{{title}}</span>
         </button>
@@ -58,45 +57,12 @@
         {{/if}}
         {{/if}}
     </div>
-    </div>
-</template>
-
-<template name="userbar">
-    {{#each sortTypes}}
-    <li class="{{activeSortFilter}}"><a href="#" class="sort_filter dropdown-toggle" style="font-size:130%" data-toggle="dropdown" id="sort_filter_{{name}}"><span class="{{icon}}"></span> {{title}}</a></li>
-    {{/each}}
-
-    <nav class="navbar-invere" role="navigation">
-        <ul class="nav nav-pills nav-stacked">
-            <!--<li>
-                <input type="text" class="form-control search" placeholder="Search">
-            </li> -->
-            <!-- user login dropdown start-->
-            <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    {{#if user}}
-                    <img alt="" src="{{profileimg}}" width="20" height="20">
-                    <span>{{userfirstname}}</span>
-                    {{else}}
-                    <span>login</span>
-                    {{/if}}
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu extended logout">
-                    <div class="log-arrow-up"></div>
-                    <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
-                </ul>
-            </li>
-            <!-- user login dropdown end -->
-        </ul>
-
-    </nav>
 </template>
 
 <template name="navboxestomasonry">
   {{#each navBoxes}}
   {{#masonryElement "ContentGrid"}}
-    {{> navmasonryitem}}
+    {{> navitem}}
   {{/masonryElement}}
   {{/each}}
 </template>

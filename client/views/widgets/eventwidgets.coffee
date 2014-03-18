@@ -10,10 +10,9 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
     'click .facebook_share': ->
       FB.ui(
         method: 'feed'
-        link: Meteor.absoluteUrl(Router.path("contentDetail", {_id: this._id}))+"?_escaped_fragment_="
+        link: Meteor.absoluteUrl(Router.path("contentdetail", {_id: this._id}))+"?_escaped_fragment_="
         caption: 'An example caption'
       , (res) -> console.log(res));
-  Template.eventdate.day = model.helpers.day
 
   Template.eventtoolbar.eventInviteData = (arg1) ->
     console.log("eventInviteData",this)

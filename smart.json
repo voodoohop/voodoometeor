@@ -25,9 +25,6 @@
     "bootstrap3-less-tom": {
       "path": "packages/bootstrap3-less-tom"
     },
-    "masonrify": {
-      "path": "packages/masonrify"
-    },
     "bootstrap-alerts-blaze-tom": {
       "path": "packages/bootstrap-alerts-blaze-tom"
     },
@@ -37,6 +34,11 @@
     "jqBootstrapValidation": {},
     "apm": {},
     "connection-banner": {},
-    "bower": {}
+    "bower": {},
+    "masonrify": {
+      "path": "packages/meteor-masonrify"
+    },
+    "reactive-store": {},
+    "urlify2": {}
   }
 }
