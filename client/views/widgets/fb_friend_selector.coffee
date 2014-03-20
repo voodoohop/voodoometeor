@@ -16,6 +16,7 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
       callback?()
     else
       doFBLogin(callback)
+
   doFBLogin = _.once( (callback=null) ->
     fb.ensureLoggedIn( (success) ->
       loginResult = success
@@ -47,7 +48,7 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
       , ->  self.Rfilter.loadingFriends = false; self.loadedFriends = true; self.inviteLadda.stop(); callback?(); )
     )
 
-  inviteFriends = (callback = null) ->
+  inviteFriends = (fbeventid, callback = null) ->
       friends = self.getFriends(true).fetch()
       total = friends.length
       processedNo = 0
@@ -56,6 +57,7 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
         _.each( removed, (r) ->
           self.RfacebookFriends.remove(r._id)
         )
+        eventManager.invite(fbeventid, removed)
         processedNo += removed.length
         setButtonProgress(processedNo / total)
         if friends.length > 0
@@ -66,7 +68,7 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
           self.Rfilter.inviting = "doneInviting"
           self.inviteLadda.stop()
           callback?()
-      processn(10)
+      processn(30)
       self.Rfilter.inviting = "inviting"
       self.inviteLadda.start()
 
@@ -108,24 +110,28 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
       path: '/contentDetail/:_id/inviteFriends'
       template: 'fbeventinvite'
       layoutTemplate: 'mainlayout'
-      before: ->
-        id = this.params._id
-        Deps.nonreactive ->
-          console.log("before hook event_invite router")
-          beforeDisplay()
-          eventDetailSubscription = model.subscribeDetails(id) unless eventDetailSubscription
       action: ->
         #console.log("fb_friend_selector_action", this, this.ready())
-        console.log("action",[eventDetailSubscription.ready(), virtualLoginAndPermSubscription.ready()])
+        #console.log("action",[eventDetailSubscription.ready(), virtualLoginAndPermSubscription.ready()])
         if this.ready()
           this.render()
       waitOn: ->
-        console.log("waitOn called")
+        console.log("friendselector waitOn called",this)
         #Deps.autorun (computation) ->
         #  computation.onInvalidate -> console.trace();
+        id = this.params._id
+        console.log("before hook event_invite router")
+        beforeDisplay()
+        console.log("calling model subscribeDetails ",id)
+        eventDetailSubscription = model.subscribeDetails(id) unless eventDetailSubscription
+        console.log("ready:",eventDetailSubscription.ready())
         [eventDetailSubscription, virtualLoginAndPermSubscription]
       data: ->
-        {event: model.getContentById(this.params._id), friends: self.getFriends }
+        if (!this.ready())
+          return null;
+        dta = {event: model.getContentById(this.params._id), friends: self.getFriends }
+        console.log("friendselector data, ready:", this.ready(), dta)
+        dta
 
   Template.fbeventinvite_user.events
     "click .fs-anchor": ->
@@ -136,9 +142,11 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
       text = $(e.target).val()
       self.Rfilter.filter = text
     "click .inviteall": ->
+      console.log("inviting all for",this.event)
+      fbid = this.event.sourceId
       beforeDisplay( ->
           loadFriends ({fast: true}), ->
-            inviteFriends()
+            inviteFriends(fbid)
       )
 
     "click .invitebutton": (e) ->
@@ -147,8 +155,10 @@ define "FBFriendInviter", ["EventManager","FacebookClient", "VoodoocontentModel"
       if (self.loadedFriends)
         e.preventDefault()
         Router.go("contentdetail", { "_id": this.event._id} )
-        inviteFriends( )
+        inviteFriends(this.event.sourceId)
 
+    "click .closebutton": ->
+      Router.go("contentdetail", { "_id": this.event._id} )
 
     "click #selectnone": ->
       self.RfacebookFriends.update({}, {$set:{selected: false}}, {multi: true})

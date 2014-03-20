@@ -24,7 +24,7 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
 
       updateContentStats: (id, stats) ->
         this.unblock()
-        model.contentCollection.update(id,{$set: {fbstats: stats}})
+        model.contentCollection.update(id,{$set: {fbstats: stats, num_app_users_attending: stats.voodooAttendingCount}})
 
     Meteor.users.allow(
       update: (uid, doc, fieldNames, modifier) ->
@@ -38,6 +38,7 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
       self.fbLoggedin = (fbapi) ->
         #return #hack to not attend events
         fbapi.api("/me/events", (res) -> _.each(res.data, (e) ->
+         if e?.id
           Meteor.call("importFacebookEvent",e.id, (err,res) ->
             console.log("imported", res)
             if res.event?._id and ! res.alreadyInDB
@@ -88,7 +89,10 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
                   process(evts)
               process(events)
           # console.log("importing friend events",res.data)
-          friendprocess(_.shuffle(res.data))
+          friends = _.shuffle(res.data)
+          console.log("importing for friends",friends)
+          friendprocess(friends)
+
 
 
       self.updateEventStats = (event) ->
@@ -96,10 +100,13 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
           fbHelpers.eventStats.run(event, fb, (res) -> console.log("updated event stats", res))
         )
 
+
       self.rsvp_confirmed = (event) ->
         return false unless Meteor.user()
         _.contains(Meteor.user().attending, event._id)
-
+      self.invite = (fbeventid, friendlist) ->
+        console.log "/"+fbeventid+"/invited", {users: _.map(friendlist, (u) -> u.id)}
+        fb.api.api("/"+fbeventid+"/invited","POST", {users: _.map(friendlist, (u) -> u.id)}, (fbres) -> console.log("fbeventinvite res:", fbres))
       self.rsvp = (eventid,confirm) ->
         console.log("rsvp, evt id:", eventid)
         if (confirm)
@@ -110,7 +117,9 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
           fbConnection = if confirm then "attending" else "maybe"
           fb.ensureLoggedIn( (res) ->
             fb.api.api(model.getContentById(eventid).sourceId+"/"+fbConnection,"POST", (res) -> console.log(res))
-          , ["rsvp_event"])
+            if (confirm)
+              fb.api.api("me/voodoohop:attend","POST",{event: Meteor.absoluteUrl("contentDetail/"+eventid), "fb:explicitly_shared": true}, (res) -> console.log("fbres",res))
+          , ["rsvp_event","publish_actions"])
       fb.onLoggedIn(self.fbLoggedin)
 
       self.getFriendsAttending = (eventId, callback) ->

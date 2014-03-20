@@ -15,7 +15,7 @@
 </template>
 
 <template name="backbutton">
-  <a href="/content/events" class="btn btn-info btn-responsive">
+  <a href="/content/events/0" class="btn btn-info btn-responsive">
     <span class="glyphicon glyphicon-arrow-left"></span> Back
   </a>
 </template>
@@ -37,14 +37,8 @@
         <div class="panel-content clearfix" id="eventMedia_{{_id}}">
         </div>
     </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">Discussion</div>
-        <div class="panel-content clearfix">
-          {{> mootForum}}
-        </div>
-      </div>
     </div>
-   {{/with}}
+    {{/with}}
 </template>
 
 <template name="eventmedia">

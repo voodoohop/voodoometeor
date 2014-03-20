@@ -36,7 +36,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
     threshold = undefined
     target = $("#showMoreResults")
     return unless target.length
-    threshold = $(window).scrollTop() + $(window).height() - target.height()-25
+    threshold = $(window).scrollTop() + $(window).height() - target.height()+100
     console.log(threshold, target.offset().top)
     if target.offset().top < threshold
       unless target.data("visible")
@@ -80,6 +80,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
 
         console.log("contentgrid waitOn", this.params[0])
         path = this.params[0].split("/")
+        console.log("path",path)
         self.RsortFilters.filter = contentCommon.constructFilters(path)
         self.RsortFilters.path = path
         self.subscribeFilteredSortedContent(self.RsortFilters)

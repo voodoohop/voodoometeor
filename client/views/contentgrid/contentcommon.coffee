@@ -117,7 +117,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         name:"events"
         icon:"icon-voodooevent"
         query:
-          {type: "event", post_date: {$gte: new Date().toISOString() }, num_app_users_attending: {"$gt": 4}}
+          {type: "event", post_date: {$gte: moment().subtract(6,"hours").toISOString() }, num_app_users_attending: {"$gt": 5}}
         sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
       }
       {
@@ -160,6 +160,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
             return {sortFilter: sortFilter, query: query}
           return {query: query};
       q = recursiveConstructQuery(tokenizedpath, self.filterOptions)
+      console.log("constructed query:",q)
       sortFilter = {}
       if (q.sortFilter)
         sortFilter[q.sortFilter.field] = q.sortFilter.direction

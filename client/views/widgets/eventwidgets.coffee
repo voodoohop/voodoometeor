@@ -14,10 +14,6 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
         caption: 'An example caption'
       , (res) -> console.log(res));
 
-  Template.eventtoolbar.eventInviteData = (arg1) ->
-    console.log("eventInviteData",this)
-    {minimized: true, event: this}
-
   Template.eventtoolbar.rendered = ->
 
   Template.eventtoolbar.rsvp_confirmed = -> eventManager.rsvp_confirmed(this)

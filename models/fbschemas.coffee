@@ -30,9 +30,6 @@ define "FBSchemas", [], ->
       "timezone": {
         "uri": "http://graph.facebook.com/schema/event#timezone"
       },
-      "is_date_only": {
-        "uri": "http://graph.facebook.com/schema/event#is_date_only"
-      },
       "location": {
         "description": "The location for this event.  generic `access_token`, `user_events` or `friends_events`. `string`.",
         "uri": "http://graph.facebook.com/schema/event#location"
@@ -41,29 +38,25 @@ define "FBSchemas", [], ->
         "description": "The location of this event.  generic `access_token`, `user_events` or `friends_events`.  object containing one or more of the following fields: `id`, `street`, `city`, `state`, `zip`, `country`, `latitude`, and `longitude` fields.",
         "uri": "http://graph.facebook.com/schema/event#venue"
       },
-      "privacy": {
-        "description": "The visibility of this event.  generic `access_token`, `user_events` or `friends_events`.  `string` containing 'OPEN', 'SECRET', 'FRIENDS', or 'CLOSED' (deprecated)",
-        "uri": "http://graph.facebook.com/schema/event#privacy"
-      },
       "updated_time": {
         "description": "The last time the event was updated. generic `access_token`, `user_events` or `friends_events`. `string` containing ISO-8601 date-time.",
         "uri": "http://graph.facebook.com/schema/event#updated_time",
         "type": "datetime"
       },
-      "feed": {
-        "description": "This event's wall.",
-        "uri": "http://graph.facebook.com/schema/event#feed",
-        "type": "uri"
-      },
+#      "feed": {
+#        "description": "This event's wall.",
+#        "uri": "http://graph.facebook.com/schema/event#feed",
+#        "type": "uri"
+#      },
       "picture": {
         "description": "The event's profile picture.",
         "uri": "http://graph.facebook.com/schema/event#picture",
         "type": "uri"
       },
-      "admins": {
-        "uri": "http://graph.facebook.com/schema/event#admins",
-        "type": "uri"
-      },
+#      "admins": {
+#        "uri": "http://graph.facebook.com/schema/event#admins",
+#        "type": "uri"
+#      },
       "cover": {
         "uri": "http://graph.facebook.com/schema/event#cover"
       },
@@ -71,9 +64,9 @@ define "FBSchemas", [], ->
         "description": "The URL to a location to buy tickets for this event (on Events for Pages only).  generic `access_token`, `user_events` or `friends_events`.  `string`",
         "uri": "http://graph.facebook.com/schema/event#ticket_uri"
       },
-      "parent_group": {
-        "uri": "http://graph.facebook.com/schema/event#parent_group"
-      }
+#      "parent_group": {
+#        "uri": "http://graph.facebook.com/schema/event#parent_group"
+#      }
 
   post_properties =
           "id": {

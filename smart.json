@@ -10,8 +10,7 @@
     "external-file-loader": {},
     "reactive-extra": {},
     "iron-router": {
-      "git": "https://github.com/EventedMind/iron-router.git",
-      "branch": "blaze-integration"
+      "path": "packages/iron-router-tom-version"
     },
     "blaze-layout": {
       "git": "https://github.com/EventedMind/blaze-layout.git"
@@ -28,7 +27,9 @@
     "bootstrap-alerts-blaze-tom": {
       "path": "packages/bootstrap-alerts-blaze-tom"
     },
-    "spiderable-404": {},
+    "spiderable-404-tom": {
+      "path": "packages/spiderable-404-tom"
+    },
     "collection-helpers": {},
     "collection-hooks": {},
     "jqBootstrapValidation": {},
@@ -39,6 +40,7 @@
       "path": "packages/meteor-masonrify"
     },
     "reactive-store": {},
-    "urlify2": {}
+    "urlify2": {},
+    "phantomjs": {}
   }
 }

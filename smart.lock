@@ -12,8 +12,7 @@
       "external-file-loader": {},
       "reactive-extra": {},
       "iron-router": {
-        "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "blaze-integration"
+        "path": "packages/iron-router-tom-version"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
@@ -32,7 +31,9 @@
       "bootstrap-alerts-blaze-tom": {
         "path": "packages/bootstrap-alerts-blaze-tom"
       },
-      "spiderable-404": {},
+      "spiderable-404-tom": {
+        "path": "packages/spiderable-404-tom"
+      },
       "collection-helpers": {},
       "collection-hooks": {},
       "jqBootstrapValidation": {},
@@ -43,7 +44,8 @@
         "path": "packages/meteor-masonrify"
       },
       "reactive-store": {},
-      "urlify2": {}
+      "urlify2": {},
+      "phantomjs": {}
     },
     "packages": {
       "font-awesome": {
@@ -92,9 +94,7 @@
         "commit": "fe8d2f8e27c501be6533b419c3a00aae884b838b"
       },
       "iron-router": {
-        "git": "https://github.com/EventedMind/iron-router.git",
-        "branch": "blaze-integration",
-        "commit": "947991731df164e56b53cfdae8ef23802d989142"
+        "path": "packages/iron-router-tom-version"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
@@ -127,10 +127,8 @@
       "bootstrap-alerts-blaze-tom": {
         "path": "packages/bootstrap-alerts-blaze-tom"
       },
-      "spiderable-404": {
-        "git": "https://github.com/wojas/spiderable-404.git",
-        "tag": "v0.6.6.1",
-        "commit": "04013254e4cf1e6d38ac5e78d48a33e5ddf554b2"
+      "spiderable-404-tom": {
+        "path": "packages/spiderable-404-tom"
       },
       "collection-helpers": {
         "git": "https://github.com/dburles/meteor-collection-helpers.git",
@@ -174,6 +172,11 @@
         "git": "https://github.com/peerlibrary/meteor-urlify2.git",
         "tag": "v0.2.1",
         "commit": "6af78cad650ee216b640a418a5557a0a7e5be538"
+      },
+      "phantomjs": {
+        "git": "https://github.com/gadicohen/meteor-phantomjs.git",
+        "tag": "v0.0.2",
+        "commit": "a72eb79af068dd5d5d617ac71a42bd74e0cb52a4"
       },
       "marked": {
         "git": "https://github.com/chuangbo/meteor-marked.git",

@@ -11,10 +11,14 @@ Meteor.startup ->
         title: data.title
         description: data.description
         image: data.picture
-        type: "event"
-        start_time: data.start_time
-        end_time: data.end_time
-        url: Meteor.absoluteUrl(Router.path("contentdetail", {_id: this._id}))
+        type: "voodoohop:event"
+        starttime: data.start_time
+        endtime: data.end_time
+        url: Meteor.absoluteUrl("contentDetail/"+data._id)
+        location: data.location
+        site_name: "VOODOOHOP"
+      fb:
+        app_id: "78013154582"
 
 
 
@@ -37,21 +41,23 @@ Meteor.startup ->
           this.contentDetailSubscription = res
           res
 
-        action: ->
+        action:  ->
           console.log("action, ready", this)
           if this.ready()
             console.log("rendering default screen")
             this.render()
             #this.render({"contentdetailheader": {to: "header"}})
           else
-            console.log("rendering loading screen")
-            this.render("loadingScreen")
+            console.log("instead of loading screen, pause", this)
+            #console.log("rendering loading screen")
+            #this.render("loadingScreen")
 
         data: ->
           {contentItem: model.getContentById(this.params._id)}
         onStop: ->
+          console.trace()
           console.log("contentdetail left route", this)
-          this.contentDetailSubscription.stop()
+          model.stopDetailSubscription()
 
 
 

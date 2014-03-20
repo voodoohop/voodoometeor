@@ -62,7 +62,7 @@ Meteor.startup ->
         if ! self.loggedIn?
           console.log("fb login status not determined yet... waiting", self.loggedIn)
           Meteor.setTimeout( ->
-            self.ensureLoggedIn(callback, perms, true)
+            self.ensureLoggedIn(callback, perms, false)
           , 200)
           if (! loginPopUp)
             return

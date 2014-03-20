@@ -55,7 +55,14 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       return unless fbid
       console.log("update",update)
       console.log("importing fb event with graph id:"+fbid)
-      if (!update and contentModel.getContentBySourceId(fbid))
+      existing = contentModel.getContentBySourceId(fbid)
+      if (existing)
+        if (!existing.updated_time)
+          update = true
+        else
+         if moment().diff(moment(existing.updated_time))/1000 > 600
+            update = true
+      if (!update and existing)
         console.log("event already exists")
         return {event: contentModel.getContentBySourceId(fbid), alreadyInDB: true}
       res = Meteor.sync((done) ->
@@ -63,10 +70,13 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
         fb.api("/fql",{q:query},  (fbres) -> done(null,fbres))
       )
       num_app_users_attending = res.result.data?.length ? 0
+      if (num_app_users_attending < 2)
+        console.log("few app users attending, ignoring event")
+        return {error: "toofewappusers", fbEventId: fbid}
       res = Meteor.sync((done) -> fb.api fbid, {fields: fbschemas.event_fields}, (fbres) -> done(null,fbres))
-      #console.log(res)
+      console.log("fberr", res) unless res.result?.id
       event = res.result
-      return {error: "eventnotloadedfromfb"} unless event.id
+      return {error: "eventnotloadedfromfb", fbEventId: fbid, fbErr: res} unless event?.id
 
       res = Meteor.sync((done) -> fb.api ""+fbid+"/attending",{summary:true}, (fbres) -> done(null,fbres))
       numattending = res.result.summary.count
@@ -88,6 +98,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
         like_count: numattending
         num_attending: numattending
         num_app_users_attending: num_app_users_attending
+        updated_time: new Date().toJSON()
 
       if (!contentModel.getContentBySourceId(event.id))
         console.log("event: #{voodoocontent.title} not found yet... inserting")

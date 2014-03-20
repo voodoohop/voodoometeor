@@ -9,7 +9,6 @@ less
 accounts-password
 showdown
 standard-app-packages
-font-awesome
 handlebar-helpers
 moment
 page-js-ie-support
@@ -21,12 +20,9 @@ reactive-extra
 define
 nprogress
 pagedown-bootstrap
-ms-seo
 bootstrap3-less-tom
-spiderable
 collection-helpers
 collection-hooks
-blaze-layout
 bootstrap-alerts-blaze-tom
 http
 publish-composite
@@ -37,4 +33,6 @@ connection-banner
 bower
 masonrify
 reactive-store
-urlify2
+ms-seo
+phantomjs
+spiderable-404-tom

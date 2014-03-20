@@ -1,7 +1,8 @@
 require ["VoodoocontentModel"], (model) ->
+ Meteor.startup ->
   if Meteor.isServer
     generateSlug = (title) ->
-      slug = URLify2(title)
+      slug = Meteor.slugify(title)
       deDuplicatorString = ""
       deDuplicatorCounter = 0
       while model.contentCollection.findOne({slug: slug+deDuplicatorString})

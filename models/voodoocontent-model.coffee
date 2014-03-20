@@ -7,16 +7,16 @@ define "VoodoocontentModel",[], ->
   self.contentBlockSize = 35
 
   self.helpers =
-    postedDate: -> moment(new Date(this.post_date)).fromNow()
+    postedDate: -> moment.parseZone(new Date(this.post_date)).fromNow()
     fullDay: ->
       format = "dddd"
-      p = moment(new Date(this.post_date))
+      p = moment.parseZone(new Date(this.post_date))
       if ! (p.diff(moment(),"days") in [0..6])
         format += " D/M"
       p.format(format)
     day: ->
       format = "ddd"
-      p = moment(new Date(this.post_date))
+      p = moment.parseZone(new Date(this.post_date))
       if ! (p.diff(moment(),"days") in [0..6])
         format += " D/M"
       p.format(format)
@@ -47,14 +47,16 @@ define "VoodoocontentModel",[], ->
   if (Meteor.isClient)
     #Meteor.startup ->
     #  Meteor.subscribe( "featuredContent")
-
+    self.stopDetailSubscription = ->
+      console.log("stopped detail subscription")
+      self.detailSubscription.stop()
+      self.detailSubscription = null
+      self.detailId = null
     self.subscribeDetails = (id, callback) ->
       Deps.nonreactive ->
+        console.log("model, trying to subscribe to details",id)
         if (self.detailSubscription and id != self.detailId)
-          self.detailSubscription.stop()
-          self.detailSubscription = null
-          self.detailId = null
-          #if (id == null)
+          self.stopDetailSubscription()
           #  callback() if (callback?)
         if (id and id != self.detailId)
           self.detailSubscription = self.subscribeContent({query: id, details: true}, callback)
@@ -85,7 +87,7 @@ define "VoodoocontentModel",[], ->
 
   if (Meteor.isServer)
 
-    self.contentCollection._ensureIndex({type:1, post_date: 1, num_app_users_attending: 1, start_time: 1})
+    self.contentCollection._ensureIndex({type:1, post_date: 1, num_app_users_attending: 1, start_time: 1, sourceId: 1})
     Meteor.publish "content", (options = {}) ->
       console.log("client subscribed to content", options)
       if (! options.fields? && ! options.details )

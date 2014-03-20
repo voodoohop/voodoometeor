@@ -37,7 +37,7 @@ require "VoodoocontentModel", (model) ->
         this.route('landing',
           path: '/'
           action: ->
-            this.redirect("/content/events")
+            this.redirect("/content/events/0")
         )
 
 
