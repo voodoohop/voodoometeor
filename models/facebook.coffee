@@ -80,8 +80,8 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
 
       res = Meteor.sync((done) -> fb.api ""+fbid+"/attending",{summary:true}, (fbres) -> done(null,fbres))
       numattending = res.result.summary.count
-      if event.end_time
-        event.end_time = new Date(event.end_time).toJSON()
+
+      start_time = if event.start_time.length == 10 then moment.utc(event.start_time).hour(12)  .toJSON() else moment.parseZone(event.start_time).toJSON()
       voodoocontent =
         title: event.name
         location: event.location
@@ -90,15 +90,16 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
         source: "facebook"
         facebookData: event
         picture: event.cover?.source ? event.picture?.data?.url
-        start_time: new Date(event.start_time).toJSON()
-        post_date: new Date(event.start_time).toJSON()
-        end_time: new Date(event.end_time).toJSON()
+        start_time: start_time
+        only_date: event.start_time.length == 10
+        post_date: start_time
+        end_time: if event.end_time? then moment.parseZone(event.end_time).toJSON() else undefined
         description: event.description
         type: "event"
         like_count: numattending
         num_attending: numattending
         num_app_users_attending: num_app_users_attending
-        updated_time: new Date().toJSON()
+        updated_time: moment().toJSON()
 
       if (!contentModel.getContentBySourceId(event.id))
         console.log("event: #{voodoocontent.title} not found yet... inserting")

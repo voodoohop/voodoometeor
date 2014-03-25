@@ -19,3 +19,22 @@ require ["VoodoocontentModel","FacebookClient"], (model, fb) ->
           console.log(res)
         )
       ,["publish_actions"])
+
+  Template.contentcarousel.items_first_active = ->
+    _.map(this.items, (item, index) ->
+      return if (index == 0) then _.extend({isActive: true}, item) else item
+    )
+  Template.contentcarousel.count_up_to = ->
+    return null unless this.items?.length
+    res=_.map(_.range(this.items.length), (val) ->
+      return if (val == 0) then {isActive: true, index: val} else {index: val}
+    )
+    console.log("count_up_to",res,this)
+    return res
+
+  Template.contentcarousel.rendered = ->
+    console.log("carousel rendered", this)
+    node = $(this.firstNode)
+    Meteor.setTimeout( ->
+      node.carousel('cycle')
+    , 5000)

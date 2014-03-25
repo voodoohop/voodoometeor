@@ -32,16 +32,14 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
 
     thumbnailurl: ->
+      width = this.overrideWidth ? contentCommon.contentWidthInGrid(this.contentItem)
+      height = this.overrideHeight ? contentCommon.contentHeightInGrid(this.contentItem)
 
-      thumbnail_url = this.picture
+      thumbnail_url = this.contentItem.picture
       if (!thumbnail_url)
-        ebdta = embedly.get(this, contentCommon.contentWidthInGrid(this), contentCommon.contentHeightInGrid(this))
+        ebdta = embedly.get(this, width, height)
         thumbnail_url = ebdta?.thumbnail_url
-      # console.log("thumb:"+thumbnail_url)
       if (thumbnail_url? and isExternalLink(thumbnail_url))
-        #console.log "metadata",contentCommon.getContenttypeMetadata(this)
-        height = contentCommon.contentHeightInGrid(this)
-        width = contentCommon.contentWidthInGrid(this)
         embedly.getCroppedImageUrl(thumbnail_url, width, height)
       else
         return thumbnail_url

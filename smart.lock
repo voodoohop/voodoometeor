@@ -45,7 +45,8 @@
       },
       "reactive-store": {},
       "urlify2": {},
-      "phantomjs": {}
+      "phantomjs": {},
+      "googleAnalytics": {}
     },
     "packages": {
       "font-awesome": {
@@ -65,8 +66,8 @@
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
-        "tag": "v0.0.9",
-        "commit": "71e94c99462b8801a34c5363510758b6ff5f5ac7"
+        "tag": "v0.1.0",
+        "commit": "45ae50712632f4081724222f4d12a0562e151b33"
       },
       "moment": {
         "git": "https://github.com/acreeger/meteor-moment.git",
@@ -104,7 +105,7 @@
       "ms-seo": {
         "git": "https://github.com/DerMambo/ms-seo",
         "branch": "master",
-        "commit": "aea2f932b3a75e19ab1be376a8e3e5e67891dbba"
+        "commit": "ee04a070b353690260d8df1866d2798846dba55e"
       },
       "bootstrap-alerts": {
         "git": "https://github.com/asktomsk/bootstrap-alerts.git",
@@ -157,8 +158,8 @@
       },
       "bower": {
         "git": "https://github.com/mquandalle/meteor-bower.git",
-        "tag": "v0.1.4",
-        "commit": "71576ed3baf311a12268bc7eb044dac1ddc52b31"
+        "tag": "v0.1.5",
+        "commit": "4e96fa0365414371e412c8c5b79e7b4c2e6cefbf"
       },
       "masonrify": {
         "path": "packages/meteor-masonrify"
@@ -177,6 +178,11 @@
         "git": "https://github.com/gadicohen/meteor-phantomjs.git",
         "tag": "v0.0.2",
         "commit": "a72eb79af068dd5d5d617ac71a42bd74e0cb52a4"
+      },
+      "googleAnalytics": {
+        "git": "https://github.com/yasaricli/googleAnalytics.git",
+        "tag": "v0.0.7",
+        "commit": "ab6db1f9916b1a17d1756fb7185b781f7a9ea94b"
       },
       "marked": {
         "git": "https://github.com/chuangbo/meteor-marked.git",

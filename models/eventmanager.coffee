@@ -24,8 +24,23 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
 
       updateContentStats: (id, stats) ->
         this.unblock()
-        model.contentCollection.update(id,{$set: {fbstats: stats, num_app_users_attending: stats.voodooAttendingCount}})
-
+        model.contentCollection.update(id,{$set: {fbstats: stats}})#, num_app_users_attending: stats.voodooAttendingCount}})
+      featureEvent: (eventid, featured) ->
+        console.log("trying to feature event", eventid, this.userId)
+        if (Roles.userIsInRole(this.userId,"admin_event"))
+          console.log("featuring event", eventid)
+          model.contentCollection.update(eventid,{$set:{featured: featured}})
+          return true
+        else
+          return false
+      blockContent: (id, blocked) ->
+        console.log("trying to block content", id, this.userId)
+        if (Roles.userIsInRole(this.userId,"admin_event"))
+          #console.log("featuring event", eventid)
+          model.contentCollection.update(id, {$set:{blocked: blocked}})
+          return true
+        else
+          return false
     Meteor.users.allow(
       update: (uid, doc, fieldNames, modifier) ->
         return (uid == Meteor.userId() && fieldNames.length == 1 && (fieldNames[0] == "attending" or fieldNames[0] == "geolocation"))
@@ -49,12 +64,15 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
             #Meteor.call("attendEvent", id, (err, res) -> console.log(err,res));
           )
         ))
-        return ## hack to not load friends events
+        #return ## hack to not load friends events
+        eventProcessCount = 40
         fbapi.api "/me/friends",
           limit: 3000
         , (res) ->
           numProcessing = 0
           friendprocess = (friendlist) ->
+            if (eventProcessCount <= 0)
+              return
             #console.log("friendlist", friendlist)
             friend = friendlist.shift()
             if (! friend.id?)
@@ -78,6 +96,7 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
                 #console.log("length after",evts)
                 if (event?.id?)
                   Meteor.call "importFacebookEvent", event.id, (err,re) ->
+                    eventProcessCount--
                     console.log "imported", err ,re
                     numProcessing--
                     process(evts)
@@ -92,7 +111,6 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
           friends = _.shuffle(res.data)
           console.log("importing for friends",friends)
           friendprocess(friends)
-
 
 
       self.updateEventStats = (event) ->

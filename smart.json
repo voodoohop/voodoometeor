@@ -41,6 +41,7 @@
     },
     "reactive-store": {},
     "urlify2": {},
-    "phantomjs": {}
+    "phantomjs": {},
+    "googleAnalytics": {}
   }
 }

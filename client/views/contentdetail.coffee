@@ -6,7 +6,7 @@ Meteor.startup ->
     SEO.set
       title: data.title
       meta:
-        description: data.description
+          description: data.description
       og:
         title: data.title
         description: data.description

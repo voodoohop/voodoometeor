@@ -49,7 +49,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         name:"voodoohop"
         title:"VOODOO"
         query:
-          num_app_users_attending: {"$gte": 0}
+          blocked: {$not: true}, num_app_users_attending: {"$gte": 0}
         titleclass: "voodoologo"
         icon: "icon-voodoologo"
         disabled: true
@@ -117,7 +117,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         name:"events"
         icon:"icon-voodooevent"
         query:
-          {type: "event", post_date: {$gte: moment().subtract(6,"hours").toISOString() }, num_app_users_attending: {"$gt": 5}}
+          blocked: {$ne: true}, type: "event", post_date: {$gte: moment().subtract(12,"hours").toISOString() }, num_app_users_attending: {"$gt": 5}
         sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
       }
       {
@@ -126,7 +126,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         icon:"icon-voodoomap"
         disabled: true
         query:
-          {type: "event", post_date: {$gte: new Date().toISOString() }}
+          blocked: {$not: true}, type: "event", post_date: {$gte: new Date().toISOString() }
         sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
       }
 

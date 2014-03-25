@@ -3,3 +3,33 @@
         <span class="glyphicon glyphicon-heart"></span> {{#if liked }} Liked {{else}} Like {{/if}} <span class="badge">{{inferred_likes}}</span>
     </button>
 </template>
+
+<template name="helperContent">
+  {{> UI.contentBlock }}
+</template>
+
+<template name="contentcarousel">
+  <div id="{{id}}" class="carousel slide" data-interval="6000"  style="width: 460px; height: 345px; margin-top: 4px">
+      <!-- Carousel indicators -->
+      <ol class="carousel-indicators">
+        {{#each count_up_to}}
+        <li data-target="#{{../id}}" data-slide-to="{{index}}" class="{{#if isActive}}active{{/if}}"></li>
+        {{/each}}
+      </ol>
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        {{#each items_first_active}}
+        <div class="{{#if isActive}}active{{/if}} item">
+          {{> UI.contentBlock this}}
+        </div>
+        {{/each}}
+      </div>
+      <!-- Carousel nav -->
+      <a class="left-flat carousel-control" href="#{{id}}" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right-flat carousel-control" href="#{{id}}" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+  </div>
+</template>

@@ -1,7 +1,7 @@
 <template name="fbeventinvite">
 
         <div class="fs-invite-button-div {{inviting}} {{inline}} btn-group btn-group-responsive">
-                <a href="/contentDetail/{{event._id}}/inviteFriends" id="invitebutton_{{event._id}}" class="invitebutton btn btn-success ladda-button" data-style="expand-left" {{disabledAttribute}}>
+                <a href="/contentDetail/{{event._id}}/inviteFriends" id="invitebutton_{{event._id}}" class="invitebutton btn btn-primary ladda-button" data-style="expand-left" {{disabledAttribute}}>
                     <span class="ladda-label">
                     {{#if loadingFriends}}
                         loading Friends
@@ -16,7 +16,7 @@
                     </span>
                 </a>
                 {{#if minimized}}
-                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" {{disabledAttribute}}>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" {{disabledAttribute}}>
                         <span class="caret"></span>
                         <span class="sr-only">Invite Dropdown</span>
                     </button>

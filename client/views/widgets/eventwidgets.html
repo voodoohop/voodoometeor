@@ -6,11 +6,19 @@
 
 {{> likewidget }}
 
+{{#if isInRole 'admin_event'}}
+
+<div class="btn-group pull-right">
+{{> featureeventwidget }} {{> blockcontentwidget}}
+</div>
+  {{/if}}
+
+
 </template>
 
 <template name="eventattendwidget">
   <div class="btn-group btn-group-responsive">
-    <button type="button" data-toggle="dropdown" class="rsvpbutton btn btn-primary dropdown-toggle"><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-question-sign{{/if}}"></span> {{#if rsvp_confirmed}}Attending{{else}}RSVP{{/if}}
+    <button type="button" data-toggle="dropdown" class="rsvpbutton btn btn-success dropdown-toggle"><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-question-sign{{/if}}"></span> {{#if rsvp_confirmed}}Attending{{else}}RSVP{{/if}}
       <span class="badge">{{fbstats.attendingCount}}</span>
       <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu">
@@ -63,4 +71,29 @@
         <div class="help-block"></div>
     </div>
    </form>
+</template>
+
+
+<template name="featureeventwidget">
+ {{#if isInRole "admin_event"}}
+ <button type="button" class="btn btn-default" >
+   {{#if featured}}
+   <span class="glyphicon glyphicon-remove"> UnFeature</span>
+   {{else}}
+    <span class="glyphicon glyphicon-pushpin"> Feature</span>
+   {{/if}}
+  </button>
+ {{/if}}
+</template>
+
+<template name="blockcontentwidget">
+  {{#if isInRole "admin_event"}}
+  <button type="button" class="btn btn-default" >
+    {{#if blocked}}
+    <span class="glyphicon glyphicon-remove"> UnBlock</span>
+    {{else}}
+    <span class="glyphicon glyphicon-remove"> Block</span>
+    {{/if}}
+  </button>
+  {{/if}}
 </template>

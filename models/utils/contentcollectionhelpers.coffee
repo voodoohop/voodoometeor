@@ -10,7 +10,7 @@ define "ContentcollectionHelpers", ["VoodoocontentModel","FacebookApiAbstraction
     doc.updatedAt = moment()
 
   console.log("registering content collection hooks")
-  model.contentCollection.a fter.update (uid, doc, fields, modifier, options) ->
+  model.contentCollection.after.update (uid, doc, fields, modifier, options) ->
     console.log("content collection after update", uid, fields, modifier, options)
     if (_.contains(fields,"fbstats") or _.contains(fields,"likes"))
       console.log("likes changed")

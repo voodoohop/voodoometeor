@@ -23,7 +23,7 @@
 
 @voodoocol1: @brand-success;
 @voodoocol2: @brand-info;
-@voodoocol3: @brand-danger;
-@voodoocol4: @brand-warning;
+@voodoocol3: @brand-warning;
+@voodoocol4: @brand-primary;
 @voodoocol5: #d9534f;
 

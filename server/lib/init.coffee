@@ -9,3 +9,23 @@ require "Config", (config) ->
         appsecret: "e702a69b75c23dc41266d719cec3c408"
       embedly:
         key: "b5d3386c6d7711e193c14040d3dc5c07"
+      paypaltoken: "qifucLPH6_c135gdb7OXCHjYFghb4U6xOxWbyelQPoZiAxBdEhqvAD11daW"
+  console.log(Roles.getAllRoles().fetch())
+
+  Meteor.users.update({roles: {$exists: false}},{$set:{roles:[]}},{multi: true})
+  unless (_.find(Roles.getAllRoles().fetch(), (role) -> role.name == "feature_event"))
+    Roles.createRole("feature_event")
+  unless (_.find(Roles.getAllRoles().fetch(), (role) -> role.name == "admin_event"))
+    Roles.createRole("admin_event")
+
+  if user = Meteor.users.findOne({"profile.name": "Thomas Haferlach"})
+    Roles.addUsersToRoles(user._id,["admin_event","feature_event"])
+  console.log(Roles.getRolesForUser(Meteor.users.findOne({"profile.name": "Thomas Haferlach"})._id))
+  if Meteor.users.findOne({"profile.name": "Laurence Trille"})
+    Roles.addUsersToRoles(Meteor.users.findOne({"profile.name": "Laurence Trille"}),["admin_event","feature_event"])
+  if Meteor.users.findOne({"profile.name": "Pita Uchoa"})
+    Roles.addUsersToRoles(Meteor.users.findOne({"profile.name": "Pita Uchoa"}),["admin_event","feature_event"])
+
+  Meteor.publish(null, ->
+    Meteor.roles.find({})
+  )

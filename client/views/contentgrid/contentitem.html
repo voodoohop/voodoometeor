@@ -1,7 +1,7 @@
 <template name="contentthumb">
 
-    <div id="mediathumb_{{_id}}" class="mediathumb">
-      <a href="/contentDetail/{{slug}}">
+    <div id="mediathumb_{{contentItem._id}}" class="mediathumb">
+      <a href="/contentDetail/{{contentItem.slug}}">
       <img src="{{thumbnailurl}}">
       </a>
     </div>
@@ -16,7 +16,7 @@
         <!--<span class="contenttypelabel {{contentTypeMetaData.icon}} {{contentTypeMetaData.class}} {{bgcol}}" style="position: absolute; right: -2px; top: -2px;"> </span>
      -->
         {{#if showThumb}}
-            {{>contentthumb}}
+            {{>contentthumb contentItem=this}}
         {{/if}}
       <div class="contentitemfooter {{bgcol}}">
         {{#if title}}

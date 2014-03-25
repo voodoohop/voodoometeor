@@ -7,17 +7,20 @@ define "VoodoocontentModel",[], ->
   self.contentBlockSize = 35
 
   self.helpers =
-    postedDate: -> moment.parseZone(new Date(this.post_date)).fromNow()
+    postedDate: -> moment.parseZone(this.post_date).local().fromNow()
     fullDay: ->
       format = "dddd"
-      p = moment.parseZone(new Date(this.post_date))
-      if ! (p.diff(moment(),"days") in [0..6])
+      p = moment.parseZone(this.post_date).local()
+      if ! (p.diff(moment().local(),"days") in [0..6])
         format += " D/M"
       p.format(format)
+    time: ->
+      return "" if (this.only_date)
+      moment.parseZone(this.post_date).local().format("HH:mm")
     day: ->
       format = "ddd"
-      p = moment.parseZone(new Date(this.post_date))
-      if ! (p.diff(moment(),"days") in [0..6])
+      p = moment.parseZone(this.post_date).local()
+      if ! (p.diff(moment().local(),"days") in [0..6])
         format += " D/M"
       p.format(format)
     isFeatured: -> (this.isFeatured == true)
@@ -32,12 +35,6 @@ define "VoodoocontentModel",[], ->
     console.log("reducing", this)
     this.description.substring(0,300)+ "..."
 
-  self.subscribeContent =  (options, callback) ->
-    console.log("subscribing to content", options)
-    if (options?.details)
-      Meteor.subscribe "contentDetail", options, callback
-    else
-      Meteor.subscribe "content", options, callback
 
 
 
@@ -45,6 +42,14 @@ define "VoodoocontentModel",[], ->
   self.lastItemCount = -> self.cursor?.count() ? 0
 
   if (Meteor.isClient)
+
+    self.subscribeContent =  (options, callback) ->
+      console.log("subscribing to content", options)
+      if (options?.details)
+        Meteor.subscribe "contentDetail", options, callback
+      else
+        [Meteor.subscribe("featuredContent", options), Meteor.subscribe("content", options, callback)]
+
     #Meteor.startup ->
     #  Meteor.subscribe( "featuredContent")
     self.stopDetailSubscription = ->
@@ -70,7 +75,7 @@ define "VoodoocontentModel",[], ->
       console.log options
       opts =
         #skip: self.contentBlockSize *  (options?.blockno ? 0)
-        limit: self.lastLimit = (self.contentBlockSize * (options?.blockno ? 0) )
+        limit: if options?.blockno? > 0 then self.lastLimit = (self.contentBlockSize * (options?.blockno ? 0) ) else undefined
         fields: options?.fields
         sort: options?.sort
       q = options?.query ? {}
@@ -87,12 +92,20 @@ define "VoodoocontentModel",[], ->
 
   if (Meteor.isServer)
 
-    self.contentCollection._ensureIndex({type:1, post_date: 1, num_app_users_attending: 1, start_time: 1, sourceId: 1})
+    self.contentCollection._ensureIndex({type:1, post_date: 1, num_app_users_attending: 1, start_time: 1, sourceId: 1, blocked: 1})
     Meteor.publish "content", (options = {}) ->
       console.log("client subscribed to content", options)
       if (! options.fields? && ! options.details )
         options.fields = { facebookData: 0, description: 0 }
       self.getContent(options)
+
+    Meteor.publish "featuredContent", (options = {}) ->
+      console.log("client subscribed to featured content", options)
+      options.fields = { facebookData: 0, description: 0 }
+      options.blockno = 0
+      options.query.featured = true
+      self.getContent(options)
+
     Meteor.publish "contentDetail", (options) ->
       self.getContent(options)
     #Meteor.publish "featuredContent", ->

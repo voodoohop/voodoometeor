@@ -78,3 +78,13 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
             name: u.name
             fbid: u.fbUid
           )
+
+    Template.featureeventwidget.events
+      'click button': ->
+        console.log("featuring event", this)
+        Meteor.call("featureEvent", this._id, !this.featured, (err,res) -> console.log(err,res))
+
+    Template.blockcontentwidget.events
+      'click button': ->
+        console.log("blocking event", this)
+        Meteor.call("blockContent", this._id, !this.blocked, (err,res) -> console.log(err,res))
