@@ -52,7 +52,7 @@ define "EventMap", ["VoodoocontentModel", "ContentItem", "LeafletUtils"], (model
 
   Template.contentitem_event.helpers model.helpers
   Template.eventmapmarker.helpers contentItem.helpers
-  Template.eventmap.events =
+  Template.eventmap.events
     'change, keyup #maptextfilter': (evt) ->
       val = $(evt.target).val();
       self.changeEventQuery

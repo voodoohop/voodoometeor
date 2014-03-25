@@ -19,8 +19,7 @@
         "branch": "master"
       },
       "ms-seo": {
-        "git": "https://github.com/DerMambo/ms-seo",
-        "branch": "master"
+        "path": "packages/ms-seo-tom"
       },
       "bootstrap-alerts": {},
       "pagedown-bootstrap": {},
@@ -46,7 +45,9 @@
       "reactive-store": {},
       "urlify2": {},
       "phantomjs": {},
-      "googleAnalytics": {}
+      "googleAnalytics": {},
+      "analytics": {},
+      "GAnalytics": {}
     },
     "packages": {
       "font-awesome": {
@@ -103,9 +104,7 @@
         "commit": "2664f817844fba0fab0455a79bc62782c9091ad0"
       },
       "ms-seo": {
-        "git": "https://github.com/DerMambo/ms-seo",
-        "branch": "master",
-        "commit": "ee04a070b353690260d8df1866d2798846dba55e"
+        "path": "packages/ms-seo-tom"
       },
       "bootstrap-alerts": {
         "git": "https://github.com/asktomsk/bootstrap-alerts.git",
@@ -183,6 +182,16 @@
         "git": "https://github.com/yasaricli/googleAnalytics.git",
         "tag": "v0.0.7",
         "commit": "ab6db1f9916b1a17d1756fb7185b781f7a9ea94b"
+      },
+      "analytics": {
+        "git": "https://github.com/Tarangp/Meteor-Analytics.git",
+        "tag": "v0.3.9",
+        "commit": "8efca2c6e006bc75f97ff4c3002a2f9ab1a6b91b"
+      },
+      "GAnalytics": {
+        "git": "https://github.com/datariot/meteor-ganalytics.git",
+        "tag": "v0.1.1",
+        "commit": "91b19d37687bb2cd7976fb43b482143a53509d7e"
       },
       "marked": {
         "git": "https://github.com/chuangbo/meteor-marked.git",

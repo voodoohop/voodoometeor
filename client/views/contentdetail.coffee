@@ -10,7 +10,7 @@ Meteor.startup ->
       og:
         title: data.title
         description: data.description
-        image: data.picture
+        image: data.getPicture()
         type: "voodoohop:event"
         starttime: data.start_time
         endtime: data.end_time

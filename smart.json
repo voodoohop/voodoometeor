@@ -11,12 +11,13 @@
     "reactive-extra": {},
     "iron-router": {
       "path": "packages/iron-router-tom-version"
+
     },
     "blaze-layout": {
       "git": "https://github.com/EventedMind/blaze-layout.git"
     },
     "ms-seo": {
-      "git": "https://github.com/DerMambo/ms-seo"
+      "path": "packages/ms-seo-tom"
     },
     "bootstrap-alerts": {},
     "pagedown-bootstrap": {},
@@ -42,6 +43,8 @@
     "reactive-store": {},
     "urlify2": {},
     "phantomjs": {},
-    "googleAnalytics": {}
+    "googleAnalytics": {},
+    "analytics": {},
+    "GAnalytics": {}
   }
 }

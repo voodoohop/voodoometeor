@@ -64,8 +64,8 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
             #Meteor.call("attendEvent", id, (err, res) -> console.log(err,res));
           )
         ))
-        #return ## hack to not load friends events
-        eventProcessCount = 40
+        return ## hack to not load friends events
+        eventProcessCount = 20
         fbapi.api "/me/friends",
           limit: 3000
         , (res) ->
@@ -87,6 +87,8 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
                 friendprocess(friendlist)
                 return
               process = (evts) ->
+                if (eventProcessCount <= 0)
+                  return
                 numProcessing++
                 if (evts.length <= 0)
                   friendprocess(friendlist)

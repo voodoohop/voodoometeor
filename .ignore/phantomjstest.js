@@ -1,4 +1,4 @@
-var url = 'http://voodoohop.meteor.com';
+var url = 'http://voodoohop.com/content/events/0';
 var page = require('webpage').create();
 page.open(url);
 console.log('postopen');

@@ -1,8 +1,9 @@
 {
   "public":
   {
-    "googleAnalytics":
+    "ga":
     {
+      "account": "UA-8798516-7",
       "id": "UA-8798516-7",
       "host": "voodoohop.com"
     }

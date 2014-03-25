@@ -28,6 +28,8 @@ define "VoodoocontentModel",[], ->
     description: ->
       #console.log("getting description", this.description)
       this.description
+    getPicture: ->
+      return this.picture_override ? this.picture
 
   self.contentCollection.helpers self.helpers
 

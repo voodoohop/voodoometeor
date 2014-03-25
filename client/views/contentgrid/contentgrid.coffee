@@ -1,8 +1,25 @@
 define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","ContentCommon","TomMasonry","NavBar", "NavStamper"], (model,config,packery,contentCommon, tomMasonry,navBar, navStamper) ->
 
   console.log("loading content grid")
+
+
+
   self = {}
 
+  updateHeadData =  ->
+    SEO.set
+      title: "VOODOOHOP - " + contentCommon.getTitleFromPath(self.RsortFilters.path)
+      meta:
+        description: "MUSIC - ART - CULTURE - HEDONISM"
+      og:
+        title: "VOODOOHOP - " + contentCommon.getTitleFromPath(self.RsortFilters.path)
+        description: "MUSIC - ART - CULTURE - HEDONISM"
+        image: Meteor.absoluteUrl("images/logo_voodoohop_alta_inver t.jpg")
+        type: "website"
+        url: Meteor.absoluteUrl(window.location.pathname.slice(1))
+        site_name: "VOODOOHOP"
+      fb:
+        app_id: "78013154582"
 
   self.RsortFilters = new ReactiveObject(["blockvisible"])
 
@@ -30,7 +47,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
 
   Template.contentgrid.rendered = ->
     console.log("rendered content grid")
-
+    updateHeadData()
 
   Template.contentgrid.moreResults = ->
     model.lastItemCount() >= model.lastLimit;
@@ -78,9 +95,6 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       #yieldTemplates:
       #  'filterbar': {to: 'navbar'}
       waitOn:  ->
-        Deps.currentComputation.onInvalidate ->
-          console.trace()
-
         console.log("contentgrid waitOn", this.params[0])
         path = this.params[0].split("/")
         console.log("path",path)
@@ -100,9 +114,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
             _.extend({previous: items[(i - 1)]}, item)
         )
         featuredContent = model.getContent({query:{featured: true}}).fetch()
-        res = {gridContent: gridContent, featuredContent: featuredContent}
-        console.log("data res dates", _.map(res.gridContent,(i) -> i.start_time))
-        res
+        {gridContent: gridContent, featuredContent: featuredContent}
   navBar.initNavbar(null, self.RsortFilters)
 
   return self

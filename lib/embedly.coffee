@@ -69,6 +69,7 @@ define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
         self.prepareMediaEmbeds(content, options)
 
     Meteor.defer ->
+      return
       console.log("loading default embedly data")
 
       query =

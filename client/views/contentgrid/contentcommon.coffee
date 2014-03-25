@@ -133,6 +133,10 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
     ]
     initpath: ["events"]
 
+    getTitleFromPath: (path) ->
+      filterOption = _.findWhere(self.filterOptions, {name: path[0]})
+      return filterOption.title
+
     constructFilters: (path) ->
       tokenizedpath = _.clone(path)
       console.log(tokenizedpath)

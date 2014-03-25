@@ -14,7 +14,7 @@ require ["VoodoocontentModel","FacebookClient"], (model, fb) ->
       Meteor.call("like", component.data._id, (err, res) -> console.log("likeres", res); component.likeLadda?.stop())
       fb.ensureLoggedIn( ->
         console.log("fbapi: /me/og.likes","POST", {object: Meteor.absoluteUrl(window.location.pathname.substring(1))})
-        fb.api.api("/me/og.likes","POST", {object: Meteor.absoluteUrl(window.location.pathname.substring(1)),  "fb:explicitly_shared": true}, (res) ->
+        fb.api.api("/me/og.likes","POST", {object: Meteor.absoluteUrl(window.location.pathname.substring(1))}, (res) ->
           component.likeLadda?.stop()
           console.log(res)
         )

@@ -35,7 +35,7 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
       width = this.overrideWidth ? contentCommon.contentWidthInGrid(this.contentItem)
       height = this.overrideHeight ? contentCommon.contentHeightInGrid(this.contentItem)
 
-      thumbnail_url = this.contentItem.picture
+      thumbnail_url = this.contentItem.getPicture()
       if (!thumbnail_url)
         ebdta = embedly.get(this, width, height)
         thumbnail_url = ebdta?.thumbnail_url
@@ -46,19 +46,14 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
   Template.contentitem.helpers contentCommon.helpers
 
-  Template.contentitem.helpers model.helpers
 
-  Template.contentitem_event.helpers model.helpers
   Template.contentitem_event.helpers contentCommon.helpers
   Template.contentitem_event.helpers self.helpers
 
   model.contentCollection.helpers contentCommon.helpers
 
-  Template.contentitem_video.helpers model.helpers
   Template.contentitem_video.helpers contentCommon.helpers
-  Template.contentitem_photo.helpers model.helpers
   Template.contentitem_photo.helpers contentCommon.helpers
-  Template.contentitem_link.helpers model.helpers
   Template.contentitem_link.helpers contentCommon.helpers
 
 
@@ -68,7 +63,7 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
 
 
-  Template.contentitem.events =
+  Template.contentitem.events
 
     'click .mediaplaybutton': () ->
       console.log(this)

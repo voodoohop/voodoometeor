@@ -6,13 +6,12 @@ define "NavBar", ["ContentCommon", "TomMasonry"], (contentCommon, masonry) ->
 
     Template.navitem.helpers
       isSelected: ->
-        console.log("checking if selected")
         this.name == Rfilters.path?[0]
 
 
 
-    Template.navitem.events =
-      'click .sort_filter': () ->
+    Template.navitem.events
+      'click .sort_filter':  ->
         Rfilters.blockvisible= 1
         content_sort = Rfilters.content_sort
         Rfilters.content_sort = {

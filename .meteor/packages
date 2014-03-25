@@ -12,7 +12,6 @@ standard-app-packages
 handlebar-helpers
 moment
 page-js-ie-support
-router
 accounts-base
 event-hooks
 external-file-loader
@@ -32,9 +31,7 @@ npm
 connection-banner
 bower
 masonrify
-reactive-store
 ms-seo
+roles
 phantomjs
 spiderable-404-tom
-googleAnalytics
-roles

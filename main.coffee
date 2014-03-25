@@ -12,15 +12,16 @@ require "VoodoocontentModel", (model) ->
       #Meteor.publish "user", ->
       #  Meteor.users.find({},{fields: {'profile': 1, services : 1, pecado: 1, virtude: 1}})
       Meteor.publish("userData", ->
-        Meteor.users.find({_id: this.userId}, {fields: {attending: 1, services: 1, profile: 1, geolocation: 1, admin: 1, eventTickets: 1}});
+        Meteor.users.find({_id: this.userId ? "noone"}, {fields: {attending: 1, services: 1, profile: 1, geolocation: 1, admin: 1, eventTickets: 1}});
       )
-      Meteor.publish("userLocation", (query) ->
-        Meteor.users.find(query, {fields: {profile:1, geolocation: 1, "services.tomfacebook.id": 1}});
-      )
+      #Meteor.publish("userLocation", (query) ->
+      #  Meteor.users.find(query, {fields: {profile:1, geolocation: 1, "services.tomfacebook.id": 1}});
+      #)
+
       ## hack until we manage to set userId on server
-      Meteor.publish("users", ->
-        Meteor.users.find({});
-      )
+      #Meteor.publish("users", ->
+      #  Meteor.users.find({});
+      #)
 
 
     if (Meteor.isClient)
@@ -29,7 +30,7 @@ require "VoodoocontentModel", (model) ->
 
       Meteor.autosubscribe( ->
         Meteor.subscribe "userData"
-        Meteor.subscribe "users"
+        #Meteor.subscribe "users"
       )
       #console.log("configured router without autoRender")
       #Router?.configure({autoRender: false})
@@ -39,6 +40,10 @@ require "VoodoocontentModel", (model) ->
           action: ->
             this.redirect("/content/events/0")
         )
+
+
+
+
 
 
 

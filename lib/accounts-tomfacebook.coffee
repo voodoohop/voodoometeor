@@ -9,7 +9,7 @@ if (Meteor.isServer)
         appId: config.current().facebook.appid,
         secret: config.current().facebook.appsecret
 
-    Accounts.registerLoginHandler (options) ->
+    Accounts.registerLoginHandler("tomfacebook", (options) ->
       console.log(options)
       return `undefined`  unless options.tomfacebook # don't handle
 
@@ -23,15 +23,15 @@ if (Meteor.isServer)
           name: options.username
 
       console.log("creating or updating user from fb with", serviceData, opts)
-      userId = Accounts.updateOrCreateUserFromExternalService("tomfacebook", serviceData, opts).id
+      createUserRes = Accounts.updateOrCreateUserFromExternalService("tomfacebook", serviceData, opts)
+      console.log(createUserRes)
+      userId = createUserRes.userId
       console.log("got userId", userId)
-      stampedToken = Accounts._generateStampedLoginToken();
       Meteor.users.update(userId,
-        $push: {'services.resume.loginTokens': Accounts._hashStampedToken(stampedToken)}
         $set: opts
       )
-      return {id: userId, token: stampedToken.token, tokenExpires: Accounts._tokenExpiration(stampedToken.when) }
-
+      return {userId: userId}
+    )
 else
   Meteor.loginWithTomFacebook = (userdetails, callback) ->
     console.log("logging in with", userdetails)
