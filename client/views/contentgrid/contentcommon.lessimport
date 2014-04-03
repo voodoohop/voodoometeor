@@ -1,5 +1,5 @@
 @import "../../style/elements.lessimport";
-@import "../../style/bootstrap/bootstrap-import.lessimport";
+@import "../../style/bootstrap/theme-variables.import.less";
 
 .saturate(@pct) {
   filter: ~"saturate(@{pct})";

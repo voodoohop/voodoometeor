@@ -48,6 +48,7 @@ define "FacebookApiHelpers", [], ->
             malecount = _.filter(res.data, (u) -> u.gender == "male").length
             femalecount = _.filter(res.data, (u) -> u.gender == "female").length
             voodoocount = _.filter(res.data, (u) -> u.installed).length
+            return unless voodoocount > 1
 
             console.log("got stats and female, male counts", femalecount, malecount)
             totalAttending = res.summary?.count

@@ -9,13 +9,7 @@
     "event-hooks": {},
     "external-file-loader": {},
     "reactive-extra": {},
-    "iron-router": {
-      "path": "packages/iron-router-tom-version"
-
-    },
-    "blaze-layout": {
-      "git": "https://github.com/EventedMind/blaze-layout.git"
-    },
+    "iron-router": {},
     "ms-seo": {
       "path": "packages/ms-seo-tom"
     },

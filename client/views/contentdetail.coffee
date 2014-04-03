@@ -22,7 +22,7 @@ Meteor.startup ->
 
 
 
-  require ["VoodoocontentModel","ContentItem", "FacebookClient", "EventManager"], (model, contentItem, fb, eventManager) ->
+  require ["VoodoocontentModel","ContentItem", "FacebookClient", "EventManager", "LoadingTemplates"], (model, contentItem, fb, eventManager, loadingTemplates) ->
     console.log("adding content detail route")
 
     Template.contentdetailcaption.rendered = ->
@@ -47,10 +47,12 @@ Meteor.startup ->
             console.log("rendering default screen")
             this.render()
             #this.render({"contentdetailheader": {to: "header"}})
+            self.loading = false
           else
-            console.log("instead of loading screen, pause", this)
-            #console.log("rendering loading screen")
-            #this.render("loadingScreen")
+            unless self.loading
+              self.loading = true
+              loadingTemplates.loadingContent(null)
+              loadingTemplates.renderRandom(this)
 
         data: ->
           {contentItem: model.getContentById(this.params._id)}

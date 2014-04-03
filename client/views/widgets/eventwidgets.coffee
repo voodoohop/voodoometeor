@@ -14,9 +14,7 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
         caption: 'An example caption'
       , (res) -> console.log(res));
 
-  Template.eventtoolbar.rendered = ->
 
-  Template.eventtoolbar.rsvp_confirmed = -> eventManager.rsvp_confirmed(this)
 
   Template.event_genderratio.ratio = ->
     return unless this.fbstats?
@@ -88,3 +86,38 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
       'click button': ->
         console.log("blocking event", this)
         Meteor.call("blockContent", this._id, !this.blocked, (err,res) -> console.log(err,res))
+
+    listHelperState = new ReactiveObject(["name","email","validated","notvalidated","lastSubmitted"])
+    listHelperLadda = null;
+    listHelperState.rendered =
+      #listHelperLadda = Ladda.create(this.find(".submitbutton"))
+
+    listHelperState.notvalidated = true
+    Template.listhelper.events
+      "change, keyup .listname,.listemail": (e) ->
+        name = $(".listname").val()
+        email = $(".listemail").val()
+        console.log("name,email",name,email)
+        listHelperState.name = name
+        listHelperState.email = email
+        listHelperState.validated = name.indexOf(" ") > 0 and email.indexOf("@") > 0
+        listHelperState.notvalidated = ! listHelperState.validated
+      "click button": ->
+        console.log("submitting", listHelperState)
+        if (listHelperState.validated)
+          listHelperState.validated = false
+          console.log("addNameToEventList",this._id, listHelperState.name, listHelperState.email)
+          Meteor.call("addNameToEventList",this._id, listHelperState.name, listHelperState.email, (err, res) ->
+            console.log("server res",err,res)
+            listHelperState.lastSubmitted = listHelperState.name
+            Alerts.add("listsubmitted", listHelperState.name, "success",  {autoHide: 10000, html: true});
+            listHelperState.name=""
+            listHelperState.email=""
+            $(".listname").val("")
+            $(".listemail").val("")
+            listHelperState.validated = false
+          )
+    Template.listhelper.state = listHelperState
+
+
+

@@ -11,13 +11,7 @@
       "event-hooks": {},
       "external-file-loader": {},
       "reactive-extra": {},
-      "iron-router": {
-        "path": "packages/iron-router-tom-version"
-      },
-      "blaze-layout": {
-        "git": "https://github.com/EventedMind/blaze-layout.git",
-        "branch": "master"
-      },
+      "iron-router": {},
       "ms-seo": {
         "path": "packages/ms-seo-tom"
       },
@@ -67,8 +61,8 @@
       },
       "handlebar-helpers": {
         "git": "https://github.com/raix/Meteor-handlebar-helpers.git",
-        "tag": "v0.1.0",
-        "commit": "45ae50712632f4081724222f4d12a0562e151b33"
+        "tag": "v0.1.1",
+        "commit": "0b407ab65e7c1ebd53d71aef0de2e2c1d21a597c"
       },
       "moment": {
         "git": "https://github.com/acreeger/meteor-moment.git",
@@ -77,8 +71,8 @@
       },
       "nprogress": {
         "git": "https://github.com/zhouzhuojie/meteor-nprogress.git",
-        "tag": "v0.0.3",
-        "commit": "ffd1c5dd400af64121197f4e637a215c4b6b1fc7"
+        "tag": "v0.0.4",
+        "commit": "8333206b751a24fac1fbd1b03fa37621bcefe50c"
       },
       "event-hooks": {
         "git": "https://github.com/BenjaminRH/meteor-event-hooks.git",
@@ -96,12 +90,9 @@
         "commit": "fe8d2f8e27c501be6533b419c3a00aae884b838b"
       },
       "iron-router": {
-        "path": "packages/iron-router-tom-version"
-      },
-      "blaze-layout": {
-        "git": "https://github.com/EventedMind/blaze-layout.git",
-        "branch": "master",
-        "commit": "2664f817844fba0fab0455a79bc62782c9091ad0"
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.7.0",
+        "commit": "05f34bc48c4cad9fdaa366c1ddcabe6980232ece"
       },
       "ms-seo": {
         "path": "packages/ms-seo-tom"
@@ -180,8 +171,8 @@
       },
       "googleAnalytics": {
         "git": "https://github.com/yasaricli/googleAnalytics.git",
-        "tag": "v0.0.7",
-        "commit": "ab6db1f9916b1a17d1756fb7185b781f7a9ea94b"
+        "tag": "v0.0.8",
+        "commit": "2c47f147d64554e870c7c02691d5c2efde040ee3"
       },
       "analytics": {
         "git": "https://github.com/Tarangp/Meteor-Analytics.git",
@@ -193,10 +184,15 @@
         "tag": "v0.1.1",
         "commit": "91b19d37687bb2cd7976fb43b482143a53509d7e"
       },
+      "blaze-layout": {
+        "git": "https://github.com/EventedMind/blaze-layout.git",
+        "tag": "v0.2.2",
+        "commit": "8bc53798fe5965669ae67c72f91829fcfdceabfd"
+      },
       "marked": {
         "git": "https://github.com/chuangbo/meteor-marked.git",
-        "tag": "v0.3.1",
-        "commit": "3d9a9c94793b20e1ee7c807931cb536010d6f820"
+        "tag": "v0.3.2",
+        "commit": "850f63135cdeb05344c420bd586fd8af9cab75df"
       }
     }
   }

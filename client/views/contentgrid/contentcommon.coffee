@@ -9,7 +9,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
       icon:"glyphicon glyphicon-calendar"
     post_date_asc:
       title:"Post Date"
-      name:"post_date_desc"
+      name:"post_date_asc"
       field:"post_date"
       direction: 1
       icon:"glyphicon glyphicon-calendar"
@@ -35,10 +35,10 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
 
 
     contentTypes: [
-      {name: "event", color:"voodoocolor1", title:"Events", icon:"glyphicon glyphicon-calendar", class:"label label-primary", showtitle: true, colorfromweekday: true, width: 230, height: 180}
-      {name: "video", color:"voodoocolor2", title:"Videos", icon:"glyphicon glyphicon-facetime-video", class:"label-success label",showtitle: true, inlineplay: true,width: 460, height: 280, allowDynamicAspectRatio: true, maxWidth: 460, maxHeight: 480, minHeight: 150}
-      {name: "photo", color: "voodoocolor3", title:"Photos", icon:"glyphicon glyphicon-picture", class:"label label-warning", width: 345, height: 345, showtitle:true, allowDynamicAspectRatio: true, maxWidth: 460, maxHeight: 440}
-      {name: "link", color: "voodoocolor4",title:"Links", icon:"glyphicon glyphicon-link", class:"label label-info", width: 230, height: 140}
+      {name: "event", color:"voodoocolor1", title:"Events", icon:"glyphicon glyphicon-calendar", class:"label label-primary", showtitle: true, colorfromweekday: true, width: 230, height: 230}
+      {name: "video", color:"voodoocolor2", title:"Videos", icon:"glyphicon glyphicon-facetime-video", class:"label-success label",showtitle: false, inlineplay: true,width: 345, height: 230, allowDynamicAspectRatio: true, maxWidth: 345, maxHeight: 460, minHeight: 115}
+      {name: "photo", color: "voodoocolor3", title:"Photos", icon:"glyphicon glyphicon-picture", class:"label label-warning", width: 345, height: 345, showtitle:false, allowDynamicAspectRatio: true, maxWidth: 345, maxHeight: 345}
+      {name: "link", color: "voodoocolor4",title:"Links", icon:"glyphicon glyphicon-link", class:"label label-info", width: 230, height: 115}
       {name: "coverphoto", color: "voodoocolor5",title:null, icon:null, class:"label label-info", width: 575, height: 400, allowDynamicAspectRatio: true}
     ]
 
@@ -49,7 +49,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         name:"voodoohop"
         title:"VOODOO"
         query:
-          blocked: {$not: true}, num_app_users_attending: {"$gte": 0}
+          blocked: {$ne: true}, num_app_users_attending: {"$gte": 0}
         titleclass: "voodoologo"
         icon: "icon-voodoologo"
         disabled: true
@@ -67,7 +67,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
             name:"music"
             icon: "icon-voodoomusic"
             query:
-              $or: [{type: "photo"}, {type: "video"}]
+              $and: [{type: "video"},{"embedlyData.html": {$exists: true}}]
             sortFilters: [sortTypes.post_date_desc, sortTypes.num_app_users_attending]
           }
           {
@@ -117,17 +117,26 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         name:"events"
         icon:"icon-voodooevent"
         query:
-          blocked: {$ne: true}, type: "event", post_date: {$gte: moment().subtract(12,"hours").toISOString() }, num_app_users_attending: {"$gt": 5}
+          blocked: {$ne: true}, type: "event", post_date: {$gte: moment().minutes(0).seconds(0).subtract(12,"hours").toISOString() }, num_app_users_attending: {"$gt": 5}
         sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
       }
+#      {
+#        title:"Map"
+#        name:"map"
+#        icon:"icon-voodoomap"
+#        disabled: true
+#        query:
+#          blocked: {$not: true}, type: "event", post_date: {$gte: moment().minutes(0).seconds(0).toISOString() }
+#        sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
+#      }
       {
-        title:"Map"
-        name:"map"
-        icon:"icon-voodoomap"
-        disabled: true
+        title:"Wall"
+        name:"wall"
+        icon: "glyphicon glyphicon-link"
+        disabled: false
         query:
-          blocked: {$not: true}, type: "event", post_date: {$gte: new Date().toISOString() }
-        sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
+          wallPost: true
+        sortFilters: [sortTypes.post_date_desc]
       }
 
     ]
@@ -180,9 +189,13 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
 
     contentHeightInGrid: (item) ->
       metadata = self.getContenttypeMetadata(item)
-      if (metadata.allowDynamicAspectRatio and (origHeight = item.embedlyData?[0]?.height))
+      #console.log("getting content height in grid",metadata,item)
+      if (metadata.allowDynamicAspectRatio and item.embedlyData?[0]?)
+        origHeight = item.embedlyData?[0]?.height
         origWidth = item.embedlyData[0].width
+        #console.log("origWidth,height",origWidth, origHeight)
         maxHeight = calcMaxSize(origWidth, origHeight, metadata)[1]
+        #console.log("maxHeight",maxHeight)
         if (metadata.minHeight?)
           maxHeight=Math.max(metadata.minHeight,maxHeight)
         return maxHeight
@@ -190,8 +203,12 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
   }
 
   self.getContenttypeMetadata =  _.partial( (c,ob = this) ->
+    #console.log("getmetadata,",c,ob)
     _.where(c.contentTypes, {name: ob.type })?[0]
   ,self)
+
+
+
 
   self.itemWidth = (item, showDetail) ->
       if (showDetail && false)
@@ -236,6 +253,8 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
     multiplier = null
     if (aspectRatio >= metadata.maxWidth/metadata.maxHeight)
       multiplier = metadata.maxWidth / origWidth
+      console.log("metadata", metadata, metadata.maxWidth,origWidth, metadata.maxWidth / origWidth)
+      console.log("mult",multiplier)
     else
       cHeight = 0
       colno = 0
@@ -247,6 +266,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
       cols = colno - 1
       multiplier = cols*tomMasonry.columnWidth/origWidth
     height = Math.round(origHeight * multiplier)
+    console.log("multiplier after",multiplier);
     snapheight = Math.floor(height/tomMasonry.columnHeight)*tomMasonry.columnHeight
     return [Math.round(origWidth*multiplier), snapheight];
 

@@ -29,7 +29,6 @@ require ["VoodoocontentModel","FacebookClient"], (model, fb) ->
     res=_.map(_.range(this.items.length), (val) ->
       return if (val == 0) then {isActive: true, index: val} else {index: val}
     )
-    console.log("count_up_to",res,this)
     return res
 
   Template.contentcarousel.rendered = ->
@@ -38,3 +37,48 @@ require ["VoodoocontentModel","FacebookClient"], (model, fb) ->
     Meteor.setTimeout( ->
       node.carousel('cycle')
     , 5000)
+
+  Template.wallpostform.rendered = ->
+    console.log(this.find("button"))
+    this.submitLadda = Ladda.create(this.$("button")[0])
+
+
+
+  Session.set("delayNextWallPost",Session.get("delayNextWallPost"))
+  decrement = ->
+    Meteor.setTimeout( ->
+      delay = parseInt(Session.get("delayNextWallPost"))
+      Session.set("delayNextWallPost", delay-1)
+      if (delay > 0)
+        decrement()
+    , 1000)
+    
+  if (Session.get("delayNextWallPost"))
+    decrement()
+
+  Template.wallpostform.cantPost = ->
+    parseInt(Session.get("delayNextWallPost")) > 0
+
+  Template.wallpostform.nextPostDelay = ->
+    parseInt(Session.get("delayNextWallPost"))
+
+  Template.wallpostform.events
+    "click .submitpost": (event,tmplInstance)->
+      inputfield = $(tmplInstance.firstNode).find("input")[0]
+      linkURL = inputfield.value
+      linkURL = 'http://' + linkURL if (!linkURL.match(/^[a-zA-Z]+:\/\//))
+      tmplInstance.submitLadda.start()
+      inputfield.value = linkURL
+      $.embedly.oembed(linkURL,
+        key: 'b5d3386c6d7711e193c14040d3dc5c07'
+        query: {width:345}
+      ).progress((data) ->
+        console.log(data);
+        Meteor.call("insertWallPostFromEmbedly", data, (err,res) ->
+          console.log("inserted")
+          tmplInstance.submitLadda.stop()
+          inputfield.value=""
+          Session.set("delayNextWallPost",30)
+          decrement()
+        )
+      )

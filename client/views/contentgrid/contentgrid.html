@@ -1,12 +1,8 @@
 
 
-<template name="embeddedmedia">
-    {{{content}}}
-</template>
-
 <template name="contentitemgridsizer">
-    <div class="contentitemgridsizer content_type_{{type}}_default_size {{#if isExpanded}} contentitemexpanded {{/if}}"
-         style="width: {{width showDetail}}px;">
+    <div class="contentitemgridsizer {{#if isExpanded}} contentitemexpanded {{/if}}"
+         style="width: {{width showDetail}}px; height: {{height showDetail}}px;">
         {{>contentitem}}
     </div>
 
@@ -20,16 +16,25 @@
       {{#masonryElement "Contentgrid"}}
         {{> userLoginStatus}}
       {{/masonryElement}}
-
+      {{#unless isWall}}
+      {{#if featuredContent}}
       {{#masonryElement "Contentgrid"}}
         {{#contentcarousel id="featuredContent" items=featuredContent}}
       <div style="width: 100%; height: 100%" class="{{bgcol}}">
-          <div style="height: 45px"><h3 style="margin-top: 0px">{{fullDay}} <small>{{location}}</small></h3></div>
+          <div class="featuredHeader"><h3 style="margin-top: 0px">{{fullDay}} <small>{{location}}</small></h3></div>
           {{> contentthumb overrideWidth=460 overrideHeight=250 contentItem=this}}
-          <div style="height: 50px"><h3>{{title}} </h3></div>
+          <div class="featuredFooter"><h3>{{title}} </h3></div>
       </div>
       {{/contentcarousel}}
       {{/masonryElement}}
+      {{/if}}
+      {{/unless}}
+
+      {{#if isWall}}
+        {{#masonryElement "Contentgrid"}}
+          {{> wallpostform}}
+        {{/masonryElement}}
+      {{/if}}
   <!--
       {{#masonryElement "Contentgrid"}}
        {{> fbpagelikebutton }}

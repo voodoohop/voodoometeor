@@ -1,4 +1,4 @@
-define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","ContentCommon","TomMasonry","NavBar", "NavStamper"], (model,config,packery,contentCommon, tomMasonry,navBar, navStamper) ->
+define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","ContentCommon","TomMasonry","NavBar", "NavStamper","LoadingTemplates"], (model,config,packery,contentCommon, tomMasonry,navBar, navStamper, loadingTemplates) ->
 
   console.log("loading content grid")
 
@@ -14,7 +14,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       og:
         title: "VOODOOHOP - " + contentCommon.getTitleFromPath(self.RsortFilters.path)
         description: "MUSIC - ART - CULTURE - HEDONISM"
-        image: Meteor.absoluteUrl("images/logo_voodoohop_alta_inver t.jpg")
+        image: Meteor.absoluteUrl("images/voodoologo_site_nav.png")
         type: "website"
         url: Meteor.absoluteUrl(window.location.pathname.slice(1))
         site_name: "VOODOOHOP"
@@ -64,8 +64,6 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         target.data "visible", true
         self.RsortFilters.blockvisible++
     else
-
-
       target.data "visible", false  if target.data("visible")
   , 50)
 
@@ -76,7 +74,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
 
   self.playMedia =  (item) ->
     self.RselectedItem.id = item._id
-    self.RselectedItem.showMedia = true
+    self.RselectedItem.playingMedia = true
 
   Template.contentitemgridsizer.helpers contentCommon.helpers
 
@@ -85,7 +83,10 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
     diff = moment.parseZone(item2?.start_time).local().dayOfYear() - moment.parseZone(item1?.start_time).local().dayOfYear()
     #console.log(diff)
     return diff != 0
-
+  Template.contentgrid.filter = ->
+    Session.get("currentParams")[0]?.split("/")[0]
+  Template.contentgrid.isWall = ->
+    Session.get("currentParams")[0]?.split("/")[0] == "wall"
 
   Router?.map ->
     this.route 'content',
@@ -100,8 +101,16 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         console.log("path",path)
         self.RsortFilters.filter = contentCommon.constructFilters(path)
         self.RsortFilters.path = path
+        loadingTemplates.loadingContent(model.contentCollection.find())
         self.subscribeFilteredSortedContent()
-
+      action: ->
+        if this.ready()
+          this.render()
+          self.loading = false
+        else
+          unless self.loading
+            self.loading = true
+            loadingTemplates.renderRandom(this)
       data: ->
         if (!this.ready())
           return null;

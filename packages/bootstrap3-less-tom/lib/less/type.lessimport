@@ -252,7 +252,7 @@ blockquote {
     color: @blockquote-small-color;
 
     &:before {
-      content: '\2014 \00A0'; // em dash, nbsp
+//      content: '\2014 \00A0'; // em dash, nbsp
     }
   }
 }
@@ -273,9 +273,9 @@ blockquote.pull-right {
   small,
   .small {
     &:before { content: ''; }
-    &:after {
-      content: '\00A0 \2014'; // nbsp, em dash
-    }
+//    &:after {
+//      content: '\00A0 \2014'; // nbsp, em dash
+//    }
   }
 }
 

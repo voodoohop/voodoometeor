@@ -8,7 +8,7 @@ define "TomMasonry",[], ->
       Math.floor(width / (self.columnWidth+self.columnGutter*2/3)) * (self.columnWidth+ self.columnGutter*2/3)
 
     windowWidthToMasonryCol: -> self.widthToMasonryCol Meteor.RwindowSize.width
-
+    columnHeight: 115
 
   }
 

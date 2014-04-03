@@ -17,6 +17,7 @@
 </template>
 
 <template name="eventattendwidget">
+  {{#unless closedList}}
   <div class="btn-group btn-group-responsive">
     <button type="button" data-toggle="dropdown" class="rsvpbutton btn btn-success dropdown-toggle"><span class="glyphicon {{#if rsvp_confirmed}}glyphicon-ok{{else}}glyphicon-question-sign{{/if}}"></span> {{#if rsvp_confirmed}}Attending{{else}}RSVP{{/if}}
       <span class="badge">{{fbstats.attendingCount}}</span>
@@ -26,6 +27,7 @@
       <li><a type="button" class="rsvp_decline"><span class="glyphicon glyphicon-question-sign"></span> Undecided</a></li>
     </ul>
   </div>
+  {{/unless}}
 </template>
 
 <template name="eventlocation">
@@ -96,4 +98,40 @@
     {{/if}}
   </button>
   {{/if}}
+</template>
+
+<template name="listhelper">
+  <div class="nameonlist panel panel-primary">
+    <div class="panel-heading">
+      List
+    </div>
+    <div class="panel-body">
+      {{#if rsvp_confirmed}}
+      <em>{{user.profile.name}}</em> your name is on the list
+      <br><br>
+      <em>Add friends:</em><br>
+      {{/if}}
+      {{#if closedList}}
+      <h3 style="color: red">LIST CLOSED. SORRY!</h3>
+      {{else}}
+      <div class="input-group">
+        <span class="input-group-addon">Name:</span>
+        <input type="text" class="form-control listname">
+        <span class="input-group-addon">Email:</span>
+        <input type="text" class="form-control listemail">
+                    <span class="input-group-btn">
+                      <button class="btn btn-warning ladda-button submitbutton" type="button" {{conditionalAttr "disabled" state.notvalidated}}>Submit</button>
+                    </span>
+      </div>
+      {{#if state.lastSubmitted}}
+      <br>
+      <div class="alert alert-success">{{state.lastSubmitted}} added to list</div>
+      {{/if}}
+      {{/if}}
+    </div>
+  </div>
+</template>
+
+<template name="listsubmitted">
+  {{this}} added to list
 </template>

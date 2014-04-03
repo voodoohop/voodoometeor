@@ -9,7 +9,18 @@
               {{> backbutton }}
               {{> eventtoolbar }}
             </div>
+          {{#if hasList}}
+          <br><br>
+          <div class="row">
+          <div class="col-lg-8">
+{{> listhelper}}
+          </div>
+          </div>
+          {{/if}}
         </div>
+      {{#if embedMedia}}
+      {{{embedMedia}}}
+      {{/if}}
     </div>
     {{/with}}
 </template>

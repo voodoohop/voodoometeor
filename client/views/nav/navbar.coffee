@@ -22,6 +22,10 @@ define "NavBar", ["ContentCommon", "TomMasonry"], (contentCommon, masonry) ->
 
       'click .content_filter': (param1,param2,param3) ->
         console.log("clicked content_filter",this,param1,param2,param3)
+
+        Router.go("/content/"+this.name+"/0")
+        return
+
         currobj = this
 
         sub = null
@@ -34,6 +38,8 @@ define "NavBar", ["ContentCommon", "TomMasonry"], (contentCommon, masonry) ->
         console.log("path",path)
         filter = contentCommon.constructFilters(path)
         console.log("constructed filter",filter)
+
+
         #filters = Rfilters.active_content_filter
         #if (_.contains(filters,this.name))
         #  filters = _.without filters, this.name

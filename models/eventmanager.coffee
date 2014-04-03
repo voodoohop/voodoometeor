@@ -124,6 +124,8 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
       self.rsvp_confirmed = (event) ->
         return false unless Meteor.user()
         _.contains(Meteor.user().attending, event._id)
+      model.contentCollection.helpers
+        rsvp_confirmed: -> self.rsvp_confirmed(this)
       self.invite = (fbeventid, friendlist) ->
         console.log "/"+fbeventid+"/invited", {users: _.map(friendlist, (u) -> u.id)}
         fb.api.api("/"+fbeventid+"/invited","POST", {users: _.map(friendlist, (u) -> u.id)}, (fbres) -> console.log("fbeventinvite res:", fbres))
@@ -143,6 +145,7 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
       fb.onLoggedIn(self.fbLoggedin)
 
       self.getFriendsAttending = (eventId, callback) ->
+        return unless fb.loggedIn
         fbEventId = model.getContentById(eventId).sourceId
         fqlQuery = "SELECT uid,rsvp_status FROM event_member WHERE eid = " + fbEventId + " AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me())";
         fb.api.api("/fql",{q:fqlQuery}, (res) ->

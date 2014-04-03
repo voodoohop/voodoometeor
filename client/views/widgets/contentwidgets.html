@@ -33,3 +33,22 @@
       </a>
   </div>
 </template>
+
+<template name="wallpostform">
+  <div class="wallpostform">
+    <div class="input-group">
+      <span class="input-group-addon glyphicon glyphicon-link"></span>
+      <input type="text" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-primary btn-large submitpost ladda-button" data-style="slide-up" type="button"
+            {{conditionalAttr "disabled" cantPost}}>
+            {{#if cantPost}}
+              {{nextPostDelay}}
+            {{else}}
+               Post
+            {{/if}}
+        </button>
+      </span>
+    </div>
+  </div>
+</template>

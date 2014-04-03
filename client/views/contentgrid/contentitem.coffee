@@ -13,7 +13,7 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
     randcol: -> contentCommon.colors[_.random(0,contentCommon.colors.length-1)]
 
-    showMedia: -> grid.RselectedItem.id == this._id  and grid.RselectedItem.playingMedia
+    showMedia: -> grid.isPlayingMedia(this)
 
     isExpanded: -> grid.isExpanded(this)
 
@@ -23,17 +23,26 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
     titleellipsis: ->
       this.title?.substr(0,20) + (if this.title.length >40 then "..." else "")
 
-    showThumb: true # -> ! grid.isPlayingMedia(this)
+    showThumb: ->
+      ! grid.isPlayingMedia(this)
 
   console.log("registering content item helpers")
   Template.contentitem.helpers self.helpers
 
   Template.contentthumb.helpers
-
-
+    detailPath: ->
+      #console.log("detailPath",)
+      if (this.contentItem.type=="event")
+        "/contentDetail/"+this.contentItem.slug
+      else
+        "#"
     thumbnailurl: ->
+
       width = this.overrideWidth ? contentCommon.contentWidthInGrid(this.contentItem)
       height = this.overrideHeight ? contentCommon.contentHeightInGrid(this.contentItem)
+
+      if (this.contentItem.contentTypeMetaData().showtitle and ! this.overrideHeight)
+        height -= 50 # footer height should be elsewhere
 
       thumbnail_url = this.contentItem.getPicture()
       if (!thumbnail_url)
@@ -53,12 +62,16 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
   model.contentCollection.helpers contentCommon.helpers
 
   Template.contentitem_video.helpers contentCommon.helpers
+  Template.contentitem_video.helpers self.helpers
+
   Template.contentitem_photo.helpers contentCommon.helpers
   Template.contentitem_link.helpers contentCommon.helpers
 
 
   Template.embeddedmedia.helpers
-    content: -> embedly.get(this,contentCommon.contentWidthInGrid(this), contentCommon.contentHeightInGrid(this))?.html
+    content: ->
+      console.log("embedded media content", embedly.get(this,contentCommon.contentWidthInGrid(this), contentCommon.contentHeightInGrid(this)))
+      embedly.get(this,contentCommon.contentWidthInGrid(this), contentCommon.contentHeightInGrid(this))?.html
 
 
 

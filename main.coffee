@@ -20,7 +20,7 @@ require "VoodoocontentModel", (model) ->
 
       ## hack until we manage to set userId on server
       #Meteor.publish("users", ->
-      #  Meteor.users.find({});
+      #  Meteor.users.find({},{fields: {profile: 1, attending: 1} });
       #)
 
 
@@ -33,7 +33,8 @@ require "VoodoocontentModel", (model) ->
         #Meteor.subscribe "users"
       )
       #console.log("configured router without autoRender")
-      #Router?.configure({autoRender: false})
+      Router?.configure({ loadingTemplate: 'loadingtemplate1'})
+      Router?.onBeforeAction( -> Session.set("currentParams",this.params))
       Router.map ->
         this.route('landing',
           path: '/'

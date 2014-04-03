@@ -50,7 +50,11 @@ define "VoodoocontentModel",[], ->
       if (options?.details)
         Meteor.subscribe "contentDetail", options, callback
       else
-        [Meteor.subscribe("featuredContent", options), Meteor.subscribe("content", options, callback)]
+        if _.isEqual(options,self.contentSubscribeOptions)
+          return self.contentSubscriptions
+        else
+          self.contentSubscribeOptions = options
+          self.contentSubscriptions = [Meteor.subscribe("featuredContent", options), Meteor.subscribe("content", options, callback)]
 
     #Meteor.startup ->
     #  Meteor.subscribe( "featuredContent")

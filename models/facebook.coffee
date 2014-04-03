@@ -81,7 +81,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       res = Meteor.sync((done) -> fb.api ""+fbid+"/attending",{summary:true}, (fbres) -> done(null,fbres))
       numattending = res.result.summary.count
 
-      start_time = if event.start_time.length == 10 then moment.utc(event.start_time).hour(12)  .toJSON() else moment.parseZone(event.start_time).toJSON()
+      start_time = if event.start_time.length == 10 then moment.utc(event.start_time).hour(12).toJSON() else moment.parseZone(event.start_time).toJSON()
       voodoocontent =
         title: event.name
         location: event.location
