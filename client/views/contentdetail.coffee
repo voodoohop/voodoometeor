@@ -126,3 +126,6 @@ Meteor.startup ->
 
 
 
+    Template.contentdetail.voodoocomments = ->
+      #console.log("VoodooComments",voodooComments)
+      new VoodooComments({id: this._id})

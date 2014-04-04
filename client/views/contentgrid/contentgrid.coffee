@@ -1,3 +1,6 @@
+#TODO
+#reset blockno when changing routes
+
 define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","ContentCommon","TomMasonry","NavBar", "NavStamper","LoadingTemplates"], (model,config,packery,contentCommon, tomMasonry,navBar, navStamper, loadingTemplates) ->
 
   console.log("loading content grid")
@@ -37,7 +40,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       blockno: sortFilterOptions.blockvisible if withblock
 
   self.subscribeFilteredSortedContent = (callback)  ->
-    console.log("subscribing",self.RsortFilters)
+    #console.log("subscribing",self.RsortFilters)
     options = self.contentParams()
     #console.log("calling model to subscribe",options)
     return Deps.nonreactive ->
@@ -101,7 +104,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         console.log("path",path)
         self.RsortFilters.filter = contentCommon.constructFilters(path)
         self.RsortFilters.path = path
-        loadingTemplates.loadingContent(model.contentCollection.find())
+        #loadingTemplates.loadingContent()
         self.subscribeFilteredSortedContent()
       action: ->
         if this.ready()
@@ -112,8 +115,9 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
             self.loading = true
             loadingTemplates.renderRandom(this)
       data: ->
-        if (!this.ready())
-          return null;
+        #if (!this.ready())
+        #  console.log("content data not ready returning null")
+        #  return null;
         console.log("contentgrid data, filter:", self.RsortFilters.filter, this.ready())
         #if (!this.ready())
         #  console.log("not ready so no data")
@@ -122,6 +126,8 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         gridContent = _.map(items = model.getContent(self.contentParams(false)).fetch(), (item,i) ->
             _.extend({previous: items[(i - 1)]}, item)
         )
+        #console.log("got grid content from iron router data", gridContent, self.contentParams(false))
+        #gridContent = model.getContent(self.contentParams(false)).fetch()
         featuredContent = model.getContent({query:{featured: true}}).fetch()
         {gridContent: gridContent, featuredContent: featuredContent}
   navBar.initNavbar(null, self.RsortFilters)

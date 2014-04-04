@@ -1,0 +1,33 @@
+button.comments-btn{
+  position: relative;
+  font-size: 18px;
+}
+
+.comments-dropdown{
+  
+  overflow: hidden;
+
+  li{
+    &:first-child{
+      border-bottom: 1px solid #999;
+
+      i{
+        position: relative;
+        top: 2px;
+      }
+    }
+
+    a{
+      width: 100%;
+    }
+  }
+  li + li + li{
+    border-top: 1px solid #ccc;
+  }
+  
+  .empty{
+    padding: 10px;
+    border-bottom: none !important;
+  }
+
+}

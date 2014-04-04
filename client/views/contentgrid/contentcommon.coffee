@@ -34,13 +34,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
 
 
 
-    contentTypes: [
-      {name: "event", color:"voodoocolor1", title:"Events", icon:"glyphicon glyphicon-calendar", class:"label label-primary", showtitle: true, colorfromweekday: true, width: 230, height: 230}
-      {name: "video", color:"voodoocolor2", title:"Videos", icon:"glyphicon glyphicon-facetime-video", class:"label-success label",showtitle: false, inlineplay: true,width: 345, height: 230, allowDynamicAspectRatio: true, maxWidth: 345, maxHeight: 460, minHeight: 115}
-      {name: "photo", color: "voodoocolor3", title:"Photos", icon:"glyphicon glyphicon-picture", class:"label label-warning", width: 345, height: 345, showtitle:false, allowDynamicAspectRatio: true, maxWidth: 345, maxHeight: 345}
-      {name: "link", color: "voodoocolor4",title:"Links", icon:"glyphicon glyphicon-link", class:"label label-info", width: 230, height: 115}
-      {name: "coverphoto", color: "voodoocolor5",title:null, icon:null, class:"label label-info", width: 575, height: 400, allowDynamicAspectRatio: true}
-    ]
+
 
 
 
@@ -179,98 +173,6 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         sortFilter[q.sortFilter.field] = q.sortFilter.direction
       return {query: {$and: q.query}, sortFilter: sortFilter}
 
-
-    contentWidthInGrid: (item) ->
-      metadata = self.getContenttypeMetadata(item)
-      if (metadata.allowDynamicAspectRatio and (origWidth = item.embedlyData?[0]?.width))
-        origHeight = item.embedlyData[0].height
-        return calcMaxSize(origWidth, origHeight, metadata)[0]
-      return metadata.width
-
-    contentHeightInGrid: (item) ->
-      metadata = self.getContenttypeMetadata(item)
-      #console.log("getting content height in grid",metadata,item)
-      if (metadata.allowDynamicAspectRatio and item.embedlyData?[0]?)
-        origHeight = item.embedlyData?[0]?.height
-        origWidth = item.embedlyData[0].width
-        #console.log("origWidth,height",origWidth, origHeight)
-        maxHeight = calcMaxSize(origWidth, origHeight, metadata)[1]
-        #console.log("maxHeight",maxHeight)
-        if (metadata.minHeight?)
-          maxHeight=Math.max(metadata.minHeight,maxHeight)
-        return maxHeight
-      return metadata.height
   }
-
-  self.getContenttypeMetadata =  _.partial( (c,ob = this) ->
-    #console.log("getmetadata,",c,ob)
-    _.where(c.contentTypes, {name: ob.type })?[0]
-  ,self)
-
-
-
-
-  self.itemWidth = (item, showDetail) ->
-      if (showDetail && false)
-        return tomMasonry.widthToMasonryCol(6*tomMasonry.columnWidth)
-      else
-        return self.contentWidthInGrid(item)
-
-  self.itemHeight = (item, showDetail) ->
-      if (showDetail && false)
-        tomMasonry.windowHeight()
-      else
-        #console.log("detheight", this)
-        return self.contentHeightInGrid(item)
-
-
-  self.helpers =
-    bgcol: _.partial( (c) ->
-      type = _.findWhere(c.contentTypes, {name: this.type})
-      if (type.colorfromweekday)
-        return "bgvoodoocolor"+([moment(new Date(this.post_date)).day() % 4+ 1] )
-      else
-        type.color
-    , self)
-
-    fgcol: _.partial( (c) ->
-      type = _.findWhere(c.contentTypes, {name: this.type})
-      if (type.colorfromweekday)
-        return "fgvoodoocolor"+([moment(new Date(this.post_date)).day() % 5+ 1] )
-      else
-        type.color
-    , self)
-
-    contentTypeMetaData: -> self.getContenttypeMetadata(this)
-
-    width: (showDetail) ->
-      self.itemWidth(this, showDetail)
-    height: (showDetail) ->
-      self.itemHeight(this, showDetail)
-
-  calcMaxSize = (origWidth, origHeight, metadata) ->
-    aspectRatio = origWidth/origHeight
-    multiplier = null
-    if (aspectRatio >= metadata.maxWidth/metadata.maxHeight)
-      multiplier = metadata.maxWidth / origWidth
-      console.log("metadata", metadata, metadata.maxWidth,origWidth, metadata.maxWidth / origWidth)
-      console.log("mult",multiplier)
-    else
-      cHeight = 0
-      colno = 0
-      # hacky way to find max height
-      while (cHeight <= metadata.maxHeight)
-        colno++
-        cWidth = colno * tomMasonry.columnWidth
-        cHeight = cWidth / aspectRatio
-      cols = colno - 1
-      multiplier = cols*tomMasonry.columnWidth/origWidth
-    height = Math.round(origHeight * multiplier)
-    console.log("multiplier after",multiplier);
-    snapheight = Math.floor(height/tomMasonry.columnHeight)*tomMasonry.columnHeight
-    return [Math.round(origWidth*multiplier), snapheight];
-
-
-
   return self;
 

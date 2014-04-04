@@ -1,3 +1,7 @@
+#TODO
+# get feed posts and users to populate comments FB.api("/fql",{q:{"query1": "SELECT actor_id, message FROM stream WHERE source_id ='234353413437639'",
+# "query2":"SELECT uid, name FROM user WHERE uid IN (SELECT actor_id FROM #query1)", "query3":"SELECT page_id, name FROM page WHERE page_id IN (SELECT actor_id FROM #query1)"}}, function(res) {console.log(res)})
+
 define "FacebookApiHelpers", [], ->
 
   class fbApiCaller

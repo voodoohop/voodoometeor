@@ -35,17 +35,19 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
       if (this.contentItem.type=="event")
         "/contentDetail/"+this.contentItem.slug
       else
-        "#"
+        if (this.contentItem.type=="link")
+          this.contentItem.link
+
     thumbnailurl: ->
-
-      width = this.overrideWidth ? contentCommon.contentWidthInGrid(this.contentItem)
-      height = this.overrideHeight ? contentCommon.contentHeightInGrid(this.contentItem)
-
-      if (this.contentItem.contentTypeMetaData().showtitle and ! this.overrideHeight)
+      console.log(this.contentItem)
+      width = this.overrideWidth ? this.contentItem.widthInGrid()
+      height = this.overrideHeight ? this.contentItem.heightInGrid()
+      if (this.contentItem.metaData().showtitle and ! this.overrideHeight)
         height -= 50 # footer height should be elsewhere
 
       thumbnail_url = this.contentItem.getPicture()
       if (!thumbnail_url)
+        console.log("no thumb_url found, calling embedly for thumbnail:",width, height)
         ebdta = embedly.get(this, width, height)
         thumbnail_url = ebdta?.thumbnail_url
       if (thumbnail_url? and isExternalLink(thumbnail_url))
@@ -53,26 +55,17 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
       else
         return thumbnail_url
 
-  Template.contentitem.helpers contentCommon.helpers
-
-
-  Template.contentitem_event.helpers contentCommon.helpers
   Template.contentitem_event.helpers self.helpers
 
-  model.contentCollection.helpers contentCommon.helpers
-
-  Template.contentitem_video.helpers contentCommon.helpers
   Template.contentitem_video.helpers self.helpers
-
-  Template.contentitem_photo.helpers contentCommon.helpers
-  Template.contentitem_link.helpers contentCommon.helpers
-
 
   Template.embeddedmedia.helpers
     content: ->
-      console.log("embedded media content", embedly.get(this,contentCommon.contentWidthInGrid(this), contentCommon.contentHeightInGrid(this)))
-      embedly.get(this,contentCommon.contentWidthInGrid(this), contentCommon.contentHeightInGrid(this))?.html
+      widthInGrid = this.widthInGrid()
+      heightInGrid = this.heightInGrid()
 
+      console.log("calling embedly width width, height", widthInGrid, heightInGrid)
+      res = embedly.get(this,widthInGrid, heightInGrid)?.html
 
 
 
@@ -85,24 +78,6 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
 
 
-  Meteor.startup ->
-    $(window).scroll _.debounce( ->
-      if (grid.selectedItem().showingDetail and self.listenForDetailLeavingWindow)
-        detailtop = $("#"+grid.selectedItem().id).offset().top
-        if Math.abs($(window).scrollTop() - detailtop) > $(window).height()/2
-          gridwidth = contentCommon.contentWidthInGrid(Rselected.openDetailItem)
-          gridheight = contentCommon.contentHeightInGrid(Rselected.openDetailItem)
-          console.log("animating closing:",gridwidth, gridheight)
-          $("#"+grid.selectedItem().id).animate(
-            width: ""+gridwidth+"px"
-            height: ""+gridheight+"px"
-          , 200, null, ->
-            self.listenForDetailLeavingWindow = false
-            Rselected.showingDetail = false
-            Rselected.id = null)
-          Meteor.setTimeout( ->
-            tomMasonry.debouncedRelayout()
-          , 500)
-    , 500)
+
 
   return self;

@@ -46,6 +46,9 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
 
     fb.setAccessToken(config.current().facebook.pageaccesstoken)
 
+    #fb.api("/fql",{q:"SELECT message,actor_id FROM stream WHERE source_id ='234353413437639'"}, (fbres) -> console.log("EVENT STREAM RES,",fbres))
+    #fb.api("/234353413437639/feed", (fbres) -> console.log("EVENT STREAM RES2",fbres))
+
     #fb.api("/voodoohop", (res) -> console.log("pagetest",res))
     # res = Meteor.sync((done) -> fb.api "/498352853588926/invited",{summary:true}, (fbres) -> done(null,fbres))
 

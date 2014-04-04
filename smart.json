@@ -39,6 +39,7 @@
     "phantomjs": {},
     "googleAnalytics": {},
     "analytics": {},
-    "GAnalytics": {}
+    "GAnalytics": {},
+    "comments": {}
   }
 }

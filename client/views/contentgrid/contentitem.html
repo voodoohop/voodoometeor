@@ -13,12 +13,13 @@
 
 <template name="contentitem">
     <div id="{{_id}}" class="contentitemcontainer content_type_{{type}} ">
-        <!--<span class="contenttypelabel {{contentTypeMetaData.icon}} {{contentTypeMetaData.class}} {{bgcol}}" style="position: absolute; right: -2px; top: -2px;"> </span>
-     -->
+
+      <!--  <span class="contenttypelabel {{metaData.icon}} {{metaData.class}} {{bgcol}}" style="position: absolute; right: -2px; top: -2px;"> </span>
+-->
         {{#if showThumb}}
             {{>contentthumb contentItem=this}}
         {{/if}}
-      {{#if contentTypeMetaData.showtitle}}
+      {{#if metaData.showtitle}}
       <div class="contentitemfooter {{bgcol}}">
         {{#if title}}
             <h4>{{cropstring title 25 '...'}}

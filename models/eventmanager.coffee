@@ -140,7 +140,10 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
           fb.ensureLoggedIn( (res) ->
             fb.api.api(model.getContentById(eventid).sourceId+"/"+fbConnection,"POST", (res) -> console.log(res))
             if (confirm)
-              fb.api.api("me/voodoohop:attend","POST",{event: Meteor.absoluteUrl("contentDetail/"+eventid), "fb:explicitly_shared": true}, (res) -> console.log("fbres",res))
+              fb.api.api("me/voodoohop:attend","POST",
+                event: Meteor.absoluteUrl("contentDetail/"+eventid)
+                #"fb:explicitly_shared": true
+              , (res) -> console.log("fbres",res))
           , ["rsvp_event","publish_actions"])
       fb.onLoggedIn(self.fbLoggedin)
 

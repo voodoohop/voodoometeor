@@ -10,9 +10,11 @@ define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
 
   if (Meteor.isClient)
     self.get = (data, maxwidth, maxheight) ->
-      params = _.defaults(self.embedParams, {maxwidth: maxwidth, maxheight: maxheight})
+      console.log("to embed got maxw, maxh", maxwidth, maxheight)
+      params = _.extend({maxwidth: maxwidth, maxheight: maxheight}, self.embedParams)
+      console.log("derived params:", params)
       res = _.findWhere(data.embedlyData, params)
-      #console.log("got embed data",params, res)
+      #console.log("finding embed data: params, existing result",params, res)
       unless res
         console.log("not found embedly data for embedparams, loading", data, params)
         Meteor.call("prepareMediaEmbeds",
@@ -69,7 +71,7 @@ define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
         self.prepareMediaEmbeds(content, options)
 
     Meteor.defer ->
-      #return
+      return
       console.log("loading default embedly data")
 
       query =

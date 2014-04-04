@@ -1,0 +1,45 @@
+<template name="unreadWidget">
+  <div class="btn-group unread-widget">
+  {{#with triggerTemplate triggerTpl}}
+    {{> .}}
+  {{/with}}
+
+  {{#with dropdownTemplate dropdownTpl}}
+    {{> .}}
+  {{/with}}
+  </div>
+</template>
+
+<template name="unreadWidgetTrigger">
+  <button type="button"
+          class="btn dropdown-toggle comments-btn"
+          disabled="{{disabled}}"
+          data-toggle="dropdown">
+    <i class="fa fa-comment icon-comment"></i>
+    <div class="label {{countLabelClass}} unread-count">{{count}}</div>
+    <i class="fa fa-caret-down icon-caret-down"></i>
+  </button>
+</template>
+
+<template name="unreadWidgetDropdown">
+  <ul class="dropdown-menu comments-dropdown pull-{{align}}" role="menu">
+    {{#if unreadComments}}
+    <li>
+      <a href="#" class="clear-comments">
+        Clear All <i class="fa fa-times icon-remove pull-right"></i>
+      </a>
+    </li>
+    {{#each unreadComments}}
+      <li id="{{id}}" class="comment">
+        <a href="{{path}}">
+          {{commentPreview}}
+          <br>
+          - {{username}} ({{commentDate createdAt}})
+        </a>
+      </li>
+    {{/each}}
+    {{else}}
+      <li class="empty">Nothing to see here!</li>
+    {{/if}}
+  </ul>
+</template>
