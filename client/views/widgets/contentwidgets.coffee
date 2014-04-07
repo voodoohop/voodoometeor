@@ -84,4 +84,6 @@ require ["VoodoocontentModel","FacebookClient"], (model, fb) ->
       )
 
   Template.eventmedia.rendered = ->
-    $(this.find("a")).tooltip()
+    Meteor.setTimeout( ->
+      this.$("a").tooltip()
+    ,2000)

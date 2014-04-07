@@ -21,6 +21,9 @@
       "bootstrap3-less-tom": {
         "path": "packages/bootstrap3-less-tom"
       },
+      "reactive-async-helper": {
+        "path": "packages/ReactiveAsyncHelper"
+      },
       "bootstrap-alerts-blaze-tom": {
         "path": "packages/bootstrap-alerts-blaze-tom"
       },
@@ -116,6 +119,9 @@
       },
       "bootstrap3-less-tom": {
         "path": "packages/bootstrap3-less-tom"
+      },
+      "reactive-async-helper": {
+        "path": "packages/ReactiveAsyncHelper"
       },
       "bootstrap-alerts-blaze-tom": {
         "path": "packages/bootstrap-alerts-blaze-tom"

@@ -48,7 +48,7 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
       thumbnail_url = this.contentItem.getPicture()
       if (!thumbnail_url)
         console.log("no thumb_url found, calling embedly for thumbnail:",width, height)
-        ebdta = embedly.get(this, width, height)
+        ebdta = embedly.get(this.contentItem, width, height)
         thumbnail_url = ebdta?.thumbnail_url
       if (thumbnail_url? and isExternalLink(thumbnail_url))
         embedly.getCroppedImageUrl(thumbnail_url, width, height)
@@ -65,8 +65,9 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
       heightInGrid = this.heightInGrid()
 
       console.log("calling embedly width width, height", widthInGrid, heightInGrid)
-      res = embedly.get(this,widthInGrid, heightInGrid)?.html
-
+      res = embedly.getEmbedlyData({url: this.link,maxwidth:widthInGrid, maxheight:heightInGrid})?.html
+      console.log(res)
+      res
 
 
   Template.contentitem.events

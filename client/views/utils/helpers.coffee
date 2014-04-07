@@ -36,5 +36,5 @@ Meteor.startup ->
   pagedown = new Markdown.Converter(false);
   UI.registerHelper("markdownTom", (text) ->
     console.log("markdown", text)
-    urlize(pagedown.makeHtml(text), {target:"_blank",django_compatible: false, trim: "http"})
+    urlize(pagedown.makeHtml(text), {target:"_blank",django_compatible: false, trim: "http"}).html
   )

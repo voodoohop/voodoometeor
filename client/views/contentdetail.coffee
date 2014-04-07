@@ -87,34 +87,24 @@ Meteor.startup ->
 
 
     pagedown = new Markdown.Converter(false);
+    descriptionLinks = new ReactiveObject({links:[]})
+
     Template.contentdetail.markdownDescription = ->
       id = this._id
       if (this.description)
-        urlize(pagedown.makeHtml(this.description), {target:"_blank",django_compatible: false, trim: "http"})
-
+        res = urlize(pagedown.makeHtml(this.description), {target:"_blank",django_compatible: false, trim: "http"})
+        descriptionLinks.links = _.filter(res.urls, (url) -> url.indexOf("://") != -1)
+        console.log("got description links", res.urls)
+        return res.html
     Template.contentdetail.eventToolBarData = ->
       {event: this.contentItem, minimized: true}
+
+    Template.contentdetail.descriptionLinks = ->
+      descriptionLinks.links
 
     Template.contentdetail.rendered = ->
       console.log("contentdetail rendered", this)
       event = this.data.contentItem
-      if (!this.runEmbedly)
-        this.runEmbedly=true
-        Meteor.setTimeout(  ->
-          console.log("running embedly on all links")
-          $("#description_"+event._id+" a").embedly(
-            key: "b5d3386c6d7711e193c14040d3dc5c07"
-            method: null
-            query:
-              maxwidth: 200
-              maxheight: 200
-            display: (param) ->
-              #console.log("embedly display", param)
-              if (param.title?.length >0)
-                UI.insert(UI.render(Template.eventmedia.extend({data: param})),$("#eventMedia_"+event._id)[0])
-                param.$elem.tooltip({title: param.description?.substring(0,200)})
-          )
-        ,2000)
 
       updateHeadData(event)
       fb.onLoggedIn ->
@@ -130,3 +120,17 @@ Meteor.startup ->
     Template.contentdetail.voodoocomments = ->
       #console.log("VoodooComments",voodooComments)
       new VoodooComments({id: this._id})
+
+
+    Template.contentdetail.mediaEmbedly= (options)->
+        console.log("embedly helper", options)
+        res= ReactiveAsync("embedly_"+options.hash.url, (w) ->
+          Meteor.call("getEmbedlyData", options.hash.url, options.hash, (err, result) ->
+            console.log("getEmbedlyData result",result)
+            w.set(result)
+            w.done()
+          )
+        , {initial: false})
+        #console.log(res)
+        res
+

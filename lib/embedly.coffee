@@ -1,33 +1,39 @@
+#TODO
+#refactor all embedly code to use new embedly connection instead of storing in documents
+
 define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
+
   self = {}
 
-  self.getCroppedImageUrl = (srcimg, width, height) ->
-    "http://i.embed.ly/1/display/crop?height="+height+"&width="+width+"&url="+encodeURI(srcimg)+"&key="+self.embedly_key()
+
+
+  embedlyCollection = new Meteor.Collection("embedlycache")
 
   self.embedly_key = -> config.current().embedly.key
 
-  self.embedParams = {autoplay: true}
+  self.getEmbedlyData = (params) ->
+    return null if params.url.indexOf("://") == -1
+    existing = embedlyCollection.findOne(params)
 
-  if (Meteor.isClient)
-    self.get = (data, maxwidth, maxheight) ->
-      console.log("to embed got maxw, maxh", maxwidth, maxheight)
-      params = _.extend({maxwidth: maxwidth, maxheight: maxheight}, self.embedParams)
-      console.log("derived params:", params)
-      res = _.findWhere(data.embedlyData, params)
-      #console.log("finding embed data: params, existing result",params, res)
-      unless res
-        console.log("not found embedly data for embedparams, loading", data, params)
-        Meteor.call("prepareMediaEmbeds",
-          id: data._id
-          params: params
-        )
-      return res
+    return existing.embedly if existing
+    if (Meteor.isServer)
+      data = self.runembedly(params)[0]
+      embedlyCollection.insert(_.extend({embedly: data},params))
+      return data
+    if (Meteor.isClient)
+      Deps.nonreactive ->
+        Meteor.subscribe("embedlyCache",params)
+      console.log("embedly subscribed to", params)
+      return null
+
 
   if (Meteor.isServer)
+
+    embedlyCollection._ensureIndex({url:1,maxwidth:1, maxheight:1})
     key = self.embedly_key()
     embedly = Meteor.require('embedly')
     util = Meteor.require('util')
-    #console.log(embedly)
+
     this.embedlyapi = Meteor.sync( (done) ->
       new embedly {key: key}, (err, api) ->
         if (!!err)
@@ -37,55 +43,55 @@ define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
         else
           done(null,api)
 
-      ).result
+    ).result
 
     self.runembedly =  (params) ->
       console.log("running embedly", params)
       return Meteor.sync( (done) ->
         embedlyapi.oembed _.clone(params), (err, result) ->
-          console.log(result)
           done(null, result)
       ).result
 
-    #console.log("removing embedly data")
-    #model.contentCollection.update({},$unset:{embedlyData: ""},{multi: true})
-    #model.contentCollection.update({},$unset:{embedParams: ""},{multi: true})
+    subscribedParams = {}
 
-    self.prepareMediaEmbeds = (url, params, isdefault=false) ->
-            ## push empty result so we avoid doing the operation twice
-            #model.contentCollection.update(content._id, $push:{ embedlyData: embedParams} )
-            console.log("running embedly for link:"+url, "default", isdefault)
-            params = _.clone(params)
-            _.extend(params,self.runembedly(_.defaults(params, {url: url}))[0])
-            params.default = true
-            # remove dummy entry and push final
-            #model.contentCollection.update(content._id, $pull: {embedlyData: embedParams } )
-            return params
-    Meteor.methods
+    Meteor.publish("embedlyCache", (params) ->
+      connId = this.connection.id
+      if ! subscribedParams[connId]
+        subscribedParams[connId] = []
+        this.connection.onClose( -> delete subscribedParams[connId])
+      unless _.findWhere(subscribedParams[connId], params)
+        subscribedParams[connId].push(params)
+      self.getEmbedlyData(params)
+      console.log("embedly find",{$or: subscribedParams[connId]})
+      embedlyCollection.find({$or: subscribedParams[connId]})
+    )
+
+    Meteor.methods(
+      getEmbedlyData: (params)-> self.getEmbedlyData(params)
+
       prepareMediaEmbeds: (options) ->
-        content = model.contentCollection.findOne({_id: options.id, embedlyData: { $not: { $elemMatch: options.params }} })
         this.unblock()
-        return unless content.link?
-        params = self.prepareMediaEmbeds(content.link, options.params)
-        model.contentCollection.update(content._id, $push: {embedlyData: params})
+        return unless options.id
+        content = model.contentCollection.findOne({_id: options.id, embedlyData: { $not: { $elemMatch: options.params }} })
+        console.log("preparing embeds for content", options, content)
+        return unless content?.link?
+        self.getEmbedlyData(_.extend({url:content.link},options.params))
 
       prepareEmbedsForComment: (comment, params) ->
-        this.unblock()
-        embedlyData = self.prepareMediaEmbeds(comment.attachment.href, params)
-        console.log("adding embedly data to comment", comment._id, {$set: {"attachment.embedlyData": embedlyData}})
-        console.log(Comment)
+        #this.unblock()
+        embedlyData = self.getEmbedlyData(params)
         Comment._collection.update(comment._id, {$set: {"attachment.embedlyData": embedlyData}})
-    Meteor.defer ->
-      return
-      console.log("loading default embedly data")
+    )
 
-      query =
-        type: {$ne: "event"}
-        $or: [{embedlyData: {$exists: false}}, {embedlyData: {$size: 0}}]
+  self.getCroppedImageUrl = (srcimg, width, height) ->
+    "http://i.embed.ly/1/display/crop?height="+height+"&width="+width+"&url="+encodeURI(srcimg)+"&key="+self.embedly_key()
 
-      _.each(model.contentCollection.find(query).fetch(), (item) ->
-        console.log("previous embedly data:",item.embedlyData)
-        self.prepareMediaEmbeds(item, {params:{autoPlay: true}}, true)
-      )
-      console.log("done loading default embedly data")
+
+  self.embedParams = {autoplay: true}
+
+  if (Meteor.isClient)
+
+
+    UI.registerHelper("embedly", (options)-> console.log("embedly helper optons",options.hash); self.getEmbedlyData(options.hash))
+
   return self
