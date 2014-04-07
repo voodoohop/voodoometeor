@@ -32,3 +32,9 @@ Meteor.startup ->
     , 200)
     return "responsive-buttons"
   )
+
+  pagedown = new Markdown.Converter(false);
+  UI.registerHelper("markdownTom", (text) ->
+    console.log("markdown", text)
+    urlize(pagedown.makeHtml(text), {target:"_blank",django_compatible: false, trim: "http"})
+  )

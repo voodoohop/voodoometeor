@@ -51,25 +51,30 @@ define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
     #model.contentCollection.update({},$unset:{embedlyData: ""},{multi: true})
     #model.contentCollection.update({},$unset:{embedParams: ""},{multi: true})
 
-    self.prepareMediaEmbeds = (content, options, isdefault=false) ->
-        console.log("preparing embeds",options)
-        if (content?.link)
+    self.prepareMediaEmbeds = (url, params, isdefault=false) ->
             ## push empty result so we avoid doing the operation twice
             #model.contentCollection.update(content._id, $push:{ embedlyData: embedParams} )
-            console.log("running embedly for link:"+content.link, "default", isdefault)
-            params = _.clone(options.params)
-            _.extend(params,self.runembedly(_.defaults(params, {url: content.link}))[0])
+            console.log("running embedly for link:"+url, "default", isdefault)
+            params = _.clone(params)
+            _.extend(params,self.runembedly(_.defaults(params, {url: url}))[0])
             params.default = true
             # remove dummy entry and push final
             #model.contentCollection.update(content._id, $pull: {embedlyData: embedParams } )
-            model.contentCollection.update(content._id, $push: {embedlyData: params})
-
+            return params
     Meteor.methods
       prepareMediaEmbeds: (options) ->
         content = model.contentCollection.findOne({_id: options.id, embedlyData: { $not: { $elemMatch: options.params }} })
         this.unblock()
-        self.prepareMediaEmbeds(content, options)
+        return unless content.link?
+        params = self.prepareMediaEmbeds(content.link, options.params)
+        model.contentCollection.update(content._id, $push: {embedlyData: params})
 
+      prepareEmbedsForComment: (comment, params) ->
+        this.unblock()
+        embedlyData = self.prepareMediaEmbeds(comment.attachment.href, params)
+        console.log("adding embedly data to comment", comment._id, {$set: {"attachment.embedlyData": embedlyData}})
+        console.log(Comment)
+        Comment._collection.update(comment._id, {$set: {"attachment.embedlyData": embedlyData}})
     Meteor.defer ->
       return
       console.log("loading default embedly data")

@@ -104,6 +104,8 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         console.log("path",path)
         self.RsortFilters.filter = contentCommon.constructFilters(path)
         self.RsortFilters.path = path
+        self.RsortFilters.category = _.findWhere(contentCommon.filterOptions, {name: path[0]})
+        console.log("selected category", self.RsortFilters.category)
         #loadingTemplates.loadingContent()
         self.subscribeFilteredSortedContent()
       action: ->
@@ -115,6 +117,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
             self.loading = true
             loadingTemplates.renderRandom(this)
       data: ->
+        category = self.RsortFilters.category
         #if (!this.ready())
         #  console.log("content data not ready returning null")
         #  return null;
@@ -129,7 +132,10 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
         #console.log("got grid content from iron router data", gridContent, self.contentParams(false))
         #gridContent = model.getContent(self.contentParams(false)).fetch()
         featuredContent = model.getContent({query:{featured: true}}).fetch()
-        {gridContent: gridContent, featuredContent: featuredContent}
+        {gridContent: gridContent, featuredContent: featuredContent, category}
+      onStop: ->
+        Router.lastGridPath = this.path
+        self.RsortFilters.blockvisible=1
   navBar.initNavbar(null, self.RsortFilters)
 
   return self

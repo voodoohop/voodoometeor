@@ -82,3 +82,6 @@ require ["VoodoocontentModel","FacebookClient"], (model, fb) ->
           decrement()
         )
       )
+
+  Template.eventmedia.rendered = ->
+    $(this.find("a")).tooltip()

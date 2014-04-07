@@ -41,6 +41,8 @@
       {{/masonryElement}}
   -->
         {{#each gridContent}}
+
+      {{#if ../category.displayDaysInGrid}}
       {{#if dayDifferent previous this}}
       {{#masonryElement "Contentgrid"}}
       <div class="dateMasonryBox {{bgcol}}">
@@ -48,8 +50,8 @@
         <h1>{{fullDay}}</h1>
         </div>
       </div>
-
       {{/masonryElement}}
+      {{/if}}
       {{/if}}
 
       {{#masonryElement "Contentgrid"}}

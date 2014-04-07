@@ -33,7 +33,8 @@ Package.on_use(function (api, where) {
   ], 'client');
 
   api.add_files([
-    'server/publications.coffee'
+    'server/publications.coffee',
+    'server/methods.coffee'
   ], 'server');
 
   api.add_files([

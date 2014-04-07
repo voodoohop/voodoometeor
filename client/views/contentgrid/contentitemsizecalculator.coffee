@@ -1,6 +1,8 @@
 require ["TomMasonry","VoodoocontentModel"], (tomMasonry, model) ->
 
   contentWidthInGrid= (item) ->
+      if (item.cols)
+        return item.cols*tomMasonry.columnWidth
       metadata = item.metaData()
       if (metadata.allowDynamicAspectRatio and (origWidth = item.embedlyData?[0]?.width))
         origHeight = item.embedlyData[0].height

@@ -85,6 +85,7 @@ Meteor.startup ->
     Template.contentdetail.helpers(model.helpers)
     Template.contentdetail.helpers(contentItem.helpers)
 
+
     pagedown = new Markdown.Converter(false);
     Template.contentdetail.markdownDescription = ->
       id = this._id
@@ -110,7 +111,7 @@ Meteor.startup ->
             display: (param) ->
               #console.log("embedly display", param)
               if (param.title?.length >0)
-                UI.DomRange.insert(UI.render(Template.eventmedia.extend({data: param})).dom,$("#eventMedia_"+event._id)[0])
+                UI.insert(UI.render(Template.eventmedia.extend({data: param})),$("#eventMedia_"+event._id)[0])
                 param.$elem.tooltip({title: param.description?.substring(0,200)})
           )
         ,2000)
@@ -120,10 +121,10 @@ Meteor.startup ->
           console.log("updating event stats", event.id)
           eventManager.updateEventStats(event)
 
-    Template.eventmedia.rendered = ->
-      #console.log(this)
-      $(this.find("a")).tooltip()
 
+
+    Template.backbutton.backRoute = ->
+      Router.lastGridPath ? "/content/events/0"
 
 
     Template.contentdetail.voodoocomments = ->

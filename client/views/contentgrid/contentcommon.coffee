@@ -4,20 +4,22 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
     post_date_desc:
       title:"Post Date"
       name:"post_date_desc"
-      field:"post_date"
-      direction: -1
+      sort:[["post_date","desc"]]
       icon:"glyphicon glyphicon-calendar"
     post_date_asc:
       title:"Post Date"
       name:"post_date_asc"
-      field:"post_date"
-      direction: 1
+      sort:[["post_date","asc"]]
       icon:"glyphicon glyphicon-calendar"
     num_app_users_attending:
       title:"Likes"
       name: "num_app_users_attending"
-      direction: -1
+      sort: [["num_app_users_attending","desc"]]
       icon:"glyphicon glyphicon-heart"
+    isVoodoo:
+      title:"Voodoo"
+      name: "isVoodoo"
+      sort: [["isVoodoo","desc"], ["voodooOrder","asc"]]
 
 
   self = {
@@ -43,37 +45,46 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         name:"voodoohop"
         title:"VOODOO"
         query:
-          blocked: {$ne: true}, num_app_users_attending: {"$gte": 0}
+          blocked: {$ne: true}
+          $or: [
+            {isVoodoo: true}
+            #$and: [
+            #  #num_app_users_attending: {"$gte": 50}
+            #  {featured: true}
+            #  {post_date: {$gte: moment().minutes(0).seconds(0).subtract(12,"hours").toISOString() }}
+            #]
+          ]
         titleclass: "voodoologo"
         icon: "icon-voodoologo"
-        disabled: true
-        subFilters: [
-          {
-            title :"All"
-            name: "all"
-            icon: "icon-voodoologo"
-            query:
-              $or: [{type: "video"},{type: "event"}, {type: "photo"}]
-            sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
-          }
-          {
-            title:"Music"
-            name:"music"
-            icon: "icon-voodoomusic"
-            query:
-              $and: [{type: "video"},{"embedlyData.html": {$exists: true}}]
-            sortFilters: [sortTypes.post_date_desc, sortTypes.num_app_users_attending]
-          }
-          {
-            title: "Artists"
-            name: "artists"
-            icon: "icon-voodooartists"
-            query:
-              type: "photo"
-              artistprofile: true
-            sortFilters: [sortTypes.post_date_desc]
-          }
-        ]
+        disabled: false
+        sortFilters: [sortTypes.isVoodoo]
+#        subFilters: [
+#          {
+#            title :"All"
+#            name: "all"
+#            icon: "icon-voodoologo"
+#            query:
+#              $or: [{type: "video"},{type: "event"}, {type: "photo"}]
+#            sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
+#          }
+#          {
+#            title:"Music"
+#            name:"music"
+#            icon: "icon-voodoomusic"
+#            query:
+#              $and: [{type: "video"},{"embedlyData.html": {$exists: true}}]
+#            sortFilters: [sortTypes.post_date_desc, sortTypes.num_app_users_attending]
+#          }
+#          {
+#            title: "Artists"
+#            name: "artists"
+#            icon: "icon-voodooartists"
+#            query:
+#              type: "photo"
+#              artistprofile: true
+#            sortFilters: [sortTypes.post_date_desc]
+#          }
+#        ]
       }
 #      {
 #        title:"Media"
@@ -110,6 +121,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
         title:"Calendar"
         name:"events"
         icon:"icon-voodooevent"
+        displayDaysInGrid: true
         query:
           blocked: {$ne: true}, type: "event", post_date: {$gte: moment().minutes(0).seconds(0).subtract(12,"hours").toISOString() }, num_app_users_attending: {"$gt": 5}
         sortFilters: [sortTypes.post_date_asc, sortTypes.num_app_users_attending]
@@ -170,7 +182,7 @@ define "ContentCommon", ["TomMasonry"], (tomMasonry) ->
       console.log("constructed query:",q)
       sortFilter = {}
       if (q.sortFilter)
-        sortFilter[q.sortFilter.field] = q.sortFilter.direction
+        sortFilter = q.sortFilter.sort
       return {query: {$and: q.query}, sortFilter: sortFilter}
 
   }

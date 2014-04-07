@@ -1,6 +1,6 @@
 <template name="likewidget">
     <button type="button" class="likebutton btn btn-warning btn-responsive  ladda-button" data-style="expand-left" {{conditionalAttr "disabled" liked}}>
-        <span class="glyphicon glyphicon-heart"></span> {{#if liked }} Liked {{else}} Like {{/if}} <span class="badge">{{inferred_likes}}</span>
+        <span class="glyphicon glyphicon-heart"></span> {{#if liked }} Liked {{else}} Like {{/if}} <span class="badge">{{likes.length}}</span>
     </button>
 </template>
 
@@ -50,5 +50,22 @@
         </button>
       </span>
     </div>
+  </div>
+</template>
+
+
+<template name="eventmedia">
+  <div class="thumbnail eventmediacontainer " data-scroll-reveal>
+    <div class="caption">
+      <em><a href="{{url}}" data-toggle="tooltip" data-placement="top" data-title="{{cropstring description 200 '...'}} ...">{{cropstring title 20 '...'}} </a>{{#if provider_name}}<small>{{provider_name}}</small>{{/if}}</em>
+    </div>
+    {{#if html}}
+    {{{html}}}
+    {{else}}
+    <a href="{{url}}" data-toggle="tooltip" data-placement="top" data-title="{{cropstring description 200 '...'}} ...">
+      <img src="{{thumbnail_url}}">
+    </a>
+    {{/if}}
+
   </div>
 </template>

@@ -67,13 +67,13 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
             update = true
       if (!update and existing)
         console.log("event already exists")
-        return {event: contentModel.getContentBySourceId(fbid), alreadyInDB: true}
+        return {event: contentModel.getContentBySourceId(fbid)._id, alreadyInDB: true}
       res = Meteor.sync((done) ->
         query= "select uid from user where is_app_user=1 and uid in (select uid from event_member where eid = "+fbid+" and rsvp_status='attending')";
         fb.api("/fql",{q:query},  (fbres) -> done(null,fbres))
       )
       num_app_users_attending = res.result.data?.length ? 0
-      if (num_app_users_attending < 2)
+      if (num_app_users_attending < 3)
         console.log("few app users attending, ignoring event")
         return {error: "toofewappusers", fbEventId: fbid}
       res = Meteor.sync((done) -> fb.api fbid, {fields: fbschemas.event_fields}, (fbres) -> done(null,fbres))
@@ -110,9 +110,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       else
         console.log("event: #{voodoocontent.title} found... updating")
         contentModel.contentCollection.update {sourceId: event.id}, {$set: voodoocontent}
-      modified = contentModel.getContentBySourceId(event.id)
-      #console.log("inserted/modified event:", modified)
-      return {event: contentModel.getContentBySourceId(fbid), alreadyInDB: false}
+      return {event: contentModel.getContentBySourceId(fbid)._id, alreadyInDB: false, updated: update}
 
     self.importUpdatePost = (fbid) ->
           res = Meteor.sync ((done) -> fb.api fbid, {fields: fbschemas.post_fields}, (fbres) -> done(null, fbres) )

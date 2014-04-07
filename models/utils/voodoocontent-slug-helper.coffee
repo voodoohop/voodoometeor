@@ -14,7 +14,7 @@ require ["VoodoocontentModel"], (model) ->
 
     _.each(model.contentCollection.find({slug: {$exists: false}}).fetch(), (doc) ->
       slug = generateSlug(doc.title)
-      model.contentCollection.update(doc._id, {$set: {slug: slug, _id: slug}})
+      model.contentCollection.update(doc._id, {$set: {slug: slug}})
       console.log("added slug", slug, " to doc:", doc._id)
     )
 

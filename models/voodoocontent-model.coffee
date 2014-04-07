@@ -4,7 +4,7 @@ define "VoodoocontentModel",[], ->
 
   self.contentCollection = new Meteor.Collection("voodoocontent")
 
-  self.contentBlockSize = 15
+  self.contentBlockSize = 10
 
   self.helpers =
     postedDate: -> moment.parseZone(this.post_date).local().fromNow()
@@ -44,7 +44,7 @@ define "VoodoocontentModel",[], ->
   self.lastItemCount = -> self.cursor?.count() ? 0
 
   if (Meteor.isClient)
-
+    Meteor.subscribe("featuredContent")
     self.subscribeContent =  (options, callback) ->
       console.log("subscribing to content", options)
       if (options?.details)
@@ -54,7 +54,7 @@ define "VoodoocontentModel",[], ->
           return self.contentSubscriptions
         else
           self.contentSubscribeOptions = options
-          self.contentSubscriptions = [Meteor.subscribe("featuredContent", options), Meteor.subscribe("content", options, callback)]
+          self.contentSubscriptions = [Meteor.subscribe("content", options, callback)]
 
     #Meteor.startup ->
     #  Meteor.subscribe( "featuredContent")
@@ -98,7 +98,7 @@ define "VoodoocontentModel",[], ->
 
   if (Meteor.isServer)
 
-    self.contentCollection._ensureIndex({type:1, post_date: 1, num_app_users_attending: 1, start_time: 1, sourceId: 1, blocked: 1})
+    self.contentCollection._ensureIndex({type:1, post_date: 1, num_app_users_attending: 1, start_time: 1, sourceId: 1, blocked: 1, featured: 1, wallPost: 1})
     Meteor.publish "content", (options = {}) ->
       console.log("client subscribed to content", options)
       if (! options.fields? && ! options.details )
@@ -109,7 +109,9 @@ define "VoodoocontentModel",[], ->
       console.log("client subscribed to featured content", options)
       options.fields = { facebookData: 0, description: 0 }
       options.blockno = 0
-      options.query.featured = true
+      options.sort = [["post_date","asc"]]
+
+      options.query = {featured: true, post_date: {$gte: moment().minutes(0).seconds(0).subtract(12,"hours").toISOString()}}
       self.getContent(options)
 
     Meteor.publish "contentDetail", (options) ->

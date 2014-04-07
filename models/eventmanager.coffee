@@ -56,10 +56,10 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
          if e?.id
           Meteor.call("importFacebookEvent",e.id, (err,res) ->
             console.log("imported", res)
-            if res.event?._id and ! res.alreadyInDB
+            if res.event and ! res.alreadyInDB and ! res.updated
               console.log("alerting for event", res)
 
-              Alerts.add("eventInsertedMessage", res.event, "success",  {autoHide: 10000, html: true});
+              Alerts.add("eventInsertedMessage", model.getContentById(res.event), "success",  {autoHide: 10000, html: true});
               Meteor.users.update(Meteor.userId(), $addToSet: { attending: res.event._id})
             #Meteor.call("attendEvent", id, (err, res) -> console.log(err,res));
           )
@@ -118,7 +118,10 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
       self.updateEventStats = (event) ->
         fb.ensureLoggedIn( ->
           fbHelpers.eventStats.run(event, fb, (res) -> console.log("updated event stats", res))
+          console.log("updating comments")
+          fbHelpers.eventComments.run(event,fb, (res) -> console.log("updated comments"))
         )
+
 
 
       self.rsvp_confirmed = (event) ->

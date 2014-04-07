@@ -34,12 +34,40 @@ define "FacebookApiHelpers", [], ->
       canExecute: ->
         Meteor.isClient
       contentType: "event"
-      apiCall: (content, fbapi, callback) ->
+      apiCall: (content, fb, callback) ->
         fqlQuery = "SELECT uid,rsvp_status FROM event_member WHERE eid = " + content.sourceId + " AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me())";
         fb.api.api("/fql",{q:fqlQuery}, (res) ->
           callback(_.map(_.filter(res.data, (u) -> u.rsvp_status == "attending"), (attending) -> {uid: attending.uid}))
         )
 
+    eventComments: new class extends fbApiCaller
+      canExecute: ->
+        Meteor.isServer or Meteor.isClient
+      contentType: "event"
+      apiCall: (content, fb, callback) ->
+        fqlQuery= "SELECT actor_id, message, post_id, created_time,attachment FROM stream WHERE source_id ="+content.sourceId
+        fb.api.api("/fql", {q:fqlQuery}, (res) ->
+          console.log(res)
+          queue = new PowerQueue({maxProcessing: 5})
+          _.each(res.data, (comment)->
+            console.log(comment)
+            queue.add((done) ->
+              fb.api.api("/"+comment.actor_id, (res2) ->
+                console.log(res2)
+                Meteor.call("insertCommentFromFB", content, comment, res2, (err,res)->
+                  console.log("insertCommentFromFB res", err,res)
+                )
+                done()
+              )
+            )
+          )
+          queue.onEnded= (param)->
+            console.log("ended",param,this)
+
+          queue.run()
+
+        )
+      cacheSeconds: 300
     eventStats: new class extends fbApiCaller
       canExecute: ->
         Meteor.isServer or Meteor.isClient
