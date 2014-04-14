@@ -5,11 +5,26 @@
 {{> fbeventinvite event=this minimized=true}}
 
 {{> likewidget }}
+{{#if user}}
+{{#if user.hasTicketsFor this}}
+{{> myticketbutton}}
+  {{else}}
+
+{{#if ticketButtonLink}}
+  {{> ticketbutton}}
+{{/if}}
+
+{{/if}}
+  {{else}}
+  {{#if ticketButtonLink}}
+  {{> ticketbutton}}
+  {{/if}}
+{{/if}}
 
 {{#if isInRole 'admin_event'}}
 
-<div class="btn-group pull-right">
-{{> featureeventwidget }} {{> blockcontentwidget}}
+<div class="btn-group pull-right btn-group-sm">
+{{> featureeventwidget }} {{> blockcontentwidget}} {{> enablelistwidget}}
 </div>
   {{/if}}
 
@@ -58,6 +73,9 @@
     {{#each eventTickets}}
       {{>ticketlistname}}
     {{/each}}
+  <div class="btn-group btn-group-lg">
+    {{>ticketbuttonagain contentItem}}
+  </div>
 </template>
 
 <template name="ticketlistname">
@@ -86,6 +104,17 @@
    {{/if}}
   </button>
  {{/if}}
+</template>
+<template name="enablelistwidget">
+  {{#if isInRole "admin_event"}}
+  <button type="button" class="btn btn-default" >
+    {{#if hasList}}
+    <span class="glyphicon glyphicon-remove"> List</span>
+    {{else}}
+    <span class="glyphicon glyphicon-pushpin"> List</span>
+    {{/if}}
+  </button>
+  {{/if}}
 </template>
 
 <template name="blockcontentwidget">
@@ -134,4 +163,17 @@
 
 <template name="listsubmitted">
   {{this}} added to list
+</template>
+
+<template name="ticketbutton">
+  <button type="button" data-toggle="tooltip" data-placement="bottom" title="{{ticketButtonTooltip}}" class="btn btn-warning btn-responsive btn-color-animate" style="padding: 0px;"><img src="{{ticketButtonImage}}"></button>
+</template>
+
+
+<template name="ticketbuttonagain">
+  <a href="{{ticketButtonLink}}" data-toggle="tooltip" data-placement="bottom" title="{{ticketButtonTooltip}}" class="btn btn-warning btn-responsive">More Tickets...</a>
+</template>
+
+<template name="myticketbutton">
+  <a href="/updateTicketInfo/{{this._id}}" data-toggle="tooltip" data-placement="bottom" title="{{ticketButtonTooltip}}" class="btn btn-primary btn-responsive">My Tickets <span class="badge">{{user.hasTicketsFor this}}</span></a>
 </template>

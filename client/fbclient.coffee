@@ -15,9 +15,9 @@ Meteor.startup ->
         _.each(loggedInListeners, (l) -> l(FB, s))
 
     self.loggedIn = undefined
-    self.onLoggedIn= (callback) ->
+    self.onLoggedIn = (callback) ->
         loggedInListeners.push(callback)
-        if self.loggedIn?
+        if self.loggedIn
           callback(self.api, self.loggedIn)
     self.api = null
 
@@ -58,6 +58,8 @@ Meteor.startup ->
         , {scope: if perms then perms.join(",") else undefined });
 
     self.ensureLoggedIn= (callback, perms, loginPopUp = false) ->
+        console.log("fbensuredlogin")
+        console.trace()
         # wait if facebook is still determining whether or not the user is already connected
         if ! self.loggedIn?
           console.log("fb login status not determined yet... waiting", self.loggedIn)

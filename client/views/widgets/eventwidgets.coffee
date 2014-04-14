@@ -87,11 +87,19 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
         console.log("blocking event", this)
         Meteor.call("blockContent", this._id, !this.blocked, (err,res) -> console.log(err,res))
 
+    Template.enablelistwidget.events
+      'click button': ->
+        Meteor.call("enableList", this._id, !this.hasList, (err,res) -> console.log(err,res))
     listHelperState = new ReactiveObject(["name","email","validated","notvalidated","lastSubmitted"])
     listHelperLadda = null;
     listHelperState.rendered =
       #listHelperLadda = Ladda.create(this.find(".submitbutton"))
 
+
+    Template.ticketbutton.events
+      'click button': ->
+        that = this
+        fb.ensureLoggedIn( -> Router.go(that.ticketButtonLink))
     listHelperState.notvalidated = true
     Template.listhelper.events
       "change, keyup .listname,.listemail": (e) ->
@@ -119,5 +127,24 @@ require ["EventManager","VoodoocontentModel","FacebookClient"], (eventManager, m
           )
     Template.listhelper.state = listHelperState
 
+    Template.ticketbutton.rendered = ->
+      colors = ["#4684B1","#ac3e55","#FFAD00", "#CC0000"]
+      currentColor=0
 
+      btn = this.$(".btn-color-animate")
+      mouseX = -1
+      mouseY = -1
+      $(document).mousemove((event) ->
+        mouseX = event.pageX
+        mouseY = event.pageY
+      )
+      calculateDistance = (elem)-> Math.floor(Math.sqrt(Math.pow(mouseX - (elem.offset().left+(elem.width()/2)), 2) + Math.pow(mouseY - (elem.offset().top+(elem.height()/2)), 2)))
+      #btn.jrumble({speed: 200, x:2, y:2, rotation: 0.5})
+      animateCol = ->
+        dist = calculateDistance(btn)
+        dist = Math.max(100,dist)
+        #btn.trigger("startRumble",[20000/dist])
+
+        btn.animate({"background-color": colors[(currentColor) % colors.length],"border-color": colors[(currentColor++) % colors.length]},100000/dist,animateCol)
+      animateCol()
 

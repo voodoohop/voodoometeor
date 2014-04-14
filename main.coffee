@@ -27,20 +27,24 @@ require "VoodoocontentModel", (model) ->
     if (Meteor.isClient)
 
       Hooks.init()  #user login/logout hooks
+      require ["ContentgridController"], (gridController) ->
 
-      Meteor.autosubscribe( ->
-        Meteor.subscribe "userData"
-        #Meteor.subscribe "users"
-      )
-      #console.log("configured router without autoRender")
-      Router?.configure({ loadingTemplate: 'loadingtemplate1'})
-      Router?.onBeforeAction( -> Session.set("currentParams",this.params))
-      Router.map ->
-        this.route('landing',
-          path: '/'
-          action: ->
-            this.redirect("/content/voodoohop/0")
+        Meteor.autosubscribe( ->
+          Meteor.subscribe "userData"
+          #Meteor.subscribe "users"
         )
+        #console.log("configured router without autoRender")
+        Router?.onBeforeAction( -> Session.set("currentParams",this.params))
+        #Meteor.startup ->
+        Router.map ->
+            this.route('landing',
+              path: '/'
+              action: ->
+                that = this
+                Meteor.setTimeout( ->
+                  that.redirect("/content/events/0")
+                ,500)
+            )
 
 
 

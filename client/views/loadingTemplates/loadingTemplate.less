@@ -482,3 +482,159 @@ body{
     background: #ABF8FF;
   }
 }
+
+
+
+
+// #4
+
+@-webkit-keyframes spinner1 {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinner1 {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-o-keyframes spinner1 {
+  from {
+    -o-transform: rotate(0deg);
+  }
+
+  to {
+    -o-transform: rotate(360deg);
+  }
+}
+@keyframes spinner1 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spinner2 {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+@-moz-keyframes spinner2 {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+
+  to {
+    -moz-transform: rotate(-360deg);
+  }
+}
+@-o-keyframes spinner2 {
+  from {
+    -o-transform: rotate(0deg);
+  }
+
+  to {
+    -o-transform: rotate(-360deg);
+  }
+}
+@keyframes spinner2 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+.spinner {
+  position: fixed;
+  width: 180px;
+  height: 180px;
+  top: 50%;
+  left: 50%;
+  margin-left: -17px;
+  margin-top: -17px;
+}
+.spinner:after, .spinner:before {
+  position: fixed;
+  content: "";
+  border: 10px solid #fff;
+  width: 170px;
+  height: 170px;
+}
+.spinner:after {
+  -webkit-animation: spinner1 2.5s linear infinite;
+  -moz-animation: spinner1 2.5s linear infinite;
+  animation: spinner1 2.5s linear infinite;
+}
+.spinner:before {
+  width: 190px;
+  height: 190px;
+  margin-left: -6.5px;
+  margin-top: -6.5px;
+  -webkit-animation: spinner2 2.5s linear infinite;
+  -moz-animation: spinner2 2.5s linear infinite;
+  animation: spinner2 2.5s linear infinite;
+}
+
+
+
+
+//#5
+
+.loading-wrap {
+  width: 180px; height: 180px;
+  position: absolute;
+  top: 50%; left: 50%;
+  margin: -30px 0 0 -30px;
+  background: #777;
+  animation: rotation ease-in-out 2s infinite;
+  border-radius: 30px;
+}
+
+.triangle1, .triangle2, .triangle3 {
+  border-width: 0 60px 90px 60px;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: #fff;
+  height: 0; width: 0;
+  position: absolute;
+  left: 30px; top: -30px;
+  animation: fadecolor 2s 1s infinite;
+}
+
+.triangle2, .triangle3 {
+  content: '';
+  top: 60px; left: 90px;
+  animation-delay: 0.2s;
+}
+
+.triangle3 {
+  left: -30px;
+  animation-delay: 0.3s;
+}
+
+@keyframes rotation {
+  0% {transform: rotate(0deg);}
+  20% {transform: rotate(360deg);}
+  100% {transform: rotate(360deg);}
+}
+
+@keyframes fadecolor {
+  0% {border-bottom-color: #eee;}
+  100%{border-bottom-color: #67cbf0;}
+}

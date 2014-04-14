@@ -17,6 +17,8 @@ class Commentable extends Minimongoid
 class Comment extends Minimongoid
   @_collection = new Meteor.Collection 'comments'
 
+  if Meteor.isServer
+    @_collection._ensureIndex({fbPostId:1})
   @unread: (tags = {}) ->
     # Grab all for current user
     selection = 

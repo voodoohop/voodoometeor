@@ -174,6 +174,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     self.numEventsImporting=0;
     Meteor.methods(
       importFacebookEvent: (params) ->
+        return false
         self.numEventsImporting++;
 
         this.unblock() #if self.numEventsImporting < 10

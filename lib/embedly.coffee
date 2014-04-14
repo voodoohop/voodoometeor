@@ -25,6 +25,13 @@ define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
         Meteor.subscribe("embedlyCache",params)
       console.log("embedly subscribed to", params)
       return null
+  self.getDefaultDimensions =  (url) ->
+    e = self.getEmbedlyData({url:url, "default": true})
+    return null unless e
+    if e.width
+      [e.width,e.height]
+    else
+      [e.thumbnail_width, e.thumbnail_height]
 
 
   if (Meteor.isServer)
@@ -69,20 +76,32 @@ define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
     Meteor.methods(
       getEmbedlyData: (params)-> self.getEmbedlyData(params)
 
-      prepareMediaEmbeds: (options) ->
-        this.unblock()
-        return unless options.id
-        content = model.contentCollection.findOne({_id: options.id, embedlyData: { $not: { $elemMatch: options.params }} })
-        console.log("preparing embeds for content", options, content)
-        return unless content?.link?
-        self.getEmbedlyData(_.extend({url:content.link},options.params))
+#      prepareMediaEmbeds: (options) ->
+#        this.unblock()
+#        return unless options.id
+#        content = model.contentCollection.findOne({_id: options.id, embedlyData: { $not: { $elemMatch: options.params }} })
+#        console.log("preparing embeds for content", options, content)
+#        return unless content?.link?
+#        self.getEmbedlyData(_.extend({url:content.link},options.params))
 
-      prepareEmbedsForComment: (comment, params) ->
-        #this.unblock()
-        embedlyData = self.getEmbedlyData(params)
-        Comment._collection.update(comment._id, {$set: {"attachment.embedlyData": embedlyData}})
+#      prepareEmbedsForComment: (comment, params) ->
+#        #this.unblock()
+#        embedlyData = self.getEmbedlyData(params)
+#        Comment._collection.update(comment._id, {$set: {"attachment.embedlyData": embedlyData}})
     )
-
+    model.contentCollection.before.insert( (userId, doc) ->
+      if (doc.link?)
+        self.getEmbedlyData({url: doc.link, "default": true})
+        doc.loadedDefaultEmbedly = true
+    )
+#    Meteor.defer ->
+#      _.each(model.contentCollection.find({loadedDefaultEmbedly: {$ne: true}}).fetch(), (doc) ->
+#        if (doc.link?)
+#          self.getEmbedlyData({url: doc.link, "default": true})
+#          console.log("getting default embedly data for", doc._id)
+#          model.contentCollection.update(doc._id, {$set: {loadedDefaultEmbedly: true}})
+#          doc.loadedDefaultEmbedly = true
+#      )
   self.getCroppedImageUrl = (srcimg, width, height) ->
     "http://i.embed.ly/1/display/crop?height="+height+"&width="+width+"&url="+encodeURI(srcimg)+"&key="+self.embedly_key()
 
@@ -90,8 +109,7 @@ define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
   self.embedParams = {autoplay: true}
 
   if (Meteor.isClient)
-
+    
 
     UI.registerHelper("embedly", (options)-> console.log("embedly helper optons",options.hash); self.getEmbedlyData(options.hash))
-
   return self

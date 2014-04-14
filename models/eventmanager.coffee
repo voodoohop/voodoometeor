@@ -41,6 +41,15 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
           return true
         else
           return false
+      enableList: (id, listEnabled) ->
+        #console.log("trying to block content", id, this.userId)
+        if (Roles.userIsInRole(this.userId,"admin_event"))
+          #console.log("featuring event", eventid)
+          model.contentCollection.update(id, {$set:{hasList: listEnabled}})
+          return true
+        else
+          return false
+
     Meteor.users.allow(
       update: (uid, doc, fieldNames, modifier) ->
         return (uid == Meteor.userId() && fieldNames.length == 1 && (fieldNames[0] == "attending" or fieldNames[0] == "geolocation"))

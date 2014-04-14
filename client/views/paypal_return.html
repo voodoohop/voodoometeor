@@ -1,0 +1,37 @@
+<template name="paypalpaymentreturn">
+  <div class="container">
+    {{#if event}}
+    <br>
+    <div class="btn-group btn-group-lg">
+    <a href="/contentDetail/{{event._id}}" class="btn btn-info"><span class="glyphicon glyphicon-arrow-left"></span> back to Event</a>
+    {{>ticketbuttonagain event}}
+    </div>
+     <br><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Payment: <strong>{{event.title}}</strong></div>
+      <div class="panel-body">
+        <div class="list-group">
+          <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">Amount</h4>
+            <p class="list-group-item-text">{{transaction.mc_currency}} <strong>{{transaction.mc_gross}}</strong></p>
+          </a>
+          <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">Status</h4>
+            <p class="list-group-item-text">{{transaction.payment_status}}</p>
+          </a>
+          <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">Payer</h4>
+            <p class="list-group-item-text">{{transaction.first_name}} {{transaction.last_name}}</p>
+          </a>
+          <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">User</h4>
+            <p class="list-group-item-text">{{user.profile.name}}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {{>updateticketinfo contentItem=event}}
+    {{/if}}
+  </div>
+</template>

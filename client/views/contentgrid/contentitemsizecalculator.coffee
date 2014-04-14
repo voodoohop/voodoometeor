@@ -1,22 +1,24 @@
-require ["TomMasonry","VoodoocontentModel"], (tomMasonry, model) ->
+require ["TomMasonry","VoodoocontentModel","Embedly"], (tomMasonry, model, embedly) ->
 
   contentWidthInGrid= (item) ->
       if (item.cols)
         return item.cols*tomMasonry.columnWidth
+      if (item.link)
+        origDimensions = embedly.getDefaultDimensions(item.link)
       metadata = item.metaData()
-      if (metadata.allowDynamicAspectRatio and (origWidth = item.embedlyData?[0]?.width))
-        origHeight = item.embedlyData[0].height
-        return calcMaxSize(origWidth, origHeight, metadata)[0]
+      if (metadata.allowDynamicAspectRatio and origDimensions?)
+        return calcMaxSize(origDimensions[0], origDimensions[1], metadata)[0]
       return metadata.width
 
   contentHeightInGrid= (item) ->
       metadata = item.metaData()
       #console.log("getting content height in grid",metadata,item)
-      if (metadata.allowDynamicAspectRatio and item.embedlyData?[0]?)
-        origHeight = item.embedlyData[0].height
-        origWidth = item.embedlyData[0].width
-        #console.log("origWidth,height",origWidth, origHeight)
-        maxHeight = calcMaxSize(origWidth, origHeight, metadata)[1]
+      if (item.link)
+        origDimensions = embedly.getDefaultDimensions(item.link)
+      if (metadata.allowDynamicAspectRatio and origDimensions)
+
+        console.log("origWidth,height",origDimensions[0], origDimensions[1])
+        maxHeight = calcMaxSize(origDimensions[0], origDimensions[1], metadata)[1]
         #console.log("maxHeight",maxHeight)
         if (metadata.minHeight?)
           maxHeight=Math.max(metadata.minHeight,maxHeight)

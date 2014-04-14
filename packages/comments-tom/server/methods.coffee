@@ -1,6 +1,8 @@
 if Meteor.isServer
   Meteor.methods(
     insertCommentFromFB: (content, fbCommentData, fbActorData) ->
+      if (Comment.find("fbPostId": comment.fbPostId).fetch().length > 0)
+        return false
       comment =
         associationId: content._id
         userFbId: fbActorData.id
