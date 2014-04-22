@@ -19,9 +19,9 @@ require "VoodoocontentModel", (model) ->
       #)
 
       ## hack until we manage to set userId on server
-      #Meteor.publish("users", ->
-      #  Meteor.users.find({},{fields: {profile: 1, attending: 1} });
-      #)
+      Meteor.publish("users", ->
+        Meteor.users.find({},{fields: {profile: 1, attending: 1, services:1} });
+      )
 
 
     if (Meteor.isClient)

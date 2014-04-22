@@ -60,6 +60,7 @@ Meteor.startup ->
           console.trace()
           console.log("contentdetail left route", this)
           model.stopDetailSubscription()
+        fastRender: true
 
 
 

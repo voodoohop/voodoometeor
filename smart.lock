@@ -46,7 +46,9 @@
       "analytics": {},
       "GAnalytics": {},
       "comments": {},
-      "power-queue": {}
+      "power-queue": {},
+      "meteor-inspector": {},
+      "fast-render": {}
     },
     "packages": {
       "font-awesome": {
@@ -96,8 +98,8 @@
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.7.0",
-        "commit": "05f34bc48c4cad9fdaa366c1ddcabe6980232ece"
+        "tag": "v0.7.1",
+        "commit": "d1ffb3f06ea4c112132b030f2eb1a70b81675ecb"
       },
       "ms-seo": {
         "path": "packages/ms-seo-tom"
@@ -109,8 +111,8 @@
       },
       "pagedown-bootstrap": {
         "git": "https://github.com/Blahah/meteor-pagedown-bootstrap.git",
-        "tag": "v0.0.3",
-        "commit": "940abd8b0137da751f60b8acdd53b8c5577a2f82"
+        "tag": "v0.0.4",
+        "commit": "1ebc5c2b374da9362ab92cd485642e32e70b9369"
       },
       "urlify": {
         "git": "https://github.com/audreyr/meteor-urlify.git",
@@ -146,18 +148,18 @@
       },
       "apm": {
         "git": "https://github.com/arunoda/meteor-apm-client.git",
-        "tag": "v0.2.14",
-        "commit": "3727371164f28d4fbf50efb12a9c75617198b596"
+        "tag": "v1.0.0",
+        "commit": "672c94c9383ecca86da5157fa28fd1bcc754c7c3"
       },
       "connection-banner": {
         "git": "https://github.com/nate-strauser/meteor-connection-banner.git",
-        "tag": "v0.2.1",
-        "commit": "aeb866f75e626262a97e9c913ac7dd5425e5c118"
+        "tag": "v0.2.2",
+        "commit": "f82217d8fca950ce55269c749b3da4c31e7240df"
       },
       "bower": {
         "git": "https://github.com/mquandalle/meteor-bower.git",
-        "tag": "v0.1.5",
-        "commit": "4e96fa0365414371e412c8c5b79e7b4c2e6cefbf"
+        "tag": "v0.1.6",
+        "commit": "73b090d6354e03525cf945b7d7d71d60100a9a63"
       },
       "masonrify": {
         "path": "packages/meteor-masonrify"
@@ -202,10 +204,20 @@
         "tag": "v0.9.9",
         "commit": "567d3905784a8be6aacfbb69d477003ba9b5c4b5"
       },
+      "meteor-inspector": {
+        "git": "https://github.com/broth-eu/meteor-inspector.git",
+        "tag": "v0.1.0",
+        "commit": "f94c738a73458e13d5179201a639a0c55f8b37aa"
+      },
+      "fast-render": {
+        "git": "https://github.com/arunoda/meteor-fast-render.git",
+        "tag": "v0.2.2",
+        "commit": "2a7298d72a84b85e989ec2cc9300bbea7c159eb8"
+      },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
-        "tag": "v0.2.2",
-        "commit": "8bc53798fe5965669ae67c72f91829fcfdceabfd"
+        "tag": "v0.2.4",
+        "commit": "b40e9b0612329288d75cf52ad14a7da64bb8618f"
       },
       "marked": {
         "git": "https://github.com/chuangbo/meteor-marked.git",
@@ -241,6 +253,11 @@
         "git": "https://github.com/CollectionFS/Meteor-reactive-list.git",
         "tag": "v0.0.7",
         "commit": "5855e3795947145b20a331250113ce927060445b"
+      },
+      "npm": {
+        "git": "https://github.com/arunoda/meteor-npm.git",
+        "tag": "v0.2.6",
+        "commit": "177ab6118de5bf8cffb19481343d5762ff7a2aaf"
       },
       "underscore-string-latest": {
         "git": "https://github.com/TimHeckel/meteor-underscore-string.git",

@@ -2,7 +2,11 @@ define "PaypalIPN",["EventticketManager"], (ticketManager) ->
   self = {
     paypalIPNcoll: new Meteor.Collection("paypalIPN")
   }
-  Router.map ->
+  if Meteor.isServer
+    Meteor.publish "paypalIPN", ->
+      return self.paypalIPNcoll.find()
+
+    Router.map ->
           this.route('paypal_ipn',
             where: 'server'
             path: 'paypal_ipn'

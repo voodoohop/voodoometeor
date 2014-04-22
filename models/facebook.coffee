@@ -36,6 +36,8 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
           console.log("bind failed",ex)
         ))
 
+    ignoredFBEvents = new Meteor.Collection("ignoredFBEvents")
+
 
     fb = Meteor.require "fb"
     console.log(config.current())
@@ -58,6 +60,10 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       return unless fbid
       console.log("update",update)
       console.log("importing fb event with graph id:"+fbid)
+      ignoredEvent = ignoredFBEvents.findOne({_id: fbid})
+      if (ignoredEvent and moment().diff(ignoredEvent.updated_time)/1000 < 60*60*4)
+        console.log("diff for ignored event", moment().diff(ignoredEvent.updated_time)/1000)
+        return {error: "toofewappusers", fbEventId: fbid}
       existing = contentModel.getContentBySourceId(fbid)
       if (existing)
         if (!existing.updated_time)
@@ -67,13 +73,14 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
             update = true
       if (!update and existing)
         console.log("event already exists")
-        return {event: contentModel.getContentBySourceId(fbid)._id, alreadyInDB: true}
+        return {event: existing._id, alreadyInDB: true}
       res = Meteor.sync((done) ->
         query= "select uid from user where is_app_user=1 and uid in (select uid from event_member where eid = "+fbid+" and rsvp_status='attending')";
         fb.api("/fql",{q:query},  (fbres) -> done(null,fbres))
       )
       num_app_users_attending = res.result.data?.length ? 0
       if (num_app_users_attending < 3)
+        ignoredFBEvents.insert({_id:fbid, updated_time: moment().toJSON()})
         console.log("few app users attending, ignoring event")
         return {error: "toofewappusers", fbEventId: fbid}
       res = Meteor.sync((done) -> fb.api fbid, {fields: fbschemas.event_fields}, (fbres) -> done(null,fbres))
@@ -174,7 +181,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     self.numEventsImporting=0;
     Meteor.methods(
       importFacebookEvent: (params) ->
-        return false
+        #return false
         self.numEventsImporting++;
 
         this.unblock() #if self.numEventsImporting < 10

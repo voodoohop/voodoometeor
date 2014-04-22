@@ -63,10 +63,11 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
         #return #hack to not attend events
         fbapi.api("/me/events", (res) -> _.each(res.data, (e) ->
          if e?.id
-          Meteor.call("importFacebookEvent",e.id, (err,res) ->
-            console.log("imported", res)
+          if moment(e.end_time ? e.start_time).diff(moment()) > 0
+           Meteor.call("importFacebookEvent",e.id, (err,res) ->
+            #console.log("imported", res)
             if res.event and ! res.alreadyInDB and ! res.updated
-              console.log("alerting for event", res)
+              #console.log("alerting for event", res)
 
               Alerts.add("eventInsertedMessage", model.getContentById(res.event), "success",  {autoHide: 10000, html: true});
               Meteor.users.update(Meteor.userId(), $addToSet: { attending: res.event._id})
@@ -125,6 +126,7 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
 
 
       self.updateEventStats = (event) ->
+        #return false #DISABLE TEMPORARILY FOR EASTER
         fb.ensureLoggedIn( ->
           fbHelpers.eventStats.run(event, fb, (res) -> console.log("updated event stats", res))
           console.log("updating comments")

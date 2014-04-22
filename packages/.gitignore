@@ -60,3 +60,6 @@ reactive-property
 micro-queue
 reactive-list
 reactive-async-helper
+meteor-server-eval
+meteor-inspector
+fast-render

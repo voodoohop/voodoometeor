@@ -19,7 +19,7 @@
     "bootstrap3-less-tom": {
       "path": "packages/bootstrap3-less-tom"
     },
-    "reactive-async-helper" : {
+    "reactive-async-helper": {
       "path": "packages/ReactiveAsyncHelper"
     },
     "bootstrap-alerts-blaze-tom": {
@@ -44,6 +44,8 @@
     "analytics": {},
     "GAnalytics": {},
     "comments": {},
-    "power-queue": {}
+    "power-queue": {},
+    "meteor-inspector": {},
+    "fast-render": {}
   }
 }

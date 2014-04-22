@@ -69,7 +69,7 @@ define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
       unless _.findWhere(subscribedParams[connId], params)
         subscribedParams[connId].push(params)
       self.getEmbedlyData(params)
-      console.log("embedly find",{$or: subscribedParams[connId]})
+      #console.log("embedly find",{$or: subscribedParams[connId]})
       embedlyCollection.find({$or: subscribedParams[connId]})
     )
 

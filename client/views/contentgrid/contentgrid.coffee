@@ -136,6 +136,7 @@ define "ContentgridController", ["VoodoocontentModel","Config","PackeryMeteor","
       onStop: ->
         Router.lastGridPath = this.path
         self.RsortFilters.blockvisible=1
+      fastRender:true
   navBar.initNavbar(null, self.RsortFilters)
 
   return self

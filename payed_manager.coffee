@@ -1,4 +1,5 @@
 Meteor.startup ->
+
   Meteor.users.helpers
     hasTicketsFor: (event) ->
       return this.eventTickets?[event._id]?.length
@@ -16,8 +17,10 @@ Meteor.startup ->
         #if (existingTicketCount >= ticketno)
         #  return
         mongoop["#{eventid}"] = []
-        mongoop["#{eventid}"].push(existingTickets)
-        mongoop["#{eventid}"].push(_.map([(existingTicketCount+1)..ticketno+existingTicketCount], (i) -> {nameOnList: (if i == 1 then user.profile?.name else null), price: null, ticketType: null, paymentMethod: paymentMethod}))
+        if (existingTicketCount > 0)
+          mongoop["#{eventid}"].push(existingTickets)
+        _.each([(existingTicketCount+1)..ticketno+existingTicketCount], (i) -> mongoop["#{eventid}"].push({nameOnList: (if i == 1 then user.profile?.name else null), price: null, ticketType: null, paymentMethod: paymentMethod}))
+
 
         console.log("updating tickets ", user._id, mongoop["#{eventid}"])
         Meteor.users.update(user._id, {$set: {eventTickets: mongoop}})

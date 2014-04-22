@@ -1,4 +1,4 @@
-var url = 'http://voodoohop.com/content/events/0';
+var url = 'http://voodoohop.com/contentDetail/calefao-tropicaos-alucinao';
 var page = require('webpage').create();
 page.open(url);
 console.log('postopen');
