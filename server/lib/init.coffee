@@ -1,3 +1,10 @@
+Nodetime.profile({
+  accountKey: 'f6554c48283af492abfcd07d5ad45f584e1fa3e5',
+  appName: 'Node.js Application'
+})
+@profiler = Meteor.require('v8-profiler')
+
+
 require "Config", (config) ->
   console.log("reading config")
   config.globalconfig.remove({})

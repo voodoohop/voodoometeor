@@ -46,6 +46,7 @@
     "comments": {},
     "power-queue": {},
     "meteor-inspector": {},
-    "fast-render": {}
+    "fast-render": {},
+    "nodetime": {}
   }
 }

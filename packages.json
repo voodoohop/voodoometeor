@@ -3,5 +3,6 @@
     "embedly":"1.0.1",
     "bower": "1.0.0",
     "nodetime": "0.8.14",
-    "node-inspector": "0.7.3"
+    "node-inspector": "0.7.3",
+    "v8-profiler": "4.0.1"
 }

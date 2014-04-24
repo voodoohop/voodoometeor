@@ -26,7 +26,7 @@ require "VoodoocontentModel", (model) ->
 
     if (Meteor.isClient)
 
-      Hooks.init()  #user login/logout hooks
+      Hooks?.init()  #user login/logout hooks
       require ["ContentgridController"], (gridController) ->
 
         Meteor.autosubscribe( ->

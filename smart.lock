@@ -48,7 +48,8 @@
       "comments": {},
       "power-queue": {},
       "meteor-inspector": {},
-      "fast-render": {}
+      "fast-render": {},
+      "nodetime": {}
     },
     "packages": {
       "font-awesome": {
@@ -148,8 +149,8 @@
       },
       "apm": {
         "git": "https://github.com/arunoda/meteor-apm-client.git",
-        "tag": "v1.0.0",
-        "commit": "672c94c9383ecca86da5157fa28fd1bcc754c7c3"
+        "tag": "v1.0.3",
+        "commit": "8f64a496ba11201e7ac9cb1ffa13e8c9f3995e62"
       },
       "connection-banner": {
         "git": "https://github.com/nate-strauser/meteor-connection-banner.git",
@@ -158,8 +159,8 @@
       },
       "bower": {
         "git": "https://github.com/mquandalle/meteor-bower.git",
-        "tag": "v0.1.6",
-        "commit": "73b090d6354e03525cf945b7d7d71d60100a9a63"
+        "tag": "v0.1.7",
+        "commit": "017d0b0a0b30e37ffaa9bc7026ee09ee7c94ebe1"
       },
       "masonrify": {
         "path": "packages/meteor-masonrify"
@@ -211,8 +212,13 @@
       },
       "fast-render": {
         "git": "https://github.com/arunoda/meteor-fast-render.git",
-        "tag": "v0.2.2",
-        "commit": "2a7298d72a84b85e989ec2cc9300bbea7c159eb8"
+        "tag": "v0.2.3",
+        "commit": "d56bd4a4d222bf176241cd6e756aa349cb24c260"
+      },
+      "nodetime": {
+        "git": "https://github.com/subhog/meteor-nodetime.git",
+        "tag": "v0.2.0",
+        "commit": "3611684e29563e58ccbd6275c5885a31a60196d7"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

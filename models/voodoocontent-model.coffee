@@ -98,7 +98,14 @@ define "VoodoocontentModel",[], ->
 
   if (Meteor.isServer)
 
-    self.contentCollection._ensureIndex({type:1, post_date: 1, num_app_users_attending: 1, start_time: 1, sourceId: 1, blocked: 1, featured: 1, wallPost: 1})
+    self.contentCollection._ensureIndex({type:1})
+    self.contentCollection._ensureIndex({post_date: 1})
+    self.contentCollection._ensureIndex({num_app_users_attending: 1})
+    self.contentCollection._ensureIndex({start_time: 1})
+    self.contentCollection._ensureIndex({sourceId: 1})
+    self.contentCollection._ensureIndex({blocked: 1})
+    self.contentCollection._ensureIndex({featured: 1})
+    self.contentCollection._ensureIndex({wallPost: 1})
     Meteor.publish "content", (options = {}) ->
       console.log("client subscribed to content", options)
       if (! options.fields? && ! options.details )

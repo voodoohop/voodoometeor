@@ -7,7 +7,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       fb.api(path, options, callback)
     fbSync = Meteor._wrapAsync(fbApi)
 
-    Hooks.onLoggedIn = (p) ->
+    Hooks?.onLoggedIn = (p) ->
 
         ## exchange access token for long-lived ##
         return unless p?
@@ -39,7 +39,7 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
     ignoredFBEvents = new Meteor.Collection("ignoredFBEvents")
 
 
-    fb = Meteor.require "fb"
+    @fb = Meteor.require "fb"
     console.log(config.current())
 
     fb.setAccessToken(""+config.current().facebook.appid+"|"+config.current().facebook.appsecret)
@@ -80,7 +80,10 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
       )
       num_app_users_attending = res.result.data?.length ? 0
       if (num_app_users_attending < 3)
-        ignoredFBEvents.insert({_id:fbid, updated_time: moment().toJSON()})
+        if (ignoredEvent)
+          ignoredFBEvents.update(fbid, {$set:{updated_time: moment().toJSON()}})
+        else
+          ignoredFBEvents.insert({_id:fbid, updated_time: moment().toJSON()})
         console.log("few app users attending, ignoring event")
         return {error: "toofewappusers", fbEventId: fbid}
       res = Meteor.sync((done) -> fb.api fbid, {fields: fbschemas.event_fields}, (fbres) -> done(null,fbres))
