@@ -8,7 +8,7 @@ define "ContentMetaData", ["VoodoocontentModel"], (model) ->
     {name: "text", color: "bgvoodoocolor1", title:"Text"}
   ]
   console.log("registering contentcollection metadata helper")
-  model.contentCollection.helpers
+  model.registerHelpers
     metaData: ->
         self = this
         _.where(contentTypes, {name: self.type })?[0]

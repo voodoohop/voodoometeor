@@ -47,7 +47,15 @@
         <div class="panel-heading">Media</div>
         <div class="panel-content clearfix" >
           {{#each descriptionLinks}}
-          {{>eventmedia embedly url=this maxwidth=200 maxheight=200 }}
+
+          {{#with embedlyContentItem url=this maxwidth=230 maxheight=230}}
+
+          {{#if this.title}}
+          <div style="width: 230px; height: 230px; display: inline-block;">
+          {{> contentitem}}
+          </div>
+          {{/if}}
+          {{/with}}
           {{/each}}
         </div>
     </div>

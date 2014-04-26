@@ -1,3 +1,5 @@
+#TODO event hooks is causinga  performnace hit. find another way to catch onLoggedIn and do the swap for a long-lived access token
+
 require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbschemas) ->
   self = {}
   # Meteor.users.remove({})
@@ -122,10 +124,10 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
         contentModel.contentCollection.update {sourceId: event.id}, {$set: voodoocontent}
       return {event: contentModel.getContentBySourceId(fbid)._id, alreadyInDB: false, updated: update}
 
-    self.importUpdatePost = (fbid) ->
+    self.importUpdatePost = (fbid, additionalFields = {}) ->
           res = Meteor.sync ((done) -> fb.api fbid, {fields: fbschemas.post_fields}, (fbres) -> done(null, fbres) )
           post = res.result
-          #console.log("post,",post.object_id)
+          #console.log("post,",post)
 
           if (! post?.link?)
             console.log("without link... skipping")
@@ -173,6 +175,8 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
             post_date: new Date(post.created_time).toJSON()
             num_app_users_attending: post.num_app_user_likes
 
+          _.extend(voodoocontent, additionalFields)
+
           if (!contentModel.getContentBySourceId(post.id))
             console.log("post: #{voodoocontent.title} not found yet... inserting")
             contentModel.contentCollection.insert voodoocontent
@@ -194,9 +198,9 @@ require ["Config", "VoodoocontentModel","FBSchemas"], (config,contentModel, fbsc
 
         return result;
 
-      importFacebookPost: (params) ->
+      importFacebookPost: (params, additionalFields={}) ->
         this.unblock()
-        self.importUpdatePost(params)
+        self.importUpdatePost(params, additionalFields)
 
     )
 

@@ -65,7 +65,7 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
          if e?.id
           if moment(e.end_time ? e.start_time).diff(moment()) > 0
            Meteor.call("importFacebookEvent",e.id, (err,res) ->
-            #console.log("imported", res)
+            console.log("imported", res)
             if res.event and ! res.alreadyInDB and ! res.updated
               #console.log("alerting for event", res)
 
@@ -138,7 +138,7 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
       self.rsvp_confirmed = (event) ->
         return false unless Meteor.user()
         _.contains(Meteor.user().attending, event._id)
-      model.contentCollection.helpers
+      model.registerHelpers
         rsvp_confirmed: -> self.rsvp_confirmed(this)
       self.invite = (fbeventid, friendlist) ->
         console.log "/"+fbeventid+"/invited", {users: _.map(friendlist, (u) -> u.id)}
@@ -171,3 +171,4 @@ define "EventManager", ["VoodoocontentModel","FacebookApiHelpers"], (model, fbHe
         )
 
   return self;
+

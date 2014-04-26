@@ -12,29 +12,31 @@
     <div id="contentgridcontainer">
 
       {{#masonryContainer columnWidth=115 transitionDuration="0.1s" gutter=2 id="Contentgrid" }}
-     {{> navboxestomasonry containerId=id}}
-      {{#masonryElement "Contentgrid"}}
-        {{> userLoginStatus}}
-      {{/masonryElement}}
-      {{#unless isWall}}
-      {{#if featuredContent}}
-      {{#masonryElement "Contentgrid"}}
-        {{#contentcarousel id="featuredContent" items=featuredContent}}
-      <div style="width: 100%; height: 100%" class="{{bgcol}}">
-          <div class="featuredHeader"><h3 style="margin-top: 0px">{{fullDay}} <small>{{location}}</small></h3></div>
-          {{> contentthumb overrideWidth=460 overrideHeight=250 contentItem=this}}
-          <div class="featuredFooter"><h3>{{title}} </h3></div>
-      </div>
-      {{/contentcarousel}}
-      {{/masonryElement}}
-      {{/if}}
-      {{/unless}}
-
-      {{#if isWall}}
+      {{#unless isChild}}
+        {{> navboxestomasonry containerId=id}}
         {{#masonryElement "Contentgrid"}}
-          {{> wallpostform}}
+          {{> userLoginStatus}}
         {{/masonryElement}}
-      {{/if}}
+        {{#unless isWall}}
+        {{#if featuredContent}}
+        {{#masonryElement "Contentgrid"}}
+          {{#contentcarousel id="featuredContent" items=featuredContent}}
+        <div style="width: 100%; height: 100%" class="{{bgcol}}">
+            <div class="featuredHeader"><h3 style="margin-top: 0px">{{fullDay}} <small>{{location}}</small></h3></div>
+            {{> contentthumb overrideWidth=460 overrideHeight=250 contentItem=this}}
+            <div class="featuredFooter"><h3>{{title}} </h3></div>
+        </div>
+        {{/contentcarousel}}
+        {{/masonryElement}}
+        {{/if}}
+        {{/unless}}
+
+        {{#if isWall}}
+          {{#masonryElement "Contentgrid"}}
+            {{> wallpostform}}
+          {{/masonryElement}}
+        {{/if}}
+      {{/unless}}
   <!--
       {{#masonryElement "Contentgrid"}}
        {{> fbpagelikebutton }}

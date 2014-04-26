@@ -149,8 +149,8 @@
       },
       "apm": {
         "git": "https://github.com/arunoda/meteor-apm-client.git",
-        "tag": "v1.0.3",
-        "commit": "8f64a496ba11201e7ac9cb1ffa13e8c9f3995e62"
+        "tag": "v1.2.0",
+        "commit": "f46e132a6214d660f7de8d4b7b061e0039368d64"
       },
       "connection-banner": {
         "git": "https://github.com/nate-strauser/meteor-connection-banner.git",

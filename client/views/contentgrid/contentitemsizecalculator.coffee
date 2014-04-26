@@ -1,6 +1,7 @@
 require ["TomMasonry","VoodoocontentModel","Embedly"], (tomMasonry, model, embedly) ->
 
   contentWidthInGrid= (item) ->
+      return item.overrideWidth if (item.overrideWidth)
       if (item.cols)
         return item.cols*tomMasonry.columnWidth
       if (item.link)
@@ -11,6 +12,7 @@ require ["TomMasonry","VoodoocontentModel","Embedly"], (tomMasonry, model, embed
       return metadata.width
 
   contentHeightInGrid= (item) ->
+      return item.overrideHeight if (item.overrideHeight)
       metadata = item.metaData()
       #console.log("getting content height in grid",metadata,item)
       if (item.link)
@@ -30,7 +32,7 @@ require ["TomMasonry","VoodoocontentModel","Embedly"], (tomMasonry, model, embed
 
 
 
-  model.contentCollection.helpers
+  model.registerHelpers
 
     widthInGrid: -> contentWidthInGrid(this)
 

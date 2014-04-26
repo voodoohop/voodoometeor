@@ -1,5 +1,8 @@
-define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventManager","TomMasonry","ContentgridController"], (embedly, model, contentCommon,eventManager, tomMasonry, grid) ->
+define "ContentItem", ["Embedly"], (embedly) ->
   self = {}
+
+  initState = (item) ->
+    item.state = new ReactiveObject {isPlaying: false}
 
 
   self.rsvp_confirmed = (item) ->
@@ -8,23 +11,18 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
 
   self.helpers =
     typespecificcontent: ->
-      res = Template["contentitem_"+this.type]
-      return res
+      Template["contentitem_"+this.type]
 
-    randcol: -> contentCommon.colors[_.random(0,contentCommon.colors.length-1)]
-
-    showMedia: -> grid.isPlayingMedia(this)
-
-    isExpanded: -> grid.isExpanded(this)
+    showMedia: ->
+      initState(this) unless this.state?
+      this.state.isPlaying
 
     rsvp_confirmed: -> self.rsvp_confirmed(this)
-    showDetail: -> grid.isShowDetail(this)
 
     titleellipsis: ->
       this.title?.substr(0,20) + (if this.title.length >40 then "..." else "")
 
-    showThumb: ->
-      ! grid.isPlayingMedia(this)
+    showThumb: ->! this.state.isPlaying
 
   console.log("registering content item helpers")
   Template.contentitem.helpers self.helpers
@@ -39,8 +37,8 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
           this.contentItem.link
 
     thumbnailurl: ->
-      console.log(this.contentItem)
-      width = this.overrideWidth ? this.contentItem.widthInGrid()
+      console.log("this.contentItem", this.contentItem)
+      width = this.overrideWidth ?  this.contentItem.widthInGrid()
       height = this.overrideHeight ? this.contentItem.heightInGrid()
       if (this.contentItem.metaData().showtitle and ! this.overrideHeight)
         height -= 50 # footer height should be elsewhere
@@ -69,13 +67,13 @@ define "ContentItem", ["Embedly","VoodoocontentModel","ContentCommon","EventMana
       console.log(res)
       res
 
-
+  Template.contentitem.created = -> initState(this.data)
   Template.contentitem.events
 
-    'click .mediaplaybutton': () ->
-      console.log(this)
-      console.log("showmedia: "+this._id)
-      grid.playMedia(this)
+    'click .mediaplaybutton': (event,tmplInstance) ->
+      console.log("content item state",tmplInstance.data.state)
+      tmplInstance.data.state.isPlaying = true
+      #grid.playMedia(this)
 
 
 

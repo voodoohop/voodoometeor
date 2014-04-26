@@ -1,7 +1,7 @@
 define "LoadingTemplates", [], ->
 
   self =
-    numtemplates: 4
+    numtemplates: 3
     contentCursor: new ReactiveObject(["cursor"])
     renderRandom: (renderer) ->
       tmpl = "loadingtemplate"+_.random(1,self.numtemplates)

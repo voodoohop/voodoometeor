@@ -6,7 +6,15 @@ define "VoodoocontentModel",[], ->
 
   self.contentBlockSize = 10
 
-  self.helpers =
+  self.helpers = {}
+  self.registerHelpers = (methods) ->
+    _.extend(self.helpers, methods)
+    self.contentCollection.helpers methods
+
+  self.createContentItem = (data) ->
+    _.extend(_.clone(data), self.helpers)
+
+  self.registerHelpers
     postedDate: -> moment.parseZone(this.post_date).local().fromNow()
     fullDay: ->
       format = "dddd"
@@ -31,7 +39,6 @@ define "VoodoocontentModel",[], ->
     getPicture: ->
       return this.picture_override ? this.picture
 
-  self.contentCollection.helpers self.helpers
 
   description_reduced: ->
     console.log("reducing", this)
@@ -106,6 +113,7 @@ define "VoodoocontentModel",[], ->
     self.contentCollection._ensureIndex({blocked: 1})
     self.contentCollection._ensureIndex({featured: 1})
     self.contentCollection._ensureIndex({wallPost: 1})
+    self.contentCollection._ensureIndex({parent: 1})
     Meteor.publish "content", (options = {}) ->
       console.log("client subscribed to content", options)
       if (! options.fields? && ! options.details )

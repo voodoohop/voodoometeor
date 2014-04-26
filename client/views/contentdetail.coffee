@@ -101,7 +101,7 @@ Meteor.startup ->
       {event: this.contentItem, minimized: true}
 
     Template.contentdetail.descriptionLinks = ->
-      descriptionLinks.links
+      _.uniq descriptionLinks.links
 
     Template.contentdetail.rendered = ->
       console.log("contentdetail rendered", this)

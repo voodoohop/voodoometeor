@@ -1,6 +1,5 @@
 require ["VoodoocontentModel"], (model) ->
-  Meteor.methods
-    insertWallPostFromEmbedly: (data) ->
+  insertPostFromEmbedly = (data,additionalFields = {}) ->
       console.log(data)
       pic = data.thumbnail_url
       if ! pic?
@@ -9,7 +8,7 @@ require ["VoodoocontentModel"], (model) ->
       type = data.type
       type = "video" if type == "rich"
       return unless pic
-      model.contentCollection.insert
+      post =
         title: data.title ? data.original_url
         description: data.description
         link: data.original_url
@@ -17,5 +16,11 @@ require ["VoodoocontentModel"], (model) ->
         post_date: moment().toJSON()
         source: "embedly"
         embedlyData: [data]
-        wallPost: true
         picture: pic
+      model.contentCollection.insert _.extend(post, additionalFields)
+
+  Meteor.methods
+    insertPostFromEmbedly: (data,additionalFields={}) ->
+      insertPostFromEmbedly(data,additionalFields)
+    insertWallPostFromEmbedly: (data) ->
+      insertPostFromEmbedly(data,{wallPost:true})

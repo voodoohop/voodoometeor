@@ -17,8 +17,6 @@ define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
       embedlyCollection.insert(_.extend({embedly: data},params))
       return data
     if (Meteor.isClient)
-      self.alreadySubscribedParams = [] unless self.alreadySubscribedParams?
-      self.alreadySubscribedParams.push(params)
       Meteor.subscribe("embedlyCache",params)
       console.log("embedly subscribed to", params)
     return existing?.embedly
@@ -30,6 +28,31 @@ define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
       [e.width,e.height]
     else
       [e.thumbnail_width, e.thumbnail_height]
+
+  createContentItemFromEmbedly = (url, data, additionalParams={}) ->
+      return unless data?
+      pic = data.thumbnail_url
+      if ! pic?
+        if data.type =="photo"
+          pic = data.original_url
+      type = data.type
+      type = "video" if type == "rich"
+      return unless pic
+      post =
+        title: data.title ? data.original_url
+        description: data.description
+        link: url
+        type: type
+        post_date: moment().toJSON()
+        source: "embedly"
+        picture: pic
+        overrideWidth: data.width
+        overrideHeight: data.height
+      console.log("created content item from embedly data", post, data)
+      return _.extend(post, additionalParams)
+
+  self.getContentItemData = (params, additionalParams={}) ->
+    return createContentItemFromEmbedly(params.url,self.getEmbedlyData(params,additionalParams))
 
 
   if (Meteor.isServer)
@@ -65,7 +88,15 @@ define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
       embedlyCollection.find(params)
     )
 
+
+    insertPostFromEmbedly = (data,additionalFields = {}) ->
+      model.contentCollection.insert _.extend(createContentItemFromEmbedly(data), additionalFields)
+
+
+
     Meteor.methods(
+      insertPostFromLink: (params, additionalFields= {}) ->
+        insertPostFromEmbedly(self.getEmbedlyData(params), additionalFields)
       getEmbedlyData: (params)-> self.getEmbedlyData(params)
 
     )
@@ -85,4 +116,10 @@ define "Embedly", ["Config","VoodoocontentModel"],  (config, model) ->
     
 
     UI.registerHelper("embedly", (options)-> console.log("embedly helper optons",options.hash); self.getEmbedlyData(options.hash))
+    UI.registerHelper("embedlyContentItem", (options)->
+      console.log("embedlyContentItemData",this, options);
+      data = self.getContentItemData(options.hash)
+      if data
+        model.createContentItem(data)
+    )
   return self
